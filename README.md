@@ -2,7 +2,7 @@
 
 This project is planning to develop a **new database solution** to **store** and **manage** student extracted data from TCSI (Tertiary Collection of Student Information), with the following feature:
 
-1. Extracted data from CSV;
+1. Extracted data from CSV, where filed name is fixed;
    
 2. Supports relationship across multiple tables;
    
@@ -13,3 +13,5 @@ This project is planning to develop a **new database solution** to **store** and
 5. Metadata: timestamps;
 
 6. Develop a single, analysis-ready view (with all important fields);
+
+7. Supports query like: function(db_table_name, query_condition_1 = NULL, query_condition_2 = NULL, ...); 
