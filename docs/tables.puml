@@ -1,0 +1,434 @@
+@startuml
+
+entity HEPBasisForAdmission {
+    <<PK>> UID17_BasisForAdmissionResKey
+    __
+    <<FK>> UID15_CourseAdmissionsResKey
+    __
+    E313_StudentIdentificationCode
+    E307_CourseCode
+    E534_CourseOfStudyCommencementDate
+    E327_BasisForAdmissionCode
+}
+
+entity HEPCoursePriorCredits {
+    <<PK>> UID32_CoursePriorCreditsResKey
+    __
+    <<FK>> UID15_CourseAdmissionsResKey
+    __
+    E313_StudentIdentificationCode
+    E307_CourseCode
+    E534_CourseOfStudyCommencementDate
+    E560_CreditUsedValue
+    E561_CreditBasis
+    E566_CreditProviderCode
+}
+
+entity HEPCourseAdmissions {
+    <<PK>> UID15_CourseAdmissionsResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID5_CoursesResKey
+    __
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E307_CourseCode
+    E308_CourseName
+    E533_CourseOfStudyCode
+    E310_CourseOfStudyType
+    E534_CourseOfStudyCommencementDate
+    E330_AttendanceTypeCode
+    E591_HDRThesisSubmissionDate
+    E632_ATAR
+    E605_SelectionRank
+    E620_HighestAttainmentCode
+    E594_HDRPrimaryFieldOfResearchCode
+    E595_HDRSecondaryFieldOfResearchCode
+}
+
+entity HEPStudentCitizenships {
+    <<PK>> UID10_StudentCitizenshipsResKey
+    __
+    <<FK>> Student_Key
+    __
+    UID8_StudentsResKey
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E358_CitizenResidentCode
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity HEPStudentDisabilities {
+    <<PK>> UID11_StudentDisabilitiesResKey
+    __
+    <<FK>> Student_Key
+    __
+    UID8_StudentsResKey
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E615_DisabilityCode
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity StudentContactsFirstReportedAddress {
+    ' NO PRIMARY KEY?
+    <<FK>> Student_Key
+    __
+    E313_StudentIdentificationCode
+    E787_FirstResidentialAddressLine1
+    E789_FirstResidentialAddressSuburb
+    E791_FirstResidentialAddressState
+    E659_FirstResidentialAddressCountryCode
+    E790_FirstResidentialAddressPostcode
+}
+
+entity HEP_units-AOUs {
+    <<PK>> UE_AOU_Key
+    __
+    <<FK>> Student_key
+    <<FK>> UID15_CourseAdmissionsResKey
+    <<FK>> UID5_CoursesResKey
+    <<FK>> UID21_StudentLoansResKey
+    __
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E533_CourseOfStudyCode
+    E310_CourseOfStudyType
+    E307_CourseCode
+    E308_CourseName
+    E534_CourseOfStudyCommDate
+    UID16_UnitEnrolmentsResKey
+    E354_UnitOfStudyCode
+    E489_UnitOfStudyCensusDate
+    E337_WorkExperienceInIndustryCode
+    E551_SummerWinterSchoolCode
+    E464_DisciplineCode
+    E355_UnitOfStudyStatusCode
+    E329_ModeOfAttendanceCode
+    E477_DeliveryLocationPostcode
+    E660_DeliveryLocationCountryCode
+    E490_StudentStatusCode
+    E392_MaximumStudentContributionCode
+    E600_UnitOfStudyCommencementDate
+    E601_UnitOfStudyOutcomeDate
+    E446_RemissionReasonCode
+    A130_LoanStatus
+    E662_AdjustedLoanAmount
+    E663_AdjustedLoanFee
+    UE E339_EFTSL
+    UE E384_AmountCharged
+    UE E381_AmountPaidUpfront
+    UE E558_HELPLoanAmount
+    UE E529_LoanFee
+    UE A111_IsDeleted
+    UID19_UnitEnrolmentAOUsResKey
+    E333_AOUCode
+    AOU E339_EFTSL
+    AOU E384_AmountCharged
+    AOU E381_AmountPaidUpfront
+    AOU E529_LoanFee
+    AOU IsDeleted
+    Year
+    Start_Date
+    End_Date
+    Is_Current
+}
+
+entity RTPScholarships {
+    <<PK>> UID35_RTPScholarshipsResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID8_StudentsResKey
+    <<FK>> UID15_CourseAdmissionsResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E307_CourseCode
+    E308_CourseName
+    E533_CourseOfStudyCode
+    E310_CourseOfStudyType
+    E534_CourseOfStudyCommencementDate
+    E487_RTPScholarshipType
+    E609_RTPScholarshipFromDate
+    E610_RTPScholarshipToDate
+}
+
+entity HEPHDREndUsersEngagement {
+    <<PK>> UID37_HDREndUserEngagementsResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID15_CourseAdmissionsResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    UID8_StudentsResKey
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E307_CourseCode
+    E308_CourseName
+    E533_CourseOfStudyCode
+    E310_CourseOfStudyType
+    E534_CourseOfStudyCommencementDate
+    E593_HDREndUserEngagementCode
+    E609_HDREndUserEngageFromDate
+    E610_HDREndUserEngageToDate
+    E798_HDRDaysOfEngagement
+}
+
+entity SpecialInterestCourses {
+    <<PK>> UID30_SpecialInterestCoursesResKey
+    __
+    <<FK>> UID3_CoursesOfStudyResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E533_CourseOfStudyCode
+    E394_CourseOfStudyName
+    E307_CourseCode
+    E308_CourseName
+    E312_SpecialCourseType
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity HEPCourses {
+    <<PK>> UID5_CoursesResKey
+    __
+    <<FK>> UID3_CoursesOfStudyResKey
+    __
+    E533_CourseOfStudyCode
+    E394_CourseOfStudyName
+    E307_CourseCode
+    E308_CourseName
+    E596_StandardCourseDuration
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity CourseSpecialisations {
+    <<PK>> UID33_CourseSpecialisationsResKey
+    __
+    <<FK>> UID15_CourseAdmissionsResKey
+    <<FK>> UID47_AggregateAwardsResKey
+    __
+    E313_StudentIdentificationCode
+    E307_CourseCode
+    E534_CourseOfStudyCommencementDate
+    E463_SpecialisationCode
+}
+
+entity HEPStudents {
+    <<PK>> Student_Key
+    __
+    UID8_StudentsResKey
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E584_USI
+    A170_USIVerificationStatus
+    A167_TFNVerificationStatus
+    E314_DateOfBirth
+    E402_StudentFamilyName
+    E403_StudentGivenNameFirst
+    E404_StudentGivenNameOthers
+    E410_ResidentialAddressLine1
+    E469_ResidentialAddressSuburb
+    E320_ResidentialAddressPostcode
+    E470_ResidentialAddressState
+    E658_ResidentialAddressCountryCode
+    E319_TermResidencePostcode
+    E661_TermResidenceCountryCode
+    E315_GenderCode
+    E316_ATSICode
+    E346_CountryOfBirthCode
+    E347_ArrivalInAustraliaYear
+    E348_LanguageSpokenAtHomeCode
+    E572_YearLeftSchool
+    E612_LevelLeftSchool
+    E573_HighestEducationParent1
+    E574_HighestEducationParent2
+    Start_Date
+    End_Date
+    Is_Current
+}
+
+entity AggregatedAwards {
+    <<PK>> UID47_AggregateAwardsResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID5_CoursesResKey
+    __
+    E313_StudentIdentificationCode
+    E307_CourseCode
+    E534_CourseOfStudyCommencementDate
+    E599_CourseOutcomeCode
+    E591_HDRThesisSubmissionDate
+    E592_CourseOutcomeDate
+    E329_ModeOfAttendanceCode
+    E330_AttendanceTypeCode
+}
+
+ 
+entity ExitAwards {
+    <<PK>> UID46_EarlyExitAwardsResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID15_CourseAdmissionsResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E313_StudentIdentificationCode
+    E781_ProviderType
+    E307_CourseCode
+    E308_CourseName
+    E599_CourseOutcomeCode
+    E592_CourseOutcomeDate
+}
+
+entity CourseFieldsOfEducation {
+    <<PK>> UID48_CourseFieldsOfEducationResKey
+    __
+    <<FK>> UID3_CoursesOfStudyResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E533_CourseOfStudyCode
+    E307_CourseCode
+    E394_CourseOfStudyName
+    E461_FieldOfEducationCode
+    E462_FieldOfEducationSupplementaryCode
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity CoursesOfStudy {
+    <<PK>> UID3_CoursesOfStudyResKey
+    __
+    E533_CourseOfStudyCode
+    E394_CourseOfStudyName
+    E310_CourseOfStudyType
+    E350_CourseOfStudyLoad
+    E455_CombinedCourseOfStudyIndicator
+}
+
+entity CampusCourseFeesITSP {
+    <<PK>> UID31_CampusCourseFeesResKey
+    __
+    <<FK>> UID4_CoursesOnCampusResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E525_CampusSuburb
+    E644_CampusCountryCode
+    E559_CampusPostcode
+    Campuses_E609_EffectiveFromDate
+    E307_CourseCode
+    E536_CourseFeesCode
+    E495_IndicativeStudentContributionCSP
+    E496_IndicativeTuitionFeeDomesticFP
+    E609_EffectiveFromDate
+}
+
+entity HEPCoursesOnCampuses {
+    <<PK>> UID4_CoursesOnCampusResKey
+    __
+    <<FK>> UID2_CampusesResKey
+    <<FK>> UID5_CoursesResKey
+    __
+    E525_CampusSuburb
+    E644_CampusCountryCode
+    E559_CampusPostcode
+    Campuses_E609_EffectiveFromDate
+    Campuses_E610_EffectiveToDate
+    E307_CourseCode
+    E597_CRICOSCode
+    E569_CampusOperationType
+    E570_PrincipalOffshoreDeliveryMode
+    E571_OffshoreDeliveryCode
+    E609_EffectiveFromDate
+    E610_EffectiveToDate
+}
+
+entity CampusesTAC {
+    <<PK>> UID40_CoursesOnCampusTACResKey
+    __
+    <<FK>> UID4_CoursesOnCampusResKey
+    __
+    E557_TACOfferCode
+}
+
+entity StudentLoans {
+    <<PK>> UID21_StudentLoansResKey
+    __
+    <<FK>> Student_Key
+    <<FK>> UID15_CourseAdmissionsResKey
+    __
+    E313_StudentIdentificationCode
+    E488_CHESSN
+    E307_CourseCode
+    E527_HELPDebtIncurralDate
+    E490_StudentStatusCode
+}
+
+entity Campuses {
+    <<PK>> UID2_CampusesResKey
+    __
+    E525_CampusSuburb
+    E644_CampusCountryCode
+    E559_CampusPostcode
+    E569_CampusOperationType
+}
+
+entity SAHELP {
+    E384_AmountCharged
+    E381_AmountPaidUpfront
+    E558_HELPLoanAmount
+    A130_LoanStatus
+    Invalidated_Flag
+}
+
+entity OSHELP {
+    E521_OSHELPStudyPeriodCommencementDate
+    E553_OSHELPStudyPrimaryCountryCode
+    E554_OSHELPStudySecondaryCountryCode
+    E583_OSHELPLanguageStudyCommencementDate
+    E582_OSHELPLanguageCode
+    E528_OSHELPPaymentAmount
+    E529_LoanFee
+    A130_LoanStatus
+    Invalidated_Flag
+}
+
+
+HEPCourseAdmissions ||--|| HEPBasisForAdmission
+HEPCourseAdmissions ||--o{ HEPCoursePriorCredits
+HEPCourseAdmissions ||--o{ CourseSpecialisations
+
+HEPCourses }|--|| SpecialInterestCourses
+HEPCourses }|--|| CourseFieldsOfEducation
+HEPCourses }|--|| CampusCourseFeesITSP
+HEPCourses }|--|{ HEPCoursesOnCampuses
+
+HEPStudents ||--|| HEPCourseAdmissions
+HEPStudents ||--|{ HEPStudentCitizenships
+HEPStudents ||--o{ HEPStudentDisabilities
+HEPStudents ||--|| StudentContactsFirstReportedAddress
+HEPStudents ||--|{ "HEP_units-AOUs"
+HEPStudents ||--o{ RTPScholarships
+HEPStudents ||--o{ HEPHDREndUsersEngagement
+HEPStudents ||--o{ StudentLoans
+HEPStudents ||--o{ AggregatedAwards
+HEPStudents ||--o{ ExitAwards
+
+Campuses ||--|{ HEPCoursesOnCampuses
+AggregatedAwards ||--o{ CourseSpecialisations
+
+CoursesOfStudy }|--|| CourseFieldsOfEducation
+CoursesOfStudy ||--o| SpecialInterestCourses
+CoursesOfStudy ||--|{ HEPCourses
+
+HEPCoursesOnCampuses }|--|| CampusCourseFeesITSP
+HEPCoursesOnCampuses }|--|| CampusesTAC
+
+' SAHELP ?
+' OSHELP ?
+' StudentLoans -- "HEP_units-AOUs"
+
+@enduml
