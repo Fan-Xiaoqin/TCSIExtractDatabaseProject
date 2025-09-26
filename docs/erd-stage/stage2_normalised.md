@@ -80,4 +80,4 @@ This change will simplify the schema and remove unused attributes.
 ---
 
 ## Diagram
-![Stage 2 ERD](./images/stage2_normalised.pdf)
+![Stage 2 ERD](./images/stage2_normalised.png)
