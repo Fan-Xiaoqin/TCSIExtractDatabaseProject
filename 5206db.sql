@@ -1,435 +1,501 @@
--- 1. Campuses Table (Campus Master Data)
--- Independent table with no foreign key dependencies
-CREATE TABLE Campuses (
-    UID2_CampusesResKey VARCHAR(50) PRIMARY KEY COMMENT 'Primary key - Campus resource identifier',
-    E525_CampusSuburb VARCHAR(100) NOT NULL COMMENT 'Campus suburb/location name',
-    E644_CampusCountryCode VARCHAR(3) NOT NULL COMMENT 'ISO country code (e.g., AUS, NZL)',
-    E559_CampusPostcode VARCHAR(10) NOT NULL COMMENT 'Campus postcode',
-    E569_CampusOperationType VARCHAR(2) NOT NULL COMMENT 'Operation type code (01=Onshore, 02=Offshore)',
-    
-    -- Indexes for query optimization
-    INDEX idx_campus_location (E559_CampusPostcode, E525_CampusSuburb),
-    INDEX idx_campus_country (E644_CampusCountryCode)
-) COMMENT='Campus master data table storing all campus locations';
-
--- 2. HEPCoursesOnCampuses Table (Course-Campus Association)
--- Many-to-many relationship: Courses ↔ Campuses
-CREATE TABLE HEPCoursesOnCampuses (
-    UID4_CoursesOnCampusResKey VARCHAR(50) PRIMARY KEY COMMENT 'Primary key - Course on campus identifier',
-    UID2_CampusesResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to Campuses table',
-    E525_CampusSuburb VARCHAR(100) NOT NULL COMMENT 'Campus suburb (denormalized for performance)',
-    E644_CampusCountryCode VARCHAR(3) NOT NULL COMMENT 'Campus country code',
-    E559_CampusPostcode VARCHAR(10) NOT NULL COMMENT 'Campus postcode',
-    Campuses_E609_EffectiveFromDate DATE NOT NULL COMMENT 'Campus record effective from date',
-    Campuses_E610_EffectiveToDate DATE COMMENT 'Campus record effective to date',
-    UID5_CoursesResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to HEPCourses table',
-    E307_CourseCode VARCHAR(20) NOT NULL COMMENT 'Course code (e.g., BCOM01)',
-    E597_CRICOSCode VARCHAR(20) COMMENT 'CRICOS code for international students',
-    E569_CampusOperationType VARCHAR(2) NOT NULL COMMENT 'Campus operation type',
-    E570_PrincipalOffshoreDeliveryMode VARCHAR(2) COMMENT 'Offshore delivery mode code',
-    E571_OffshoreDeliveryCode VARCHAR(2) COMMENT 'Offshore delivery type code',
-    E609_EffectiveFromDate DATE NOT NULL COMMENT 'Record effective from date',
-    E610_EffectiveToDate DATE COMMENT 'Record effective to date',
-    
-    -- Foreign key constraints
-    CONSTRAINT fk_courses_campus_campus FOREIGN KEY (UID2_CampusesResKey) 
-        REFERENCES Campuses(UID2_CampusesResKey),
-    CONSTRAINT fk_courses_campus_course FOREIGN KEY (UID5_CoursesResKey) 
-        REFERENCES HEPCourses(UID5_CoursesResKey),
-    
-    -- Performance indexes
-    INDEX idx_course_campus (UID5_CoursesResKey, UID2_CampusesResKey),
-    INDEX idx_course_code (E307_CourseCode),
-    INDEX idx_cricos (E597_CRICOSCode),
-    INDEX idx_effective_dates (E609_EffectiveFromDate, E610_EffectiveToDate)
-) COMMENT='Bridge table linking courses to campuses where they are offered';
-
--- 3. CampusCourseFeesITSP Table (Campus Course Fees)
--- One-to-many relationship: HEPCoursesOnCampuses → CampusCourseFeesITSP
-CREATE TABLE CampusCourseFeesITSP (
-    UID31_CampusCourseFeesResKey VARCHAR(50) PRIMARY KEY COMMENT 'Primary key - Fee record identifier',
-    UID4_CoursesOnCampusResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to courses on campus',
-    E525_CampusSuburb VARCHAR(100) NOT NULL COMMENT 'Campus suburb',
-    E644_CampusCountryCode VARCHAR(3) NOT NULL COMMENT 'Campus country code',
-    E559_CampusPostcode VARCHAR(10) NOT NULL COMMENT 'Campus postcode',
-    Campuses_E609_EffectiveFromDate DATE NOT NULL COMMENT 'Campus effective from date',
-    UID5_CoursesResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to courses',
-    E307_CourseCode VARCHAR(20) NOT NULL COMMENT 'Course code',
-    E536_CourseFeesCode VARCHAR(10) NOT NULL COMMENT 'Fee structure code',
-    E495_IndicativeStudentContributionCSP DECIMAL(10,2) COMMENT 'Commonwealth Supported Place contribution',
-    E496_IndicativeTuitionFeeDomesticFP DECIMAL(10,2) COMMENT 'Domestic fee-paying student tuition',
-    E609_EffectiveFromDate DATE NOT NULL COMMENT 'Fee effective from date',
-    
-    -- Foreign key constraints
-    CONSTRAINT fk_fees_courses_campus FOREIGN KEY (UID4_CoursesOnCampusResKey) 
-        REFERENCES HEPCoursesOnCampuses(UID4_CoursesOnCampusResKey),
-    CONSTRAINT fk_fees_course FOREIGN KEY (UID5_CoursesResKey) 
-        REFERENCES HEPCourses(UID5_CoursesResKey),
-    
-    -- Performance indexes
-    INDEX idx_course_campus_fees (UID4_CoursesOnCampusResKey),
-    INDEX idx_fees_code (E536_CourseFeesCode),
-    INDEX idx_fees_effective_date (E609_EffectiveFromDate)
-) COMMENT='Course fee information by campus and time period';
-
--- 4. CampusesTAC Table (Tertiary Admissions Centre Offerings)
--- One-to-many relationship: HEPCoursesOnCampuses → CampusesTAC
-CREATE TABLE CampusesTAC (
-    UID40_CoursesOnCampusTACResKey VARCHAR(50) PRIMARY KEY COMMENT 'Primary key - TAC offering identifier',
-    UID4_CoursesOnCampusResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to courses on campus',
-    E557_TACOfferCode VARCHAR(2) NOT NULL COMMENT 'TAC offer code (01=Offered through TAC, 02=Direct entry)',
-    
-    -- Foreign key constraints
-    CONSTRAINT fk_tac_courses_campus FOREIGN KEY (UID4_CoursesOnCampusResKey) 
-        REFERENCES HEPCoursesOnCampuses(UID4_CoursesOnCampusResKey),
-    
-    -- Performance indexes
-    INDEX idx_course_campus_tac (UID4_CoursesOnCampusResKey),
-    INDEX idx_tac_offer_code (E557_TACOfferCode)
-) COMMENT='Records which courses are offered through Tertiary Admissions Centres';
-
--- 5. UnitEnrolments Table (Unit/Subject Enrolments)
--- Multiple foreign key relationships:
--- - HEPCourseAdmissions → UnitEnrolments (one-to-many)
--- - HEPCoursesOnCampuses → UnitEnrolments (one-to-many, optional)
-CREATE TABLE UnitEnrolments (
-    UID16_UnitEnrolmentsResKey VARCHAR(50) NOT NULL COMMENT 'Unit enrolment identifier',
-    UID15_CourseAdmissionsResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to course admissions',
-    UID4_CoursesOnCampusResKey VARCHAR(50) COMMENT 'Foreign key to courses on campus (optional)',
-    E354_UnitOfStudyCode VARCHAR(20) NOT NULL COMMENT 'Unit/subject code (e.g., STAT1400)',
-    E489_UnitOfStudyCensusDate DATE NOT NULL COMMENT 'Census date for the unit',
-    E337_WorkExperienceInIndustryCode VARCHAR(2) COMMENT 'Work experience indicator code',
-    E551_SummerWinterSchoolCode VARCHAR(2) COMMENT 'Summer/winter school indicator',
-    E464_DisciplineCode VARCHAR(6) NOT NULL COMMENT 'Field of education discipline code',
-    E355_UnitOfStudyStatusCode VARCHAR(2) NOT NULL COMMENT 'Unit status code (10=Active, etc.)',
-    E329_ModeOfAttendanceCode VARCHAR(2) NOT NULL COMMENT 'Mode of attendance (01=Internal, 02=External)',
-    E477_DeliveryLocationPostcode VARCHAR(10) NOT NULL COMMENT 'Delivery location postcode',
-    E660_DeliveryLocationCountryCode VARCHAR(3) NOT NULL COMMENT 'Delivery location country code',
-    E490_StudentStatusCode VARCHAR(3) NOT NULL COMMENT 'Student status code (201=Active, etc.)',
-    E392_MaximumStudentContributionCode VARCHAR(2) COMMENT 'Maximum student contribution indicator',
-    E600_UnitOfStudyCommencementDate DATE NOT NULL COMMENT 'Unit start date',
-    E601_UnitOfStudyOutcomeDate DATE COMMENT 'Unit completion/outcome date',
-    UE_A111_IsDeleted BOOLEAN DEFAULT FALSE COMMENT 'Soft delete flag',
-    AsAtMonth DATE NOT NULL COMMENT 'Snapshot month for historical tracking',
-    ExtractedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'ETL extraction timestamp',
-    Load_Batch_ID VARCHAR(50) COMMENT 'ETL batch identifier',
-    Reporting_Year INT NOT NULL COMMENT 'Academic reporting year',
-    
-    -- Composite primary key (includes time dimension)
-    PRIMARY KEY (UID16_UnitEnrolmentsResKey, AsAtMonth),
-    
-    -- Foreign key constraints
-    CONSTRAINT fk_unit_course_admission FOREIGN KEY (UID15_CourseAdmissionsResKey) 
-        REFERENCES HEPCourseAdmissions(UID15_CourseAdmissionsResKey),
-    CONSTRAINT fk_unit_course_campus FOREIGN KEY (UID4_CoursesOnCampusResKey) 
-        REFERENCES HEPCoursesOnCampuses(UID4_CoursesOnCampusResKey),
-    
-    -- Performance indexes
-    INDEX idx_course_admission (UID15_CourseAdmissionsResKey),
-    INDEX idx_campus_course (UID4_CoursesOnCampusResKey),
-    INDEX idx_unit_code (E354_UnitOfStudyCode),
-    INDEX idx_census_date (E489_UnitOfStudyCensusDate),
-    INDEX idx_student_status (E490_StudentStatusCode),
-    INDEX idx_unit_status (E355_UnitOfStudyStatusCode),
-    INDEX idx_reporting_year (Reporting_Year),
-    INDEX idx_as_at_month (AsAtMonth),
-    INDEX idx_deleted_flag (UE_A111_IsDeleted)
-) COMMENT='Student unit/subject enrolment records with monthly snapshots';
-
--- 6. UnitEnrolmentAOUs Table (Unit Enrolment Areas of Study)
--- One-to-many relationship: UnitEnrolments → UnitEnrolmentAOUs
-CREATE TABLE UnitEnrolmentAOUs (
-    UID19_UnitEnrolmentAOUsResKey VARCHAR(50) NOT NULL COMMENT 'AOU record identifier',
-    UID16_UnitEnrolmentsResKey VARCHAR(50) NOT NULL COMMENT 'Foreign key to unit enrolments',
-    E333_AOUCode VARCHAR(20) NOT NULL COMMENT 'Area of Study code',
-    AOU_E339_EFTSL DECIMAL(4,3) COMMENT 'Equivalent Full-Time Student Load for AOU',
-    AOU_E384_AmountCharged DECIMAL(10,2) COMMENT 'Amount charged for AOU',
-    AOU_E381_AmountPaidUpfront DECIMAL(10,2) COMMENT 'Amount paid upfront for AOU',
-    AOU_E529_LoanFee DECIMAL(10,2) COMMENT 'Loan fee amount for AOU',
-    AOU_IsDeleted BOOLEAN DEFAULT FALSE COMMENT 'Soft delete flag',
-    AsAtMonth DATE NOT NULL COMMENT 'Snapshot month matching parent record',
-    ExtractedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'ETL extraction timestamp',
-    Load_Batch_ID VARCHAR(50) COMMENT 'ETL batch identifier',
-    Reporting_Year INT NOT NULL COMMENT 'Academic reporting year',
-    
-    -- Composite primary key (includes time dimension)
-    PRIMARY KEY (UID19_UnitEnrolmentAOUsResKey, AsAtMonth),
-    
-    -- Composite foreign key (matches UnitEnrolments composite primary key)
-    CONSTRAINT fk_aou_unit_enrolment FOREIGN KEY (UID16_UnitEnrolmentsResKey, AsAtMonth) 
-        REFERENCES UnitEnrolments(UID16_UnitEnrolmentsResKey, AsAtMonth),
-    
-    -- Performance indexes
-    INDEX idx_unit_enrolment (UID16_UnitEnrolmentsResKey),
-    INDEX idx_aou_code (E333_AOUCode),
-    INDEX idx_aou_deleted (AOU_IsDeleted),
-    INDEX idx_aou_month (AsAtMonth),
-    INDEX idx_aou_reporting_year (Reporting_Year)
-) COMMENT='Areas of Study breakdown for unit enrolments';
-
 -- ================================================
--- 7. HEP_units_AOUs Table (Comprehensive Wide Table)
--- Denormalized table combining UnitEnrolments and UnitEnrolmentAOUs
--- Optimized for reporting and analysis
+-- TCSI Stage 4 Final Database Structure
+-- Client Approved Version with Minimal SCD-2 Pattern
 -- ================================================
 
-CREATE TABLE `HEP_units_AOUs` (
-    UE_AOU_Key INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Auto-increment primary key',
-    Student_key INT NOT NULL COMMENT 'Foreign key to HEPStudents',
-    E313_StudentIdentificationCode VARCHAR(20) NOT NULL COMMENT 'Student ID code',
-    E488_CHESSN VARCHAR(20) COMMENT 'Commonwealth Higher Ed Student Support Number',
-    UID15_CourseAdmissionsResKey VARCHAR(50) NOT NULL COMMENT 'Course admission identifier',
-    E533_CourseOfStudyCode VARCHAR(20) NOT NULL COMMENT 'Course of study code',
-    E310_CourseOfStudyType VARCHAR(2) NOT NULL COMMENT 'Course type code',
-    UID5_CoursesResKey VARCHAR(50) NOT NULL COMMENT 'Course identifier',
-    E307_CourseCode VARCHAR(20) NOT NULL COMMENT 'Course code',
-    E308_CourseName VARCHAR(200) NOT NULL COMMENT 'Course name',
-    E534_CourseOfStudyCommDate DATE NOT NULL COMMENT 'Course commencement date',
+-- Drop tables in reverse dependency order (if needed)
+/*
+DROP TABLE IF EXISTS UnitEnrolmentAOUs;
+DROP TABLE IF EXISTS UnitEnrolments;
+DROP TABLE IF EXISTS OSHELP;
+DROP TABLE IF EXISTS SAHELP;
+DROP TABLE IF EXISTS ExitAwards;
+DROP TABLE IF EXISTS AggregatedAwards;
+DROP TABLE IF EXISTS CourseAdmissions;
+DROP TABLE IF EXISTS StudentResidentialAddress;
+DROP TABLE IF EXISTS StudentDisabilities;
+DROP TABLE IF EXISTS StudentCitizenship;
+DROP TABLE IF EXISTS CampusesTAC;
+DROP TABLE IF EXISTS CampusCourseFeesITSP;
+DROP TABLE IF EXISTS CoursesOnCampuses;
+DROP TABLE IF EXISTS Campuses;
+DROP TABLE IF EXISTS Courses;
+DROP TABLE IF EXISTS HEPStudents;
+*/
+
+-- ================================================
+-- Core Tables
+-- ================================================
+
+-- 1. HEPStudents Table (Main student demographics)
+CREATE TABLE HEPStudents (
+    Student_Key INT PRIMARY KEY,
+    UID8_StudentsResKey VARCHAR(50) UNIQUE NOT NULL,
+    E313_StudentIdentificationCode VARCHAR(20) UNIQUE NOT NULL,
+    E488_CHESSN VARCHAR(20),
+    E584_USI VARCHAR(20),
+    A170_USIVerificationStatus CHAR(1),
+    A167_TFNVerificationStatus CHAR(1),
+    E314_DateOfBirth DATE NOT NULL,
+    E402_StudentFamilyName VARCHAR(100) NOT NULL,
+    E403_StudentGivenNameFirst VARCHAR(100) NOT NULL,
+    E404_StudentGivenNameOthers VARCHAR(100),
+    E315_GenderCode VARCHAR(2) NOT NULL,
+    E316_ATSICode VARCHAR(2) NOT NULL,
+    E346_CountryOfBirthCode VARCHAR(3) NOT NULL,
+    E347_ArrivalInAustraliaYear INT,
+    E348_LanguageSpokenAtHomeCode VARCHAR(4) NOT NULL,
+    E572_YearLeftSchool INT,
+    E612_LevelLeftSchool VARCHAR(2),
+    E573_HighestEducationParent1 VARCHAR(2),
+    E574_HighestEducationParent2 VARCHAR(2),
+    E319_TermResidencePostcode VARCHAR(10),
+    E661_TermResidenceCountryCode VARCHAR(3),
     
-    -- Unit Enrolment Fields
-    UID16_UnitEnrolmentsResKey VARCHAR(50) NOT NULL COMMENT 'Unit enrolment identifier',
-    E354_UnitOfStudyCode VARCHAR(20) NOT NULL COMMENT 'Unit code',
-    E489_UnitOfStudyCensusDate DATE NOT NULL COMMENT 'Census date',
-    E337_WorkExperienceInIndustryCode VARCHAR(2) COMMENT 'Work experience code',
-    E551_SummerWinterSchoolCode VARCHAR(2) COMMENT 'Summer/winter school code',
-    E464_DisciplineCode VARCHAR(6) NOT NULL COMMENT 'Discipline code',
-    E355_UnitOfStudyStatusCode VARCHAR(2) NOT NULL COMMENT 'Unit status code',
-    E329_ModeOfAttendanceCode VARCHAR(2) NOT NULL COMMENT 'Attendance mode code',
-    E477_DeliveryLocationPostcode VARCHAR(10) NOT NULL COMMENT 'Delivery postcode',
-    E660_DeliveryLocationCountryCode VARCHAR(3) NOT NULL COMMENT 'Delivery country',
-    E490_StudentStatusCode VARCHAR(3) NOT NULL COMMENT 'Student status code',
-    E392_MaximumStudentContributionCode VARCHAR(2) COMMENT 'Max contribution code',
-    E600_UnitOfStudyCommencementDate DATE NOT NULL COMMENT 'Unit start date',
-    E601_UnitOfStudyOutcomeDate DATE COMMENT 'Unit outcome date',
-    E446_RemissionReasonCode VARCHAR(2) COMMENT 'Fee remission reason',
-    A130_LoanStatus VARCHAR(2) COMMENT 'HELP loan status',
-    UID21_StudentLoansResKey VARCHAR(50) COMMENT 'Student loan identifier',
-    E662_AdjustedLoanAmount DECIMAL(10,2) COMMENT 'Adjusted loan amount',
-    E663_AdjustedLoanFee DECIMAL(10,2) COMMENT 'Adjusted loan fee',
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
     
-    -- Unit Enrolment Financial Fields
-    UE_E339_EFTSL DECIMAL(4,3) NOT NULL COMMENT 'Unit EFTSL value',
-    UE_E384_AmountCharged DECIMAL(10,2) NOT NULL COMMENT 'Unit amount charged',
-    UE_E381_AmountPaidUpfront DECIMAL(10,2) COMMENT 'Unit amount paid upfront',
-    UE_E558_HELPLoanAmount DECIMAL(10,2) COMMENT 'Unit HELP loan amount',
-    UE_E529_LoanFee DECIMAL(10,2) COMMENT 'Unit loan fee',
-    UE_A111_IsDeleted BOOLEAN DEFAULT FALSE COMMENT 'Unit deletion flag',
-    
-    -- AOU Fields
-    UID19_UnitEnrolmentAOUsResKey VARCHAR(50) COMMENT 'AOU identifier',
-    E333_AOUCode VARCHAR(20) COMMENT 'Area of Study code',
-    AOU_E339_EFTSL DECIMAL(4,3) COMMENT 'AOU EFTSL value',
-    AOU_E384_AmountCharged DECIMAL(10,2) COMMENT 'AOU amount charged',
-    AOU_E381_AmountPaidUpfront DECIMAL(10,2) COMMENT 'AOU amount paid upfront',
-    AOU_E529_LoanFee DECIMAL(10,2) COMMENT 'AOU loan fee',
-    AOU_IsDeleted BOOLEAN DEFAULT FALSE COMMENT 'AOU deletion flag',
-    
-    -- Time and ETL Fields
-    Year INT NOT NULL COMMENT 'Academic year',
-    Start_Date DATE NOT NULL COMMENT 'Record start date',
-    End_Date DATE COMMENT 'Record end date',
-    Is_Current BOOLEAN DEFAULT TRUE COMMENT 'Current record indicator',
-    
-    -- Foreign key constraints
-    CONSTRAINT fk_wide_student FOREIGN KEY (Student_key) 
-        REFERENCES HEPStudents(Student_Key),
-    CONSTRAINT fk_wide_admission FOREIGN KEY (UID15_CourseAdmissionsResKey) 
-        REFERENCES HEPCourseAdmissions(UID15_CourseAdmissionsResKey),
-    CONSTRAINT fk_wide_course FOREIGN KEY (UID5_CoursesResKey) 
-        REFERENCES HEPCourses(UID5_CoursesResKey),
-    CONSTRAINT fk_wide_loan FOREIGN KEY (UID21_StudentLoansResKey) 
-        REFERENCES StudentLoans(UID21_StudentLoansResKey),
-    
-    -- Performance indexes
-    INDEX idx_student (Student_key),
     INDEX idx_student_id (E313_StudentIdentificationCode),
     INDEX idx_chessn (E488_CHESSN),
-    INDEX idx_course_admission (UID15_CourseAdmissionsResKey),
+    INDEX idx_usi (E584_USI),
+    INDEX idx_current (IsCurrent)
+) COMMENT='Core student demographic information';
+
+-- 2. StudentResidentialAddress Table (Normalized address tracking)
+CREATE TABLE StudentResidentialAddress (
+    Address_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    Student_Key INT NOT NULL,
+    E410_ResidentialAddressLine1 VARCHAR(200) NOT NULL,
+    E469_ResidentialAddressSuburb VARCHAR(100) NOT NULL,
+    E320_ResidentialAddressPostcode VARCHAR(10) NOT NULL,
+    E470_ResidentialAddressState VARCHAR(3) NOT NULL,
+    E658_ResidentialAddressCountryCode VARCHAR(3) NOT NULL,
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    INDEX idx_student_address (Student_Key, IsCurrent),
+    INDEX idx_postcode (E320_ResidentialAddressPostcode)
+) COMMENT='Student residential addresses with history tracking';
+
+-- 3. StudentCitizenship Table (With surrogate key)
+CREATE TABLE StudentCitizenship (
+    Citizenship_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID10_StudentCitizenshipsResKey VARCHAR(50) NOT NULL,
+    Student_Key INT NOT NULL,
+    E358_CitizenResidentCode VARCHAR(2) NOT NULL,
+    E609_EffectiveFromDate DATE NOT NULL,
+    E610_EffectiveToDate DATE,
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    INDEX idx_student_citizen (Student_Key, IsCurrent),
+    INDEX idx_citizen_code (E358_CitizenResidentCode)
+) COMMENT='Student citizenship and residency status';
+
+-- 4. StudentDisabilities Table (With surrogate key)
+CREATE TABLE StudentDisabilities (
+    Disability_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID11_StudentDisabilitiesResKey VARCHAR(50) NOT NULL,
+    Student_Key INT NOT NULL,
+    E615_DisabilityCode VARCHAR(2) NOT NULL,
+    E609_EffectiveFromDate DATE NOT NULL,
+    E610_EffectiveToDate DATE,
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    INDEX idx_student_disability (Student_Key, IsCurrent)
+) COMMENT='Student disability information';
+
+-- 5. Courses Table
+CREATE TABLE Courses (
+    UID5_CoursesResKey VARCHAR(50) PRIMARY KEY,
+    E307_CourseCode VARCHAR(20) NOT NULL,
+    E308_CourseName VARCHAR(200) NOT NULL,
+    E596_StandardCourseDuration DECIMAL(3,1),
+    E310_CourseOfStudyType VARCHAR(2),
+    
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    INDEX idx_course_code (E307_CourseCode)
+) COMMENT='Course master data';
+
+-- 6. Campuses Table
+CREATE TABLE Campuses (
+    UID2_CampusesResKey VARCHAR(50) PRIMARY KEY,
+    E525_CampusSuburb VARCHAR(100) NOT NULL,
+    E644_CampusCountryCode VARCHAR(3) NOT NULL,
+    E559_CampusPostcode VARCHAR(10) NOT NULL,
+    E569_CampusOperationType VARCHAR(2) NOT NULL,
+    
+    INDEX idx_campus_location (E559_CampusPostcode, E525_CampusSuburb)
+) COMMENT='Campus locations';
+
+-- 7. CoursesOnCampuses Table
+CREATE TABLE CoursesOnCampuses (
+    UID4_CoursesOnCampusResKey VARCHAR(50) PRIMARY KEY,
+    UID2_CampusesResKey VARCHAR(50) NOT NULL,
+    UID5_CoursesResKey VARCHAR(50) NOT NULL,
+    E597_CRICOSCode VARCHAR(20),
+    E609_EffectiveFromDate DATE NOT NULL,
+    E610_EffectiveToDate DATE,
+    
+    FOREIGN KEY (UID2_CampusesResKey) REFERENCES Campuses(UID2_CampusesResKey),
+    FOREIGN KEY (UID5_CoursesResKey) REFERENCES Courses(UID5_CoursesResKey),
+    
+    INDEX idx_course_campus (UID5_CoursesResKey, UID2_CampusesResKey)
+) COMMENT='Courses offered at specific campuses';
+
+-- 8. CampusCourseFeesITSP Table
+CREATE TABLE CampusCourseFeesITSP (
+    UID31_CampusCourseFeesResKey VARCHAR(50) PRIMARY KEY,
+    UID4_CoursesOnCampusResKey VARCHAR(50) NOT NULL,
+    E536_CourseFeesCode VARCHAR(10) NOT NULL,
+    E495_IndicativeStudentContributionCSP DECIMAL(10,2),
+    E496_IndicativeTuitionFeeDomesticFP DECIMAL(10,2),
+    E609_EffectiveFromDate DATE NOT NULL,
+    
+    FOREIGN KEY (UID4_CoursesOnCampusResKey) REFERENCES CoursesOnCampuses(UID4_CoursesOnCampusResKey),
+    
+    INDEX idx_fees_course_campus (UID4_CoursesOnCampusResKey)
+) COMMENT='Course fees by campus';
+
+-- 9. CampusesTAC Table
+CREATE TABLE CampusesTAC (
+    UID40_CoursesOnCampusTACResKey VARCHAR(50) PRIMARY KEY,
+    UID4_CoursesOnCampusResKey VARCHAR(50) NOT NULL,
+    E557_TACOfferCode VARCHAR(2) NOT NULL,
+    
+    FOREIGN KEY (UID4_CoursesOnCampusResKey) REFERENCES CoursesOnCampuses(UID4_CoursesOnCampusResKey)
+) COMMENT='TAC offerings by campus';
+
+-- 10. CourseAdmissions Table (With surrogate key)
+CREATE TABLE CourseAdmissions (
+    Admission_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID15_CourseAdmissionsResKey VARCHAR(50) NOT NULL,
+    Student_Key INT NOT NULL,
+    UID5_CoursesResKey VARCHAR(50) NOT NULL,
+    E534_CourseOfStudyCommencementDate DATE NOT NULL,
+    E330_AttendanceTypeCode VARCHAR(2),
+    E591_HDRThesisSubmissionDate DATE,
+    E632_ATAR DECIMAL(5,2),
+    E605_SelectionRank DECIMAL(5,2),
+    E620_HighestAttainmentCode VARCHAR(2),
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    Reporting_Year INT NOT NULL,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    FOREIGN KEY (UID5_CoursesResKey) REFERENCES Courses(UID5_CoursesResKey),
+    
+    INDEX idx_admission_student (Student_Key),
+    INDEX idx_admission_course (UID5_CoursesResKey),
+    INDEX idx_admission_current (IsCurrent),
+    INDEX idx_reporting_year (Reporting_Year)
+) COMMENT='Student course admissions with SCD-2';
+
+-- 11. AggregatedAwards Table (Links to both Student and Course)
+CREATE TABLE AggregatedAwards (
+    UID47_AggregateAwardsResKey VARCHAR(50) PRIMARY KEY,
+    Student_Key INT NOT NULL,
+    UID5_CoursesResKey VARCHAR(50) NOT NULL,
+    E534_CourseOfStudyCommencementDate DATE,
+    E599_CourseOutcomeCode VARCHAR(2) NOT NULL,
+    E591_HDRThesisSubmissionDate DATE,
+    E592_CourseOutcomeDate DATE NOT NULL,
+    E329_ModeOfAttendanceCode VARCHAR(2),
+    E330_AttendanceTypeCode VARCHAR(2),
+    
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    FOREIGN KEY (UID5_CoursesResKey) REFERENCES Courses(UID5_CoursesResKey),
+    
+    INDEX idx_award_student (Student_Key),
+    INDEX idx_award_course (UID5_CoursesResKey)
+) COMMENT='Aggregated course completions - links to Student and Course';
+
+-- 12. ExitAwards Table (Links to CourseAdmission and Course)
+CREATE TABLE ExitAwards (
+    UID46_EarlyExitAwardsResKey VARCHAR(50) PRIMARY KEY,
+    Admission_ID INT NOT NULL,
+    UID5_CoursesResKey VARCHAR(50) NOT NULL,
+    E599_CourseOutcomeCode VARCHAR(2) NOT NULL,
+    E592_CourseOutcomeDate DATE NOT NULL,
+    
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (Admission_ID) REFERENCES CourseAdmissions(Admission_ID),
+    FOREIGN KEY (UID5_CoursesResKey) REFERENCES Courses(UID5_CoursesResKey),
+    
+    INDEX idx_exit_admission (Admission_ID),
+    INDEX idx_exit_course (UID5_CoursesResKey)
+) COMMENT='Exit awards - actual award may differ from admission course';
+
+-- 13. UnitEnrolments Table (No direct FK to CoursesOnCampuses)
+CREATE TABLE UnitEnrolments (
+    UnitEnrolment_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID16_UnitEnrolmentsResKey VARCHAR(50) NOT NULL,
+    Admission_ID INT NOT NULL,
+    E354_UnitOfStudyCode VARCHAR(20) NOT NULL,
+    E489_UnitOfStudyCensusDate DATE NOT NULL,
+    E337_WorkExperienceInIndustryCode VARCHAR(2),
+    E551_SummerWinterSchoolCode VARCHAR(2),
+    E464_DisciplineCode VARCHAR(6) NOT NULL,
+    E355_UnitOfStudyStatusCode VARCHAR(2) NOT NULL,
+    E329_ModeOfAttendanceCode VARCHAR(2) NOT NULL,
+    E477_DeliveryLocationPostcode VARCHAR(10),
+    E660_DeliveryLocationCountryCode VARCHAR(3),
+    E490_StudentStatusCode VARCHAR(3) NOT NULL,
+    E392_MaximumStudentContributionCode VARCHAR(2),
+    E600_UnitOfStudyCommencementDate DATE NOT NULL,
+    E601_UnitOfStudyOutcomeDate DATE,
+    
+    -- Financial fields
+    UE_E339_EFTSL DECIMAL(4,3),
+    UE_E384_AmountCharged DECIMAL(10,2),
+    UE_E381_AmountPaidUpfront DECIMAL(10,2),
+    UE_E558_HELPLoanAmount DECIMAL(10,2),
+    UE_E529_LoanFee DECIMAL(10,2),
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    UE_A111_IsDeleted BOOLEAN DEFAULT FALSE,
+    Reporting_Year INT NOT NULL,
+    Load_Batch_ID VARCHAR(50),
+    
+    FOREIGN KEY (Admission_ID) REFERENCES CourseAdmissions(Admission_ID),
+    
+    INDEX idx_unit_admission (Admission_ID),
     INDEX idx_unit_code (E354_UnitOfStudyCode),
-    INDEX idx_census_date (E489_UnitOfStudyCensusDate),
+    INDEX idx_unit_census (E489_UnitOfStudyCensusDate),
+    INDEX idx_unit_current (IsCurrent),
+    INDEX idx_unit_year (Reporting_Year)
+) COMMENT='Unit enrolments - fees resolved via CourseAdmission→Course→CoursesOnCampuses';
+
+-- 14. UnitEnrolmentAOUs Table (With surrogate key)
+CREATE TABLE UnitEnrolmentAOUs (
+    AOU_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID19_UnitEnrolmentAOUsResKey VARCHAR(50) NOT NULL,
+    UnitEnrolment_ID INT NOT NULL,
+    E333_AOUCode VARCHAR(20) NOT NULL,
+    AOU_E339_EFTSL DECIMAL(4,3),
+    AOU_E384_AmountCharged DECIMAL(10,2),
+    AOU_E381_AmountPaidUpfront DECIMAL(10,2),
+    AOU_E529_LoanFee DECIMAL(10,2),
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    AOU_IsDeleted BOOLEAN DEFAULT FALSE,
+    
+    FOREIGN KEY (UnitEnrolment_ID) REFERENCES UnitEnrolments(UnitEnrolment_ID),
+    
+    INDEX idx_aou_unit (UnitEnrolment_ID),
     INDEX idx_aou_code (E333_AOUCode),
-    INDEX idx_year (Year),
-    INDEX idx_current (Is_Current),
-    INDEX idx_unit_status_current (E355_UnitOfStudyStatusCode, Is_Current),
-    INDEX idx_student_unit_year (Student_key, E354_UnitOfStudyCode, Year)
-) COMMENT='Denormalized wide table for reporting and analytics';
+    INDEX idx_aou_current (IsCurrent)
+) COMMENT='Areas of Study with surrogate key for SCD-2';
+
+-- 15. SAHELP Table (Links directly to Student, not CourseAdmission)
+CREATE TABLE SAHELP (
+    SAHELP_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID21_StudentLoansResKey VARCHAR(50) NOT NULL,
+    Student_Key INT NOT NULL,
+    E527_HELPDebtIncurralDate DATE NOT NULL,
+    E490_StudentStatusCode VARCHAR(3),
+    E384_AmountCharged DECIMAL(10,2),
+    E381_AmountPaidUpfront DECIMAL(10,2),
+    E558_HELPLoanAmount DECIMAL(10,2),
+    A130_LoanStatus VARCHAR(2),
+    Invalidated_Flag BOOLEAN DEFAULT FALSE,
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    
+    INDEX idx_sahelp_student (Student_Key),
+    INDEX idx_sahelp_current (IsCurrent)
+) COMMENT='SA-HELP loans linked to student per TCSI spec';
+
+-- 16. OSHELP Table (With surrogate key)
+CREATE TABLE OSHELP (
+    OSHELP_ID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Surrogate key for SCD-2',
+    UID21_StudentLoansResKey VARCHAR(50) NOT NULL,
+    Student_Key INT NOT NULL,
+    E521_OSHELPStudyPeriodCommencementDate DATE,
+    E553_OSHELPStudyPrimaryCountryCode VARCHAR(3),
+    E554_OSHELPStudySecondaryCountryCode VARCHAR(3),
+    E583_OSHELPLanguageStudyCommencementDate DATE,
+    E582_OSHELPLanguageCode VARCHAR(3),
+    E528_OSHELPPaymentAmount DECIMAL(10,2),
+    E529_LoanFee DECIMAL(10,2),
+    A130_LoanStatus VARCHAR(2),
+    Invalidated_Flag BOOLEAN DEFAULT FALSE,
+    
+    -- Minimal SCD-2 fields
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsCurrent BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (Student_Key) REFERENCES HEPStudents(Student_Key),
+    
+    INDEX idx_oshelp_student (Student_Key),
+    INDEX idx_oshelp_current (IsCurrent)
+) COMMENT='OS-HELP loans with surrogate key';
 
 -- ================================================
--- Data Integrity Check Views
+-- Views for Common Queries
 -- ================================================
 
--- View: Check for orphaned unit enrolment records
-CREATE VIEW v_orphaned_unit_enrolments AS
-SELECT ue.*
-FROM UnitEnrolments ue
-LEFT JOIN HEPCourseAdmissions ca ON ue.UID15_CourseAdmissionsResKey = ca.UID15_CourseAdmissionsResKey
-WHERE ca.UID15_CourseAdmissionsResKey IS NULL;
+-- View: Current student addresses
+CREATE VIEW v_current_student_addresses AS
+SELECT 
+    s.Student_Key,
+    s.E313_StudentIdentificationCode,
+    s.E402_StudentFamilyName,
+    s.E403_StudentGivenNameFirst,
+    a.E410_ResidentialAddressLine1,
+    a.E469_ResidentialAddressSuburb,
+    a.E320_ResidentialAddressPostcode,
+    a.E470_ResidentialAddressState
+FROM HEPStudents s
+LEFT JOIN StudentResidentialAddress a ON s.Student_Key = a.Student_Key
+WHERE a.IsCurrent = TRUE;
 
--- View: Currently active course-campus combinations
-CREATE VIEW v_current_courses_on_campus AS
-SELECT *
-FROM HEPCoursesOnCampuses
-WHERE (E610_EffectiveToDate IS NULL OR E610_EffectiveToDate >= CURDATE())
-  AND E609_EffectiveFromDate <= CURDATE();
+-- View: Current course admissions with fees
+CREATE VIEW v_current_admissions_with_fees AS
+SELECT 
+    ca.Admission_ID,
+    ca.Student_Key,
+    ca.UID5_CoursesResKey,
+    c.E307_CourseCode,
+    c.E308_CourseName,
+    coc.UID2_CampusesResKey,
+    camp.E525_CampusSuburb,
+    fees.E495_IndicativeStudentContributionCSP,
+    fees.E496_IndicativeTuitionFeeDomesticFP
+FROM CourseAdmissions ca
+JOIN Courses c ON ca.UID5_CoursesResKey = c.UID5_CoursesResKey
+LEFT JOIN CoursesOnCampuses coc ON c.UID5_CoursesResKey = coc.UID5_CoursesResKey
+LEFT JOIN Campuses camp ON coc.UID2_CampusesResKey = camp.UID2_CampusesResKey
+LEFT JOIN CampusCourseFeesITSP fees ON coc.UID4_CoursesOnCampusResKey = fees.UID4_CoursesOnCampusResKey
+WHERE ca.IsCurrent = TRUE;
 
 -- ================================================
--- Stored Procedures for Incremental Data Updates
+-- Stored Procedures for SCD-2 Management
 -- ================================================
 
 DELIMITER $$
 
--- Stored Procedure: Insert or update UnitEnrolments records (preserves history)
-CREATE PROCEDURE sp_upsert_unit_enrolment(
-    IN p_UID16_UnitEnrolmentsResKey VARCHAR(50),
-    IN p_UID15_CourseAdmissionsResKey VARCHAR(50),
-    IN p_AsAtMonth DATE,
-    IN p_E354_UnitOfStudyCode VARCHAR(20),
-    IN p_E489_UnitOfStudyCensusDate DATE,
-    IN p_Reporting_Year INT,
-    IN p_Load_Batch_ID VARCHAR(50)
+-- Procedure: Update student address (handles SCD-2)
+CREATE PROCEDURE sp_update_student_address(
+    IN p_student_key INT,
+    IN p_address_line1 VARCHAR(200),
+    IN p_suburb VARCHAR(100),
+    IN p_postcode VARCHAR(10),
+    IN p_state VARCHAR(3),
+    IN p_country VARCHAR(3)
 )
 BEGIN
-    DECLARE v_exists INT DEFAULT 0;
+    -- Set current address to not current
+    UPDATE StudentResidentialAddress 
+    SET IsCurrent = FALSE 
+    WHERE Student_Key = p_student_key AND IsCurrent = TRUE;
     
-    -- Check if record exists
-    SELECT COUNT(*) INTO v_exists
-    FROM UnitEnrolments
-    WHERE UID16_UnitEnrolmentsResKey = p_UID16_UnitEnrolmentsResKey
-      AND AsAtMonth = p_AsAtMonth;
-    
-    IF v_exists = 0 THEN
-        -- Insert new record
-        INSERT INTO UnitEnrolments (
-            UID16_UnitEnrolmentsResKey,
-            UID15_CourseAdmissionsResKey,
-            AsAtMonth,
-            E354_UnitOfStudyCode,
-            E489_UnitOfStudyCensusDate,
-            Reporting_Year,
-            Load_Batch_ID,
-            ExtractedAt
-        ) VALUES (
-            p_UID16_UnitEnrolmentsResKey,
-            p_UID15_CourseAdmissionsResKey,
-            p_AsAtMonth,
-            p_E354_UnitOfStudyCode,
-            p_E489_UnitOfStudyCensusDate,
-            p_Reporting_Year,
-            p_Load_Batch_ID,
-            CURRENT_TIMESTAMP
-        );
-    ELSE
-        -- Update existing record's Load_Batch_ID and ExtractedAt
-        UPDATE UnitEnrolments
-        SET Load_Batch_ID = p_Load_Batch_ID,
-            ExtractedAt = CURRENT_TIMESTAMP
-        WHERE UID16_UnitEnrolmentsResKey = p_UID16_UnitEnrolmentsResKey
-          AND AsAtMonth = p_AsAtMonth;
-    END IF;
+    -- Insert new current address
+    INSERT INTO StudentResidentialAddress (
+        Student_Key,
+        E410_ResidentialAddressLine1,
+        E469_ResidentialAddressSuburb,
+        E320_ResidentialAddressPostcode,
+        E470_ResidentialAddressState,
+        E658_ResidentialAddressCountryCode,
+        IsCurrent
+    ) VALUES (
+        p_student_key,
+        p_address_line1,
+        p_suburb,
+        p_postcode,
+        p_state,
+        p_country,
+        TRUE
+    );
 END$$
 
--- Stored Procedure: Generate monthly summary report
-CREATE PROCEDURE sp_generate_monthly_report(
-    IN p_reporting_month DATE
+-- Procedure: Get historical data as of specific date
+CREATE PROCEDURE sp_get_data_as_of(
+    IN p_table_name VARCHAR(50),
+    IN p_as_of_date DATETIME,
+    IN p_key_field VARCHAR(50),
+    IN p_key_value VARCHAR(50)
 )
 BEGIN
-    SELECT 
-        c.E525_CampusSuburb AS Campus,
-        coc.E307_CourseCode AS CourseCode,
-        COUNT(DISTINCT ue.UID16_UnitEnrolmentsResKey) AS TotalEnrolments,
-        SUM(CASE WHEN ue.E355_UnitOfStudyStatusCode = '10' THEN 1 ELSE 0 END) AS ActiveEnrolments,
-        SUM(CASE WHEN ue.UE_A111_IsDeleted = FALSE THEN 1 ELSE 0 END) AS ValidEnrolments,
-        COUNT(DISTINCT ue.E354_UnitOfStudyCode) AS UniqueUnits,
-        p_reporting_month AS ReportingMonth
-    FROM UnitEnrolments ue
-    JOIN HEPCoursesOnCampuses coc ON ue.UID4_CoursesOnCampusResKey = coc.UID4_CoursesOnCampusResKey
-    JOIN Campuses c ON coc.UID2_CampusesResKey = c.UID2_CampusesResKey
-    WHERE ue.AsAtMonth = p_reporting_month
-    GROUP BY c.E525_CampusSuburb, coc.E307_CourseCode
-    ORDER BY c.E525_CampusSuburb, coc.E307_CourseCode;
+    SET @sql = CONCAT(
+        'SELECT * FROM ', p_table_name,
+        ' WHERE ', p_key_field, ' = ''', p_key_value, '''',
+        ' AND UpdatedAt <= ''', p_as_of_date, '''',
+        ' ORDER BY UpdatedAt DESC LIMIT 1'
+    );
+    
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
 END$$
 
 DELIMITER ;
 
 -- ================================================
--- Triggers for Data Integrity
+-- Summary Comments
 -- ================================================
-
-DELIMITER $$
-
--- Trigger: Validate parent record exists before inserting AOU
-CREATE TRIGGER trg_check_unit_enrolment_exists
-BEFORE INSERT ON UnitEnrolmentAOUs
-FOR EACH ROW
-BEGIN
-    DECLARE v_exists INT DEFAULT 0;
-    
-    SELECT COUNT(*) INTO v_exists
-    FROM UnitEnrolments
-    WHERE UID16_UnitEnrolmentsResKey = NEW.UID16_UnitEnrolmentsResKey
-      AND AsAtMonth = NEW.AsAtMonth;
-    
-    IF v_exists = 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Parent UnitEnrolment record does not exist';
-    END IF;
-END$$
-
--- Trigger: Log changes for wide table updates
-CREATE TRIGGER trg_log_unit_enrolment_changes
-AFTER INSERT ON UnitEnrolments
-FOR EACH ROW
-BEGIN
-    -- Log changes for batch processing of wide table updates
-    -- This avoids real-time updates for better performance
-    INSERT INTO update_queue (table_name, record_key, action, created_at)
-    VALUES ('UnitEnrolments', NEW.UID16_UnitEnrolmentsResKey, 'INSERT', NOW());
-END$$
-
-DELIMITER ;
-
-
 
 /*
-TABLE RELATIONSHIPS:
+Stage 4 Final Database Structure Features:
 
-1. ONE-TO-MANY RELATIONSHIPS:
-   - Campuses (1) → HEPCoursesOnCampuses (*)
-     One campus can host multiple courses
-   
-   - HEPCourses (1) → HEPCoursesOnCampuses (*)
-     One course can be offered at multiple campuses
-   
-   - HEPCoursesOnCampuses (1) → CampusCourseFeesITSP (*)
-     One course-campus combination can have multiple fee records over time
-   
-   - HEPCoursesOnCampuses (1) → CampusesTAC (*)
-     One course-campus combination can have multiple TAC offering methods
-   
-   - HEPCourseAdmissions (1) → UnitEnrolments (*)
-     One course admission can have multiple unit enrolments
-   
-   - HEPCoursesOnCampuses (1) → UnitEnrolments (*)
-     One course-campus combination can have multiple unit enrolments
-   
-   - UnitEnrolments (1) → UnitEnrolmentAOUs (*)
-     One unit enrolment can have multiple areas of study
+1. MINIMAL SCD-2 PATTERN:
+   - UpdatedAt: Effective-from timestamp
+   - IsCurrent: Boolean flag for current version
+   - Simpler than traditional Start_Date/End_Date approach
 
-2. MANY-TO-MANY RELATIONSHIPS:
-   - HEPCourses (*) ↔ Campuses (*)
-     Implemented through HEPCoursesOnCampuses bridge table
-     A course can be offered at multiple campuses, a campus can offer multiple courses
+2. SURROGATE KEYS ADDED TO:
+   - StudentCitizenship (Citizenship_ID)
+   - StudentDisabilities (Disability_ID)
+   - StudentResidentialAddress (Address_ID)
+   - CourseAdmissions (Admission_ID)
+   - UnitEnrolments (UnitEnrolment_ID)
+   - UnitEnrolmentAOUs (AOU_ID)
+   - SAHELP (SAHELP_ID)
+   - OSHELP (OSHELP_ID)
 
-3. OPTIONAL RELATIONSHIPS:
-   - UnitEnrolments → HEPCoursesOnCampuses
-     UID4_CoursesOnCampusResKey can be NULL (some units may not be campus-specific)
+3. KEY RELATIONSHIP CHANGES:
+   - SAHELP → Student (not CourseAdmission)
+   - AggregatedAwards → Student AND Course
+   - ExitAwards → CourseAdmission AND Course
+   - UnitEnrolments → CourseAdmission (no direct link to CoursesOnCampuses)
 
-4. TEMPORAL RELATIONSHIPS:
-   - UnitEnrolments and UnitEnrolmentAOUs use composite keys with AsAtMonth
-     Supports monthly snapshots and historical data preservation
+4. NORMALIZED STRUCTURE:
+   - StudentResidentialAddress separated from HEPStudents
+   - Clean separation of concerns
 
-5. SOFT DELETE SUPPORT:
-   - UnitEnrolments (UE_A111_IsDeleted flag)
-   - UnitEnrolmentAOUs (AOU_IsDeleted flag)
-     Maintains audit trail without physical deletion
+5. FEE RESOLUTION PATH:
+   UnitEnrolment → CourseAdmission → Course → CoursesOnCampuses → CampusCourseFeesITSP
 
+This structure is fully compliant with TCSI specifications and optimized for:
+- Incremental data loads
+- Historical data tracking
+- Simplified ETL processes
+- Efficient reporting
+*/
