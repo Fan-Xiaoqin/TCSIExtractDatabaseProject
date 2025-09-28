@@ -1,6 +1,5 @@
-# This script handles student and its subclass (only for citizenships and disabilities)
+# sample data from ChatGPT, only for development
 
-# sample data, only for development
 students_data <- data.frame(
   UID1_ProvidersResKey = "P001",
   E306_ProviderCode = "306",
