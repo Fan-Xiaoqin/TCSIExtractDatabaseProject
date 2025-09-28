@@ -27,7 +27,7 @@ CREATE TABLE oshelp (
     )),
     invalidated_flag VARCHAR(1) CHECK (
         invalidated_flag IN ('Y','N')
-        )
+        ),
     -- Else we could use invalidated_flag BOOLEAN for more cleaner logic
     -- but need to Transform 'Y' → TRUE, 'N' → FALSE when loading from R
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -55,7 +55,7 @@ CREATE TABLE sahelp (
     )),
     invalidated_flag VARCHAR(1) CHECK (
         invalidated_flag IN ('Y','N')
-        )
+        ),
     -- Else we could use invalidated_flag BOOLEAN for more cleaner logic
     -- but need to Transform 'Y' → TRUE, 'N' → FALSE when loading from R
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

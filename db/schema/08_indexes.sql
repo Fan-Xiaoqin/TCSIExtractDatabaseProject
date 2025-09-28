@@ -3,7 +3,7 @@
 -- =====================================================
 
 -- Course and admission indexes
-CREATE INDEX idx_course_admissions_student ON hep_course_admissions(student_key);
+CREATE INDEX idx_course_admissions_student ON hep_course_admissions(student_id);
 CREATE INDEX idx_course_admissions_course ON hep_course_admissions(uid5_courses_res_key);
 
 -- Course code indexes
