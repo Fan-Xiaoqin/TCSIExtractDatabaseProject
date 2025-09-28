@@ -29,12 +29,14 @@ To run this project, install a R language environment in your local computer:
 
 ## Project Directory Structure
 
+```
 ├── ReadMe
 ├──ERD
 ├── DatabaseModeling
 │   ├── feature
 ├──ETL
 └──── featere
+```
 
 ---
 
