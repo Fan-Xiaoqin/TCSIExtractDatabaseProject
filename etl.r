@@ -37,7 +37,7 @@ process_parent_child_tables <- function(parent_df, pk_for_parent, ...){
 
     # Join tables
     if(pk_for_parent %in% colnames(child_dfs[[i]])){
-      parent_df <- parent_df %>% select (-any_of(pks_for_children[[i]]))  
+      parent_df <- parent_df %>% select(-any_of(pks_for_children[[i]]))  
       jointed_tb <- full_join(parent_df, child_dfs[[i]] , by = pk_for_parent)
     }
     else {jointed_tb <- full_join(parent_df, child_dfs[[i]] , by = pks_for_children[[i]])}
