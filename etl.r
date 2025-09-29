@@ -1,5 +1,4 @@
 library(dplyr)
-setwd("/Users/judyfan/Desktop/LanguageTools/CapstoneProject/ETL")
 
 ## filter out columns containing "Provider"
 filter_out_provider_cols <- function(df) {
