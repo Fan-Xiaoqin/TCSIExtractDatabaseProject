@@ -20,8 +20,8 @@ filter_out_overlapping_cols <- function(df1, pk_for_df1, df2, pk_for_df2){
 process_parent_child_tables <- function(parent_df, pk_for_parent, ...){
   args <- list(...)
   # Check if args length is even
-  mid = length(args)/2
   if(length(args) %% 2 != 0){stop("The parameters should be parent table and its primary key, and child tables followed by their primary keys")}
+  mid = length(args)/2
   # Ensure primary key exist
   if(!(pk_for_parent %in% colnames(parent_df))){stop("Primary key for parent table not found in the dataframe")}
   child_dfs <- args[seq(1, mid)]
