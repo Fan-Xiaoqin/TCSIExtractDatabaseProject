@@ -186,7 +186,7 @@ common_wealth_scholarships <- students_related_dfs$child_dfs[[3]]
 # course_of_study : courses
 courses_related_dfs_1 <- process_parent_child_tables(
   courses_related_entities[[1]]$data, courses_related_entities[[1]]$pk,
-  courses_related_entities[[4]]$data, courses_related_entities[[5]]$data,courses_related_entities[[4]]$pk, courses_related_entities[[5]]$pk
+  courses_related_entities[[4]]$data, courses_related_entities[[5]]$data, courses_related_entities[[4]]$pk, courses_related_entities[[5]]$pk
 )
 courses_related_dfs_2 <- process_parent_child_tables(
   courses_related_entities[[3]]$data, courses_related_entities[[3]]$pk,
