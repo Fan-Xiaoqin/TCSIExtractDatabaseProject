@@ -1,5 +1,6 @@
 # Data Dictionary
 
+
 ## HEPStudents
 > Core student demographic and personal information table for Higher Education Provider (HEP) students.
 
