@@ -1,4 +1,4 @@
-# sample data from ChatGPT, only for development
+# Sample data from ChatGPT, only for development
 
 students_data <- data.frame(
   UID1_ProvidersResKey = "P001",
