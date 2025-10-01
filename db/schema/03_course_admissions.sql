@@ -32,8 +32,6 @@ CREATE TABLE hep_basis_for_admission (
         e327_basis_for_admission_code IN (
             '31','32','34','40','41','42','43')
     ),
-    e609_effective_from_date DATE NOT NULL,
-    e610_effective_to_date DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
