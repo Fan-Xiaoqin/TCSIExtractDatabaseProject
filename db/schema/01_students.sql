@@ -15,6 +15,13 @@ CREATE TABLE hep_students (
     e402_student_family_name VARCHAR(40),
     e403_student_given_name_first VARCHAR(40),
     e404_student_given_name_others VARCHAR(40),
+    e410_residential_address_line1 VARCHAR(255) ,
+    e469_residential_address_suburb VARCHAR(48),
+    e320_residential_address_postcode VARCHAR(4),
+    e470_residential_address_state VARCHAR(3),
+    e658_residential_address_country_code VARCHAR(4),
+    e319_term_residence_postcode VARCHAR(4),
+    e661_term_residence_country_code VARCHAR(4),
     e315_gender_code VARCHAR(1) NOT NULL CHECK (
         e315_gender_code IN ('M', 'F', 'X')
     ),
@@ -71,21 +78,6 @@ CREATE TABLE student_contacts_first_reported_address (
     e659_first_residential_address_country_code VARCHAR(4),
     e790_first_residential_address_postcode VARCHAR(4),
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Student Residential Address
-CREATE TABLE student_residential_address (
-    residential_address_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
-    e410_residential_address_line1 VARCHAR(255) ,
-    e469_residential_address_suburb VARCHAR(48),
-    e320_residential_address_postcode VARCHAR(4),
-    e470_residential_address_state VARCHAR(3),
-    e658_residential_address_country_code VARCHAR(4),
-    e319_term_residence_postcode VARCHAR(4),
-    e661_term_residence_country_code VARCHAR(4),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_current BOOLEAN DEFAULT TRUE
 );
 
 -- Commonwealth Scholarships
