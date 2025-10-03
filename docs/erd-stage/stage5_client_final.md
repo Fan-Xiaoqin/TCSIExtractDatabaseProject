@@ -14,3 +14,5 @@ These adjustments were requested by the client to ensure our schema mirrors the 
 - Ensures effective date fields are applied at the correct entity level.
 - Keeps database schema consistent with TCSI compliance requirements.
 
+## Diagram
+![Stage 4 ERD](./images/stage5_client_final.png)
