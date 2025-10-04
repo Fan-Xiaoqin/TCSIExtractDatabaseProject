@@ -1,0 +1,5 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+campuses_tac,uid40_courses_on_campus_tac_res_key,VARCHAR(10),CampusesTAC,UID40_CoursesOnCampusTACResKey,7800,Direct mapping,Primary key for campus TAC records
+campuses_tac,uid4_courses_on_campus_res_key,VARCHAR(10) NOT NULL,CampusesTAC,UID4_CoursesOnCampusResKey,21578,Foreign key lookup,Lookup uid4_courses_on_campus_res_key from hep_courses_on_campuses table
+campuses_tac,e557_tac_offer_code,VARCHAR(1),CampusesTAC,E557_TACOfferCode,TRUE,Boolean to code conversion,Sample shows TRUE/FALSE but schema expects Q/S/T/U/V codes - may need mapping logic
+campuses_tac,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update
