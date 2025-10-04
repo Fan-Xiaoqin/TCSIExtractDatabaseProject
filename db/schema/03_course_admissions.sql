@@ -13,7 +13,9 @@ CREATE TABLE hep_course_admissions (
     ),
     e592_CourseOutcomeDate DATE,
     e534_course_of_study_commencement_date DATE NOT NULL,
-    e330_attendance_type_code VARCHAR(1),
+    e330_attendance_type_code VARCHAR(1) CHECK (
+        e330_attendance_type_code IN ('1', '2')
+    ),
     e591_hdr_thesis_submission_date DATE,
     e632_atar DECIMAL(4,2),
     e605_selection_rank DECIMAL(4,2),
