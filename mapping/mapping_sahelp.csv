@@ -1,0 +1,13 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments,consider_for_uniqueness
+sahelp,sahelp_id,BIGINT,N/A,N/A,N/A,None,Primary key for SAHELP loan records - Auto generated,N
+sahelp,uid21_student_loans_res_key,VARCHAR(10) NOT NULL,SAHELP,UID21_StudentLoansResKey,410e500e563ca4909deb547b1e582589bbb4002e37a942f52a95ad009012f82b,Direct mapping,TCSI SAHELP loan records key,Y
+sahelp,student_id,BIGINT NOT NULL,SAHELP,N/A,4bdd6657e8a65a5526b1cae8b334470859ce9982cbddb3b86f69bae10c0797f9,Foreign key lookup,Lookup student_id from hep_students using uid8_students_res_key where is_current is true,N
+sahelp,e527_help_debt_incurral_date,DATE NOT NULL,SAHELP,E527_HELPDebtIncurralDate,1/6/2019,Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE,Y
+sahelp,e490_student_status_code,VARCHAR(3) NOT NULL,SAHELP,E490_StudentStatusCode,280,Direct mapping - Validate against CHECK constraint,Student status code (280/281),Y
+sahelp,e384_amount_charged,"DECIMAL(7,2)' NOT NULL",SAHELP,E384_AmountCharged,151.5,Direct mapping - convert to decimal if string,Amount charged to student,Y
+sahelp,e381_amount_paid_upfront,"DECIMAL(7,2)' NOT NULL",SAHELP,E381_AmountPaidUpfront,0,Direct mapping - convert to decimal if string,Amount paid upfront by student,Y
+sahelp,e558_help_loan_amount,"DECIMAL(7,2)' NOT NULL",SAHELP,E558_HELPLoanAmount,151.5,Direct mapping - convert to decimal if string,SAHELP loan amount,Y
+sahelp,a130_loan_status,VARCHAR(20) NOT NULL,SAHELP,A130_LoanStatus,COMMITTED,Direct mapping - Validate against CHECK constraint,SAHELP loan status,Y
+sahelp,invalidated_flag,VARCHAR(1),SAHELP,Invalidated_Flag,N,Direct mapping,Invalidated flag (Y/N),Y
+sahelp,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update,N
+sahelp,is_current,BOOLEAN,System Generated,N/A,N/A,Default TRUE,Default to TRUE for current records,N
