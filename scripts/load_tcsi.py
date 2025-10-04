@@ -10,12 +10,20 @@ import hashlib
 import json
 import re
 import sqlite3
+import tempfile
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+
+try:  # Optional dependency for Excel ingestion
+    import openpyxl  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - handled at runtime
+    openpyxl = None
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = ROOT / "tcsi.db"
 SCHEMA_PATH = ROOT / "database" / "schema.sql"
+
+SUPPORTED_TABULAR_SUFFIXES = {".csv", ".xlsx", ".xlsm"}
 
 STAGING_NAME_OVERRIDES = {
     "HEPStudents": "stg_hep_students",
@@ -117,8 +125,15 @@ def read_csv_header(csv_path: Path) -> List[str]:
     return header
 
 
-def load_csv(conn: sqlite3.Connection, csv_path: Path, extraction_ts: str) -> Tuple[str, int]:
-    stem = csv_path.stem
+def load_csv(
+    conn: sqlite3.Connection,
+    csv_path: Path,
+    extraction_ts: str,
+    *,
+    source_name: Optional[str] = None,
+    stem_override: Optional[str] = None,
+) -> Tuple[str, int]:
+    stem = stem_override or csv_path.stem
     entity, year_token = parse_entity_and_year(stem)
     table = staging_table_for(entity)
 
@@ -130,7 +145,7 @@ def load_csv(conn: sqlite3.Connection, csv_path: Path, extraction_ts: str) -> Tu
     ensure_staging_table(cur, table, sanitized_columns)
     cur.execute(
         f"DELETE FROM {table} WHERE extraction_timestamp = ? AND source_file = ?",
-        (extraction_ts, csv_path.name),
+        (extraction_ts, source_name or csv_path.name),
     )
 
     placeholders = ", ".join(["?"] * (len(sanitized_columns) + 3))
@@ -142,7 +157,7 @@ def load_csv(conn: sqlite3.Connection, csv_path: Path, extraction_ts: str) -> Tu
         batch: List[Tuple[str, ...]] = []
         for raw_row in reader:
             values = [raw_row.get(col, "").strip() for col in raw_header]
-            batch.append(tuple(values + [csv_path.name, year_token, extraction_ts]))
+            batch.append(tuple(values + [source_name or csv_path.name, year_token, extraction_ts]))
             row_count += 1
             if len(batch) >= 1000:
                 cur.executemany(insert_sql, batch)
@@ -151,6 +166,56 @@ def load_csv(conn: sqlite3.Connection, csv_path: Path, extraction_ts: str) -> Tu
             cur.executemany(insert_sql, batch)
     conn.commit()
     return table, row_count
+
+
+def load_excel(conn: sqlite3.Connection, excel_path: Path, extraction_ts: str) -> Tuple[str, int]:
+    if openpyxl is None:
+        raise RuntimeError(
+            "Excel ingestion requires the optional dependency 'openpyxl'. "
+            "Install it via `pip install openpyxl`."
+        )
+
+    workbook = openpyxl.load_workbook(excel_path, read_only=True, data_only=True)
+    try:
+        worksheet = workbook.active
+        rows = worksheet.iter_rows(values_only=True)
+        try:
+            header_row = next(rows)
+        except StopIteration as exc:  # pragma: no cover - defensive guard
+            raise ValueError(f"Excel file {excel_path} has no header row") from exc
+        raw_header = ["" if cell is None else str(cell) for cell in header_row]
+        # Write to a temporary CSV using the same stem logic for downstream processing.
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            newline="",
+            suffix=".csv",
+            prefix=f"{excel_path.stem}_",
+            delete=False,
+            encoding="utf-8",
+        ) as tmp:
+            writer = csv.writer(tmp)
+            writer.writerow(raw_header)
+            header_len = len(raw_header)
+            for row in rows:
+                values = []
+                for idx in range(header_len):
+                    cell = row[idx] if idx < len(row) else None
+                    values.append("" if cell is None else str(cell))
+                writer.writerow(values)
+            temp_path = Path(tmp.name)
+    finally:
+        workbook.close()
+
+    try:
+        return load_csv(
+            conn,
+            temp_path,
+            extraction_ts,
+            source_name=excel_path.name,
+            stem_override=excel_path.stem,
+        )
+    finally:
+        temp_path.unlink(missing_ok=True)
 
 
 def apply_schema(conn: sqlite3.Connection) -> None:
@@ -1273,14 +1338,24 @@ def parse_extraction_timestamp_from_dir(directory: Path) -> str:
 def process_directory(conn: sqlite3.Connection, directory: Path) -> Dict[str, int]:
     extraction_ts = parse_extraction_timestamp_from_dir(directory)
     stage_counts: Dict[str, int] = {}
-    csv_files = sorted(directory.glob("*.csv"))
-    if not csv_files:
-        print(f"[warn] No CSV files found in {directory}")
+    tabular_files = sorted(
+        path
+        for path in directory.iterdir()
+        if path.is_file() and path.suffix.lower() in SUPPORTED_TABULAR_SUFFIXES
+    )
+    if not tabular_files:
+        print(f"[warn] No CSV/XLSX files found in {directory}")
         return stage_counts
-    for csv_path in csv_files:
-        table, count = load_csv(conn, csv_path, extraction_ts)
+    for file_path in tabular_files:
+        suffix = file_path.suffix.lower()
+        if suffix == ".csv":
+            table, count = load_csv(conn, file_path, extraction_ts)
+        elif suffix in {".xlsx", ".xlsm"}:
+            table, count = load_excel(conn, file_path, extraction_ts)
+        else:  # pragma: no cover - guarded by SUPPORTED_TABULAR_SUFFIXES
+            raise ValueError(f"Unsupported file extension: {file_path.suffix}")
         stage_counts[table] = stage_counts.get(table, 0) + count
-        print(f"Loaded {count:6d} rows into {table} from {csv_path.name}")
+        print(f"Loaded {count:6d} rows into {table} from {file_path.name}")
     for upserter in UPSERT_SEQUENCE:
         upserter(conn, extraction_ts)
     conn.execute(

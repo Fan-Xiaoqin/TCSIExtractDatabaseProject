@@ -20,7 +20,8 @@ Key capabilities:
 - `../TCSI Extract Database Project Plan.pdf ` — project context and milestone plan (PDF).
 
 ## Prerequisites
-- Python 3.8+ (standard library only; no external packages required).
+- Python 3.8+
+- `openpyxl` Python package (only required when loading Excel extracts)
 - R (optional, for RStudio workflows) with packages: DBI, RSQLite, dplyr.
 
 ## Quick Start (load the bundled sample months)
@@ -36,6 +37,8 @@ What happens:
 - Creates/updates `TCSIExtractDatabaseProject/tcsi.db`.
 - Writes a row to `etl_load_history` per folder with a JSON summary of staged counts.
 - Populates curated tables and the `wide_student_course` view.
+
+> **Tip:** The loader accepts CSV and Excel (`.xlsx`/`.xlsm`) files in each extract directory. Install `openpyxl` (`pip install openpyxl`) if your extracts include Excel workbooks.
 
 To run the same from RStudio:
 
