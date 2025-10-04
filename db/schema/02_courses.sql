@@ -5,7 +5,7 @@
 -- Courses of Study (Master table for course types)
 CREATE TABLE courses_of_study (
     uid3_courses_of_study_res_key VARCHAR(10) PRIMARY KEY,
-    e533_course_of_study_code VARCHAR(6) NOT NULL UNIQUE,
+    e533_course_of_study_code VARCHAR(10) NOT NULL UNIQUE,
     e394_course_of_study_name VARCHAR(210) NOT NULL,
     e310_course_of_study_type VARCHAR(2) NOT NULL CHECK (
         e310_course_of_study_type IN (
