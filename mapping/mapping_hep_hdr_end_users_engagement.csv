@@ -1,0 +1,8 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+hep_hdr_end_users_engagement,uid37_hdr_end_user_engagements_res_key,VARCHAR(10),HEPHDREndUsersEngagement,UID37_HDREndUserEngagementsResKey,N/A,Direct mapping,Primary key for HDR end user engagement records
+hep_hdr_end_users_engagement,course_admission_id,BIGINT,HEPHDREndUsersEngagement,N/A,N/A,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
+hep_hdr_end_users_engagement,e593_hdr_end_user_engagement_code,VARCHAR(2),HEPHDREndUsersEngagement,E593_HDREndUserEngagementCode,N/A,Direct mapping - Validate against CHECK constraint - NULL string conversion,HDR end user engagement type code
+hep_hdr_end_users_engagement,e609_hdr_end_user_engage_from_date,DATE NOT NULL,HEPHDREndUsersEngagement,E609_HDREndUserEngageFromDate,N/A,Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+hep_hdr_end_users_engagement,e610_hdr_end_user_engage_to_date,DATE,HEPHDREndUsersEngagement,E610_HDREndUserEngageToDate,N/A,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+hep_hdr_end_users_engagement,e798_hdr_days_of_engagement,VARCHAR(4),HEPHDREndUsersEngagement,E798_HDRDaysOfEngagement,N/A,NULL string conversion,Days of engagement - convert 'NULL' string to actual NULL
+hep_hdr_end_users_engagement,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update
