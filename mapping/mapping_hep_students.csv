@@ -1,0 +1,30 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments,consider_for_uniqueness
+hep_students,student_id,BIGINT GENERATED ALWAYS AS IDENTITY,N/A,N/A - Auto Generated,N/A,None,Primary key auto-generated,N
+hep_students,uid8_students_res_key,VARCHAR(10),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,UID8_StudentsResKey,63c6bdb49d8a7e91e2d02db148b9ea4c80492d49930a6eda4bdd3ca70944b4cf,None,None,Y
+hep_students,e313_student_identification_code,VARCHAR(10) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E313_StudentIdentificationCode,310bbb9ae674da894b2d7fc1698c3bf201b382f35afc28d6402d8abafd0842fc,None,None,Y
+hep_students,e488_chessn,VARCHAR(10),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E488_CHESSN,0907d90ee97d242208229c13866c171dacfd7d8e437169c6f07d2fb5a92280a3,None,None,Y
+hep_students,e584_usi,VARCHAR(10),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E584_USI,9dbf5378782cd309ff7d2cbabef205755638f184c24c7ba4e286bcb023183a08,None,None,Y
+hep_students,a170_usi_verification_status,VARCHAR(8),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,A170_USIVerificationStatus,NULL /VERIFIED,Convert 'NULL' string to NULL,String 'NULL' should be converted to actual NULL value,Y
+hep_students,a167_tfn_verification_status,VARCHAR(8),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,A167_TFNVerificationStatus,VERIFIED,Convert 'NULL' string to NULL,String 'NULL' should be converted to actual NULL value,Y
+hep_students,e314_date_of_birth,DATE NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E314_DateOfBirth,d6ef41f31f7d31d2d8337a970b9c6768353ec778ee6917a038ccae1a6a18082a,Date parsing,Parse DD/MM/YYYY format to DATE,Y
+hep_students,e402_student_family_name,VARCHAR(40),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E402_StudentFamilyName,3a6846662d4ad0123e7e48aae3a36da8870beb1cf23988253994f6b6c36bfc01,None,None,Y
+hep_students,e403_student_given_name_first,VARCHAR(40),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E403_StudentGivenNameFirst,b3d88c579344718b0a286d155c833d64ec2d75773e7992ea033264869416a54d,None,None,Y
+hep_students,e404_student_given_name_others,VARCHAR(40),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E404_StudentGivenNameOthers,3f248e5d1e6513439b5d2bba5f20f269ca6449fc46474a7bb11d620bcae075ec,None,None,Y
+hep_students,e410_residential_address_line1,VARCHAR(255),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E410_ResidentialAddressLine1,,DIRECT_MAPPING,Residential address line 1,Y
+hep_students,e469_residential_address_suburb,VARCHAR(48),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E469_ResidentialAddressSuburb,,DIRECT_MAPPING,Residential address suburb,Y
+hep_students,e320_residential_address_postcode,VARCHAR(4),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E320_ResidentialAddressPostcode,,DIRECT_MAPPING,Residential address postcode,Y
+hep_students,e470_residential_address_state,VARCHAR(3),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E470_ResidentialAddressState,,DIRECT_MAPPING,Residential address state,Y
+hep_students,e658_residential_address_country_code,VARCHAR(4),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E658_ResidentialAddressCountryCode,,DIRECT_MAPPING,Residential address country code,Y
+hep_students,e319_term_residence_postcode,VARCHAR(4),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E319_TermResidencePostcode,,DIRECT_MAPPING,Term residence postcode,Y
+hep_students,e661_term_residence_country_code,VARCHAR(4),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E661_TermResidenceCountryCode,,DIRECT_MAPPING,Term residence country code,Y
+hep_students,e315_gender_code,VARCHAR(1) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E315_GenderCode,M,Validate against CHECK constraint,Must be one of: M F X,Y
+hep_students,e316_atsi_code,VARCHAR(1) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E316_ATSICode,3,Validate against CHECK constraint,Must be one of: 2 3 4 5 9,Y
+hep_students,e346_country_of_birth_code,VARCHAR(4) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E346_CountryOfBirthCode,1101,None,4-digit country code,Y
+hep_students,e347_arrival_in_australia_year,INTEGER,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E347_ArrivalInAustraliaYear,NULL,Convert 'NULL' string to NULL - convert other values to integers,String 'NULL' should be converted to actual NULL value - string year values should be covert to integer values,Y
+hep_students,e348_language_spoken_at_home_code,VARCHAR(4) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E348_LanguageSpokenAtHomeCode,1,None,4-digit language code,Y
+hep_students,e572_year_left_school,INTEGER,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E572_YearLeftSchool,2003,Convert values to integers - Convert 'NULL' string to NULL,String 'NULL' should be converted to actual NULL value - string year values should be covert to integer values,Y
+hep_students,e612_level_left_school,SMALLINT,deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E612_LevelLeftSchool,12,Convert values to integer,String values should be covert to integer values,Y
+hep_students,e573_highest_education_parent1,VARCHAR(2),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E573_HighestEducationParent1,25,None,2-digit education code,Y
+hep_students,e574_highest_education_parent2,VARCHAR(2),deidentified_1055_tcsi_DataExtract_20250708_11_HEPStudents.csv,E574_HighestEducationParent2,25,None,2-digit education code,Y
+hep_students,updated_at,TIMESTAMP DEFAULT CURRENT_TIMESTAMP,N/A,N/A - System Generated,N/A,Set to CURRENT_TIMESTAMP,System field for audit trail,N
+hep_students,is_current,BOOLEAN DEFAULT TRUE,N/A,N/A - System Generated,N/A,Set to TRUE,System field for soft deletes,N
