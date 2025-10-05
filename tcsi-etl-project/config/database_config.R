@@ -19,8 +19,8 @@ DB_CONFIG <- list(
   host = "localhost",
   port = 5432,
   dbname = "tcsi_db",
-  user = "postgres",
-  password = "Nish@123"
+  user = <"your_username">,  # Replace with your actual username
+  password = <"your_password">  # Replace with your actual password
 )
 
 # ==========================================
