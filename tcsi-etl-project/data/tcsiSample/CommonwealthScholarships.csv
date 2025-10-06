@@ -1,0 +1,5 @@
+﻿UID1_ProvidersResKey,E306_ProviderCode,E781_ProviderType,UID8_StudentsResKey,E313_StudentIdentificationCode,E488_CHESSN,UID12_StudentCommonwealthScholarshipsResKey,E415_ReportingYear,E666_ReportingPeriod,E545_CommonwealthScholarshipType,E526_CommonwealthScholarshipStatusCode,E598_CommonwealthScholarshipAmount,E538_CommonwealthScholarshipTerminationReasonCode
+35,1055,HEP,STU0000008,SID0000008,CHS0000008,827,2019,1,A,1,NULL,NULL
+35,1055,HEP,STU0000009,SID0000009,CHS0000009,1130,2019,1,A,1,NULL,NULL
+35,1055,HEP,STU0000010,SID0000010,CHS0000010,1611,2019,1,A,3,NULL,4
+35,1055,HEP,STU0000011,SID0000011,CHS0000011,1618,2019,1,A,1,NULL,NULL

@@ -1,0 +1,2 @@
+*.Rproj  # Ignore the RStudio project
+.Rproj.user/  # Ignore RStudio's user-specific settings info
