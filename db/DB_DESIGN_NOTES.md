@@ -90,7 +90,7 @@ This document captures design decisions, questions, and rationale for the TCSI E
 - Includes `e534_course_of_study_commencement_date` since no course admission record exists related to this.  
 
 ### exit_awards
-- Linked to course admission and course to reflect the award’s defined course (even if different from admission) reffering to TCSI specification.  
+- Linked to course admission and course to reflect the award’s defined course (even if different from admission) referring to TCSI specification.  
 - Rationale: Exit awards may differ from original admission course but need course definition for reporting.  
 
 ---
