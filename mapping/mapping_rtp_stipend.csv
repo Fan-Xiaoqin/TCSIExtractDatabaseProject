@@ -1,6 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-rtp_stipend,uid18_rtp_stipends_res_key,VARCHAR(10),RTPStipend,UID18_RTPStipendsResKey,N/A,Direct mapping,Primary key for RTP stipend records
-rtp_stipend,course_admission_id,BIGINT NOT NULL,RTPStipend,N/A,N/A,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
-rtp_stipend,e623_rtp_stipend_amount,"DECIMAL(9,2)'",RTPStipend,E623_RTPStipendAmount,N/A,Direct mapping - convert to decimal if string,RTP stipend amount in decimal format
-rtp_stipend,e415_reporting_year,INTEGER,RTPStipend,E415_ReportingYear,N/A,Direct mapping - convert to integer if string,Reporting year as integer
-rtp_stipend,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

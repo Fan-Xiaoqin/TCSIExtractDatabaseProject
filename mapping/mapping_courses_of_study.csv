@@ -1,8 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-courses_of_study,uid3_courses_of_study_res_key,VARCHAR(10) PRIMARY KEY,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,UID3_CoursesOfStudyResKey,1462,None,Primary key from source data
-courses_of_study,e533_course_of_study_code,VARCHAR(10) NOT NULL UNIQUE,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,E533_CourseOfStudyCode,20,None,Course code appears clean
-courses_of_study,e394_course_of_study_name,VARCHAR(210) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,E394_CourseOfStudyName,Aboriginal Orientation Course,None,Course name appears clean
-courses_of_study,e310_course_of_study_type,VARCHAR(2) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,E310_CourseOfStudyType,30,Validate against CHECK constraint,Must be valid course type code (see schema constraints)
-courses_of_study,e350_course_of_study_load,"DECIMAL(2,1)'",deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,E350_CourseOfStudyLoad,1,Convert 'NULL' string to NULL - other values to decimal,Some records have 'NULL' string that needs conversion
-courses_of_study,e455_combined_course_of_study_indicator,BOOLEAN NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,E455_CombinedCourseOfStudyIndicator,0,Convert 0/1 to FALSE/TRUE,0 â†’ FALSE and 1 â†’ TRUE conversion required
-courses_of_study,updated_at,TIMESTAMP DEFAULT CURRENT_TIMESTAMP,deidentified_1055_tcsi_DataExtract_20250708_11_CoursesOfStudy.csv,N/A - System Generated,N/A,Set to CURRENT_TIMESTAMP,System field for audit trail

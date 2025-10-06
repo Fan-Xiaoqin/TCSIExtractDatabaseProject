@@ -1,7 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-rtp_scholarships,uid35_rtp_scholarships_res_key,VARCHAR(10),RTPScholarships,UID35_RTPScholarshipsResKey,467158,Direct mapping,Primary key for RTP scholarship records
-rtp_scholarships,course_admission_id,BIGINT NOT NULL,RTPScholarships,N/A,7f9630a3c9c3654654fbe95cf9cb07c12eec02c19bb0f71f534b872a2d99e2ff,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
-rtp_scholarships,e487_rtp_scholarship_type,VARCHAR(2) NOT NULL,RTPScholarships,E487_RTPScholarshipType,9,Direct mapping - Validate against CHECK constraint ,RTP scholarship type code
-rtp_scholarships,e609_rtp_scholarship_from_date,DATE NOT NULL,RTPScholarships,E609_RTPScholarshipFromDate,26/02/2024,Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE
-rtp_scholarships,e610_rtp_scholarship_to_date,DATE,RTPScholarships,E610_RTPScholarshipToDate,25/02/2028,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
-rtp_scholarships,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

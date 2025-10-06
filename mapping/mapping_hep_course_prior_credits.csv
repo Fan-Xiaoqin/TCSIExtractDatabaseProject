@@ -1,7 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-hep_course_prior_credits,uid32_course_prior_credits_res_key,VARCHAR(10),HEPCoursePriorCredits,UID32_CoursePriorCreditsResKey,2839074,Direct mapping,Primary key for course prior credits records
-hep_course_prior_credits,course_admission_id,BIGINT NOT NULL,HEPCoursePriorCredits,N/A,d76a8e187e39247bbbd72b891ccac0ab6dd99b73c8646ea3d9cb3a3837dfcef0,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
-hep_course_prior_credits,e560_credit_used_value,"DECIMAL(4,3)'",HEPCoursePriorCredits,E560_CreditUsedValue,0.25,Direct mapping - if string convert to decimal,Credit value used for admission - decimal format
-hep_course_prior_credits,e561_credit_basis,VARCHAR(4),HEPCoursePriorCredits,E561_CreditBasis,100,Validate against CHECK constraint - NULL string conversion,Credit basis code - convert string 'NULL' to actual NULL
-hep_course_prior_credits,e566_credit_provider_code,VARCHAR(4),HEPCoursePriorCredits,E566_CreditProviderCode,3001,NULL string conversion,Credit provider institution code - convert string 'NULL' to actual NULL
-hep_course_prior_credits,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

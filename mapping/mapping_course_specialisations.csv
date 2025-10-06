@@ -1,5 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-course_specialisations,uid33_course_specialisations_res_key,VARCHAR(10),CourseSpecialisations,UID33_CourseSpecialisationsResKey,3477417,Direct mapping,Primary key for course specialisation records
-course_specialisations,course_admission_id,BIGINT,CourseSpecialisations,N/A,7af63e28c6dbee86855c61a7bad61df9aed910cc65447233d2702fd25ccf1670,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
-course_specialisations,e463_specialisation_code,VARCHAR(6) NOT NULL,CourseSpecialisations,E463_SpecialisationCode,91100,Direct mapping,Specialisation classification code
-course_specialisations,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

@@ -1,5 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-hep_basis_for_admission,uid17_basis_for_admission_res_key,VARCHAR(10),HEPBasisForAdmission,UID17_BasisForAdmissionResKey,238225,Direct mapping,Primary key for basis for admission records
-hep_basis_for_admission,course_admission_id,BIGINT NOT NULL,HEPBasisForAdmission,UID15_CourseAdmissionsResKey,e9e34cf9e6be04b58eb9c48e83cfc79b5153831f709b123fe08db3c361f15847,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key
-hep_basis_for_admission,e327_basis_for_admission_code,VARCHAR(2) NOT NULL,HEPBasisForAdmission,E327_BasisForAdmissionCode,29,Validate against CHECK constraint,Basis for admission classification code
-hep_basis_for_admission,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

@@ -1,9 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments,consider_for_uniqueness
-hep_student_disabilities,student_disability_id,BIGINT,N/A,N/A,N/A,IDENTITY_COLUMN,Auto-generated primary key,N
-hep_student_disabilities,student_id,BIGINT NOT NULL,HEPStudentDisabilities,N/A,443bd7892e0a462d66698cce56e015313eeda04b9be9adff404653c2d64ffd22,FOREIGN_KEY_LOOKUP,Lookup student_id from hep_students using UID8_StudentsResKey where is_current is true,N
-hep_student_disabilities,uid11_student_disabilities_res_key,VARCHAR(10) NOT NULL,HEPStudentDisabilities,UID11_StudentDisabilitiesResKey,6596,DIRECT_MAPPING,Unique identifier for disability record,Y
-hep_student_disabilities,e615_disability_code,VARCHAR(2),HEPStudentDisabilities,E615_DisabilityCode,18,DIRECT_MAPPING - Validate against CHECK constraint,Disability type code - CHECK constraint (11|12|13|14|15|16|17|18|19|20|99),Y
-hep_student_disabilities,e609_effective_from_date,DATE NOT NULL,HEPStudentDisabilities,E609_EffectiveFromDate,1/1/2018,DATE_PARSING,Parse DD/MM/YYYY format to DATE,Y
-hep_student_disabilities,e610_effective_to_date,DATE,HEPStudentDisabilities,E610_EffectiveToDate,NULL,NULL_STRING_CONVERSION - DATE_PARSING,"Convert string ""NULL"" to actual NULL values - Parse DD/MM/YYYY format values to DATE",Y
-hep_student_disabilities,updated_at,TIMESTAMP,N/A,N/A,N/A,CURRENT_TIMESTAMP,Default current timestamp,N
-hep_student_disabilities,is_current,BOOLEAN,N/A,N/A,N/A,DEFAULT_TRUE,Default TRUE for current records,N

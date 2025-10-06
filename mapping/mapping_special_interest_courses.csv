@@ -1,7 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-special_interest_courses,uid30_special_interest_courses_res_key,VARCHAR(10) NOT NULL,SpecialInterestCourses,UID30_SpecialInterestCoursesResKey,7841,DIRECT_MAPPING,Primary key - unique identifier for special interest course record
-special_interest_courses,uid5_courses_res_key,VARCHAR(10) NOT NULL,SpecialInterestCourses,UID5_CoursesResKey,10070,FOREIGN_KEY_LOOKUP,Foreign key to hep_courses table via UID5_CoursesResKey
-special_interest_courses,e312_special_course_type,VARCHAR(2),SpecialInterestCourses,E312_SpecialCourseType,22,DIRECT_MAPPING - Validate against CHECK constraint,Special course type code - must be in (21|22|23|25|26|27|28)
-special_interest_courses,e609_effective_from_date,DATE NOT NULL,SpecialInterestCourses,E609_EffectiveFromDate,1/1/2005,DATE_PARSE,Convert DD/MM/YYYY format to DATE - required field
-special_interest_courses,e610_effective_to_date,DATE,SpecialInterestCourses,E610_EffectiveToDate,31/12/2007,DATE_PARSE_NULL,"Convert DD/MM/YYYY format to DATE or NULL if ""NULL"" string"
-special_interest_courses,updated_at,TIMESTAMP,N/A,N/A,N/A,CURRENT_TIMESTAMP,Default current timestamp

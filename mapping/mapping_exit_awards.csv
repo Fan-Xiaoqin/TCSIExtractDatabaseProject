@@ -1,7 +1,0 @@
-﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
-exit_awards,uid46_early_exit_awards_res_key,VARCHAR(10),ExitAwards,UID46_EarlyExitAwardsResKey,5780,Direct mapping,Primary key for early exit award records
-exit_awards,course_admission_id,BIGINT NOT NULL,ExitAwards,UID15_CourseAdmissionsResKey,7d7f274c624b1e9d451b4e33ea6077b72df610749e544f03031dea27af2ca978,Foreign key lookup,Lookup course_admission_id from hep_course_admissions using uid15_course_admissions_res_key where is_current is true
-exit_awards,uid5_courses_res_key,VARCHAR(10) NOT NULL,ExitAwards,UID5_CoursesResKey,98843,Foreign key lookup,Lookup uid5_courses_res_key from hep_courses
-exit_awards,e599_course_outcome_code,VARCHAR(1),ExitAwards,E599_CourseOutcomeCode,1, Validate against CHECK constraint - NULL string conversion,Course outcome code (1-7) - convert 'NULL' string to actual NULL
-exit_awards,e592_course_outcome_date,DATE,ExitAwards,E592_CourseOutcomeDate,2/10/2022,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
-exit_awards,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update
