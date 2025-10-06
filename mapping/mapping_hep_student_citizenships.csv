@@ -1,0 +1,9 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments,consider_for_uniqueness
+hep_student_citizenships,student_citizenship_id,BIGINT,N/A,N/A,N/A,IDENTITY_COLUMN,Auto-generated primary key,N
+hep_student_citizenships,student_id,BIGINT NOT NULL,HEPStudentCitizenships,N/A,443bd7892e0a462d66698cce56e015313eeda04b9be9adff404653c2d64ffd22,FOREIGN_KEY_LOOKUP,Foreign key to hep_students table via student_id - Lookup student_id from hep_students using UID8_StudentsResKey where is_current is true,N
+hep_student_citizenships,uid10_student_citizenships_res_key,VARCHAR(10) NOT NULL,HEPStudentCitizenships,UID10_StudentCitizenshipsResKey,604778,DIRECT_MAPPING,Unique identifier for citizenship record,Y
+hep_student_citizenships,e358_citizen_resident_code,CHAR(1),HEPStudentCitizenships,E358_CitizenResidentCode,1,DIRECT_MAPPING - Validate against CHECK constraint,Citizen/resident status code - CHECK constraint (1|2|3|4|5|8|P),Y
+hep_student_citizenships,e609_effective_from_date,DATE NOT NULL,HEPStudentCitizenships,E609_EffectiveFromDate,31/03/2005,DATE_PARSING,Parse DD/MM/YYYY format to DATE,Y
+hep_student_citizenships,e610_effective_to_date,DATE,HEPStudentCitizenships,E610_EffectiveToDate,NULL,DATE_PARSING - NULL_STRING_CONVERSION,"Parse DD/MM/YYYY format to DATE - convert string ""NULL"" to actual NULL values",Y
+hep_student_citizenships,updated_at,TIMESTAMP,N/A,N/A,N/A,CURRENT_TIMESTAMP,Default current timestamp,N
+hep_student_citizenships,is_current,BOOLEAN,N/A,N/A,N/A,DEFAULT_TRUE,Default TRUE for current records,N

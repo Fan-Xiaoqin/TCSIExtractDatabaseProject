@@ -1,0 +1,11 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+aggregated_awards,uid47_aggregate_awards_res_key,VARCHAR(10),AggregatedAwards,UID47_AggregateAwardsResKey,N/A,Direct mapping,Primary key for aggregated award records
+aggregated_awards,student_id,BIGINT NOT NULL,AggregatedAwards,N/A,N/A,Foreign key lookup,Lookup student_id from hep_students using uid8_students_res_key where is_current is true
+aggregated_awards,uid5_courses_res_key,VARCHAR(10) NOT NULL,AggregatedAwards,UID5_CoursesResKey,N/A,Foreign key lookup,Lookup uid5_courses_res_key from hep_courses
+aggregated_awards,e534_course_of_study_commencement_date,DATE,AggregatedAwards,E534_CourseOfStudyCommencementDate,N/A,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+aggregated_awards,e599_course_outcome_code,VARCHAR(1),AggregatedAwards,E599_CourseOutcomeCode,N/A, Validate against CHECK constraint - NULL string conversion,Course outcome code (1-7) - convert 'NULL' string to actual NULL
+aggregated_awards,e591_hdr_thesis_submission_date,DATE,AggregatedAwards,E591_HDRThesisSubmissionDate,N/A,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+aggregated_awards,e592_course_outcome_date,DATE,AggregatedAwards,E592_CourseOutcomeDate,N/A,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+aggregated_awards,e329_mode_of_attendance_code,VARCHAR(1),AggregatedAwards,E329_ModeOfAttendanceCode,N/A,Validate against CHECK constraint - NULL string conversion,Mode of attendance code (1-7) - convert 'NULL' string to actual NULL
+aggregated_awards,e330_attendance_type_code,VARCHAR(1),AggregatedAwards,E330_AttendanceTypeCode,N/A,Validate against CHECK constraint - NULL string conversion,Attendance type code (1-2) - convert 'NULL' string to actual NULL
+aggregated_awards,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

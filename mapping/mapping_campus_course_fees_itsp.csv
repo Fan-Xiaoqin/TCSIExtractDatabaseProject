@@ -1,0 +1,8 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+campus_course_fees_itsp,uid31_campus_course_fees_res_key,VARCHAR(10),CampusCourseFeesITSP,UID31_CampusCourseFeesResKey,18692,Direct mapping,Primary key for campus course fees records
+campus_course_fees_itsp,uid4_courses_on_campus_res_key,VARCHAR(10),CampusCourseFeesITSP,UID4_CoursesOnCampusResKey,21588,Foreign key lookup,Lookup uid4_courses_on_campus_res_key from hep_courses_on_campuses table
+campus_course_fees_itsp,e536_course_fees_code,VARCHAR(1),CampusCourseFeesITSP,E536_CourseFeesCode,0,Direct mapping - Validate against CHECK constraint - NULL string conversion,Course fees code (0/1/2/3)
+campus_course_fees_itsp,e495_indicative_student_contribution_csp,VARCHAR(9),CampusCourseFeesITSP,E495_IndicativeStudentContributionCSP,NULL,Direct mapping - NULL string conversion,Student contribution CSP - convert 'NULL' string to actual NULL
+campus_course_fees_itsp,e496_indicative_tuition_fee_domestic_fp,"DECIMAL(9,2)'",CampusCourseFeesITSP,E496_IndicativeTuitionFeeDomesticFP,NULL,NULL string conversion and decimal,Tuition fee domestic FP - convert 'NULL' string to actual NULL
+campus_course_fees_itsp,e609_effective_from_date,DATE NOT NULL,CampusCourseFeesITSP,E609_EffectiveFromDate,1/1/2021,Date parsing DD/MM/YYYY,Date parsing DD/MM/YYYY - Convert 'NULL' string and parse dates
+campus_course_fees_itsp,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

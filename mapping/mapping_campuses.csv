@@ -1,0 +1,10 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+campuses,uid2_campuses_res_key,VARCHAR(10),HEPCoursesOnCampuses,UID2_CampusesResKey,2370,Direct mapping,Primary key for campus records (extract unique values)
+campuses,e525_campus_suburb,VARCHAR(48) NOT NULL,HEPCoursesOnCampuses,E525_CampusSuburb,GERALDTON,Direct mapping,Campus suburb name
+campuses,e644_campus_country_code,VARCHAR(4) NOT NULL,HEPCoursesOnCampuses,E644_CampusCountryCode,1101,Direct mapping,Campus country code
+campuses,e559_campus_postcode,VARCHAR(4),HEPCoursesOnCampuses,E559_CampusPostcode,6530,Direct mapping - NULL string conversion,Campus postcode - convert 'NULL' string to actual NULL
+campuses,e609_effective_from_date,DATE NOT NULL,HEPCoursesOnCampuses,Campuses_E609_EffectiveFromDate,"
+1/1/1999",Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE
+campuses,e610_effective_to_date,DATE,HEPCoursesOnCampuses,Campuses_E610_EffectiveToDate,,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+campuses,e569_campus_operation_type,VARCHAR(2),HEPCoursesOnCampuses,E569_CampusOperationType,NULL,Validate against CHECK constraint - NULL string conversion,Campus operation type - convert 'NULL' string to actual NULL
+campuses,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update
