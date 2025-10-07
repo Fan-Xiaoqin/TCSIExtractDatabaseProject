@@ -52,7 +52,7 @@ EXECUTE FUNCTION unit_enrolment_is_current();
 
 -- Academic Organisations (AOUs) for Unit Enrolments
 CREATE TABLE unit_enrolments_aous (
-    aou_id BIGINT GENERATED ALWAYS AS IDENTITY,
+    aou_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     unit_enrolment_id BIGINT NOT NULL REFERENCES unit_enrolments(unit_enrolment_id),
     uid19_unit_enrolment_aous_res_key VARCHAR(10) NOT NULL,
     e333_aou_code VARCHAR(3),
@@ -65,3 +65,20 @@ CREATE TABLE unit_enrolments_aous (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Add trigger to keep is_current up to DATE
+-- Trigger function
+CREATE FUNCTION unit_enrolment_aou_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE unit_enrolments_aous
+    SET is_current = FALSE
+    WHERE uid19_unit_enrolment_aous_res_key = NEW.uid19_unit_enrolment_aous_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_unit_enrolment_aou_is_current
+BEFORE INSERT ON unit_enrolments_aous
+FOR EACH ROW
+EXECUTE FUNCTION unit_enrolment_aou_is_current();
