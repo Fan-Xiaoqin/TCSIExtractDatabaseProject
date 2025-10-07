@@ -32,6 +32,23 @@ CREATE TABLE unit_enrolments (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Add trigger to keep is_current up to DATE
+-- Trigger function
+CREATE FUNCTION unit_enrolment_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE unit_enrolments
+    SET is_current = FALSE
+    WHERE uid16_unit_enrolments_res_key = NEW.uid16_unit_enrolments_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_unit_enrolment_is_current
+BEFORE INSERT ON unit_enrolments
+FOR EACH ROW
+EXECUTE FUNCTION unit_enrolment_is_current();
 
 -- Academic Organisations (AOUs) for Unit Enrolments
 CREATE TABLE unit_enrolments_aous (

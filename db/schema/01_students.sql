@@ -38,6 +38,24 @@ CREATE TABLE hep_students (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Triggers to update "is_current" to false after new insert is added
+-- Trigger function
+CREATE FUNCTION student_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE hep_students
+    SET is_current = FALSE
+    WHERE uid8_students_res_key = NEW.uid8_students_res_key 
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_student_is_current
+BEFORE INSERT ON hep_students
+FOR EACH ROW
+EXECUTE FUNCTION student_is_current();
+
 
 -- Student Citizenships
 CREATE TABLE hep_student_citizenships (
@@ -53,6 +71,7 @@ CREATE TABLE hep_student_citizenships (
     is_current BOOLEAN DEFAULT TRUE,
     CONSTRAINT uq_student_citizenship UNIQUE (student_id, e358_citizen_resident_code, e609_effective_from_date)
 );
+
 
 -- Student Disabilities
 CREATE TABLE hep_student_disabilities (
