@@ -1,0 +1,26 @@
+INSERT INTO unit_enrolments (
+    uid16_unit_enrolments_res_key,
+    course_admission_id,
+    e354_unit_of_study_code,
+    e489_unit_of_study_census_date,
+    e464_discipline_code,
+    e355_unit_of_study_status_code,
+    e329_mode_of_attendance_code,
+    e477_delivery_location_postcode,
+    e660_delivery_location_country_code,
+    e490_student_status_code,
+    e600_unit_of_study_commencement_date,
+    e601_unit_of_study_outcome_date,
+    e392_maximum_student_contribution_code,
+    e622_UnitOfStudyYearLongIndicator,
+    a111_is_deleted,
+    reporting_year,
+    is_current
+) VALUES
+('UE001', 6, 'ACCT1001', '2024-03-31', '0801', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, '7', TRUE, FALSE, 2024, TRUE),
+('UE002', 7, 'ECON1001', '2024-03-31', '1401', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, '8', TRUE, FALSE, 2024, TRUE),
+('UE003', 8, 'MATH1001', '2024-03-31', '0101', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, '9', TRUE, FALSE, 2024, TRUE),
+('UE004', 9, 'CHEM1003', '2024-03-31', '0301', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, 'S', TRUE, FALSE, 2024, TRUE),
+('UE005', 10,'MBAS01',   '2024-03-31', '0803', '2', '2', 6009, 'AUS', '201', '2024-03-01', NULL, '7', TRUE, FALSE, 2024, TRUE),
+('UE006', 6, 'MGMT2001', '2024-03-31', '0807', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, '8', TRUE, FALSE, 2024, TRUE),
+('UE007', 7, 'ENGL1001', '2024-03-31', '0201', '1', '1', 6009, 'AUS', '201', '2024-02-26', NULL, '9', TRUE, FALSE, 2024, TRUE);
