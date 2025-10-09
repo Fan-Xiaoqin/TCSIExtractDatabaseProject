@@ -71,6 +71,22 @@ CREATE TABLE hep_student_citizenships (
     is_current BOOLEAN DEFAULT TRUE,
     CONSTRAINT uq_student_citizenship UNIQUE (student_id, e358_citizen_resident_code, e609_effective_from_date)
 );
+-- Trigger function for student_citizenships
+CREATE FUNCTION student_citizenship_is_current()
+RETURNS TRIGGER AS $$
+BEGIN 
+    UPDATE hep_student_citizenships
+    SET is_current = FALSE
+    WHERE uid10_student_citizenships_res_key = NEW.uid10_student_citizenships_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger for student_citizenships
+CREATE TRIGGER trg_student_is_current_citizenship
+BEFORE INSERT ON hep_student_citizenships
+FOR EACH ROW
+EXECUTE FUNCTION student_citizenship_is_current();
 
 
 -- Student Disabilities
@@ -86,6 +102,22 @@ CREATE TABLE hep_student_disabilities (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Trigger function for hep_student_disabilities
+CREATE FUNCTION student_disability_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE hep_student_disabilities
+    SET is_current = FALSE
+    WHERE uid11_student_disabilities_res_key = NEW.uid11_student_disabilities_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger for hep_student_disabilities
+CREATE TRIGGER trg_student_disability_is_current
+BEFORE INSERT ON hep_student_disabilities
+FOR EACH ROW
+EXECUTE FUNCTION student_disability_is_current();
 
 -- Student Contacts First Reported Address
 CREATE TABLE student_contacts_first_reported_address (
