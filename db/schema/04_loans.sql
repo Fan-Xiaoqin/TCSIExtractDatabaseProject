@@ -33,6 +33,23 @@ CREATE TABLE oshelp (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Add trigger to keep is_current up to date
+-- Trigger function
+CREATE OR REPLACE FUNCTION oshelp_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE oshelp
+    SET is_current = FALSE
+    WHERE uid21_student_loans_res_key = NEW.uid21_student_loans_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_oshelp_is_current
+BEFORE INSERT ON oshelp
+FOR EACH ROW
+EXECUTE FUNCTION oshelp_is_current();
 
 -- SA-HELP Loans
 CREATE TABLE sahelp (
@@ -61,3 +78,20 @@ CREATE TABLE sahelp (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Add trigger to keep is_current up to date
+-- Trigger function
+CREATE OR REPLACE FUNCTION sahelp_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE sahelp
+    SET is_current = FALSE
+    WHERE uid21_student_loans_res_key = NEW.uid21_student_loans_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_sahelp_is_current
+BEFORE INSERT ON sahelp
+FOR EACH ROW
+EXECUTE FUNCTION sahelp_is_current();
