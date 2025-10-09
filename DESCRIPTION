@@ -1,0 +1,8 @@
+Type: Package
+Package: tcsidb
+Version: 0.01
+Depends: 
+    R (>= 4.0.0)
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
