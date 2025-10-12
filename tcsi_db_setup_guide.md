@@ -79,17 +79,30 @@ brew services start postgresql@16
 createdb tcsi_db
 
 # 3. Create schema
-cd tcsi-etl-project
+cd /path/to/tcsi-etl-project  # Replace with your actual path
 psql -d tcsi_db -f schema/init.sql
 
-# 4. Configure R packages
+# 4. Install R packages
 Rscript install_packages.R
 
 # 5. Set up environment variables
-# Create ~/.Renviron with database credentials
+# Create ~/.Renviron with:
+# DB_HOST=localhost
+# DB_PORT=5432
+# DB_NAME=tcsi_db
+# DB_USER=your_username
+# DB_PASSWORD=your_password
 
 # 6. Test connection
-R -e "library(DBI); library(RPostgres); con <- dbConnect(RPostgres::Postgres(), dbname='tcsi_db', host='localhost'); dbGetQuery(con, 'SELECT version();'); dbDisconnect(con)"
+R -e "
+library(DBI); 
+library(RPostgres); 
+con <- dbConnect(RPostgres::Postgres(), 
+                 dbname='tcsi_db', 
+                 host='localhost'); 
+dbGetQuery(con, 'SELECT version();'); 
+dbDisconnect(con)
+"
 ```
 
 For detailed step-by-step instructions, continue to the next section.
@@ -355,7 +368,13 @@ schema/
 
 **Navigate to project directory:**
 ```bash
-cd path/to/tcsi-etl-project
+# Replace with your actual project path
+cd /path/to/tcsi-etl-project
+
+# Examples:
+# Windows (Git Bash): cd /c/Users/YourName/Documents/tcsi-etl-project
+# macOS:   cd ~/Documents/tcsi-etl-project
+# Linux:   cd ~/projects/tcsi-etl-project
 ```
 
 **Execute master script:**
@@ -422,12 +441,13 @@ Edit `config/database_config.R`:
 DB_MODE <- "POSTGRESQL"  # Changed from "DUMMY"
 
 # PostgreSQL Connection Settings
+# IMPORTANT: Use environment variables, NEVER hardcode credentials
 DB_CONFIG <- list(
-  host = "localhost",
-  port = 5432,
-  dbname = "tcsi_db",
-  user = Sys.getenv("USER"),      # Will use .Renviron values
-  password = ""                    # Empty for local Mac/Linux
+  host = Sys.getenv("DB_HOST"),        # From .Renviron
+  port = as.integer(Sys.getenv("DB_PORT")),
+  dbname = Sys.getenv("DB_NAME"),
+  user = Sys.getenv("DB_USER"),        # From .Renviron
+  password = Sys.getenv("DB_PASSWORD") # From .Renviron
 )
 
 # ETL Processing Settings
@@ -436,9 +456,12 @@ MAX_ROWS_TO_PROCESS <- NULL       # NULL = process all rows
 STOP_ON_ERROR <- FALSE            # Continue on errors
 
 # File Paths
-DATA_INPUT_DIR <- file.path(getwd(), "data", "tcsiSample")
-DATA_LOGS_DIR <- file.path(getwd(), "data", "logs")
+PROJECT_ROOT <- getwd()
+DATA_INPUT_DIR <- file.path(PROJECT_ROOT, "data", "tcsiSample")
+DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
 ```
+
+⚠️ **Security Warning:** Never hardcode database credentials in configuration files. Always use environment variables through `.Renviron`.
 
 #### 6.2 Alternative: Use Shiny Configuration App
 
@@ -620,6 +643,174 @@ hep_hdr_end_users_engagement   -- HDR end user engagement
 
 ---
 
+## 📋 Data Validation Rules
+
+The ETL process includes comprehensive data validation to ensure data quality and integrity.
+
+### Required Fields
+
+Each table has specific required fields that must be present and non-null:
+
+**Student Tables:**
+- `hep_students`: `uid8_students_res_key`, `e313_student_identification_code`
+- `hep_student_citizenships`: `student_id`, `e358_citizen_resident_code`
+- `hep_student_disabilities`: `student_id`, `e423_disability_type_code`
+
+**Course Tables:**
+- `courses_of_study`: `e533_course_of_study_code`
+- `hep_courses`: `uid5_courses_res_key`, `e307_course_code`
+
+**Admission Tables:**
+- `hep_course_admissions`: `uid15_course_admissions_res_key`, `student_id`, `uid5_courses_res_key`
+
+**Unit Enrolment Tables:**
+- `unit_enrolments`: `uid16_unit_enrolments_res_key`, `reporting_year`
+- `unit_enrolments_aous`: `uid19_unit_enrolment_aous_res_key`, `reporting_year`
+
+### CHECK Constraint Validation
+
+Many fields have restricted value sets enforced by database CHECK constraints:
+
+| Field | Valid Values | Example |
+|-------|-------------|---------|
+| `e302_gender_code` | `'M'`, `'F'`, `'X'` | Student gender |
+| `e348_atsi_code` | `'2'`, `'3'`, `'4'`, `'5'`, `'9'` | Indigenous status |
+| `e358_citizen_resident_code` | `'1'`, `'2'`, `'3'`, `'4'`, `'5'`, `'8'`, `'P'` | Citizenship |
+| `e329_mode_of_attendance_code` | `'1'` to `'7'` | Study mode |
+| `e330_attendance_type_code` | `'1'`, `'2'` | Full/Part time |
+| `e355_unit_of_study_status_code` | `'1'` to `'6'` | Unit completion status |
+| `e392_maximum_student_contribution_code` | `'7'`, `'8'`, `'9'`, `'S'` | Contribution band |
+
+**Full list of validation constants:**
+```r
+# Gender codes
+VALID_GENDER_CODES <- c('M', 'F', 'X')
+
+# Indigenous status
+VALID_ATSI_CODES <- c('2', '3', '4', '5', '9')
+
+# Citizenship/Residency
+VALID_CITIZEN_RESIDENT_CODES <- c('1', '2', '3', '4', '5', '8', 'P')
+
+# Disability types
+VALID_DISABILITY_CODES <- c('11','12','13','14','15','16','17','18','19','20','99')
+
+# Course outcomes
+VALID_COURSE_OUTCOME_CODES <- c('1','2','3','4','5','6','7')
+
+# Study modes
+VALID_MODE_OF_ATTENDANCE_CODES <- c('1','2','3','4','5','6','7')
+
+# Attendance types
+VALID_ATTENDANCE_TYPE_CODES <- c('1','2')
+
+# Unit status
+VALID_UNIT_STUDY_STATUS_CODES <- c('1','2','3','4','5','6')
+```
+
+### Data Type Conversions
+
+The ETL process automatically handles these conversions:
+
+**Date Fields:**
+- Format: `DD/MM/YYYY` in CSV
+- Converted to: PostgreSQL `DATE` type
+- NULL handling: String `"NULL"` → actual `NULL`
+- Examples: `e489_course_admission_date`, `e592_course_outcome_date`
+
+**Boolean Fields:**
+- CSV values: `0` or `1`
+- Converted to: PostgreSQL `BOOLEAN`
+- Mapping: `0` → `FALSE`, `1` → `TRUE`
+- Examples: `a111_is_deleted`, `is_current`
+
+**Integer Fields:**
+- Automatically converted from string to integer
+- Examples: `reporting_year`, `e415_reporting_year`
+
+**Decimal Fields:**
+- Precision maintained for financial and EFTSL values
+- Format: `DECIMAL(10,9)` for EFTSL
+- Format: `DECIMAL(7,2)` for currency
+- Examples: `e339_eftsl`, `e384_amount_charged`
+
+### Foreign Key Validation
+
+All foreign key relationships are validated before insert:
+
+**Primary Relationships:**
+```
+hep_students (student_id) 
+    ← hep_student_citizenships
+    ← hep_student_disabilities
+    ← hep_course_admissions
+    ← commonwealth_scholarships
+
+hep_courses (uid5_courses_res_key)
+    ← hep_course_admissions
+    ← course_fields_of_education
+    ← hep_courses_on_campuses
+
+hep_course_admissions (course_admission_id)
+    ← unit_enrolments
+    ← hep_basis_for_admission
+    ← hep_course_prior_credits
+```
+
+**Validation Process:**
+1. Check if referenced record exists in parent table
+2. If not found, record validation error
+3. Option to skip invalid rows or halt ETL (configurable)
+
+### Null Value Handling
+
+**NULL String Conversion:**
+- CSV string `"NULL"` → actual database `NULL`
+- Applies to all optional fields
+- Case-insensitive matching
+
+**Required vs Optional:**
+- Required fields: Must have non-null value
+- Optional fields: Can be NULL
+- Foreign keys: NULL allowed unless explicitly required
+
+### Validation Error Handling
+
+**Error Categories:**
+1. **Critical Errors** (Row rejected):
+   - Required field is NULL
+   - Invalid CHECK constraint value
+   - Foreign key not found
+   - Data type conversion failure
+
+2. **Warnings** (Row accepted with note):
+   - Unusual but valid values
+   - Optional field missing
+   - Truncated string values
+
+**Error Logging:**
+```
+data/logs/etl_YYYYMMDD_HHMMSS.log  # Main log
+data/errors/table_name_errors.csv  # Invalid rows with errors
+```
+
+### Validation Configuration
+
+Configure validation behavior in `config/database_config.R`:
+
+```r
+# Stop ETL on first error, or continue and log errors
+STOP_ON_ERROR <- FALSE
+
+# Maximum number of errors before halting
+MAX_ERRORS_ALLOWED <- 100
+
+# Validation strictness level
+VALIDATION_LEVEL <- "STRICT"  # Options: "STRICT", "MODERATE", "LENIENT"
+```
+
+---
+
 ## 💡 Usage Examples
 
 ### Example 1: Connect to Database from R
@@ -703,8 +894,18 @@ dbDisconnect(con)
 ### Example 5: Run Complete ETL Pipeline
 
 ```r
-# From project root directory
-setwd("tcsi-etl-project")
+# Ensure you're in the project root directory
+# If using RStudio, use: Session → Set Working Directory → To Project Directory
+# Or manually set it:
+setwd("/path/to/tcsi-etl-project")  # Replace with your actual path
+
+# For example:
+# Windows: setwd("C:/Users/YourName/Documents/tcsi-etl-project")
+# macOS:   setwd("/Users/YourName/Documents/tcsi-etl-project")
+# Linux:   setwd("/home/yourname/tcsi-etl-project")
+
+# Verify working directory
+getwd()  # Should show your project root path
 
 # Source main ETL script
 source("src/main_etl_all_tables.R")
@@ -898,8 +1099,16 @@ ERROR: relation "hep_students" already exists
 
 **Option A: Drop and recreate (⚠️ DELETES ALL DATA)**
 ```bash
+# Drop the database
 dropdb tcsi_db
+
+# Recreate database
 createdb tcsi_db
+
+# Navigate to project directory (replace with your actual path)
+cd /path/to/tcsi-etl-project
+
+# Recreate schema
 psql -d tcsi_db -f schema/init.sql
 ```
 
@@ -1002,6 +1211,29 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 ✅ **DO:** Use `.Renviron` for credentials  
 ❌ **DON'T:** Hardcode passwords in scripts  
 ❌ **DON'T:** Commit `.Renviron` to Git
+
+**Important Git Configuration:**
+
+Ensure your `.gitignore` includes:
+```gitignore
+# Environment files
+.Renviron
+.env
+
+# Configuration with credentials
+**/database_config_runtime.R
+```
+
+**Verify before committing:**
+```bash
+# Check what files will be committed
+git status
+
+# If .Renviron appears, add it to .gitignore immediately
+echo ".Renviron" >> .gitignore
+git add .gitignore
+git commit -m "Add .Renviron to gitignore"
+```
 
 ### 7. Audit Logging
 
