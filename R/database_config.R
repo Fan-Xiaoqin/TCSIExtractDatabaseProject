@@ -19,8 +19,8 @@ DB_CONFIG <- list(
   host = "localhost",
   port = 5432,
   dbname = "tcsi_db",
-  user = <"your_username">,  # Replace with your actual username
-  password = <"your_password">  # Replace with your actual password
+  user = "your_username",  # Replace with your actual username
+  password = "your_password"  # Replace with your actual password
 )
 
 # ==========================================
@@ -41,13 +41,8 @@ MAX_ROWS_TO_PROCESS <- NULL  # Set to e.g. 100 for testing
 PROJECT_ROOT <- getwd()
 
 # Data directories
-DATA_INPUT_DIR <- file.path(PROJECT_ROOT, "data", "tcsiSample")
 DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
 DATA_ERRORS_DIR <- file.path(PROJECT_ROOT, "data", "errors")
-
-# Mapping files directories
-# MAPPING_EXCEL_DIR <- file.path(PROJECT_ROOT, "..", "Students")
-MAPPING_CSV_DIR <- file.path(PROJECT_ROOT, "..", "datamapping")
 
 # ==========================================
 # CSV FILE PATTERNS
@@ -134,7 +129,7 @@ init_dummy_db <- function() {
 #' @param pattern File pattern to search for
 #' @param directory Directory to search in (defaults to DATA_INPUT_DIR)
 #' @return Full path to first matching file, or NULL if not found
-find_csv_file <- function(pattern, directory = DATA_INPUT_DIR) {
+find_csv_file <- function(pattern, directory) {
   files <- list.files(directory, pattern = glob2rx(pattern), full.names = TRUE)
   if (length(files) == 0) {
     return(NULL)
@@ -159,24 +154,10 @@ get_error_file_path <- function(table_name) {
   return(file.path(DATA_ERRORS_DIR, filename))
 }
 
-# ==========================================
-# INITIALIZATION
-# ==========================================
-
-# Ensure directories exist
-dir.create(DATA_LOGS_DIR, showWarnings = FALSE, recursive = TRUE)
-dir.create(DATA_ERRORS_DIR, showWarnings = FALSE, recursive = TRUE)
-
-# Initialize dummy database if in DUMMY mode
-if (DB_MODE == "DUMMY") {
-  init_dummy_db()
-}
-
 # Print configuration summary
 cat("\n=== TCSI ETL Configuration ===\n")
 cat("Database Mode:", DB_MODE, "\n")
 cat("Batch Size:", BATCH_SIZE, "\n")
-cat("Data Input Dir:", DATA_INPUT_DIR, "\n")
 cat("Logs Dir:", DATA_LOGS_DIR, "\n")
 cat("Errors Dir:", DATA_ERRORS_DIR, "\n")
 cat("Log Level:", LOG_LEVEL, "\n")

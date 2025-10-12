@@ -5,15 +5,6 @@
 #' 
 #' Provides database operations for both DUMMY and PostgreSQL modes.
 
-# Load required configuration
-if (!exists("DB_MODE")) {
-  source("config/database_config.R")
-}
-
-if (!exists("log_info")) {
-  source("src/utils/logging_utils.R")
-}
-
 # ==========================================
 # DATABASE CONNECTION
 # ==========================================
@@ -26,10 +17,8 @@ db_connect <- function() {
     return(NULL)
   } else if (DB_MODE == "POSTGRESQL") {
     log_info("Connecting to PostgreSQL database")
-    library(DBI)
-    library(RPostgres)
-    
-    conn <- dbConnect(
+
+    conn <- DBI::dbConnect(
       RPostgres::Postgres(),
       dbname = DB_CONFIG$dbname,
       host = DB_CONFIG$host,
@@ -51,7 +40,7 @@ db_connect <- function() {
 db_disconnect <- function(conn) {
   if (!is.null(conn)) {
     if (DB_MODE == "POSTGRESQL") {
-      dbDisconnect(conn)
+      DBI::dbDisconnect(conn)
     }
     log_info("Database connection closed")
   }
@@ -162,7 +151,7 @@ db_insert <- function(conn, table_name, row_data) {
       if (is.list(row_data) && !is.data.frame(row_data)) {
         row_data <- as.data.frame(row_data, stringsAsFactors = FALSE)
       }
-      dbWriteTable(conn, table_name, row_data, append = TRUE, row.names = FALSE)
+      DBI::dbWriteTable(conn, table_name, row_data, append = TRUE, row.names = FALSE)
       return(TRUE)
     }, error = function(e) {
       log_error(paste("Failed to insert into", table_name, ":", e$message))
@@ -251,7 +240,7 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
     
     # Execute and check if inserted or updated
     result <- tryCatch({
-      dbGetQuery(conn, query)
+      DBI::dbGetQuery(conn, query)
     }, error = function(e) {
       log_error(paste("Query execution failed for", table_name, ":", e$message))
       log_error(paste("Query was:", query))
@@ -335,7 +324,7 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
     
     # Try to query - handle errors gracefully
     existing_rows <- tryCatch({
-      dbGetQuery(conn, query_existing)
+      DBI::dbGetQuery(conn, query_existing)
     }, error = function(e) {
       log_error(paste("Failed to query existing row in", table_name, ":", e$message))
       log_error(paste("Query was:", query_existing))
@@ -403,7 +392,7 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       pk_col,
       if (is.character(pk_value)) paste0("'", pk_value, "'") else pk_value
     )
-    dbExecute(conn, update_query)
+    DBI::dbExecute(conn, update_query)
     
     # Insert new row with is_current = TRUE
     row_data$is_current <- TRUE
@@ -489,7 +478,7 @@ db_insert_upsert <- function(conn, table_name, row_data, unique_keys) {
       conflict_keys
     )
 
-    rows_affected <- dbExecute(conn, query)
+    rows_affected <- DBI::dbExecute(conn, query)
 
     if (rows_affected > 0) {
       log_info(paste("Inserted new row into", table_name))
@@ -527,7 +516,7 @@ db_query <- function(conn, table_name, where_clause = NULL) {
       })
       query <- paste(query, "WHERE", paste(conditions, collapse = " AND "))
     }
-    return(dbGetQuery(conn, query))
+    return(DBI::dbGetQuery(conn, query))
   }
 }
 
@@ -553,7 +542,7 @@ db_count <- function(conn, table_name) {
   if (DB_MODE == "DUMMY") {
     return(dummy_db_count(table_name))
   } else {
-    result <- dbGetQuery(conn, paste("SELECT COUNT(*) FROM", table_name))
+    result <- DBI::dbGetQuery(conn, paste("SELECT COUNT(*) FROM", table_name))
     return(result[[1]])
   }
 }
@@ -576,7 +565,7 @@ db_begin_transaction <- function(conn) {
     DUMMY_DB_ENV$in_transaction <- TRUE
     log_debug("Transaction started (DUMMY mode)")
   } else {
-    dbBegin(conn)
+    DBI::dbBegin(conn)
     log_debug("Transaction started (PostgreSQL)")
   }
   return(invisible(NULL))
@@ -591,7 +580,7 @@ db_commit <- function(conn) {
     DUMMY_DB_ENV$in_transaction <- FALSE
     log_debug("Transaction committed (DUMMY mode)")
   } else {
-    dbCommit(conn)
+    DBI::dbCommit(conn)
     log_debug("Transaction committed (PostgreSQL)")
   }
   return(invisible(NULL))
@@ -609,7 +598,7 @@ db_rollback <- function(conn) {
     DUMMY_DB_ENV$in_transaction <- FALSE
     log_warn("Transaction rolled back (DUMMY mode)")
   } else {
-    dbRollback(conn)
+    DBI::dbRollback(conn)
     log_warn("Transaction rolled back (PostgreSQL)")
   }
   return(invisible(NULL))
@@ -677,4 +666,3 @@ print_all_table_stats <- function(conn) {
   return(invisible(NULL))
 }
 
-cat("Database utilities loaded successfully.\n")

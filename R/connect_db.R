@@ -1,20 +1,16 @@
-# Load libraries
-library(DBI)
-library(RPostgres)
-
-# Database connection parameters from .Renviron
-db_config <- list(
-  host = Sys.getenv("DB_HOST"),
-  port = as.integer(Sys.getenv("DB_PORT")),
-  dbname = Sys.getenv("DB_NAME"),
-  user = Sys.getenv("DB_USER"),
-  password = Sys.getenv("DB_PASSWORD")
-)
-
 # Function to create DB connection
 create_db_connection <- function() {
+  # Database connection parameters from .Renviron
+  db_config <- list(
+    host = Sys.getenv("DB_HOST"),
+    port = as.integer(Sys.getenv("DB_PORT")),
+    dbname = Sys.getenv("DB_NAME"),
+    user = Sys.getenv("DB_USER"),
+    password = Sys.getenv("DB_PASSWORD")
+  )
+
   tryCatch({
-    con <- dbConnect(
+    con <- DBI::dbConnect(
       RPostgres::Postgres(),
       host = db_config$host,
       port = db_config$port,
@@ -32,6 +28,6 @@ create_db_connection <- function() {
 # Helper to run queries
 run_query <- function(query) {
   con <- create_db_connection()
-  on.exit(dbDisconnect(con), add = TRUE)
-  dbGetQuery(con, query)
+  on.exit(DBI::dbDisconnect(con), add = TRUE)
+  DBI::dbGetQuery(con, query)
 }

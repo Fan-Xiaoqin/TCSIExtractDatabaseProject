@@ -5,22 +5,6 @@
 #' 
 #' Provides data transformation functions for CSV data.
 
-# Load required libraries
-suppressPackageStartupMessages({
-  if (!require("lubridate", quietly = TRUE)) {
-    message("Note: lubridate package not installed. Date parsing will be limited.")
-  }
-})
-
-# Load required configuration
-if (!exists("NULL_STRING")) {
-  source("config/database_config.R")
-}
-
-if (!exists("log_warn")) {
-  source("src/utils/logging_utils.R")
-}
-
 # ==========================================
 # NULL HANDLING
 # ==========================================
@@ -559,4 +543,3 @@ format_value <- function(value) {
   return(as.character(value))
 }
 
-cat("Transformation utilities loaded successfully.\n")

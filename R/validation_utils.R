@@ -5,19 +5,6 @@
 #' 
 #' Provides data validation functions for ETL process.
 
-# Load required configuration
-if (!exists("log_error")) {
-  source("src/utils/logging_utils.R")
-}
-
-if (!exists("validate_foreign_key")) {
-  source("src/utils/database_utils.R")
-}
-
-if (!exists("is_null_value")) {
-  source("src/utils/transformation_utils.R")
-}
-
 # ==========================================
 # FIELD VALIDATION
 # ==========================================
@@ -398,5 +385,3 @@ log_validation_summary <- function(total_rows, valid_count, invalid_count, table
   
   return(invisible(NULL))
 }
-
-cat("Validation utilities loaded successfully.\n")

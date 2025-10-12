@@ -1,6 +1,7 @@
 # TCSI ETL Shiny App
 # Interactive interface for running ETL process with custom configurations
 
+run_web_app <- function() {
 library(shiny)
 library(shinyFiles)
 library(DT)
@@ -550,24 +551,6 @@ observeEvent(input$start_etl, {
   }
   # Run ETL synchronously (simpler and more reliable)
   tryCatch({
-    # Source the updated configuration
-    source("config/database_config_runtime.R", local = TRUE)
-    
-    # Source required utilities
-    source("config/field_mappings.R", local = TRUE)
-    source("src/utils/logging_utils.R", local = TRUE)
-    source("src/utils/database_utils.R", local = TRUE)
-    source("src/utils/transformation_utils.R", local = TRUE)
-    source("src/utils/validation_utils.R", local = TRUE)
-    source("src/utils/generic_etl.R", local = TRUE)
-    
-    rv$log_messages <- c(rv$log_messages, "Configuration and utilities loaded successfully")
-    
-    # Source main ETL script
-    source("src/main_etl_all_tables.R", local = TRUE)
-    
-    rv$log_messages <- c(rv$log_messages, "Running main ETL function...")
-    
     # Run ETL
     results <- main()
     
@@ -1035,3 +1018,4 @@ session$onSessionEnded(function() {
 # For PostgreSQL support: install.packages("RPostgres")
 
 shinyApp(ui = ui, server = server)
+}

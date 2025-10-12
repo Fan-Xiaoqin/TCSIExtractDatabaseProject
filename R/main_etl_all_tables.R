@@ -2,27 +2,9 @@
 # TCSI ETL Project - Complete Database Load
 
 #' Main ETL Orchestration for ALL TCSI Tables
-#' 
+#'
 #' This script runs the complete ETL process for all 26 tables
 #' in the correct order (respecting foreign key dependencies).
-
-# ==========================================
-# LOAD DEPENDENCIES
-# ==========================================
-
-# Set working directory to project root if running from src/
-if (basename(getwd()) == "src") {
-  setwd("..")
-}
-
-cat("Loading dependencies...\n")
-source("config/database_config.R")
-source("config/field_mappings.R")
-source("src/utils/logging_utils.R")
-source("src/utils/database_utils.R")
-source("src/utils/transformation_utils.R")
-source("src/utils/validation_utils.R")
-source("src/utils/generic_etl.R")
 
 # ==========================================
 # COMPLETE ETL SEQUENCE - ALL 26 TABLES
@@ -35,7 +17,7 @@ ETL_SEQUENCE_ALL <- list(
   # ==========================================
   # PHASE 1: REFERENCE DATA (No dependencies)
   # ==========================================
-  
+
   list(
     phase = "1-Reference",
     table_name = "courses_of_study",
@@ -290,11 +272,11 @@ ETL_SEQUENCE_ALL <- list(
 #' @param conn Database connection
 #' @param sequence ETL sequence configuration (defaults to ETL_SEQUENCE_ALL)
 #' @return List with overall statistics and results
-run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
+run_complete_etl <- function(conn, import_dir, sequence = ETL_SEQUENCE_ALL) {
   log_info("========================================")
   log_info("Starting Complete TCSI ETL (All 26 Tables)")
   log_info("========================================")
-  
+
   overall_stats <- list(
     start_time = Sys.time(),
     tables_processed = 0,
@@ -306,15 +288,15 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
     table_results = list(),
     phase_results = list()
   )
-  
+
   current_phase <- NULL
   phase_stats <- NULL
-  
+
   # Process each table in sequence
   for (etl_config in sequence) {
     table_name <- etl_config$table_name
     phase <- etl_config$phase
-    
+
     # Track phase changes
     if (is.null(current_phase) || current_phase != phase) {
       if (!is.null(phase_stats)) {
@@ -333,22 +315,22 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
       log_info(paste("PHASE:", phase))
       log_info(paste("========================================"))
     }
-    
+
     log_info("")
     log_info(paste("Processing table:", table_name))
     log_info(paste("----------------------------------------"))
-    
+
     overall_stats$tables_processed <- overall_stats$tables_processed + 1
     phase_stats$tables_processed <- phase_stats$tables_processed + 1
-    
+
     tryCatch({
       # Check if CSV file exists
       csv_files <- list.files(
-        path = DATA_INPUT_DIR,
+        path = import_dir,
         pattern = glob2rx(etl_config$csv_pattern),
         full.names = FALSE
       )
-      
+
       if (length(csv_files) == 0) {
         log_warn(paste("No CSV file found for", table_name, "- skipping"))
         overall_stats$tables_skipped <- overall_stats$tables_skipped + 1
@@ -360,26 +342,27 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
         )
         next
       }
-      
+
       # Run ETL for this table
       stats <- generic_etl(
         conn,
+        import_dir,
         etl_config$table_name,
         etl_config$csv_pattern,
         etl_config$mapping
       )
-      
+
       # Store results
       overall_stats$table_results[[table_name]] <- stats
-      
+
       if (stats$success) {
         overall_stats$tables_succeeded <- overall_stats$tables_succeeded + 1
         overall_stats$total_rows_loaded <- overall_stats$total_rows_loaded + stats$loaded_rows
         overall_stats$total_errors <- overall_stats$total_errors + stats$errors
-        
+
         phase_stats$tables_succeeded <- phase_stats$tables_succeeded + 1
         phase_stats$rows_loaded <- phase_stats$rows_loaded + stats$loaded_rows
-        
+
         # Run quality checks if data was loaded
         if (stats$loaded_rows > 0 && !is.null(etl_config$key_field)) {
           quality_results <- generic_data_quality_checks(
@@ -395,7 +378,7 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
         phase_stats$tables_failed <- phase_stats$tables_failed + 1
         log_error(paste("ETL failed for", table_name))
       }
-      
+
     }, error = function(e) {
       log_error(paste("Critical error processing", table_name, ":", e$message))
       overall_stats$tables_failed <- overall_stats$tables_failed + 1
@@ -407,19 +390,19 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
       )
     })
   }
-  
+
   # Store final phase stats
   if (!is.null(phase_stats)) {
     overall_stats$phase_results[[current_phase]] <- phase_stats
   }
-  
+
   overall_stats$end_time <- Sys.time()
   overall_stats$duration <- difftime(
     overall_stats$end_time,
     overall_stats$start_time,
     units = "mins"
   )
-  
+
   return(overall_stats)
 }
 
@@ -446,7 +429,7 @@ print_overall_summary <- function(overall_stats) {
   cat(sprintf("Total rows loaded: %d\n", overall_stats$total_rows_loaded))
   cat(sprintf("Total errors:      %d\n", overall_stats$total_errors))
   cat("\n")
-  
+
   # Phase summary
   cat("Phase Summary:\n")
   cat("----------------------------------------\n")
@@ -460,24 +443,24 @@ print_overall_summary <- function(overall_stats) {
                 phase$tables_failed))
   }
   cat("\n")
-  
+
   cat("Table Details:\n")
   cat("----------------------------------------\n")
-  
+
   for (table_name in names(overall_stats$table_results)) {
     result <- overall_stats$table_results[[table_name]]
-    
+
     if (!is.null(result$skipped) && result$skipped) {
       cat(sprintf("%-45s: SKIPPED (%s)\n", table_name, result$reason))
     } else if (result$success) {
-      cat(sprintf("%-45s: SUCCESS (%d rows loaded)\n", 
-                  table_name, 
+      cat(sprintf("%-45s: SUCCESS (%d rows loaded)\n",
+                  table_name,
                   result$loaded_rows))
     } else {
       cat(sprintf("%-45s: FAILED\n", table_name))
     }
   }
-  
+
   cat("========================================\n")
   cat("\n")
 }
@@ -487,27 +470,26 @@ print_overall_summary <- function(overall_stats) {
 # ==========================================
 
 #' Main entry point
-main <- function() {
+main <- function(import_dir) {
   # Initialize logging
   init_logging()
-  
+
   log_info("TCSI Complete ETL Process - All Tables")
-  log_info(paste("Working directory:", getwd()))
-  log_info(paste("Data input directory:", DATA_INPUT_DIR))
-  
+  log_info(paste("Data input directory:", import_dir))
+
   # Connect to database
   conn <- db_connect()
-  
+
   overall_stats <- NULL
-  
+
   # Run ETL with transaction support
   tryCatch({
     # Begin transaction
     db_begin_transaction(conn)
-    
+
     # Run complete ETL
-    overall_stats <- run_complete_etl(conn)
-    
+    overall_stats <- run_complete_etl(conn, import_dir)
+
     # Decide whether to commit or rollback
     if (overall_stats$tables_failed == 0) {
       db_commit(conn)
@@ -521,7 +503,7 @@ main <- function() {
         log_warn("Some tables failed but STOP_ON_ERROR is FALSE - transaction committed with partial data")
       }
     }
-    
+
   }, error = function(e) {
     log_error(paste("Critical ETL error:", e$message))
     db_rollback(conn)
@@ -529,29 +511,18 @@ main <- function() {
   }, finally = {
     # Disconnect from database
     db_disconnect(conn)
-    
+
     # Print summaries
     if (!is.null(overall_stats)) {
       print_overall_summary(overall_stats)
     }
-    
+
     print_log_summary()
-    
+
     # Close logging
     close_logging()
   })
-  
+
   # Return overall statistics
   return(invisible(overall_stats))
 }
-
-# ==========================================
-# SCRIPT EXECUTION
-# ==========================================
-
-# Run main function
-if (sys.nframe() == 0) {
-  result <- main()
-}
-
-cat("Main ETL script (all tables) loaded successfully.\n")

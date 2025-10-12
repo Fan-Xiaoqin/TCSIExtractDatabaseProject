@@ -5,11 +5,6 @@
 #' 
 #' Provides structured logging functionality for the ETL process.
 
-# Load required configuration
-if (!exists("LOG_LEVEL")) {
-  source("config/database_config.R")
-}
-
 # ==========================================
 # LOGGING STATE
 # ==========================================
@@ -38,6 +33,10 @@ LOG_LEVELS <- list(
 #' @param log_file Optional path to log file
 #' @return Invisible NULL
 init_logging <- function(log_file = NULL) {
+  # Ensure directories exist
+  dir.create(DATA_LOGS_DIR, showWarnings = FALSE, recursive = TRUE)
+  dir.create(DATA_ERRORS_DIR, showWarnings = FALSE, recursive = TRUE)
+
   if (is.null(log_file) && LOG_TO_FILE) {
     log_file <- get_log_file_path()
   }
@@ -256,5 +255,3 @@ get_warning_count <- function(table_name) {
   }
   return(LOG_STATE$warning_counts[[table_name]])
 }
-
-cat("Logging utilities loaded successfully.\n")

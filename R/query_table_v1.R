@@ -71,7 +71,7 @@ query_table <- function(db_table_name,
                  where_clause, group_clause, order_clause, limit_clause)
   
   # Print for user visibility
-  message("Running query: ", query)
+  log_info(paste("Running query:", query))
   
   # Execute query (requires run_query)
   result <- run_query(query)
