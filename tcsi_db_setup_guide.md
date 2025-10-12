@@ -1,12 +1,8 @@
 # TCSI Database Complete Setup Guide
 
-> **Version:** 1.0  
-> **Last Updated:** October 2025  
-> **Project:** TCSI Extract Database - Tertiary Collection of Student Information
 
----
 
-## 📖 Table of Contents
+##  Table of Contents
 
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
@@ -28,20 +24,20 @@
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 This guide provides complete instructions for setting up the PostgreSQL database infrastructure for the TCSI ETL project. The database stores and manages student data extracted from TCSI (Tertiary Collection of Student Information) with support for:
 
-- ✅ **27 interconnected tables** covering student lifecycle data
-- ✅ **Historical data preservation** with SCD-2 (Slowly Changing Dimensions)
-- ✅ **R/RStudio integration** for data analysis
-- ✅ **Automated ETL pipeline** with validation and logging
-- ✅ **Data quality controls** and referential integrity
+-  **27 interconnected tables** covering student lifecycle data
+-  **Historical data preservation** with SCD-2 (Slowly Changing Dimensions)
+-  **R/RStudio integration** for data analysis
+-  **Automated ETL pipeline** with validation and logging
+-  **Data quality controls** and referential integrity
 
 ### Database Overview
 - **Database Name:** `tcsi_db`
 - **RDBMS:** PostgreSQL 16
-- **Total Tables:** 27 tables
+- **Total Tables:** 26 tables
 - **Data Categories:** Students, Courses, Admissions, Financial, Awards, Units
 
 ---
@@ -51,18 +47,18 @@ This guide provides complete instructions for setting up the PostgreSQL database
 Before starting, ensure you have:
 
 ### Software Requirements
-- ✅ **Operating System:** macOS, Windows, or Linux
-- ✅ **R:** Version 4.0 or higher ([Download](https://cloud.r-project.org/))
-- ✅ **RStudio:** Latest version ([Download](https://posit.co/download/rstudio-desktop/))
-- ✅ **Terminal/Command Line:** Basic familiarity required
+-  **Operating System:** macOS, Windows, or Linux
+-  **R:** Version 4.0 or higher ([Download](https://cloud.r-project.org/))
+-  **RStudio:** Latest version ([Download](https://posit.co/download/rstudio-desktop/))
+-  **Terminal/Command Line:** Basic familiarity required
 
 ### Permissions
-- ✅ Administrator/sudo access for software installation
-- ✅ Ability to create and modify files in your home directory
+-  Administrator/sudo access for software installation
+-  Ability to create and modify files in your home directory
 
 ### Disk Space
-- ✅ Minimum 2GB free space for PostgreSQL installation
-- ✅ Additional space for data storage (varies by dataset size)
+-  Minimum 2GB free space for PostgreSQL installation
+-  Additional space for data storage (varies by dataset size)
 
 ---
 
@@ -109,7 +105,7 @@ For detailed step-by-step instructions, continue to the next section.
 
 ---
 
-## 🔧 Detailed Setup Instructions
+##  Detailed Setup Instructions
 
 ### Step 1: PostgreSQL Installation
 
@@ -461,7 +457,7 @@ DATA_INPUT_DIR <- file.path(PROJECT_ROOT, "data", "tcsiSample")
 DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
 ```
 
-⚠️ **Security Warning:** Never hardcode database credentials in configuration files. Always use environment variables through `.Renviron`.
+**Security Warning:** Never hardcode database credentials in configuration files. Always use environment variables through `.Renviron`.
 
 #### 6.2 Alternative: Use Shiny Configuration App
 
@@ -500,18 +496,18 @@ runApp("app.R")
 ```
 
 **Shiny App Features:**
-- ✅ Database connection testing with real-time feedback
-- ✅ Visual configuration file generation
-- ✅ ETL process monitoring with progress bars
-- ✅ Real-time log viewing
-- ✅ Error reporting and diagnostics
+-  Database connection testing with real-time feedback
+-  Visual configuration file generation
+-  ETL process monitoring with progress bars
+-  Real-time log viewing
+-  Error reporting and diagnostics
 
 **Access the app:**
 Once running, the app opens automatically in your browser at `http://127.0.0.1:XXXX`
 
 ---
 
-## ✅ Testing & Verification
+##  Testing & Verification
 
 ### Test 1: PostgreSQL Service Status
 
@@ -558,12 +554,12 @@ con <- tryCatch({
     password = Sys.getenv("DB_PASSWORD")
   )
 }, error = function(e) {
-  cat("❌ Connection failed:", e$message, "\n")
+  cat("Connection failed:", e$message, "\n")
   return(NULL)
 })
 
 if (!is.null(con)) {
-  cat("✅ Database connection successful!\n")
+  cat("Database connection successful!\n")
   
   # Test query
   result <- dbGetQuery(con, "SELECT version();")
@@ -577,9 +573,9 @@ if (!is.null(con)) {
   
   # Disconnect
   dbDisconnect(con)
-  cat("\n✅ All tests passed!\n")
+  cat("\nAll tests passed!\n")
 } else {
-  cat("❌ Unable to establish connection. Check your configuration.\n")
+  cat("Unable to establish connection. Check your configuration.\n")
 }
 ```
 
@@ -611,7 +607,7 @@ source("test_etl.R")
 
 ---
 
-## 🗄️ Database Structure
+## Database Structure
 
 ### Table Categories and Count
 
@@ -673,7 +669,7 @@ hep_hdr_end_users_engagement   -- HDR end user engagement
 
 ---
 
-## 📋 Data Validation Rules
+## Data Validation Rules
 
 The ETL process includes comprehensive data validation to ensure data quality and integrity.
 
@@ -841,7 +837,7 @@ VALIDATION_LEVEL <- "STRICT"  # Options: "STRICT", "MODERATE", "LENIENT"
 
 ---
 
-## 💡 Usage Examples
+## Usage Examples
 
 ### Example 1: Connect to Database from R
 
@@ -860,10 +856,10 @@ create_db_connection <- function() {
       user = Sys.getenv("DB_USER"),
       password = Sys.getenv("DB_PASSWORD")
     )
-    message("✅ Connection successful!")
+    message(" Connection successful!")
     return(con)
   }, error = function(e) {
-    stop("❌ Connection failed: ", e$message)
+    stop(" Connection failed: ", e$message)
   })
 }
 
@@ -955,7 +951,7 @@ print_overall_summary(results)
 
 ---
 
-## 🔧 Maintenance & Monitoring
+## Maintenance & Monitoring
 
 ### Check Database Size
 
@@ -1037,7 +1033,7 @@ chmod +x ~/backup_tcsi.sh
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue 1: Cannot Connect to PostgreSQL
 
@@ -1190,7 +1186,7 @@ psql -d tcsi_db -f schema/01_students.sql
 
 ---
 
-## 🔐 Security Best Practices
+## Security Best Practices
 
 ### 1. Password Protection
 
@@ -1244,9 +1240,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 
 ### 6. Environment Variables
 
-✅ **DO:** Use `.Renviron` for credentials  
-❌ **DON'T:** Hardcode passwords in scripts  
-❌ **DON'T:** Commit `.Renviron` to Git
+ **DO:** Use `.Renviron` for credentials  
+ **DON'T:** Hardcode passwords in scripts  
+ **DON'T:** Commit `.Renviron` to Git
 
 **Important Git Configuration:**
 
@@ -1283,7 +1279,7 @@ log_statement = 'all'
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 ### Official Documentation
 - [PostgreSQL 16 Documentation](https://www.postgresql.org/docs/16/)
@@ -1327,7 +1323,7 @@ sudo systemctl restart postgresql
 
 ---
 
-## 📞 Getting Help
+## Getting Help
 
 ### Common Issues and Solutions
 1. Check this troubleshooting section first
@@ -1346,7 +1342,7 @@ sudo systemctl restart postgresql
 
 ---
 
-## ✅ Setup Checklist
+## Setup Checklist
 
 Use this checklist to verify your setup is complete:
 
@@ -1362,18 +1358,5 @@ Use this checklist to verify your setup is complete:
 - [ ] Sample data load test completed
 - [ ] Backup strategy implemented
 
----
 
-## 📝 Version History
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.1 | Oct 2025 | TCSI Team | **Major Update - Security & Completeness**<br>• Fixed security vulnerability (removed hardcoded credentials)<br>• Completed Quick Start step 6 with full test command<br>• Added platform-specific path examples (5 locations)<br>• Added comprehensive Data Validation Rules section (200+ lines)<br>• Enhanced security section with .gitignore guidance<br>• Added init.sql documentation<br>• Improved Shiny app setup instructions |
-| 1.0 | Oct 2025 | TCSI Team | Initial comprehensive guide<br>• Multi-platform installation (macOS/Windows/Linux)<br>• Complete schema setup for 27 tables<br>• R integration examples<br>• Troubleshooting section<br>• Security best practices<br>• Maintenance and monitoring commands |
-
----
-
-**Document Status:** ✅ Production Ready  
-**Maintained By:** TCSI ETL Project Team  
-**Last Review:** October 2025  
-**Next Review Due:** January 2026
