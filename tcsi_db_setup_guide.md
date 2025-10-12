@@ -465,19 +465,49 @@ DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
 
 #### 6.2 Alternative: Use Shiny Configuration App
 
-The project includes a graphical configuration tool:
+The project includes a graphical configuration tool for easy database setup.
 
-```r
-# Run Shiny app for easy configuration
-cd tcsi-etl-project/src
+**Option 1: Run from Terminal/Command Line**
+```bash
+# Navigate to src directory
+cd /path/to/tcsi-etl-project/src
+
+# Platform-specific examples:
+# Windows (Git Bash): cd /c/Users/YourName/Documents/tcsi-etl-project/src
+# macOS:   cd ~/Documents/tcsi-etl-project/src
+# Linux:   cd ~/projects/tcsi-etl-project/src
+
+# Run Shiny app
 Rscript -e "shiny::runApp('app.R')"
 ```
 
-Features:
-- ✅ Database connection testing
-- ✅ Configuration file generation
-- ✅ ETL process monitoring
-- ✅ Real-time logs
+**Option 2: Run from R/RStudio (Recommended)**
+```r
+# Set working directory to src folder
+setwd("C:/Users/YourName/Documents/tcsi-etl-project/src")  # Windows
+# OR
+setwd("~/Documents/tcsi-etl-project/src")  # macOS/Linux
+
+# Run app
+library(shiny)
+runApp("app.R")
+```
+
+**Option 3: RStudio One-Click (Easiest)**
+```r
+# Open app.R in RStudio, then click "Run App" button at top-right
+# Or use keyboard shortcut: Cmd/Ctrl + Shift + Enter
+```
+
+**Shiny App Features:**
+- ✅ Database connection testing with real-time feedback
+- ✅ Visual configuration file generation
+- ✅ ETL process monitoring with progress bars
+- ✅ Real-time log viewing
+- ✅ Error reporting and diagnostics
+
+**Access the app:**
+Once running, the app opens automatically in your browser at `http://127.0.0.1:XXXX`
 
 ---
 
@@ -894,18 +924,24 @@ dbDisconnect(con)
 ### Example 5: Run Complete ETL Pipeline
 
 ```r
-# Ensure you're in the project root directory
-# If using RStudio, use: Session → Set Working Directory → To Project Directory
-# Or manually set it:
-setwd("/path/to/tcsi-etl-project")  # Replace with your actual path
+# IMPORTANT: Ensure you're in the project root directory
 
-# For example:
-# Windows: setwd("C:/Users/YourName/Documents/tcsi-etl-project")
-# macOS:   setwd("/Users/YourName/Documents/tcsi-etl-project")
-# Linux:   setwd("/home/yourname/tcsi-etl-project")
+# Option 1: Use RStudio (Recommended)
+# Session → Set Working Directory → To Project Directory
 
-# Verify working directory
+# Option 2: Set manually with platform-specific paths
+# Windows:
+setwd("C:/Users/YourName/Documents/tcsi-etl-project")
+
+# macOS:
+setwd("~/Documents/tcsi-etl-project")
+
+# Linux:
+setwd("~/projects/tcsi-etl-project")
+
+# Verify you're in the correct directory
 getwd()  # Should show your project root path
+list.files()  # Should see: src/, schema/, config/, data/, etc.
 
 # Source main ETL script
 source("src/main_etl_all_tables.R")
@@ -1330,12 +1366,14 @@ Use this checklist to verify your setup is complete:
 
 ## 📝 Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | Oct 2025 | Initial comprehensive guide |
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.1 | Oct 2025 | TCSI Team | **Major Update - Security & Completeness**<br>• Fixed security vulnerability (removed hardcoded credentials)<br>• Completed Quick Start step 6 with full test command<br>• Added platform-specific path examples (5 locations)<br>• Added comprehensive Data Validation Rules section (200+ lines)<br>• Enhanced security section with .gitignore guidance<br>• Added init.sql documentation<br>• Improved Shiny app setup instructions |
+| 1.0 | Oct 2025 | TCSI Team | Initial comprehensive guide<br>• Multi-platform installation (macOS/Windows/Linux)<br>• Complete schema setup for 27 tables<br>• R integration examples<br>• Troubleshooting section<br>• Security best practices<br>• Maintenance and monitoring commands |
 
 ---
 
 **Document Status:** ✅ Production Ready  
 **Maintained By:** TCSI ETL Project Team  
-**Last Review:** October 2025
+**Last Review:** October 2025  
+**Next Review Due:** January 2026
