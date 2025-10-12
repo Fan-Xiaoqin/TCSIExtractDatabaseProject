@@ -1,8 +1,5 @@
 # TCSI Database Complete Setup Guide
 
-> **Version:** 1.0  
-> **Last Updated:** October 2025  
-> **Project:** TCSI Extract Database - Tertiary Collection of Student Information
 
 ---
 
@@ -41,7 +38,7 @@ This guide provides complete instructions for setting up the PostgreSQL database
 ### Database Overview
 - **Database Name:** `tcsi_db`
 - **RDBMS:** PostgreSQL 16
-- **Total Tables:** 27 tables
+- **Total Tables:** 26 tables
 - **Data Categories:** Students, Courses, Admissions, Financial, Awards, Units
 
 ---
@@ -466,7 +463,7 @@ This is the **#1 most common issue**. If `Sys.getenv("DB_HOST")` returns `""`, i
 2. **File is in the wrong location**
    ```r
    # Check where R expects it
-   Sys.getenv("HOME")  # Should be /Users/xiaoyusong
+   Sys.getenv("HOME")  
    path.expand("~/.Renviron")  # Verify path
    
    # Check if file exists
@@ -521,7 +518,7 @@ Expected output after restart:
 ✅ DB_HOST        : 'localhost'
 ✅ DB_PORT        : '5432'
 ✅ DB_NAME        : 'tcsi_db'
-✅ DB_USER        : 'xiaoyusong'
+✅ DB_USER        : 'your_username'
 ✅ DB_PASSWORD    : ''
 
 ✅ SUCCESS: All environment variables loaded!
@@ -1674,21 +1671,4 @@ Use this checklist to verify your setup is complete:
 - [ ] Sample data load test completed
 - [ ] Backup strategy implemented
 
----
 
-## 📝 Version History
-
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.2.1 | Oct 2025 | TCSI Team | **UX Improvement - Use Existing Project Files**<br>• Updated Test 3 to use existing `R/connect_db.R` instead of creating new file<br>• Added reference to project's database utilities<br>• Removed redundant test_connection.R creation<br>• Added alternative method using ETL utilities<br>• Improved alignment with actual project structure |
-| 1.2.0 | Oct 2025 | TCSI Team | **Major Addition - Project Setup**<br>• Added critical Step 0: Get the Project Code<br>• Git clone and ZIP download instructions<br>• Project structure verification<br>• Working directory setup guidance<br>• Pro tip: environment variable for project path<br>• Updated Quick Start with Step 0<br>• Added Git to Prerequisites |
-| 1.1.1 | Oct 2025 | TCSI Team | **Critical UX Fix - .Renviron Restart Warning**<br>• Added prominent restart warnings after .Renviron creation<br>• New troubleshooting section for empty environment variables<br>• Added verification script with visual status indicators<br>• Moved common Issue #0 to top of troubleshooting<br>• Added keyboard shortcuts for RStudio restart |
-| 1.1 | Oct 2025 | TCSI Team | **Major Update - Security & Completeness**<br>• Fixed security vulnerability (removed hardcoded credentials)<br>• Completed Quick Start step 6 with full test command<br>• Added platform-specific path examples (5 locations)<br>• Added comprehensive Data Validation Rules section (200+ lines)<br>• Enhanced security section with .gitignore guidance<br>• Added init.sql documentation<br>• Improved Shiny app setup instructions |
-| 1.0 | Oct 2025 | TCSI Team | Initial comprehensive guide<br>• Multi-platform installation (macOS/Windows/Linux)<br>• Complete schema setup for 27 tables<br>• R integration examples<br>• Troubleshooting section<br>• Security best practices<br>• Maintenance and monitoring commands |
-
----
-
-**Document Status:** ✅ Production Ready  
-**Maintained By:** TCSI ETL Project Team  
-**Last Review:** October 2025  
-**Next Review Due:** January 2026
