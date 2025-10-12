@@ -1,8 +1,12 @@
 # TCSI Database Complete Setup Guide
 
+> **Version:** 1.0  
+> **Last Updated:** October 2025  
+> **Project:** TCSI Extract Database - Tertiary Collection of Student Information
 
+---
 
-##  Table of Contents
+## 📖 Table of Contents
 
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
@@ -24,20 +28,20 @@
 
 ---
 
-##  Overview
+## 🎯 Overview
 
 This guide provides complete instructions for setting up the PostgreSQL database infrastructure for the TCSI ETL project. The database stores and manages student data extracted from TCSI (Tertiary Collection of Student Information) with support for:
 
--  **27 interconnected tables** covering student lifecycle data
--  **Historical data preservation** with SCD-2 (Slowly Changing Dimensions)
--  **R/RStudio integration** for data analysis
--  **Automated ETL pipeline** with validation and logging
--  **Data quality controls** and referential integrity
+- ✅ **27 interconnected tables** covering student lifecycle data
+- ✅ **Historical data preservation** with SCD-2 (Slowly Changing Dimensions)
+- ✅ **R/RStudio integration** for data analysis
+- ✅ **Automated ETL pipeline** with validation and logging
+- ✅ **Data quality controls** and referential integrity
 
 ### Database Overview
 - **Database Name:** `tcsi_db`
 - **RDBMS:** PostgreSQL 16
-- **Total Tables:** 26 tables
+- **Total Tables:** 27 tables
 - **Data Categories:** Students, Courses, Admissions, Financial, Awards, Units
 
 ---
@@ -47,18 +51,117 @@ This guide provides complete instructions for setting up the PostgreSQL database
 Before starting, ensure you have:
 
 ### Software Requirements
--  **Operating System:** macOS, Windows, or Linux
--  **R:** Version 4.0 or higher ([Download](https://cloud.r-project.org/))
--  **RStudio:** Latest version ([Download](https://posit.co/download/rstudio-desktop/))
--  **Terminal/Command Line:** Basic familiarity required
+- ✅ **Operating System:** macOS, Windows, or Linux
+- ✅ **Git:** For cloning the repository ([Download](https://git-scm.com/downloads))
+- ✅ **R:** Version 4.0 or higher ([Download](https://cloud.r-project.org/))
+- ✅ **RStudio:** Latest version ([Download](https://posit.co/download/rstudio-desktop/))
+- ✅ **Terminal/Command Line:** Basic familiarity required
 
 ### Permissions
--  Administrator/sudo access for software installation
--  Ability to create and modify files in your home directory
+- ✅ Administrator/sudo access for software installation
+- ✅ Ability to create and modify files in your home directory
 
 ### Disk Space
--  Minimum 2GB free space for PostgreSQL installation
--  Additional space for data storage (varies by dataset size)
+- ✅ Minimum 2GB free space for PostgreSQL installation
+- ✅ Additional space for data storage (varies by dataset size)
+
+---
+
+## 📥 Step 0: Get the Project Code
+
+**⚠️ DO THIS FIRST before any other setup steps!**
+
+### Option 1: Clone with Git (Recommended)
+
+```bash
+# Navigate to where you want to store the project
+cd ~/Documents  # or your preferred location
+
+# Clone the repository
+git clone https://github.com/YOUR_ORG/TCSIExtractDatabaseProject.git
+
+# Navigate into the project
+cd TCSIExtractDatabaseProject
+
+# Verify the structure
+ls -la
+# You should see: tcsi-etl-project/, docs/, README.md, etc.
+```
+
+### Option 2: Download ZIP (Alternative)
+
+If you don't have Git installed:
+
+1. **Go to GitHub repository**
+   - Visit: `https://github.com/YOUR_ORG/TCSIExtractDatabaseProject`
+
+2. **Download ZIP**
+   - Click green "Code" button → "Download ZIP"
+   - Save to your preferred location (e.g., `~/Documents/`)
+
+3. **Extract and navigate**
+   ```bash
+   # macOS/Linux
+   cd ~/Downloads
+   unzip TCSIExtractDatabaseProject-main.zip
+   mv TCSIExtractDatabaseProject-main ~/Documents/TCSIExtractDatabaseProject
+   cd ~/Documents/TCSIExtractDatabaseProject
+   
+   # Windows (PowerShell)
+   cd $HOME\Downloads
+   Expand-Archive TCSIExtractDatabaseProject-main.zip -DestinationPath $HOME\Documents
+   cd $HOME\Documents\TCSIExtractDatabaseProject
+   ```
+
+### Verify Project Structure
+
+After downloading, verify you have the correct structure:
+
+```bash
+# List project contents
+ls -la
+
+# Expected structure:
+TCSIExtractDatabaseProject/
+├── tcsi-etl-project/           # Main ETL project
+│   ├── config/                 # Configuration files
+│   ├── data/                   # Data directory
+│   ├── docs/                   # Documentation
+│   ├── schema/  (or db/schema/) # Database schema SQL files
+│   ├── src/                    # Source code
+│   ├── install_packages.R      # Package installer
+│   └── README.md
+├── docs/                       # Additional docs
+├── mapping/                    # Field mappings
+└── README.md                   # Project README
+```
+
+### Set Your Working Directory
+
+**For RStudio users:**
+```r
+# Open RStudio
+# File → Open Project → Navigate to TCSIExtractDatabaseProject/tcsi-etl-project
+# Or: Session → Set Working Directory → Choose Directory
+```
+
+**For Terminal users:**
+```bash
+# Remember this path - you'll use it throughout setup
+cd ~/Documents/TCSIExtractDatabaseProject/tcsi-etl-project
+pwd  # Print working directory - save this path!
+```
+
+**💡 Pro Tip:** Save your project path as an environment variable:
+
+```bash
+# Add to ~/.zshrc or ~/.bashrc
+echo 'export TCSI_PROJECT="$HOME/Documents/TCSIExtractDatabaseProject/tcsi-etl-project"' >> ~/.zshrc
+source ~/.zshrc
+
+# Now you can quickly navigate:
+cd $TCSI_PROJECT
+```
 
 ---
 
@@ -67,6 +170,11 @@ Before starting, ensure you have:
 **For experienced users who want to get running immediately:**
 
 ```bash
+# 0. Get the project code
+cd ~/Documents
+git clone https://github.com/YOUR_ORG/TCSIExtractDatabaseProject.git
+cd TCSIExtractDatabaseProject/tcsi-etl-project
+
 # 1. Install PostgreSQL (macOS)
 brew install postgresql@16
 brew services start postgresql@16
@@ -75,8 +183,9 @@ brew services start postgresql@16
 createdb tcsi_db
 
 # 3. Create schema
-cd /path/to/tcsi-etl-project  # Replace with your actual path
 psql -d tcsi_db -f schema/init.sql
+# OR if schema is in db/ folder:
+# psql -d tcsi_db -f db/schema/init.sql
 
 # 4. Install R packages
 Rscript install_packages.R
@@ -87,9 +196,10 @@ Rscript install_packages.R
 # DB_PORT=5432
 # DB_NAME=tcsi_db
 # DB_USER=your_username
-# DB_PASSWORD=your_password
+# DB_PASSWORD=
 
-# 6. Test connection
+# 6. Restart R/RStudio (IMPORTANT!)
+# Then test connection:
 R -e "
 library(DBI); 
 library(RPostgres); 
@@ -105,7 +215,18 @@ For detailed step-by-step instructions, continue to the next section.
 
 ---
 
-##  Detailed Setup Instructions
+## 🔧 Detailed Setup Instructions
+
+### Step 0: Get the Project Code ✅
+
+**See the ["Step 0: Get the Project Code"](#-step-0-get-the-project-code) section above for detailed instructions.**
+
+Quick reference:
+```bash
+cd ~/Documents
+git clone https://github.com/YOUR_ORG/TCSIExtractDatabaseProject.git
+cd TCSIExtractDatabaseProject/tcsi-etl-project
+```
 
 ### Step 1: PostgreSQL Installation
 
@@ -283,7 +404,41 @@ DB_PASSWORD=                        # Empty for Mac/Linux local, or your passwor
 - File type: "All Files (*.*)"
 - Location: `C:\Users\<YourUsername>\Documents\`
 
+---
+
+⚠️ **IMPORTANT: Restart Required!**
+
+After creating or modifying `.Renviron`, you **MUST restart R or RStudio**:
+
+| Method | How to Restart |
+|--------|----------------|
+| **RStudio** | `Session → Restart R` or `Cmd/Ctrl + Shift + 0/F10` |
+| **Terminal R** | Type `q()` to quit, then `R` to restart |
+| **Manual Load** | `readRenviron("~/.Renviron")` (temporary, current session only) |
+
+**Why?** R only reads `.Renviron` at startup. Changes won't take effect until you restart.
+
+---
+
 **Restart R/RStudio** for changes to take effect.
+
+⚠️ **CRITICAL:** `.Renviron` is only loaded when R starts. If you already have R or RStudio open, you MUST restart it:
+
+**RStudio:**
+- Menu: `Session → Restart R`
+- Keyboard: `Cmd + Shift + 0` (Mac) or `Ctrl + Shift + F10` (Windows)
+
+**Terminal R:**
+```r
+q()  # Quit R
+R    # Restart R
+```
+
+**Alternative (temporary, not recommended):**
+```r
+# Manually reload .Renviron (only works for current session)
+readRenviron("~/.Renviron")
+```
 
 #### 3.4 Verify Configuration
 
@@ -292,6 +447,84 @@ Open R or RStudio and run:
 Sys.getenv("DB_HOST")
 Sys.getenv("DB_NAME")
 # Should print: "localhost" and "tcsi_db"
+```
+
+**🔧 Troubleshooting: If you see empty strings `""`**
+
+This is the **#1 most common issue**. If `Sys.getenv("DB_HOST")` returns `""`, it means:
+
+**Problem:** R hasn't loaded the `.Renviron` file
+
+**Solutions (in order of likelihood):**
+
+1. **You didn't restart R/RStudio** (Most common!)
+   ```r
+   # In RStudio: Session → Restart R (Cmd/Ctrl + Shift + 0)
+   # In Terminal: q() then R
+   ```
+
+2. **File is in the wrong location**
+   ```r
+   # Check where R expects it
+   Sys.getenv("HOME")  # Should be /Users/xiaoyusong
+   path.expand("~/.Renviron")  # Verify path
+   
+   # Check if file exists
+   file.exists("~/.Renviron")  # Should be TRUE
+   ```
+
+3. **File has wrong format**
+   ```bash
+   # Verify in terminal
+   cat ~/.Renviron
+   
+   # Should show your variables WITHOUT quotes around values
+   # Correct:   DB_HOST=localhost
+   # Wrong:     DB_HOST="localhost"
+   ```
+
+4. **Manual load as last resort**
+   ```r
+   # Force reload (only for current session)
+   readRenviron("~/.Renviron")
+   Sys.getenv("DB_HOST")  # Test again
+   ```
+
+**Complete verification script:**
+
+```r
+# Run this after restarting R
+cat("=== Environment Variable Check ===\n")
+vars <- c("DB_HOST", "DB_PORT", "DB_NAME", "DB_USER", "DB_PASSWORD")
+for (var in vars) {
+  value <- Sys.getenv(var)
+  status <- if (value != "" || var == "DB_PASSWORD") "✅" else "❌"
+  cat(sprintf("%s %-15s: '%s'\n", status, var, value))
+}
+
+# Final check
+all_set <- all(Sys.getenv("DB_HOST") != "", 
+               Sys.getenv("DB_PORT") != "",
+               Sys.getenv("DB_NAME") != "", 
+               Sys.getenv("DB_USER") != "")
+
+if (all_set) {
+  cat("\n✅ SUCCESS: All environment variables loaded!\n")
+} else {
+  cat("\n❌ FAILED: Some variables missing. Did you restart R?\n")
+}
+```
+
+Expected output after restart:
+```
+=== Environment Variable Check ===
+✅ DB_HOST        : 'localhost'
+✅ DB_PORT        : '5432'
+✅ DB_NAME        : 'tcsi_db'
+✅ DB_USER        : 'xiaoyusong'
+✅ DB_PASSWORD    : ''
+
+✅ SUCCESS: All environment variables loaded!
 ```
 
 ---
@@ -457,7 +690,7 @@ DATA_INPUT_DIR <- file.path(PROJECT_ROOT, "data", "tcsiSample")
 DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
 ```
 
-**Security Warning:** Never hardcode database credentials in configuration files. Always use environment variables through `.Renviron`.
+⚠️ **Security Warning:** Never hardcode database credentials in configuration files. Always use environment variables through `.Renviron`.
 
 #### 6.2 Alternative: Use Shiny Configuration App
 
@@ -496,18 +729,18 @@ runApp("app.R")
 ```
 
 **Shiny App Features:**
--  Database connection testing with real-time feedback
--  Visual configuration file generation
--  ETL process monitoring with progress bars
--  Real-time log viewing
--  Error reporting and diagnostics
+- ✅ Database connection testing with real-time feedback
+- ✅ Visual configuration file generation
+- ✅ ETL process monitoring with progress bars
+- ✅ Real-time log viewing
+- ✅ Error reporting and diagnostics
 
 **Access the app:**
 Once running, the app opens automatically in your browser at `http://127.0.0.1:XXXX`
 
 ---
 
-##  Testing & Verification
+## ✅ Testing & Verification
 
 ### Test 1: PostgreSQL Service Status
 
@@ -537,52 +770,67 @@ Expected output:
 
 ### Test 3: R Database Connection
 
-Create a test script `test_connection.R`:
+**Use the project's existing connection script** (no need to create new files):
 
 ```r
-library(DBI)
-library(RPostgres)
+# 1. Load the project's database connection script
+source("R/connect_db.R")
 
-# Create connection
-con <- tryCatch({
-  dbConnect(
-    RPostgres::Postgres(),
-    host = Sys.getenv("DB_HOST"),
-    port = as.integer(Sys.getenv("DB_PORT")),
-    dbname = Sys.getenv("DB_NAME"),
-    user = Sys.getenv("DB_USER"),
-    password = Sys.getenv("DB_PASSWORD")
-  )
-}, error = function(e) {
-  cat("Connection failed:", e$message, "\n")
-  return(NULL)
-})
+# 2. Test connection
+cat("Testing database connection...\n")
+db_conn <- create_db_connection()
+# Expected: "Database connection successful!"
 
-if (!is.null(con)) {
-  cat("Database connection successful!\n")
-  
+# 3. Test query using the helper function
+cat("\n=== PostgreSQL Version ===\n")
+print(run_query("SELECT version();"))
+
+# 4. Check for tables
+cat("\n=== Database Tables ===\n")
+tables <- run_query("
+  SELECT tablename 
+  FROM pg_tables 
+  WHERE schemaname = 'public' 
+  ORDER BY tablename;
+")
+
+if (nrow(tables) > 0) {
+  cat("✅ Found", nrow(tables), "tables\n")
+  print(head(tables, 10))
+} else {
+  cat("⚠️ No tables found. You need to create the schema (Step 5)\n")
+}
+
+# 5. Clean up
+dbDisconnect(db_conn)
+cat("\n✅ Connection test complete!\n")
+```
+
+**Alternative: Use the ETL utilities**
+
+```r
+# Load ETL configuration and utilities
+source("config/database_config.R")
+source("src/utils/logging_utils.R")
+source("src/utils/database_utils.R")
+
+# Connect using ETL functions
+conn <- db_connect()
+
+if (!is.null(conn)) {
   # Test query
-  result <- dbGetQuery(con, "SELECT version();")
-  cat("\nPostgreSQL Version:\n")
-  print(result)
-  
-  # List tables
-  tables <- dbListTables(con)
-  cat("\nNumber of tables:", length(tables), "\n")
-  cat("Sample tables:", paste(head(tables, 5), collapse=", "), "\n")
+  version <- dbGetQuery(conn, "SELECT version();")
+  print(version)
   
   # Disconnect
-  dbDisconnect(con)
-  cat("\nAll tests passed!\n")
-} else {
-  cat("Unable to establish connection. Check your configuration.\n")
+  db_disconnect(conn)
 }
 ```
 
-Run the test:
-```r
-source("test_connection.R")
-```
+**📁 Project Files Reference:**
+- `R/connect_db.R` - Main connection script with helper functions
+- `src/utils/database_utils.R` - ETL database utilities
+- `reports/connect_db_doc.Rmd` - Complete connection documentation
 
 ### Test 4: Sample Data Load
 
@@ -607,7 +855,7 @@ source("test_etl.R")
 
 ---
 
-## Database Structure
+## 🗄️ Database Structure
 
 ### Table Categories and Count
 
@@ -669,7 +917,7 @@ hep_hdr_end_users_engagement   -- HDR end user engagement
 
 ---
 
-## Data Validation Rules
+## 📋 Data Validation Rules
 
 The ETL process includes comprehensive data validation to ensure data quality and integrity.
 
@@ -837,34 +1085,60 @@ VALIDATION_LEVEL <- "STRICT"  # Options: "STRICT", "MODERATE", "LENIENT"
 
 ---
 
-## Usage Examples
+## 💡 Usage Examples
 
 ### Example 1: Connect to Database from R
+
+**Option A: Use the project's connection script (Recommended)**
+
+```r
+# Load the project's database connection utilities
+source("R/connect_db.R")
+
+# Create connection with built-in error handling
+db_conn <- create_db_connection()
+# Output: "Database connection successful!"
+
+# Use the connection
+result <- dbGetQuery(db_conn, "SELECT COUNT(*) FROM hep_students;")
+print(result)
+
+# Disconnect
+dbDisconnect(db_conn)
+```
+
+**Option B: Use the helper function for quick queries**
+
+```r
+source("R/connect_db.R")
+
+# Run query with automatic connection management
+result <- run_query("SELECT * FROM hep_students LIMIT 5;")
+print(result)
+# Connection automatically opens and closes
+```
+
+**Option C: Manual connection (if needed)**
 
 ```r
 library(DBI)
 library(RPostgres)
 
-# Function to create connection
-create_db_connection <- function() {
-  tryCatch({
-    con <- dbConnect(
-      RPostgres::Postgres(),
-      host = Sys.getenv("DB_HOST"),
-      port = as.integer(Sys.getenv("DB_PORT")),
-      dbname = Sys.getenv("DB_NAME"),
-      user = Sys.getenv("DB_USER"),
-      password = Sys.getenv("DB_PASSWORD")
-    )
-    message(" Connection successful!")
-    return(con)
-  }, error = function(e) {
-    stop(" Connection failed: ", e$message)
-  })
-}
+# Create connection manually
+con <- dbConnect(
+  RPostgres::Postgres(),
+  host = Sys.getenv("DB_HOST"),
+  port = as.integer(Sys.getenv("DB_PORT")),
+  dbname = Sys.getenv("DB_NAME"),
+  user = Sys.getenv("DB_USER"),
+  password = Sys.getenv("DB_PASSWORD")
+)
 
-# Use the connection
-con <- create_db_connection()
+# Use connection
+# ... your queries ...
+
+# Always disconnect
+dbDisconnect(con)
 ```
 
 ### Example 2: Query Student Data
@@ -951,7 +1225,7 @@ print_overall_summary(results)
 
 ---
 
-## Maintenance & Monitoring
+## 🔧 Maintenance & Monitoring
 
 ### Check Database Size
 
@@ -1033,7 +1307,45 @@ chmod +x ~/backup_tcsi.sh
 
 ---
 
-## Troubleshooting
+## 🐛 Troubleshooting
+
+### Issue 0: Environment Variables Not Loading (Most Common!) 🔥
+
+**Symptom:**
+```r
+Sys.getenv("DB_HOST")  # Returns ""
+```
+
+**This is the #1 issue users face!**
+
+**Solutions:**
+
+1. **Restart R/RStudio (99% of cases)**
+   - RStudio: `Session → Restart R` or `Cmd/Ctrl + Shift + 0`
+   - Terminal R: `q()` then `R`
+   - **Why:** `.Renviron` only loads at R startup
+
+2. **Verify file location**
+   ```r
+   Sys.getenv("HOME")        # Check home directory
+   file.exists("~/.Renviron") # Should be TRUE
+   ```
+
+3. **Check file format**
+   ```bash
+   cat ~/.Renviron
+   # Should NOT have quotes: DB_HOST=localhost (correct)
+   # Not: DB_HOST="localhost" (wrong)
+   ```
+
+4. **Manual reload (temporary fix)**
+   ```r
+   readRenviron("~/.Renviron")
+   ```
+
+See Section 3.4 for complete troubleshooting steps.
+
+---
 
 ### Issue 1: Cannot Connect to PostgreSQL
 
@@ -1186,7 +1498,7 @@ psql -d tcsi_db -f schema/01_students.sql
 
 ---
 
-## Security Best Practices
+## 🔐 Security Best Practices
 
 ### 1. Password Protection
 
@@ -1240,9 +1552,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO analyst;
 
 ### 6. Environment Variables
 
- **DO:** Use `.Renviron` for credentials  
- **DON'T:** Hardcode passwords in scripts  
- **DON'T:** Commit `.Renviron` to Git
+✅ **DO:** Use `.Renviron` for credentials  
+❌ **DON'T:** Hardcode passwords in scripts  
+❌ **DON'T:** Commit `.Renviron` to Git
 
 **Important Git Configuration:**
 
@@ -1279,7 +1591,7 @@ log_statement = 'all'
 
 ---
 
-## Additional Resources
+## 📚 Additional Resources
 
 ### Official Documentation
 - [PostgreSQL 16 Documentation](https://www.postgresql.org/docs/16/)
@@ -1323,7 +1635,7 @@ sudo systemctl restart postgresql
 
 ---
 
-## Getting Help
+## 📞 Getting Help
 
 ### Common Issues and Solutions
 1. Check this troubleshooting section first
@@ -1342,21 +1654,41 @@ sudo systemctl restart postgresql
 
 ---
 
-## Setup Checklist
+## ✅ Setup Checklist
 
 Use this checklist to verify your setup is complete:
 
+- [ ] **Project code downloaded** (Git clone or ZIP download)
+- [ ] **Project structure verified** (schema/, src/, config/ folders exist)
 - [ ] PostgreSQL 16 installed
 - [ ] PostgreSQL service running
 - [ ] Database `tcsi_db` created
 - [ ] All 27 tables created successfully
 - [ ] Indexes created (08_indexes.sql executed)
 - [ ] `.Renviron` file configured with credentials
+- [ ] **R/RStudio restarted** after .Renviron creation
+- [ ] Environment variables verified (Sys.getenv() returns values)
 - [ ] R packages installed (DBI, RPostgres, dplyr, readr, writexl)
 - [ ] Database connection test from R successful
 - [ ] ETL configuration file updated
 - [ ] Sample data load test completed
 - [ ] Backup strategy implemented
 
+---
 
+## 📝 Version History
 
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.2.1 | Oct 2025 | TCSI Team | **UX Improvement - Use Existing Project Files**<br>• Updated Test 3 to use existing `R/connect_db.R` instead of creating new file<br>• Added reference to project's database utilities<br>• Removed redundant test_connection.R creation<br>• Added alternative method using ETL utilities<br>• Improved alignment with actual project structure |
+| 1.2.0 | Oct 2025 | TCSI Team | **Major Addition - Project Setup**<br>• Added critical Step 0: Get the Project Code<br>• Git clone and ZIP download instructions<br>• Project structure verification<br>• Working directory setup guidance<br>• Pro tip: environment variable for project path<br>• Updated Quick Start with Step 0<br>• Added Git to Prerequisites |
+| 1.1.1 | Oct 2025 | TCSI Team | **Critical UX Fix - .Renviron Restart Warning**<br>• Added prominent restart warnings after .Renviron creation<br>• New troubleshooting section for empty environment variables<br>• Added verification script with visual status indicators<br>• Moved common Issue #0 to top of troubleshooting<br>• Added keyboard shortcuts for RStudio restart |
+| 1.1 | Oct 2025 | TCSI Team | **Major Update - Security & Completeness**<br>• Fixed security vulnerability (removed hardcoded credentials)<br>• Completed Quick Start step 6 with full test command<br>• Added platform-specific path examples (5 locations)<br>• Added comprehensive Data Validation Rules section (200+ lines)<br>• Enhanced security section with .gitignore guidance<br>• Added init.sql documentation<br>• Improved Shiny app setup instructions |
+| 1.0 | Oct 2025 | TCSI Team | Initial comprehensive guide<br>• Multi-platform installation (macOS/Windows/Linux)<br>• Complete schema setup for 27 tables<br>• R integration examples<br>• Troubleshooting section<br>• Security best practices<br>• Maintenance and monitoring commands |
+
+---
+
+**Document Status:** ✅ Production Ready  
+**Maintained By:** TCSI ETL Project Team  
+**Last Review:** October 2025  
+**Next Review Due:** January 2026
