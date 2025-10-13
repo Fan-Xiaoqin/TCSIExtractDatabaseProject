@@ -4,7 +4,7 @@
 
 -- Course Admission Details
 CREATE TABLE hep_course_admissions (
-    course_admission_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    course_admission_id BIGINT PRIMARY KEY,
     student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
     uid15_course_admissions_res_key VARCHAR(10) NOT NULL,
     uid5_courses_res_key VARCHAR(10) NOT NULL REFERENCES hep_courses(uid5_courses_res_key),

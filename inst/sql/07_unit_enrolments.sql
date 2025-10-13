@@ -4,7 +4,7 @@
 
 -- Unit Enrolments
 CREATE TABLE unit_enrolments (
-    unit_enrolment_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    unit_enrolment_id BIGINT PRIMARY KEY,
     course_admission_id BIGINT NOT NULL REFERENCES hep_course_admissions(course_admission_id),
     uid16_unit_enrolments_res_key VARCHAR(10) NOT NULL,
     e354_unit_of_study_code VARCHAR(12),
@@ -35,7 +35,7 @@ CREATE TABLE unit_enrolments (
 
 -- Academic Organisations (AOUs) for Unit Enrolments
 CREATE TABLE unit_enrolments_aous (
-    aou_id BIGINT GENERATED ALWAYS AS IDENTITY,
+    aou_id BIGINT PRIMARY KEY,
     unit_enrolment_id BIGINT NOT NULL REFERENCES unit_enrolments(unit_enrolment_id),
     uid19_unit_enrolment_aous_res_key VARCHAR(10) NOT NULL,
     e333_aou_code VARCHAR(3),

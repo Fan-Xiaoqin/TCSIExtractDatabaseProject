@@ -4,7 +4,7 @@
 
 -- HEP Students (Master table for student details)
 CREATE TABLE hep_students (
-    student_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    student_id BIGINT PRIMARY KEY,
     uid8_students_res_key VARCHAR(10),
     e313_student_identification_code VARCHAR(10) NOT NULL,
     e488_chessn VARCHAR(10),
@@ -41,7 +41,7 @@ CREATE TABLE hep_students (
 
 -- Student Citizenships
 CREATE TABLE hep_student_citizenships (
-    student_citizenship_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    student_citizenship_id BIGINT PRIMARY KEY,
     student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
     uid10_student_citizenships_res_key VARCHAR(10),
     e358_citizen_resident_code CHAR(1) NOT NULL CHECK (
@@ -56,7 +56,7 @@ CREATE TABLE hep_student_citizenships (
 
 -- Student Disabilities
 CREATE TABLE hep_student_disabilities (
-    student_disability_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    student_disability_id BIGINT PRIMARY KEY,
     student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
     uid11_student_disabilities_res_key VARCHAR(10),
     e615_disability_code VARCHAR(2) NOT NULL CHECK (
@@ -70,7 +70,7 @@ CREATE TABLE hep_student_disabilities (
 
 -- Student Contacts First Reported Address
 CREATE TABLE student_contacts_first_reported_address (
-    first_address_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    first_address_id BIGINT PRIMARY KEY,
     student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
     e787_first_residential_address_line1 VARCHAR(255),
     e789_first_residential_address_suburb VARCHAR(48),

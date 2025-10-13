@@ -4,7 +4,7 @@
 
 -- OS-HELP Loans
 CREATE TABLE oshelp (
-    oshelp_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    oshelp_id BIGINT PRIMARY KEY,
     course_admission_id BIGINT NOT NULL REFERENCES hep_course_admissions(course_admission_id),
     uid21_student_loans_res_key VARCHAR(10) NOT NULL,
     e527_help_debt_incurral_date DATE NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE oshelp (
 
 -- SA-HELP Loans
 CREATE TABLE sahelp (
-    sahelp_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sahelp_id BIGINT PRIMARY KEY,
     student_id BIGINT NOT NULL REFERENCES hep_students(student_id),
     uid21_student_loans_res_key VARCHAR(10) NOT NULL,
     e527_help_debt_incurral_date DATE NOT NULL,
