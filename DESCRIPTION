@@ -1,0 +1,10 @@
+Package: tcsidb
+Title: TCSI Database Import and Query
+Version: 0.0.1
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+Description: It automates the import of TCSI CSV extracts, including necessary field mapping and validation, and provides modular query functions for streamlined reporting and ad-hoc analysis.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
