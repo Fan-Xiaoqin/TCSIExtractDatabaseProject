@@ -343,9 +343,10 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
     })
     
     if (is.null(existing_rows)) {
+      log_info(paste("existing_rows null", table_name))
       return(FALSE)
     }
-    
+    log_info(paste("existing_rows exists ", existing_rows , table_name))
     if (nrow(existing_rows) == 0) {
       # No existing row - insert new with is_current=TRUE
       row_data$is_current <- TRUE
@@ -358,66 +359,9 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       } else {
         return(FALSE)
       }
-    }
-    
-    # Existing row found - compare values
-    existing_row <- existing_rows[1, ]
-    
-    # Compare values in override_check_fields
-    values_differ <- FALSE
-    for (field in check_fields) {
-      if (field %in% names(row_data)) {
-        new_val <- row_data[[field]]
-        old_val <- existing_row[[field]]
-        
-        # Handle NA comparison
-        if (is.na(new_val) && is.na(old_val)) {
-          next
-        }
-        if (is.na(new_val) || is.na(old_val)) {
-          values_differ <- TRUE
-          break
-        }
-        if (new_val != old_val) {
-          values_differ <- TRUE
-          break
-        }
-      }
-    }
-    
-    if (!values_differ) {
-      # Values are identical - no action needed
-      log_debug(paste("Row unchanged in", table_name, "- skipping"))
+    } else {
       return("UNCHANGED")
     }
-    
-    # Values differ - update old row and insert new
-    # Get primary key column name
-    pk_col <- names(existing_row)[1]  # Typically the first column is the PK
-    pk_value <- existing_row[[pk_col]]
-    
-    # Update old row: SET is_current = FALSE
-    update_query <- sprintf(
-      "UPDATE %s SET is_current = FALSE, updated_at = CURRENT_TIMESTAMP WHERE %s = %s",
-      table_name,
-      pk_col,
-      if (is.character(pk_value)) paste0("'", pk_value, "'") else pk_value
-    )
-    dbExecute(conn, update_query)
-    
-    # Insert new row with is_current = TRUE
-    row_data$is_current <- TRUE
-    row_data$updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
-    
-    success <- db_insert(conn, table_name, row_data)
-    if (success) {
-      log_debug(paste("Inserted updated row into", table_name, "(old row marked is_current=FALSE)"))
-      return("UPDATED")
-    } else {
-      log_error(paste("Failed to insert updated row into", table_name))
-      return(FALSE)
-    }
-    
   }, error = function(e) {
     log_error(paste("Failed to insert with history into", table_name, ":", e$message))
     return(FALSE)

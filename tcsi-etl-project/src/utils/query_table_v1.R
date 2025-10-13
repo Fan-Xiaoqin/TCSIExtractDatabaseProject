@@ -28,11 +28,11 @@
 #     the DB connection and executes SQL queries.
 #
 # Example Usage:
-#   query_table("students", "enrollment_year >= 2025")
+#   query_table("students", "e572_year_left_school >= 2010")
 #   query_table("students", order_by = "student_id DESC", limit = 3)
 #   query_table("students", 
-#               select_cols = "enrollment_year, COUNT(*) as student_count", 
-#               group_by = "enrollment_year")
+#               select_cols = "e315_gender_code, COUNT(*) as student_count", 
+#               group_by = "e315_gender_code")
 # ============================================================
 
 query_table <- function(db_table_name, 
