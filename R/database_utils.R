@@ -2,7 +2,7 @@
 # TCSI ETL Project - Student Data Module
 
 #' Database Utilities
-#' 
+#'
 #' Provides database operations for both DUMMY and PostgreSQL modes.
 
 # ==========================================
@@ -26,7 +26,7 @@ db_connect <- function() {
       user = DB_CONFIG$user,
       password = DB_CONFIG$password
     )
-    
+
     log_info(paste("Connected to database:", DB_CONFIG$dbname))
     return(conn)
   } else {
@@ -39,9 +39,7 @@ db_connect <- function() {
 #' @return Invisible NULL
 db_disconnect <- function(conn) {
   if (!is.null(conn)) {
-    if (DB_MODE == "POSTGRESQL") {
-      DBI::dbDisconnect(conn)
-    }
+    DBI::dbDisconnect(conn)
     log_info("Database connection closed")
   }
   return(invisible(NULL))
@@ -61,10 +59,10 @@ dummy_db_insert <- function(table_name, row_data) {
     if (is.list(row_data) && !is.data.frame(row_data)) {
       row_data <- as.data.frame(row_data, stringsAsFactors = FALSE)
     }
-    
+
     # Get existing table
     existing_table <- DUMMY_DB_ENV[[table_name]]
-    
+
     if (is.null(existing_table) || nrow(existing_table) == 0) {
       # First row - create table structure
       DUMMY_DB_ENV[[table_name]] <- row_data
@@ -75,14 +73,14 @@ dummy_db_insert <- function(table_name, row_data) {
       for (col in missing_cols) {
         row_data[[col]] <- NA
       }
-      
+
       # Reorder columns to match existing table
       row_data <- row_data[names(existing_table)]
-      
+
       # Append
       DUMMY_DB_ENV[[table_name]] <- rbind(existing_table, row_data)
     }
-    
+
     return(TRUE)
   }, error = function(e) {
     log_error(paste("Failed to insert into dummy DB:", e$message), table_name = table_name)
@@ -96,11 +94,11 @@ dummy_db_insert <- function(table_name, row_data) {
 #' @return Data frame with query results
 dummy_db_query <- function(table_name, where_clause = NULL) {
   table_data <- DUMMY_DB_ENV[[table_name]]
-  
+
   if (is.null(table_data) || nrow(table_data) == 0) {
     return(data.frame())
   }
-  
+
   # Apply WHERE clause if provided
   if (!is.null(where_clause)) {
     for (field in names(where_clause)) {
@@ -109,7 +107,7 @@ dummy_db_query <- function(table_name, where_clause = NULL) {
       }
     }
   }
-  
+
   return(table_data)
 }
 
@@ -165,10 +163,10 @@ db_insert <- function(conn, table_name, row_data) {
 # ==========================================
 
 #' Insert or Update row (for reference/lookup tables)
-#' 
+#'
 #' Uses PostgreSQL's INSERT ... ON CONFLICT DO UPDATE to either insert
 #' a new row or update an existing row when the primary key already exists.
-#' 
+#'
 #' @param conn Database connection
 #' @param table_name Table name
 #' @param row_data Named list or data frame with row data
@@ -179,27 +177,27 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
     # For DUMMY mode, just insert (simplified)
     return(if (dummy_db_insert(table_name, row_data)) "INSERTED" else FALSE)
   }
-  
+
   tryCatch({
     # Convert to data frame if needed
     if (is.list(row_data) && !is.data.frame(row_data)) {
       row_data <- as.data.frame(row_data, stringsAsFactors = FALSE)
     }
-    
+
     # Get primary key field directly from mapping
     primary_key <- mapping$primary_key
-    
+
     if (is.null(primary_key) || primary_key == "") {
       log_error(paste("No primary_key defined in mapping for", table_name))
       return(FALSE)
     }
-    
+
     # Prepare column names and values
     columns <- names(row_data)
-    
+
     # Get boolean fields from mapping
     boolean_fields <- if (!is.null(mapping$boolean_fields)) mapping$boolean_fields else c()
-    
+
     values <- sapply(columns, function(col) {
       val <- row_data[[col]]
       if (is.na(val) || is.null(val)) {
@@ -217,7 +215,7 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
         return(paste0("'", gsub("'", "''", as.character(val)), "'"))
       }
     })
-    
+
     # Build UPDATE SET clause (exclude primary key and updated_at)
     update_cols <- setdiff(columns, c(primary_key, "updated_at"))
     update_clause <- paste(
@@ -227,17 +225,17 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
       }),
       collapse = ", "
     )
-    
+
     # Build INSERT ... ON CONFLICT DO UPDATE query
     query <- sprintf(
-      "INSERT INTO %s (%s) VALUES (%s) ON CONFLICT (%s) DO UPDATE SET %s, updated_at = CURRENT_TIMESTAMP RETURNING CASE WHEN xmax = 0 THEN true ELSE false END AS inserted",
+      "INSERT INTO %s (%s) VALUES (%s) ON CONFLICT (%s) DO UPDATE SET %s, updated_at = CURRENT_TIMESTAMP",
       table_name,
       paste(columns, collapse = ", "),
       paste(values, collapse = ", "),
       primary_key,
       update_clause
     )
-    
+
     # Execute and check if inserted or updated
     result <- tryCatch({
       DBI::dbGetQuery(conn, query)
@@ -251,7 +249,7 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
       log_error(paste("Upsert failed - no result returned for", table_name))
       return(FALSE)
     }
-    
+
     if (!is.null(result$inserted) && length(result$inserted) > 0 && isTRUE(result$inserted[1])) {
       log_debug(paste("Inserted new row into", table_name))
       return("INSERTED")
@@ -259,7 +257,7 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
       log_debug(paste("Updated existing row in", table_name))
       return("UPDATED")
     }
-    
+
   }, error = function(e) {
     log_error(paste("Failed to upsert into", table_name, ":", e$message , query))
     return(FALSE)
@@ -270,13 +268,13 @@ db_upsert_with_update <- function(conn, table_name, row_data, mapping) {
 # ==========================================
 
 #' Insert with historical tracking using is_current flag
-#' 
+#'
 #' For tables with temporal/historical tracking:
 #' 1. Checks if a row with same override_check_fields AND is_current=TRUE exists
 #' 2. If exists AND values identical → Skip insert (no change)
 #' 3. If exists BUT values differ → Set old row is_current=FALSE, insert new with is_current=TRUE
 #' 4. If doesn't exist → Insert new row with is_current=TRUE
-#' 
+#'
 #' @param conn Database connection
 #' @param table_name Table name
 #' @param row_data Named list or data frame with row data
@@ -287,20 +285,20 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
     # For DUMMY mode, just insert (simplified)
     return(if (dummy_db_insert(table_name, row_data)) "INSERTED" else FALSE)
   }
-  
+
   tryCatch({
     # Convert to data frame if needed
     if (is.list(row_data) && !is.data.frame(row_data)) {
       row_data <- as.data.frame(row_data, stringsAsFactors = FALSE)
     }
-    
+
     # Get override_check_fields
     check_fields <- mapping$override_check_fields
     if (is.null(check_fields) || length(check_fields) == 0) {
       log_warn(paste("No override_check_fields defined for", table_name, "- using simple insert"))
       return(if (db_insert(conn, table_name, row_data)) "INSERTED" else FALSE)
     }
-    
+
     # Build WHERE clause to find existing is_current=TRUE row
     where_conditions <- sapply(check_fields, function(field) {
       if (field %in% names(row_data)) {
@@ -315,13 +313,13 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       }
       return(NULL)
     })
-    
+
     where_conditions <- where_conditions[!sapply(where_conditions, is.null)]
     where_clause <- paste(c(where_conditions, "is_current = TRUE"), collapse = " AND ")
-    
+
     # Query for existing is_current=TRUE row
     query_existing <- sprintf("SELECT * FROM %s WHERE %s", table_name, where_clause)
-    
+
     # Try to query - handle errors gracefully
     existing_rows <- tryCatch({
       DBI::dbGetQuery(conn, query_existing)
@@ -330,16 +328,16 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       log_error(paste("Query was:", query_existing))
       return(NULL)
     })
-    
+
     if (is.null(existing_rows)) {
       return(FALSE)
     }
-    
+
     if (nrow(existing_rows) == 0) {
       # No existing row - insert new with is_current=TRUE
       row_data$is_current <- TRUE
       row_data$updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
-      
+
       success <- db_insert(conn, table_name, row_data)
       if (success) {
         log_debug(paste("Inserted new row into", table_name, "(no existing is_current=TRUE row)"))
@@ -348,17 +346,17 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
         return(FALSE)
       }
     }
-    
+
     # Existing row found - compare values
     existing_row <- existing_rows[1, ]
-    
+
     # Compare values in override_check_fields
     values_differ <- FALSE
     for (field in check_fields) {
       if (field %in% names(row_data)) {
         new_val <- row_data[[field]]
         old_val <- existing_row[[field]]
-        
+
         # Handle NA comparison
         if (is.na(new_val) && is.na(old_val)) {
           next
@@ -373,18 +371,18 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
         }
       }
     }
-    
+
     if (!values_differ) {
       # Values are identical - no action needed
       log_debug(paste("Row unchanged in", table_name, "- skipping"))
       return("UNCHANGED")
     }
-    
+
     # Values differ - update old row and insert new
     # Get primary key column name
     pk_col <- names(existing_row)[1]  # Typically the first column is the PK
     pk_value <- existing_row[[pk_col]]
-    
+
     # Update old row: SET is_current = FALSE
     update_query <- sprintf(
       "UPDATE %s SET is_current = FALSE, updated_at = CURRENT_TIMESTAMP WHERE %s = %s",
@@ -393,11 +391,11 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       if (is.character(pk_value)) paste0("'", pk_value, "'") else pk_value
     )
     DBI::dbExecute(conn, update_query)
-    
+
     # Insert new row with is_current = TRUE
     row_data$is_current <- TRUE
     row_data$updated_at <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
-    
+
     success <- db_insert(conn, table_name, row_data)
     if (success) {
       log_debug(paste("Inserted updated row into", table_name, "(old row marked is_current=FALSE)"))
@@ -406,7 +404,7 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
       log_error(paste("Failed to insert updated row into", table_name))
       return(FALSE)
     }
-    
+
   }, error = function(e) {
     log_error(paste("Failed to insert with history into", table_name, ":", e$message))
     return(FALSE)
@@ -418,7 +416,7 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
 # ==========================================
 
 #' Smart insert that routes to appropriate method based on mapping
-#' 
+#'
 #' @param conn Database connection
 #' @param table_name Table name
 #' @param row_data Named list or data frame with row data
@@ -427,7 +425,7 @@ db_insert_with_history <- function(conn, table_name, row_data, mapping) {
 db_smart_insert <- function(conn, table_name, row_data, mapping) {
   # Check override_enabled flag
   override_enabled <- if (!is.null(mapping$override_enabled)) mapping$override_enabled else FALSE
-  
+
   if (override_enabled) {
     # Use upsert with update for reference/lookup tables
     return(db_upsert_with_update(conn, table_name, row_data, mapping))
@@ -617,10 +615,10 @@ validate_foreign_key <- function(conn, fk_config, value) {
   if (is.null(value) || is.na(value)) {
     return(TRUE)
   }
-  
+
   where_clause <- list()
   where_clause[[fk_config$references_field]] <- value
-  
+
   return(db_exists(conn, fk_config$references_table, where_clause))
 }
 
@@ -634,12 +632,12 @@ validate_foreign_key <- function(conn, fk_config, value) {
 #' @return List with table statistics
 get_table_stats <- function(conn, table_name) {
   count <- db_count(conn, table_name)
-  
+
   stats <- list(
     table_name = table_name,
     row_count = count
   )
-  
+
   return(stats)
 }
 

@@ -14,4 +14,5 @@ Suggests:
     DT,
     shiny,
     shinyFiles,
-    RPostgres
+    RPostgres,
+    RSQLite

@@ -465,20 +465,41 @@ print_overall_summary <- function(overall_stats) {
   log_console("\n")
 }
 
+run_init_db <- function(conn = NULL) {
+  # do something when a suggested dependency is not installed
+  if (is.null(conn))
+    conn = DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+
+  DBI::dbWithTransaction(conn, {
+    sql_dir = system.file("sql", package = utils::packageName())
+    for (sql_file in sort(list.files(sql_dir))) {
+      file_path = file.path(sql_dir, sql_file)
+      file_size = file.info(file_path)$size
+      file_content = readChar(file_path, file_size)
+
+      # https://github.com/r-dbi/RSQLite/issues/313
+      statements = trimws(strsplit(file_content, ';')[[1]])
+      for (statement in statements) {
+        if (nzchar(statement))
+          DBI::dbExecute(conn, statement)
+      }
+    }
+  })
+
+  return(conn)
+}
+
 # ==========================================
 # MAIN EXECUTION
 # ==========================================
 
 #' Main entry point
-main <- function(import_dir) {
+main <- function(conn, import_dir) {
   # Initialize logging
   init_logging()
 
   log_info("TCSI Complete ETL Process - All Tables")
   log_info(paste("Data input directory:", import_dir))
-
-  # Connect to database
-  conn <- db_connect()
 
   overall_stats <- NULL
 
