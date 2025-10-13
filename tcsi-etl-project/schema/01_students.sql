@@ -77,7 +77,8 @@ CREATE TABLE student_contacts_first_reported_address (
     e791_first_residential_address_state VARCHAR(3),
     e659_first_residential_address_country_code VARCHAR(4),
     e790_first_residential_address_postcode VARCHAR(4),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_current BOOLEAN DEFAULT TRUE
 );
 
 -- Commonwealth Scholarships
