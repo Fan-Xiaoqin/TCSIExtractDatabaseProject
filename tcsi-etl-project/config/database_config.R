@@ -14,14 +14,35 @@
 # Set to "POSTGRESQL" when ready to connect to actual database
 DB_MODE <- "POSTGRESQL"
 
+if (!requireNamespace("getPass", quietly = TRUE)) {
+  install.packages("getPass")
+}
+library(getPass)
+
 # PostgreSQL Connection Settings (for future use)
 DB_CONFIG <- list(
   host = "localhost",
   port = 5432,
   dbname = "tcsi_db",
-  user = "<your_username>",  # Replace with your actual username
-  password = "<your_password>"
+  user = "",
+  password = ""
 )
+
+# Detect if running inside Shiny
+RUNNING_IN_SHINY <- !is.null(Sys.getenv("SHINY_PORT")) 
+
+# Prompt only if not running in Shiny
+if (!RUNNING_IN_SHINY) {
+  # Prompt for username and password if not set
+  if (is.null(DB_CONFIG$user) || DB_CONFIG$user == "") {
+    DB_CONFIG$user <- getPass::getPass("Enter DB username: ")
+  }
+  
+  if (is.null(DB_CONFIG$password) || DB_CONFIG$password == "") {
+    DB_CONFIG$password <- getPass::getPass("Enter DB password: ")
+  }
+}
+
 
 # ==========================================
 # ETL PROCESSING SETTINGS
