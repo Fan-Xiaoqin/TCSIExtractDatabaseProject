@@ -12,20 +12,20 @@
 
 # Current Mode: DUMMY (in-memory data frames)
 # Set to "POSTGRESQL" when ready to connect to actual database
-DB_MODE <- "POSTGRESQL"
+DB_MODE <- Sys.getenv("TCSIDB_DB_MODE", "POSTGRESQL")
 
 # PostgreSQL Connection Settings (for future use)
 DB_CONFIG <- list(
-  host = "localhost",
-  port = 5432,
-  dbname = "tcsi_db",
-  user = "your_username",  # Replace with your actual username
-  password = "your_password"  # Replace with your actual password
+  host = Sys.getenv("TCSIDB_DB_HOST", "localhost"),
+  port = as.integer(Sys.getenv("TCSIDB_DB_PORT", "5432")),
+  dbname = Sys.getenv("TCSIDB_DB_NAME", "tcsi_db"),
+  user = Sys.getenv("TCSIDB_DB_USER"),
+  password = Sys.getenv("TCSIDB_DB_PASSWORD")
 )
 
 # ==========================================
 # ETL PROCESSING SETTINGS
-# ==========================================
+# ===========================
 
 # Batch size for processing large CSV files
 BATCH_SIZE <- 1000
@@ -37,12 +37,9 @@ MAX_ROWS_TO_PROCESS <- NULL  # Set to e.g. 100 for testing
 # FILE PATH SETTINGS
 # ==========================================
 
-# Base directory for the project (adjust if running from different location)
-PROJECT_ROOT <- getwd()
-
 # Data directories
-DATA_LOGS_DIR <- file.path(PROJECT_ROOT, "data", "logs")
-DATA_ERRORS_DIR <- file.path(PROJECT_ROOT, "data", "errors")
+DATA_LOGS_DIR <- Sys.getenv("TCSIDB_DIR_LOG_INFO")
+DATA_ERRORS_DIR <- Sys.getenv("TCSIDB_DIR_LOG_ERROR")
 
 # ==========================================
 # CSV FILE PATTERNS
@@ -141,6 +138,8 @@ find_csv_file <- function(pattern, directory) {
 #' @param suffix Optional suffix for log file name
 #' @return Full path to log file
 get_log_file_path <- function(suffix = "") {
+  if (!nzchar(DATA_LOGS_DIR))
+    return(NULL)
   timestamp <- format(Sys.time(), "%Y%m%d_%H%M%S")
   filename <- paste0(LOG_FILE_PREFIX, suffix, "_", timestamp, ".log")
   return(file.path(DATA_LOGS_DIR, filename))
@@ -150,6 +149,8 @@ get_log_file_path <- function(suffix = "") {
 #' @param table_name Name of the table
 #' @return Full path to error file
 get_error_file_path <- function(table_name) {
+  if (!nzchar(DATA_ERRORS_DIR))
+    return(NULL)
   filename <- paste0(table_name, "_errors.csv")
   return(file.path(DATA_ERRORS_DIR, filename))
 }

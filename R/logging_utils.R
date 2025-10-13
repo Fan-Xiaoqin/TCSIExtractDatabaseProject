@@ -34,8 +34,10 @@ LOG_LEVELS <- list(
 #' @return Invisible NULL
 init_logging <- function(log_file = NULL) {
   # Ensure directories exist
-  dir.create(DATA_LOGS_DIR, showWarnings = FALSE, recursive = TRUE)
-  dir.create(DATA_ERRORS_DIR, showWarnings = FALSE, recursive = TRUE)
+  if (nzchar(DATA_LOGS_DIR))
+    dir.create(DATA_LOGS_DIR, showWarnings = FALSE, recursive = TRUE)
+  if (nzchar(DATA_ERRORS_DIR))
+    dir.create(DATA_ERRORS_DIR, showWarnings = FALSE, recursive = TRUE)
 
   if (is.null(log_file) && LOG_TO_FILE) {
     log_file <- get_log_file_path()
@@ -160,7 +162,7 @@ log_error <- function(message, ...) {
   log_message("ERROR", message, ...)
 }
 
-log_conole <- function(message, ...) {
+log_console <- function(message, ...) {
   # need a switch to control its visibility
 }
 
@@ -183,6 +185,8 @@ log_row_error <- function(table_name, row_num, row_data, error_message) {
 
   # Get error file path
   error_file <- get_error_file_path(table_name)
+  if (is.null(error_file))
+    return(invisible(NULL))
 
   # Create error data frame
   error_df <- data.frame(
