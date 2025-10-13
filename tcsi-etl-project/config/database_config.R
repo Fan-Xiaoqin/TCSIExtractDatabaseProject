@@ -2,7 +2,7 @@
 # TCSI ETL Project - Student Data Module
 
 #' Database Configuration Settings
-#' 
+#'
 #' This file contains all configuration parameters for the ETL process.
 #' Modify these settings as needed for different environments.
 
@@ -19,8 +19,8 @@ DB_CONFIG <- list(
   host = "localhost",
   port = 5432,
   dbname = "tcsi_db",
-  user = <"your_username">,  # Replace with your actual username
-  password = <"your_password">  # Replace with your actual password
+  user = "<your_username>",  # Replace with your actual username
+  password = "<your_password>"
 )
 
 # ==========================================
@@ -140,6 +140,18 @@ find_csv_file <- function(pattern, directory = DATA_INPUT_DIR) {
     return(NULL)
   }
   return(files[1])  # Return first match
+}
+
+#' Find CSV file by pattern
+#' @param pattern File pattern to search for
+#' @param directory Directory to search in (defaults to DATA_INPUT_DIR)
+#' @return Full path to all matching files, or NULL if not found
+find_csv_files <- function(pattern, directory = DATA_INPUT_DIR) {
+  files <- list.files(directory, pattern = glob2rx(pattern), full.names = TRUE)
+  if (length(files) == 0) {
+    return(NULL)
+  }
+  return(files)  # Return all matches
 }
 
 #' Get log file path

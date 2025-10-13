@@ -443,7 +443,7 @@ transform_batch <- function(data, mapping, table_name, conn = NULL, csv_file_pat
   reporting_year <- NULL
   if (!is.null(csv_file_path) && (table_name == "unit_enrolments" || table_name == "unit_enrolments_aous")) {
     # Extract year from filename like "HEP_units-AOUs_2017.csv"
-    year_match <- regmatches(csv_file_path, regexpr("\\d{4}", csv_file_path))
+    year_match <- regmatches(basename(csv_file_path), regexpr("\\d{4}", basename(csv_file_path)))
     if (length(year_match) > 0) {
       reporting_year <- as.integer(year_match[1])
       log_info(paste("Extracted reporting_year:", reporting_year, "from filename:", basename(csv_file_path)))

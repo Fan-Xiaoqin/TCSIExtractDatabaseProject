@@ -23,6 +23,84 @@ if (!exists("validate_batch")) {
 # GENERIC ETL FUNCTION
 # ==========================================
 
+#' Process Multiple CSV Files into a Single Database Table
+#'
+#' This function extends the generic ETL process to handle multiple CSV files
+#' that match a given pattern, processing them sequentially into the same
+#' database table. It aggregates statistics across all files and provides
+#' both individual file-level and combined reporting.
+#' #' @param conn Database connection
+#' @param table_name Table name
+#' @param csv_file_pattern CSV file pattern
+#' @param mapping Field mapping configuration
+#' @param csv_file_path Optional specific path to CSV file
+#' @return List with success status and statistics
+generic_etl_multi <- function(conn, table_name, csv_file_pattern, mapping, csv_file_paths = NULL) {
+  log_info(paste("Starting multi-file ETL for", table_name))
+
+  # Find CSV files
+  if (is.null(csv_file_paths)) {
+    csv_file_paths <- find_csv_files(csv_file_pattern)
+    if (is.null(csv_file_paths) || length(csv_file_paths) == 0) {
+      log_error(paste("No CSV files found for pattern:", csv_file_pattern))
+      return(list(
+        table_name = table_name,
+        total_files = 0,
+        success = FALSE,
+        file_stats = list()
+      ))
+    }
+  }
+
+  log_info(paste("Found", length(csv_file_paths), "CSV files to process"))
+
+  # Initialize combined statistics
+  combined_stats <- list(
+    table_name = table_name,
+    total_files = length(csv_file_paths),
+    total_rows = 0,
+    processed_rows = 0,
+    valid_rows = 0,
+    invalid_rows = 0,
+    loaded_rows = 0,
+    errors = 0,
+    success = FALSE,
+    file_stats = list()
+  )
+
+  # Process each file
+  for (csv_file in csv_file_paths) {
+    log_info(paste("Processing file:", basename(csv_file)))
+
+    # Call existing generic_etl for each file
+    file_stats <- generic_etl(conn, table_name, csv_file_pattern, mapping, csv_file_path = csv_file)
+
+    # Accumulate statistics
+    combined_stats$total_rows <- combined_stats$total_rows + file_stats$total_rows
+    combined_stats$processed_rows <- combined_stats$processed_rows + file_stats$processed_rows
+    combined_stats$valid_rows <- combined_stats$valid_rows + file_stats$valid_rows
+    combined_stats$invalid_rows <- combined_stats$invalid_rows + file_stats$invalid_rows
+    combined_stats$loaded_rows <- combined_stats$loaded_rows + file_stats$loaded_rows
+    combined_stats$errors <- combined_stats$errors + file_stats$errors
+
+    # Store individual file stats
+    combined_stats$file_stats[[basename(csv_file)]] <- file_stats
+  }
+
+  # Overall success if at least one file was processed successfully
+  combined_stats$success <- (combined_stats$loaded_rows > 0 || combined_stats$total_rows == 0)
+
+  log_info(sprintf(
+    "Multi-file ETL complete for %s: %d files, %d total rows loaded, %d errors",
+    table_name,
+    combined_stats$total_files,
+    combined_stats$loaded_rows,
+    combined_stats$errors
+  ))
+
+  return(combined_stats)
+}
+
 #' Generic ETL function for any table
 #' @param conn Database connection
 #' @param table_name Table name

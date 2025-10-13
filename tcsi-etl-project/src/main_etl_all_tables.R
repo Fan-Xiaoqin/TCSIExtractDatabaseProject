@@ -268,7 +268,7 @@ ETL_SEQUENCE_ALL <- list(
   list(
     phase = "10-Unit-Enrollments",
     table_name = "unit_enrolments",
-    csv_pattern = "*HEP_units-AOUs_2017.csv",
+    csv_pattern = "*HEP_units-AOUs_*.csv",
     mapping = UNIT_ENROLMENTS_MAPPING,
     key_field = NULL
   ),
@@ -276,7 +276,7 @@ ETL_SEQUENCE_ALL <- list(
   list(
     phase = "10-Unit-Enrollments",
     table_name = "unit_enrolments_aous",
-    csv_pattern = "*HEP_units-AOUs_2017.csv",
+    csv_pattern = "*HEP_units-AOUs_*.csv",
     mapping = UNIT_ENROLMENTS_AOUS_MAPPING,
     key_field = NULL
   )
@@ -362,15 +362,32 @@ run_complete_etl <- function(conn, sequence = ETL_SEQUENCE_ALL) {
       }
       
       # Run ETL for this table
-      stats <- generic_etl(
-        conn,
-        etl_config$table_name,
-        etl_config$csv_pattern,
-        etl_config$mapping
-      )
-      
-      # Store results
-      overall_stats$table_results[[table_name]] <- stats
+      # Check if pattern could match multiple files
+      if (!is.null(csv_files) && length(csv_files) > 1) {
+        # Pattern has wildcards that could match multiple files - use multi-file ETL
+        log_info(paste("Multi File:", table_name))
+        stats <- generic_etl_multi(
+          conn,
+          etl_config$table_name,
+          etl_config$csv_pattern,
+          etl_config$mapping
+        )
+
+        # Store results
+        overall_stats$table_results[[table_name]] <- stats
+      } else if (!is.null(csv_files) && length(csv_files) == 1) {
+        log_info(paste("Single File:", table_name))
+        # Single file pattern - use original ETL
+        stats <- generic_etl(
+          conn,
+          etl_config$table_name,
+          etl_config$csv_pattern,
+          etl_config$mapping
+        )
+
+        # Store results
+        overall_stats$table_results[[table_name]] <- stats
+      }
       
       if (stats$success) {
         overall_stats$tables_succeeded <- overall_stats$tables_succeeded + 1
