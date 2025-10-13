@@ -25,6 +25,24 @@ CREATE TABLE hep_course_admissions (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_current BOOLEAN DEFAULT TRUE
 );
+-- Add trigger to keep is_current up to date
+-- Trigger function
+CREATE OR REPLACE FUNCTION course_admission_is_current()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE hep_course_admissions
+    SET is_current = FALSE
+    WHERE uid15_course_admissions_res_key = NEW.uid15_course_admissions_res_key
+        AND is_current = TRUE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- Trigger
+CREATE TRIGGER trg_update_is_current
+BEFORE INSERT ON hep_course_admissions
+FOR EACH ROW
+EXECUTE FUNCTION course_admission_is_current();
+
 
 -- Basis for Admission
 CREATE TABLE hep_basis_for_admission (
