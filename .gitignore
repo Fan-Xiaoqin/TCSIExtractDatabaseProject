@@ -1,2 +1,3 @@
 *.Rproj  # Ignore the RStudio project
 .Rproj.user/  # Ignore RStudio's user-specific settings info
+database_config_runtime.R  # Ignore runtime database config file
