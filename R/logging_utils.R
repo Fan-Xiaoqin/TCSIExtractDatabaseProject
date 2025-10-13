@@ -2,7 +2,7 @@
 # TCSI ETL Project - Student Data Module
 
 #' Logging Utilities
-#' 
+#'
 #' Provides structured logging functionality for the ETL process.
 
 # ==========================================
@@ -40,16 +40,16 @@ init_logging <- function(log_file = NULL) {
   if (is.null(log_file) && LOG_TO_FILE) {
     log_file <- get_log_file_path()
   }
-  
+
   if (!is.null(log_file)) {
     LOG_STATE$file_handle <- file(log_file, open = "wt")
-    cat(sprintf("=== ETL Process Started: %s ===\n\n", Sys.time()), 
+    log_console(sprintf("=== ETL Process Started: %s ===\n\n", Sys.time()),
         file = LOG_STATE$file_handle)
   }
-  
+
   LOG_STATE$error_counts <- list()
   LOG_STATE$warning_counts <- list()
-  
+
   log_info("Logging initialized")
   return(invisible(NULL))
 }
@@ -58,7 +58,7 @@ init_logging <- function(log_file = NULL) {
 #' @return Invisible NULL
 close_logging <- function() {
   if (!is.null(LOG_STATE$file_handle)) {
-    cat(sprintf("\n=== ETL Process Completed: %s ===\n", Sys.time()),
+    log_console(sprintf("\n=== ETL Process Completed: %s ===\n", Sys.time()),
         file = LOG_STATE$file_handle)
     close(LOG_STATE$file_handle)
     LOG_STATE$file_handle <- NULL
@@ -81,11 +81,11 @@ log_message <- function(level, message, table_name = NULL, row_num = NULL, field
   # Check if we should log this level
   current_level <- LOG_LEVELS[[LOG_LEVEL]]
   msg_level <- LOG_LEVELS[[level]]
-  
+
   if (msg_level < current_level) {
     return(invisible(NULL))
   }
-  
+
   # Build context
   context <- character(0)
   if (!is.null(table_name)) {
@@ -97,23 +97,23 @@ log_message <- function(level, message, table_name = NULL, row_num = NULL, field
   if (!is.null(field_name)) {
     context <- c(context, paste0("Field: ", field_name))
   }
-  
+
   context_str <- if (length(context) > 0) paste0(" [", paste(context, collapse = ", "), "]") else ""
-  
+
   # Format message
   timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   formatted_msg <- sprintf("[%s] [%s]%s %s\n", timestamp, level, context_str, message)
-  
+
   # Write to console
   if (LOG_TO_CONSOLE) {
-    cat(formatted_msg)
+    log_console(formatted_msg)
   }
-  
+
   # Write to file
   if (!is.null(LOG_STATE$file_handle)) {
     cat(formatted_msg, file = LOG_STATE$file_handle)
   }
-  
+
   # Track error/warning counts
   if (level == "ERROR" && !is.null(table_name)) {
     if (is.null(LOG_STATE$error_counts[[table_name]])) {
@@ -121,14 +121,14 @@ log_message <- function(level, message, table_name = NULL, row_num = NULL, field
     }
     LOG_STATE$error_counts[[table_name]] <- LOG_STATE$error_counts[[table_name]] + 1
   }
-  
+
   if (level == "WARN" && !is.null(table_name)) {
     if (is.null(LOG_STATE$warning_counts[[table_name]])) {
       LOG_STATE$warning_counts[[table_name]] <- 0
     }
     LOG_STATE$warning_counts[[table_name]] <- LOG_STATE$warning_counts[[table_name]] + 1
   }
-  
+
   return(invisible(NULL))
 }
 
@@ -160,6 +160,10 @@ log_error <- function(message, ...) {
   log_message("ERROR", message, ...)
 }
 
+log_conole <- function(message, ...) {
+  # need a switch to control its visibility
+}
+
 # ==========================================
 # ERROR TRACKING
 # ==========================================
@@ -176,10 +180,10 @@ log_row_error <- function(table_name, row_num, row_data, error_message) {
       LOG_STATE$error_counts[[table_name]] >= MAX_ERRORS_PER_TABLE) {
     return(invisible(NULL))
   }
-  
+
   # Get error file path
   error_file <- get_error_file_path(table_name)
-  
+
   # Create error data frame
   error_df <- data.frame(
     row_number = row_num,
@@ -187,23 +191,23 @@ log_row_error <- function(table_name, row_num, row_data, error_message) {
     timestamp = Sys.time(),
     stringsAsFactors = FALSE
   )
-  
+
   # Add original row data
   if (is.list(row_data)) {
     for (col in names(row_data)) {
       error_df[[col]] <- as.character(row_data[[col]])
     }
   }
-  
+
   # Append to error file
   if (file.exists(error_file)) {
-    write.table(error_df, error_file, append = TRUE, sep = ",", 
+    write.table(error_df, error_file, append = TRUE, sep = ",",
                 row.names = FALSE, col.names = FALSE, quote = TRUE)
   } else {
-    write.table(error_df, error_file, append = FALSE, sep = ",", 
+    write.table(error_df, error_file, append = FALSE, sep = ",",
                 row.names = FALSE, col.names = TRUE, quote = TRUE)
   }
-  
+
   return(invisible(NULL))
 }
 
@@ -214,25 +218,25 @@ log_row_error <- function(table_name, row_num, row_data, error_message) {
 #' Print error/warning summary
 #' @return Invisible NULL
 print_log_summary <- function() {
-  cat("\n=== ETL Process Summary ===\n")
-  
+  log_console("\n=== ETL Process Summary ===\n")
+
   if (length(LOG_STATE$error_counts) > 0) {
-    cat("\nErrors by table:\n")
+    log_console("\nErrors by table:\n")
     for (table in names(LOG_STATE$error_counts)) {
-      cat(sprintf("  %s: %d errors\n", table, LOG_STATE$error_counts[[table]]))
+      log_console(sprintf("  %s: %d errors\n", table, LOG_STATE$error_counts[[table]]))
     }
   } else {
-    cat("\nNo errors encountered.\n")
+    log_console("\nNo errors encountered.\n")
   }
-  
+
   if (length(LOG_STATE$warning_counts) > 0) {
-    cat("\nWarnings by table:\n")
+    log_console("\nWarnings by table:\n")
     for (table in names(LOG_STATE$warning_counts)) {
-      cat(sprintf("  %s: %d warnings\n", table, LOG_STATE$warning_counts[[table]]))
+      log_console(sprintf("  %s: %d warnings\n", table, LOG_STATE$warning_counts[[table]]))
     }
   }
-  
-  cat("\n===========================\n\n")
+
+  log_console("\n===========================\n\n")
   return(invisible(NULL))
 }
 

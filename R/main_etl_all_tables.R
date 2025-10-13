@@ -413,56 +413,56 @@ run_complete_etl <- function(conn, import_dir, sequence = ETL_SEQUENCE_ALL) {
 #' Print overall ETL summary
 #' @param overall_stats Overall statistics from run_complete_etl
 print_overall_summary <- function(overall_stats) {
-  cat("\n")
-  cat("========================================\n")
-  cat("       COMPLETE TCSI ETL SUMMARY        \n")
-  cat("========================================\n")
-  cat(sprintf("Start time:        %s\n", overall_stats$start_time))
-  cat(sprintf("End time:          %s\n", overall_stats$end_time))
-  cat(sprintf("Duration:          %.2f minutes\n", overall_stats$duration))
-  cat("\n")
-  cat(sprintf("Tables processed:  %d\n", overall_stats$tables_processed))
-  cat(sprintf("Tables succeeded:  %d\n", overall_stats$tables_succeeded))
-  cat(sprintf("Tables failed:     %d\n", overall_stats$tables_failed))
-  cat(sprintf("Tables skipped:    %d\n", overall_stats$tables_skipped))
-  cat("\n")
-  cat(sprintf("Total rows loaded: %d\n", overall_stats$total_rows_loaded))
-  cat(sprintf("Total errors:      %d\n", overall_stats$total_errors))
-  cat("\n")
+  log_console("\n")
+  log_console("========================================\n")
+  log_console("       COMPLETE TCSI ETL SUMMARY        \n")
+  log_console("========================================\n")
+  log_console(sprintf("Start time:        %s\n", overall_stats$start_time))
+  log_console(sprintf("End time:          %s\n", overall_stats$end_time))
+  log_console(sprintf("Duration:          %.2f minutes\n", overall_stats$duration))
+  log_console("\n")
+  log_console(sprintf("Tables processed:  %d\n", overall_stats$tables_processed))
+  log_console(sprintf("Tables succeeded:  %d\n", overall_stats$tables_succeeded))
+  log_console(sprintf("Tables failed:     %d\n", overall_stats$tables_failed))
+  log_console(sprintf("Tables skipped:    %d\n", overall_stats$tables_skipped))
+  log_console("\n")
+  log_console(sprintf("Total rows loaded: %d\n", overall_stats$total_rows_loaded))
+  log_console(sprintf("Total errors:      %d\n", overall_stats$total_errors))
+  log_console("\n")
 
   # Phase summary
-  cat("Phase Summary:\n")
-  cat("----------------------------------------\n")
+  log_console("Phase Summary:\n")
+  log_console("----------------------------------------\n")
   for (phase_name in names(overall_stats$phase_results)) {
     phase <- overall_stats$phase_results[[phase_name]]
-    cat(sprintf("%-25s: %2d tables, %6d rows loaded, %d succeeded, %d failed\n",
+    log_console(sprintf("%-25s: %2d tables, %6d rows loaded, %d succeeded, %d failed\n",
                 phase_name,
                 phase$tables_processed,
                 phase$rows_loaded,
                 phase$tables_succeeded,
                 phase$tables_failed))
   }
-  cat("\n")
+  log_console("\n")
 
-  cat("Table Details:\n")
-  cat("----------------------------------------\n")
+  log_console("Table Details:\n")
+  log_console("----------------------------------------\n")
 
   for (table_name in names(overall_stats$table_results)) {
     result <- overall_stats$table_results[[table_name]]
 
     if (!is.null(result$skipped) && result$skipped) {
-      cat(sprintf("%-45s: SKIPPED (%s)\n", table_name, result$reason))
+      log_console(sprintf("%-45s: SKIPPED (%s)\n", table_name, result$reason))
     } else if (result$success) {
-      cat(sprintf("%-45s: SUCCESS (%d rows loaded)\n",
+      log_console(sprintf("%-45s: SUCCESS (%d rows loaded)\n",
                   table_name,
                   result$loaded_rows))
     } else {
-      cat(sprintf("%-45s: FAILED\n", table_name))
+      log_console(sprintf("%-45s: FAILED\n", table_name))
     }
   }
 
-  cat("========================================\n")
-  cat("\n")
+  log_console("========================================\n")
+  log_console("\n")
 }
 
 # ==========================================

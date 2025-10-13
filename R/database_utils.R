@@ -655,14 +655,14 @@ print_all_table_stats <- function(conn) {
     "student_residential_address",
     "commonwealth_scholarships"
   )
-  
-  cat("\n=== Database Table Statistics ===\n")
+
+  log_console("\n=== Database Table Statistics ===\n")
   for (table_name in table_names) {
     stats <- get_table_stats(conn, table_name)
-    cat(sprintf("%-45s: %6d rows\n", table_name, stats$row_count))
+    log_console(sprintf("%-45s: %6d rows\n", table_name, stats$row_count))
   }
-  cat("=================================\n\n")
-  
+  log_console("=================================\n\n")
+
   return(invisible(NULL))
 }
 

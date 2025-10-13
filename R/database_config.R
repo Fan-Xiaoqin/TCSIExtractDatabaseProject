@@ -2,7 +2,7 @@
 # TCSI ETL Project - Student Data Module
 
 #' Database Configuration Settings
-#' 
+#'
 #' This file contains all configuration parameters for the ETL process.
 #' Modify these settings as needed for different environments.
 
@@ -113,11 +113,11 @@ init_dummy_db <- function() {
   DUMMY_DB_ENV$student_contacts_first_reported_address <- data.frame()
   DUMMY_DB_ENV$student_residential_address <- data.frame()
   DUMMY_DB_ENV$commonwealth_scholarships <- data.frame()
-  
+
   # Transaction backup storage
   DUMMY_DB_ENV$backup <- list()
   DUMMY_DB_ENV$in_transaction <- FALSE
-  
+
   return(invisible(NULL))
 }
 
@@ -154,11 +154,13 @@ get_error_file_path <- function(table_name) {
   return(file.path(DATA_ERRORS_DIR, filename))
 }
 
-# Print configuration summary
-cat("\n=== TCSI ETL Configuration ===\n")
-cat("Database Mode:", DB_MODE, "\n")
-cat("Batch Size:", BATCH_SIZE, "\n")
-cat("Logs Dir:", DATA_LOGS_DIR, "\n")
-cat("Errors Dir:", DATA_ERRORS_DIR, "\n")
-cat("Log Level:", LOG_LEVEL, "\n")
-cat("==============================\n\n")
+print_db_config <- function() {
+  # Print configuration summary
+  log_console("\n=== TCSI ETL Configuration ===\n")
+  log_console("Database Mode:", DB_MODE, "\n")
+  log_console("Batch Size:", BATCH_SIZE, "\n")
+  log_console("Logs Dir:", DATA_LOGS_DIR, "\n")
+  log_console("Errors Dir:", DATA_ERRORS_DIR, "\n")
+  log_console("Log Level:", LOG_LEVEL, "\n")
+  log_console("==============================\n\n")
+}
