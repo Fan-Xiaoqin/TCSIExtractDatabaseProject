@@ -26,15 +26,19 @@ This project was developed as part of CITS5206 – Information Technologhy Capst
 | 24122057       | Yize Sun           |
 | 23746283       | Yuheng Zheng       |
 
-## System Requirements
+## Project Usage
 
-### Software Requirements
-| Component | Version / Notes |
-|------------|----------------|
-| **R** | Version ≥ 4.4.0 |
-| **RStudio** | Latest stable version recommended [RStudio](https://posit.co/download/rstudio-desktop/) |
-| **PostgreSQL** | Installed and running [PostgreSQL](https://www.postgresql.org/download/) |
-| **Browser** | Chrome, Edge or Firefox (Optional) |
+To run this project, install a R language environment in your local computer:
+
+** Database **
+- Install PostgreSQL: [PostgresSQL](https://www.postgresql.org/download/)  
+- Optional: Chrome, Edge or Firefox
+** R **
+- Install R: [CRAN R Project](https://cran.r-project.org/)  
+- Optional: Install RStudio: [RStudio Desktop](https://posit.co/download/rstudio-desktop/)  
+
+---
+
 
 ### Required R Packages
 The following packages are required:
@@ -80,6 +84,7 @@ TCSIExtractDatabaseProject
 └── .gitignore                          # files and folders to exclude from version control
 
 ```
+
 
 ## Getting Started
 
@@ -238,3 +243,11 @@ Additional and detailed documentation for the TCSI Extract Database project is a
 | [`triggers_doc.md`](tcsi-etl-project/docs/db/triggers_doc.md)                    | Documentation of triggers implemented for maintaining data integrity and `is_current` flags.   |
 
 **Note**: Open the .md files directly from the docs/ folder in your editor or viewer for detailed instructions and supporting information.
+6. Develop a single, analysis-ready view (with all important fields);
+
+---
+
+
+
+
+
