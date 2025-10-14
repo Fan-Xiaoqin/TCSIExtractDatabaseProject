@@ -5,7 +5,9 @@ cat("INSTALLING R PACKAGES\n")
 cat("========================================\n\n")
 
 # List of required packages
-packages <- c("DBI", "RPostgreSQL")
+packages <- c("shiny", "shinydashboard", "DBI", "RPostgres", "shinyFiles",
+              "dplyr", "readr", "DT", "openxlsx", "lubridate", "getPass", "stringr")
+
 
 # Install packages
 for (pkg in packages) {
