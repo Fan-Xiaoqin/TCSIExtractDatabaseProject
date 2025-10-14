@@ -28,12 +28,11 @@ DB_CONFIG <- list(
   password = ""
 )
 
-# Detect if running inside Shiny
-RUNNING_IN_SHINY <- !is.null(Sys.getenv("SHINY_PORT")) 
+# Detect if running inside Shiny (fixed)
+RUNNING_IN_SHINY <- nzchar(Sys.getenv("SHINY_PORT"))
 
 # Prompt only if not running in Shiny
 if (!RUNNING_IN_SHINY) {
-  # Prompt for username and password if not set
   if (is.null(DB_CONFIG$user) || DB_CONFIG$user == "") {
     DB_CONFIG$user <- getPass::getPass("Enter DB username: ")
   }
