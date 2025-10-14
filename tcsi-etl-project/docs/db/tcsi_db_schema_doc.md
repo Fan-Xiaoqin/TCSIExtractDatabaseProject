@@ -173,23 +173,23 @@ The following supporting materials provide further detail and are referenced fro
 
 1. **Data Dictionary**  
    Describes all entities, attributes, data types, and code value meanings in alignment with TCSI specifications.  
-   *(See: `db_data_dictionary_doc.md`)*
+   *(See: [`db_data_dictionary_doc.md`](db_data_dictionary_doc.md))*
 
 2. **Indexes Documentation**  
    Lists indexing strategies for performance optimization, including rationale and sample index definitions.  
-   *(See: `indexes_doc.md`)*
+   *(See: [`indexes_doc.md`](indexes_doc.md))*
 
 3. **Consolidated View Documentation**  
    Defines the analytical “wide table” database view combining key student, course, and enrolment information for reporting.  
-   *(See: `consolidated_view_doc.md`)*
+   *(See: [`consolidated_view_doc.md`](consolidated_view_doc.md))*
 
 4. **Triggers Documentation**  
    Details all database triggers implemented to maintain data integrity, version control, and referential consistency across student, course, and enrolment entities.  
-   (See: `triggers_doc.md`)
+   (See: [`triggers_doc.md`](triggers_doc))
 
 5. **Role Based Access Setup Documentation**
    Describes how to set up roles and permissions to control data access and maintain security across user groups.
-   (See: `roles_and_permissions_setup_doc.md`)
+   (See: [`roles_and_permissions_setup_doc.md`](roles_and_permissions_setup_doc.md))
 
 ---
 

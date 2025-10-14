@@ -36,16 +36,31 @@ The ETL process consists of the following steps:
 ## 3. Directory Structure
 ```graphql
 tcsi-etl-project/
-├── config/                  # Configuration files and field mappings
-│   ├── database_config      # DB connection parameters
-│   └── field_mappings.R     # Mapping of source columns to target DB columns
-├── data/                    # Raw and error logs
-│   ├── errors/
-│   ├── logs/
-│   └── tcsiSamples/         # Original CSV files
-├── docs/                    # Documentation files
-├── schema/                  # DB schema and triggers
-├── src/                     # R scripts for ETL processing
+├── app.R                          # Main Shiny application
+├── config/
+│   ├── database_config.R          # Base configuration
+│   ├── database_config_runtime.R  # Runtime config (updated by app)
+│   └── field_mappings.R           # Field definitions for all tables
+├── src/
+│   ├── utils/
+│   │   ├── logging_utils.R        # Logging functions
+│   │   ├── database_utils.R       # DB operations
+│   │   ├── transformation_utils.R # Data transformations
+│   │   ├── validation_utils.R     # Data validation
+│   │   └── generic_etl.R          # Main ETL logic
+│   ├── main_etl_all_tables.R      # ETL orchestration
+│   └── app.R                      # Shiny app file
+├── data/
+│   ├── tcsiSample/                # CSV input files
+│   ├── logs/                      # ETL log files
+│   └── errors/                    # Error reports
+├── docs                           # Supportive documentation
+│   ├── db/                        # DB documentation
+│   ├── etl/                       # ETL documentation
+│   ├── shiny_app/                 # Shiny app documentation
+│   ├── mapping/                   # CSV with mapping framework
+│   └── erd-stage/                 # Entity Relationship Diagrams
+└── install_packages.R             # Package installer
 ```
 
 ---
