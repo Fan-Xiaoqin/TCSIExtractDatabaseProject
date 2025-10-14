@@ -181,7 +181,7 @@ The configuration is now saved to `config/database_config_runtime.R` and will pe
 
 ### Project Structure
 
-```
+```graphql
 tcsi-etl-project/
 ├── app.R                          # Main Shiny application
 ├── config/
@@ -202,9 +202,11 @@ tcsi-etl-project/
 │   ├── logs/                      # ETL log files
 │   └── errors/                    # Error reports
 ├── docs                           # Supportive documentation
-│   ├── db/
-│   ├── etl/
-│   └── shiny_app/
+│   ├── db/                        # DB documentation
+│   ├── etl/                       # ETL documentation
+│   ├── shiny_app/                 $ Shiny app documentation
+│   ├── mapping/                   # CSV with mapping framework
+│   └── erd-stage/                 # Entity Relationship Diagrams
 └── install_packages.R             # Package installer
 ```
 

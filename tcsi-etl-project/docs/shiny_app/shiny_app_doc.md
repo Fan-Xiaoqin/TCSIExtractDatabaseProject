@@ -45,26 +45,31 @@ install.packages(c("shiny", "shinydashboard", "DBI", "RPostgres", "shinyFiles"
 
 ```graphql
 tcsi-etl-project/
+├── app.R                          # Main Shiny application
 ├── config/
-│   ├── database_config           # DB credentials or environment variables
-│   └── field_mappings.R          # Source-to-destination field mappings
-├── data/
-│   ├── errors/                   # Error logs or rejected records
-│   ├── logs/                     # ETL execution and process logs
-│   └── tcsiSamples/              # Sample input or test datasets
-├── docs/                         # Project and technical documentation
-├── schema/                       # Database schema scripts (DDL, indexes, views)
+│   ├── database_config.R          # Base configuration
+│   ├── database_config_runtime.R  # Runtime config (updated by app)
+│   └── field_mappings.R           # Field definitions for all tables
 ├── src/
 │   ├── utils/
-│   │   ├── database_utils.R      # Database connection and query functions
-│   │   ├── generic_etl.R         # Core ETL workflow logic
-│   │   ├── logging_utils.R       # Log writing and tracking helpers
-│   │   ├── query_table_v1.R      # SQL query handling for query tab
-│   │   ├── transformation_utils.R# Data transformation and cleaning functions
-│   │   └── validation_utils.R    # Data validation rules and schema checks
-│   ├── app.R                     # Shiny interface for monitoring and control
-│   └── main_etl_all_tables.R     # Main ETL execution script
-└── install_packages.R            # Package installation utility
+│   │   ├── logging_utils.R        # Logging functions
+│   │   ├── database_utils.R       # DB operations
+│   │   ├── transformation_utils.R # Data transformations
+│   │   ├── validation_utils.R     # Data validation
+│   │   └── generic_etl.R          # Main ETL logic
+│   ├── main_etl_all_tables.R      # ETL orchestration
+│   └── app.R                      # Shiny app file
+├── data/
+│   ├── tcsiSample/                # CSV input files
+│   ├── logs/                      # ETL log files
+│   └── errors/                    # Error reports
+├── docs                           # Supportive documentation
+│   ├── db/                        # DB documentation
+│   ├── etl/                       # ETL documentation
+│   ├── shiny_app/                 $ Shiny app documentation
+│   ├── mapping/                   # CSV with mapping framework
+│   └── erd-stage/                 # Entity Relationship Diagrams
+└── install_packages.R             # Package installer
 ```
 
 ## 4. Installation and Setup
