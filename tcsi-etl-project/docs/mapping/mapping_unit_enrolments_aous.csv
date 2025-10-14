@@ -1,0 +1,13 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments,consider_for_uniqueness
+unit_enrolments_aous,aou_id,BIGINT,HEP_units-AOUs,N/A,N/A,Generated identity,Auto-generated primary key,N
+unit_enrolments_aous,unit_enrolment_id,BIGINT NOT NULL,HEP_units-AOUs,UID16_UnitEnrolmentsResKey,126925852,Foreign key lookup,Lookup unit_enrolment_id from unit_enrolments using uid16_unit_enrolments_res_key,N
+unit_enrolments_aous,uid19_unit_enrolment_aous_res_key,VARCHAR(10) NOT NULL,HEP_units-AOUs,UID19_UnitEnrolmentAOUsResKey,123737580,Direct mapping,Unique key for AOU records,Y
+unit_enrolments_aous,e333_aou_code,VARCHAR(3),HEP_units-AOUs,E333_AOUCode,200,NULL string conversion,AOU code - convert 'NULL' string to actual NULL,Y
+unit_enrolments_aous,aou_e339_eftsl,"DECIMAL(10,9)",HEP_units-AOUs,AOU.E339_EFTSL,0.125,NULL string conversion and decimal,EFTSL for this AOU - convert 'NULL' string to actual NULL,Y
+unit_enrolments_aous,aou_e384_amount_charged,"DECIMAL(7,2)'",HEP_units-AOUs,AOU.E384_AmountCharged,1419,NULL string conversion and decimal,Amount charged for this AOU - convert 'NULL' string to actual NULL,Y
+unit_enrolments_aous,aou_e381_amount_paid_upfront,"DECIMAL(7,2)'",HEP_units-AOUs,AOU.E381_AmountPaidUpfront,0,NULL string conversion and decimal,Amount paid upfront for this AOU - convert 'NULL' string to actual NULL,Y
+unit_enrolments_aous,aou_e529_loan_fee,"DECIMAL(7,2)'",HEP_units-AOUs,AOU.E529_LoanFee,0,NULL string conversion and decimal,Loan fee for this AOU - convert 'NULL' string to actual NULL,Y
+unit_enrolments_aous,aou_is_deleted,BOOLEAN,HEP_units-AOUs,AOU.IsDeleted,0,Boolean conversion 0 to false 1 to true,Convert 0/1 to FALSE/TRUE,Y
+unit_enrolments_aous,reporting_year,INT NOT NULL,HEP_units-AOUs,N/A - Derived from filename,2021,Extract from filename,Extract year from filename (e.g. HEP_units-AOUs_2021.csv),Y
+unit_enrolments_aous,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update,N
+unit_enrolments_aous,is_current,BOOLEAN,System Generated,N/A,N/A,Default TRUE,Default to TRUE for current records,N

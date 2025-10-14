@@ -1,0 +1,8 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+course_fields_of_education,uid48_course_fields_of_education_res_key,VARCHAR(10),CourseFieldsOfEducation,UID48_CourseFieldsOfEducationResKey,75482,Direct mapping,Primary key for course field of education records
+course_fields_of_education,uid5_courses_res_key,VARCHAR(10) NOT NULL,CourseFieldsOfEducation,UID5_CoursesResKey,59800,Direct mapping,Foreign key reference to hep_courses table via UID5_CoursesResKey
+course_fields_of_education,e461_field_of_education_code,VARCHAR(6) NOT NULL,CourseFieldsOfEducation,E461_FieldOfEducationCode,61799,Direct mapping,Field of education classification code
+course_fields_of_education,e462_field_of_education_supplementary_code,VARCHAR(6),CourseFieldsOfEducation,E462_FieldOfEducationSupplementaryCode,0,NULL string conversion,Supplementary field code
+course_fields_of_education,e609_effective_from_date,DATE NOT NULL,CourseFieldsOfEducation,E609_EffectiveFromDate,1/1/2005,Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE
+course_fields_of_education,e610_effective_to_date,DATE,CourseFieldsOfEducation,E610_EffectiveToDate,31/12/2006,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+course_fields_of_education,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

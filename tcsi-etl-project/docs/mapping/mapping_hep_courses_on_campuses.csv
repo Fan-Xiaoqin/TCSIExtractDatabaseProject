@@ -1,0 +1,11 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+hep_courses_on_campuses,uid4_courses_on_campus_res_key,VARCHAR(10),HEPCoursesOnCampuses,UID4_CoursesOnCampusResKey,37274,Direct mapping,Primary key for courses on campus records
+hep_courses_on_campuses,uid2_campuses_res_key,VARCHAR(10) NOT NULL,HEPCoursesOnCampuses,UID2_CampusesResKey,2370,Foreign key lookup,Lookup uid2_campuses_res_key from campuses table
+hep_courses_on_campuses,uid5_courses_res_key,VARCHAR(10) NOT NULL,HEPCoursesOnCampuses,UID5_CoursesResKey,115764,Foreign key lookup,Lookup uid5_courses_res_key from hep_courses table
+hep_courses_on_campuses,e597_cricos_code,VARCHAR(7),HEPCoursesOnCampuses,E597_CRICOSCode,089788A,NULL string conversion,CRICOS code - convert 'NULL' string to actual NULL
+hep_courses_on_campuses,e569_campus_operation_type,VARCHAR(2),HEPCoursesOnCampuses,E569_CampusOperationType,NULL,Validate against CHECK constraint - NULL string conversion,Campus operation type - convert 'NULL' string to actual NULL
+hep_courses_on_campuses,e570_principal_offshore_delivery_mode,VARCHAR(2),HEPCoursesOnCampuses,E570_PrincipalOffshoreDeliveryMode,NULL,Validate against CHECK constraint - NULL string conversion,Principal offshore delivery mode - convert 'NULL' string to actual NULL
+hep_courses_on_campuses,e571_offshore_delivery_code,VARCHAR(2),HEPCoursesOnCampuses,E571_OffshoreDeliveryCode,NULL,Validate against CHECK constraint - NULL string conversion,Offshore delivery code - convert 'NULL' string to actual NULL
+hep_courses_on_campuses,e609_effective_from_date,DATE NOT NULL,HEPCoursesOnCampuses,E609_EffectiveFromDate,1/1/2021,Date parsing DD/MM/YYYY,Parse DD/MM/YYYY format to DATE
+hep_courses_on_campuses,e610_effective_to_date,DATE,HEPCoursesOnCampuses,E610_EffectiveToDate,NULL,Date parsing and NULL handling,Parse DD/MM/YYYY format to DATE - convert 'NULL' string to actual NULL
+hep_courses_on_campuses,updated_at,TIMESTAMP,System Generated,N/A,N/A,System timestamp,Automatically set to CURRENT_TIMESTAMP on insert/update

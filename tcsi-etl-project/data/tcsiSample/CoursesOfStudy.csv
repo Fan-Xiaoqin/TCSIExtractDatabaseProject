@@ -1,0 +1,1434 @@
+"UID1_ProvidersResKey","E306_ProviderCode","E781_ProviderType","UID3_CoursesOfStudyResKey","E533_CourseOfStudyCode","E394_CourseOfStudyName","E310_CourseOfStudyType","E350_CourseOfStudyLoad","E455_CombinedCourseOfStudyIndicator"
+35,1055,"HEP",1462,"00020","Aboriginal Orientation Course",30,"1.0",0
+35,1055,"HEP",1463,"00030","Aboriginal Pre-Law Programme",30,"0.3",0
+35,1055,"HEP",1464,"00040","Aboriginal Pre-Medicine Programme",30,"0.3",0
+35,1055,"HEP",1465,"00050","Cross Institutional (Albany)",41,"NULL",0
+35,1055,"HEP",1466,"00090","Not for Degree (Study Abroad)",41,"0.0",0
+35,1055,"HEP",1467,"0009P","Cross Institutional (Study Abroad) Postgraduate",42,"NULL",0
+35,1055,"HEP",1468,"00410","Doctor of Philosophy - Preliminary",5,"1.0",0
+35,1055,"HEP",1469,"0009U","Cross Institutional (Study Abroad) Undergraduate",41,"NULL",0
+35,1055,"HEP",1470,"00800","Not for Degree (PhD)",42,"0.0",0
+35,1055,"HEP",1471,"0080P","Cross Institutional (PhD)",42,"0.0",0
+35,1055,"HEP",1472,"00830","Doctor of Philosophy",2,"4.0",0
+35,1055,"HEP",1473,"1000N","Non-Award (Arts)",50,"0.0",0
+35,1055,"HEP",1474,"1000P","Cross Institutional (Arts) Postgraduate",42,"NULL",0
+35,1055,"HEP",1475,"10110","Bachelor of Arts",10,"3.0",0
+35,1055,"HEP",1476,"1011H","Bachelor of Arts (Honours)",9,"1.0",0
+35,1055,"HEP",1477,"10120","Bachelor of Music",10,"4.0",0
+35,1055,"HEP",1478,"10140","Bachelor of Psychology",8,"1.0",0
+35,1055,"HEP",1479,"10150","Bachelor of Social Work - Postgraduate",8,"2.1",0
+35,1055,"HEP",1480,"10170","Bachelor of Letters",8,"2.0",0
+35,1055,"HEP",1481,"1017H","Bachelor of Letters (Honours)",8,"1.0",0
+35,1055,"HEP",1482,"10200","Bachelor of Arts (Asian Studies)",10,"3.0",0
+35,1055,"HEP",1483,"1020H","Bachelor of Arts (Asian Studies) (Honours)",9,"1.0",0
+35,1055,"HEP",1484,"1021H","Bachelor of Arts (European Studies) (Honours)",9,"1.0",0
+35,1055,"HEP",1485,"10210","Bachelor of Arts (European Studies)",10,"3.0",0
+35,1055,"HEP",1486,"1024H","Bachelor of Social Work - Undergraduate (Four Year) (Honours)",9,"1.0",0
+35,1055,"HEP",1487,"10240","Bachelor of Social Work - Undergraduate (Four Year)",10,"4.0",0
+35,1055,"HEP",1488,"10280","Graduate Certificate in Music Education",11,"0.5",0
+35,1055,"HEP",1489,"10370","Graduate Diploma in Advanced Social Work",7,"1.0",0
+35,1055,"HEP",1490,"10380","Graduate Diploma in Music Education",6,"1.0",0
+35,1055,"HEP",1491,"10490","Higher Degree by Research Preliminary - Arts",5,"1.0",0
+35,1055,"HEP",1492,"10410","Master of Arts - Preliminary",5,"1.0",0
+35,1055,"HEP",1493,"10710","Master of Arts - Research",3,"2.0",0
+35,1055,"HEP",1494,"10720","Master of Music - Research",3,"2.0",0
+35,1055,"HEP",1495,"10730","Master of Music Education - Research",3,"2.0",0
+35,1055,"HEP",1496,"10740","Master of Philosophy - Research",3,"2.0",0
+35,1055,"HEP",1497,"20540","Master of Banking and Finance Law",4,"1.0",0
+35,1055,"HEP",1498,"20920","Doctor of Laws",1,"NULL",0
+35,1055,"HEP",1499,"20810","Doctor of Juridical Science",2,"4.0",0
+35,1055,"HEP",1500,"20720","Master of Laws - Research",3,"2.0",0
+35,1055,"HEP",1501,"20710","Master of Criminal Justice - Research",3,"2.0",0
+35,1055,"HEP",1502,"20560","Master of Commercial and Resources Law",4,"1.0",0
+35,1055,"HEP",1503,"20520","Master of Laws - Coursework",4,"1.0",0
+35,1055,"HEP",1504,"20530","Master of Taxation Studies - Coursework",4,"1.0",0
+35,1055,"HEP",1505,"20360","Graduate Diploma in Commercial and Resources Law",6,"0.5",0
+35,1055,"HEP",1506,"20420","Master of Laws - Preliminary",5,"1.0",0
+35,1055,"HEP",1507,"20490","Higher Degree by Research Preliminary - Law",5,"1.0",0
+35,1055,"HEP",1508,"20350","Graduate Diploma in Legal Practice",7,"1.0",0
+35,1055,"HEP",1509,"20510","Master of Criminal Justice - Coursework",4,"1.0",0
+35,1055,"HEP",1510,"20340","Graduate Diploma in Banking and Finance Law",6,"1.0",0
+35,1055,"HEP",1511,"20330","Graduate Diploma in Taxation Studies",6,"1.0",0
+35,1055,"HEP",1512,"20320","Graduate Diploma in Law",7,"1.0",0
+35,1055,"HEP",1513,"20310","Graduate Diploma in Criminal Justice",6,"0.5",0
+35,1055,"HEP",1514,"20130","Bachelor of Laws - Undergraduate",10,"4.0",0
+35,1055,"HEP",1515,"20140","Bachelor of Laws - Graduate",8,"3.0",0
+35,1055,"HEP",1516,"20040","Law Bridging Programme (Not for degree)",50,"0.0",0
+35,1055,"HEP",1517,"11630","Master of Arts in Australian Literary Studies",4,"2.0",0
+35,1055,"HEP",1518,"20020","Not for Degree (Law), Postgraduate",42,"0.0",0
+35,1055,"HEP",1519,"2000P","Cross Institutional (Law) Postgraduate",42,"NULL",0
+35,1055,"HEP",1520,"2000U","Cross Institutional (Law) Undergraduate",41,"NULL",0
+35,1055,"HEP",1521,"2000N","Non-Award (Law)",50,"0.0",0
+35,1055,"HEP",1522,"11520","Master of Applied Maritime Archaeology",4,"1.5",0
+35,1055,"HEP",1523,"11510","Master of Arts - Coursework",4,"1.0",0
+35,1055,"HEP",1524,"11290","Graduate Certificate in Modern Languages",11,"0.5",0
+35,1055,"HEP",1525,"11500","Master of Communication Studies (Coursework)",4,"1.5",0
+35,1055,"HEP",1526,"11390","Graduate Diploma in Modern Languages",6,"1.0",0
+35,1055,"HEP",1527,"11350","Graduate Certificate in Arts (2nd Degree)",11,"0.5",0
+35,1055,"HEP",1528,"11320","Graduate Diploma in Applied Maritime Archaeology",7,"1.0",0
+35,1055,"HEP",1529,"11330","Graduate Diploma in Australian Literary Studies",7,"1.0",0
+35,1055,"HEP",1530,"11310","Graduate Diploma in Applied Anthropology",6,"1.0",0
+35,1055,"HEP",1531,"11300","Graduate Diploma in Communication Studies",6,"1.0",0
+35,1055,"HEP",1532,"11270","Graduate Certificate in Social Work",11,"0.5",0
+35,1055,"HEP",1533,"11230","Graduate Certificate in Australian Literary Studies",11,"0.5",0
+35,1055,"HEP",1534,"11200","Graduate Certificate in Communication Studies",11,"0.5",0
+35,1055,"HEP",1535,"11250","Graduate Certificate in Arts",11,"0.5",0
+35,1055,"HEP",1536,"11210","Graduate Certificate in Applied Anthropology",11,"0.5",0
+35,1055,"HEP",1537,"10760","Master of Arts - Research",3,"2.0",0
+35,1055,"HEP",1538,"10910","Doctor of Letters",1,"0.0",0
+35,1055,"HEP",1539,"10920","Doctor of Music",1,"0.0",0
+35,1055,"HEP",1540,"10930","Doctor of Arts",2,"4.0",0
+35,1055,"HEP",1541,"10970","Doctor of Social Work",2,"4.0",0
+35,1055,"HEP",1542,"1112H","Bachelor of Musical Arts (Honours)",9,"1.0",0
+35,1055,"HEP",1543,"11120","Bachelor of Musical Arts",10,"3.0",0
+35,1055,"HEP",1544,"1110H","Bachelor of Arts (Communication Studies) (Honours)",9,"1.0",0
+35,1055,"HEP",1545,"11100","Bachelor of Arts (Communication Studies)",10,"3.0",0
+35,1055,"HEP",1546,"11050","Graduate Diploma in Arts (Advanced)",7,"1.0",0
+35,1055,"HEP",1547,"25720","Master of Building Science - Research",3,"2.0",0
+35,1055,"HEP",1548,"25710","Master of Architecture - Research",3,"2.0",0
+35,1055,"HEP",1549,"25490","Higher Degree by Research Preliminary - Architecture, Landscape and Visual Arts",5,"1.0",0
+35,1055,"HEP",1550,"25020","Not for Degree (Architecture), Postgraduate",42,"0.0",0
+35,1055,"HEP",1551,"2515H","Bachelor of Fine Arts (Honours)",9,"1.0",0
+35,1055,"HEP",1552,"25150","Bachelor of Fine Arts",10,"3.0",0
+35,1055,"HEP",1553,"25140","Bachelor of Landscape Architecture",10,"4.0",0
+35,1055,"HEP",1554,"25130","Bachelor of Architecture - Graduate",8,"2.0",0
+35,1055,"HEP",1555,"2512H","Bachelor of Environmental Design (Honours)",9,"1.0",0
+35,1055,"HEP",1556,"25120","Bachelor of Environmental Design",10,"3.0",0
+35,1055,"HEP",1557,"2500U","Cross Institutional (Architecture) Undergraduate",41,"NULL",0
+35,1055,"HEP",1558,"2500P","Cross Institutional (Architecture) Postgraduate",42,"NULL",0
+35,1055,"HEP",1559,"21190","Bachelor of Laws - Graduate",8,"3.8",0
+35,1055,"HEP",1560,"21180","Bachelor of Laws - Undergraduate",10,"4.1",0
+35,1055,"HEP",1561,"25770","Master of Curatorial Studies in Fine Arts - Research",3,"2.0",0
+35,1055,"HEP",1562,"25750","Master of Landscape Architecture - Research",3,"2.0",0
+35,1055,"HEP",1563,"25740","Master of Fine Arts - Research",3,"2.0",0
+35,1055,"HEP",1564,"25730","Master of Environmental Design - Research",3,"2.0",0
+35,1055,"HEP",1565,"25910","Doctor of Architecture",1,"0.0",0
+35,1055,"HEP",1566,"3000N","Non-Award  (Education)",50,"0.0",0
+35,1055,"HEP",1567,"3000P","Cross Institutional (Education) Postgraduate",42,"NULL",0
+35,1055,"HEP",1568,"3000U","Cross Institutional (Education) Undergraduate",41,"NULL",0
+35,1055,"HEP",1569,"30020","Not for Degree (Education), Postgraduate",42,"0.0",0
+35,1055,"HEP",1570,"30130","Bachelor of Educational Studies",8,"1.0",0
+35,1055,"HEP",1571,"30140","Bachelor of Education (Honours)",8,"1.0",0
+35,1055,"HEP",1572,"30240","Graduate Diploma in Educational Management",6,"0.5",0
+35,1055,"HEP",1573,"30330","Graduate Diploma in Educational Studies",7,"1.0",0
+35,1055,"HEP",1574,"30340","Graduate Diploma in Education",6,"1.0",0
+35,1055,"HEP",1575,"30490","Higher Degree by Research Preliminary",5,"1.0",0
+35,1055,"HEP",1576,"30550","Master of Education in Applied Linguistics - Cswk",4,"2.0",0
+35,1055,"HEP",1577,"30560","Master of Educational Studies - Coursework",4,"1.0",0
+35,1055,"HEP",1578,"30580","Master of Education - Course Work",4,"1.0",0
+35,1055,"HEP",1579,"30590","Master of Educational Psychology",4,"1.0",0
+35,1055,"HEP",1580,"30600","Master of Educational Studies - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1581,"30610","Master of Education - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1582,"30640","Master of Education in Applied Linguistics - Diss & Cswk",3,"2.0",0
+35,1055,"HEP",1583,"30620","Master of Special Education - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1584,"30730","Master of Education in Applied Linguistics - Research",3,"2.0",0
+35,1055,"HEP",1585,"30650","Master of Educational Management - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1586,"30700","Master of Education - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1587,"30770","Master of Education - Research",3,"2.0",0
+35,1055,"HEP",1588,"30740","Master of Special Education - Research",3,"2.0",0
+35,1055,"HEP",1589,"31380","Graduate Diploma in the Teaching of Critical Thinking",6,"0.5",0
+35,1055,"HEP",1590,"31360","Graduate Diploma in Language and Literacy",6,"0.5",0
+35,1055,"HEP",1591,"31350","Graduate Diploma in Curriculum Leadership",6,"0.5",0
+35,1055,"HEP",1592,"30810","Doctor of Education",2,"4.0",0
+35,1055,"HEP",1593,"30820","Doctor of Educational Psychology",2,"4.0",0
+35,1055,"HEP",1594,"31400","Graduate Diploma in Education",6,"1.3",0
+35,1055,"HEP",1595,"31390","Graduate Diploma in Professional Studies in Education",7,"0.5",0
+35,1055,"HEP",1596,"31600","Master of Educational Studies by Thesis & Coursework",3,"1.0",0
+35,1055,"HEP",1597,"4000U","Cross Institutional (Economics & Commerce) Undergraduate",41,"NULL",0
+35,1055,"HEP",1598,"4000P","Cross Institutional (Economics & Commerce) Postgraduate",42,"NULL",0
+35,1055,"HEP",1599,"4000N","Non-Award (Econ & Comm)",50,"NULL",0
+35,1055,"HEP",1600,"31620","Master of Special Education by Thesis & Coursework",3,"1.0",0
+35,1055,"HEP",1601,"31640","Master of Education in Applied Linguistics - Thesis & Cswk",3,"1.0",0
+35,1055,"HEP",1602,"31700","Master of Education - Thesis & Coursework",3,"1.0",0
+35,1055,"HEP",1603,"4011H","Bachelor of Commerce (Honours)",9,"1.0",0
+35,1055,"HEP",1604,"40110","Bachelor of Commerce",10,"3.0",0
+35,1055,"HEP",1605,"40020","Not for Degree (Econ & Com), Postgraduate",42,"0.0",0
+35,1055,"HEP",1606,"40030","Cross Institutional (GSM) Postgraduate",42,"NULL",0
+35,1055,"HEP",1607,"4012H","Bachelor of Economics (Honours)",9,"1.0",0
+35,1055,"HEP",1608,"40120","Bachelor of Economics",10,"3.0",0
+35,1055,"HEP",1609,"40220","Graduate Certificate in Technology Commercialisation",11,"0.5",0
+35,1055,"HEP",1610,"40210","Graduate Certificate in Business Administration",11,"0.5",0
+35,1055,"HEP",1611,"40290","Graduate Diploma in Professional Accounting",7,"1.0",0
+35,1055,"HEP",1612,"40310","Graduate Certificate in Management",11,"0.5",0
+35,1055,"HEP",1613,"40350","Graduate Diploma in Accounting",7,"1.0",0
+35,1055,"HEP",1614,"40330","Graduate Diploma in Economics",7,"1.0",0
+35,1055,"HEP",1615,"40380","Graduate Diploma in Marketing",7,"1.0",0
+35,1055,"HEP",1616,"40360","Graduate Diploma in Finance",7,"1.0",0
+35,1055,"HEP",1617,"40370","Graduate Diploma in Business Administration",7,"1.0",0
+35,1055,"HEP",1618,"40410","Master of Commerce - Preliminary",5,"1.0",0
+35,1055,"HEP",1619,"40490","Higher Degree by Research Preliminary - Business",5,"1.0",0
+35,1055,"HEP",1620,"40500","Master of Accounting - Coursework",4,"2.0",0
+35,1055,"HEP",1621,"40610","Master of Professional Accounting - Coursework",4,"2.0",0
+35,1055,"HEP",1622,"40510","Master of Finance - Coursework",4,"2.0",0
+35,1055,"HEP",1623,"40670","Master of Information Management - Coursework",4,"1.0",0
+35,1055,"HEP",1624,"40650","Master of Human Resource Management",4,"1.0",0
+35,1055,"HEP",1625,"40620","Master of Economics - Coursework",4,"2.0",0
+35,1055,"HEP",1626,"40830","Doctor of Business Administration",2,"4.0",0
+35,1055,"HEP",1627,"40740","Master of Industrial Relations - Research",3,"2.0",0
+35,1055,"HEP",1628,"40730","Master of Japanese Studies - Research",3,"2.0",0
+35,1055,"HEP",1629,"40710","Master of Commerce - Research",3,"2.0",0
+35,1055,"HEP",1630,"40720","Master of Economics - Research",3,"2.0",0
+35,1055,"HEP",1631,"40680","Master of Marketing - Coursework",4,"1.0",0
+35,1055,"HEP",1632,"40690","Master of Electronic Marketing and Information Management",4,"1.0",0
+35,1055,"HEP",1633,"41500","Master of Logistic Engineering and Management",4,"2.0",0
+35,1055,"HEP",1634,"41320","Graduate Diploma in Business Economics",7,"1.0",0
+35,1055,"HEP",1635,"41310","Graduate Diploma in Commerce",7,"1.0",0
+35,1055,"HEP",1636,"41550","Executive Master of Business Administration",4,"1.5",0
+35,1055,"HEP",1637,"41540","Master of Business Administration (International)-Coursework",4,"2.0",0
+35,1055,"HEP",1638,"41520","Master of Business Administration - Coursework",4,"1.5",0
+35,1055,"HEP",1639,"41530","Master of Business Administration (Advanced) - Coursework",4,"2.0",0
+35,1055,"HEP",1640,"41610","Master of Commerce - Coursework",4,"1.5",0
+35,1055,"HEP",1641,"41640","Master of Transport Studies - Coursework & Dissertation",4,"1.5",0
+35,1055,"HEP",1642,"41630","Master of Human Resources and Industrial Relations",4,"1.0",0
+35,1055,"HEP",1643,"41620","Master of Electronic Business",4,"1.0",0
+35,1055,"HEP",1644,"5011H","Bachelor of Science (Honours)",9,"1.0",0
+35,1055,"HEP",1645,"50110","Bachelor of Science",10,"3.0",0
+35,1055,"HEP",1646,"5010H","Bachelor of Computer and Mathematical Sciences (Honours)",9,"1.0",0
+35,1055,"HEP",1647,"50100","Bachelor of Computer and Mathematical Sciences",10,"3.0",0
+35,1055,"HEP",1648,"50020","Not for Degree (Science), Postgraduate",42,"0.0",0
+35,1055,"HEP",1649,"5000P","Cross Institutional  (Science) Postgraduate",42,"0.0",0
+35,1055,"HEP",1650,"5000U","Cross Institutional (Science) Undergraduate",41,"0.0",0
+35,1055,"HEP",1651,"5000N","Non-Award (Science)",50,"0.0",0
+35,1055,"HEP",1652,"50250","Bachelor of Molecular Biology",8,"1.0",0
+35,1055,"HEP",1653,"50240","Bachelor of Plant Biology",10,"1.0",0
+35,1055,"HEP",1654,"5015H","Bachelor of Physical and Health Education (Honours)",9,"1.0",0
+35,1055,"HEP",1655,"50150","Bachelor of Physical and Health Education",10,"3.0",0
+35,1055,"HEP",1656,"50140","Bachelor of Cognitive Science",10,"3.0",0
+35,1055,"HEP",1657,"50300","Graduate Diploma in Science",7,"1.0",0
+35,1055,"HEP",1658,"50260","Bachelor of Health Science",10,"4.0",0
+35,1055,"HEP",1659,"50320","Graduate Diploma in Forensic Science",6,"1.0",0
+35,1055,"HEP",1660,"50330","Bachelor of Health Science (Honours)",9,"1.0",0
+35,1055,"HEP",1661,"50370","Graduate Diploma in Surgical Anatomy",6,"1.0",0
+35,1055,"HEP",1662,"50340","Graduate Diploma in Psychology",6,"1.8",0
+35,1055,"HEP",1663,"50490","Higher Degree by Research Preliminary - Science",5,"1.0",0
+35,1055,"HEP",1664,"50500","Master of Science - Coursework",4,"2.0",0
+35,1055,"HEP",1665,"50550","Master of Psychology in Clinical Neuropsychology",4,"2.0",0
+35,1055,"HEP",1666,"50570","Master of Science Education - Coursework",4,"1.0",0
+35,1055,"HEP",1667,"50590","Master of Science (Ore Deposit Geology) - Coursework",4,"1.0",0
+35,1055,"HEP",1668,"50560","Master of Psychology - Coursework",4,"2.0",0
+35,1055,"HEP",1669,"50620","Master of Forensic Science - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1670,"50720","Master of Science Education - Research",3,"2.0",0
+35,1055,"HEP",1671,"50640","Master of Cognitive Science - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",1672,"50710","Master of Science - Research",3,"2.0",0
+35,1055,"HEP",1673,"50750","Master of Science - Research",3,"2.0",0
+35,1055,"HEP",1674,"50740","Master of Cognitive Science - Research",3,"2.0",0
+35,1055,"HEP",1675,"50910","Doctor of Science",1,"NULL",0
+35,1055,"HEP",1676,"5112H","Bachelor of Science and Technology (Honours)",9,"1.0",0
+35,1055,"HEP",1677,"51120","Bachelor of Science and Technology",8,"1.5",0
+35,1055,"HEP",1678,"50760","Master of Regional Development - Research",3,"2.0",0
+35,1055,"HEP",1679,"51140","Bachelor of Recreation and Health Managem",10,"1.0",0
+35,1055,"HEP",1680,"51130","Bachelor of Science European",8,"1.0",0
+35,1055,"HEP",1681,"51150","Bachelor of Exercise Rehabilitation Science",8,"1.0",0
+35,1055,"HEP",1682,"51230","Graduate Certificate in Sports Science",11,"0.5",0
+35,1055,"HEP",1683,"51240","Graduate Certificate in Science Communication",11,"0.5",0
+35,1055,"HEP",1684,"51260","Graduate Certificate in Regional Development",11,"0.5",0
+35,1055,"HEP",1685,"51250","Graduate Certificate in Science Education",11,"0.5",0
+35,1055,"HEP",1686,"51300","Graduate Diploma in Anatomical Sciences",7,"1.0",0
+35,1055,"HEP",1687,"51310","Graduate Diploma in Pharmaceutical Science",7,"1.5",0
+35,1055,"HEP",1688,"51320","Graduate Diploma in Human Biology",7,"1.0",0
+35,1055,"HEP",1689,"51340","Graduate Diploma in Science Communication",6,"1.0",0
+35,1055,"HEP",1690,"51360","Graduate Diploma in Regional Development",7,"1.0",0
+35,1055,"HEP",1691,"51530","Master of Science - Coursework & Dissertation",4,"1.0",0
+35,1055,"HEP",1692,"51520","Master of Forensic Science - Coursework",4,"2.0",0
+35,1055,"HEP",1693,"51510","Master of Psychology (Industrial and Organisational Psychology)",4,"2.0",0
+35,1055,"HEP",1694,"51500","Master of Pharmacy - Coursework",4,"3.0",0
+35,1055,"HEP",1695,"51560","Master of Regional Development - Coursework",4,"2.0",0
+35,1055,"HEP",1696,"6013H","Bachelor of Computer Science (Honours)",9,"1.0",0
+35,1055,"HEP",1697,"60130","Bachelor of Computer Science",10,"3.0",0
+35,1055,"HEP",1698,"60110","Bachelor of Engineering",10,"4.0",0
+35,1055,"HEP",1699,"60020","Not for Degree (Engineering), Postgraduate",42,"0.0",0
+35,1055,"HEP",1700,"6000U","Cross Institutional (Engineering) Undergraduate",41,"NULL",0
+35,1055,"HEP",1701,"6000P","Cross Institutional (Engineering) Postgraduate",42,"NULL",0
+35,1055,"HEP",1702,"6000N","Non-Award (Engineering)",50,"NULL",0
+35,1055,"HEP",1703,"51610","Master of Science - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",1704,"60250","Graduate Certificate in Oil & Gas Engineering",11,"0.5",0
+35,1055,"HEP",1705,"60220","Graduate Certificate in Information Technology",11,"0.5",0
+35,1055,"HEP",1706,"60260","Graduate Certificate in Engineering",11,"0.5",0
+35,1055,"HEP",1707,"60300","Graduate Diploma in Computer & Mathematical Sciences",7,"1.0",0
+35,1055,"HEP",1708,"60340","Graduate Diploma in Oil and Gas Engineering",7,"1.0",0
+35,1055,"HEP",1709,"6032H","Graduate Diploma in Information Technology (Honours)",7,"1.0",0
+35,1055,"HEP",1710,"60390","Graduate Diploma in Financial Mathematics",7,"1.0",0
+35,1055,"HEP",1711,"60360","Graduate Diploma in Computer Science",7,"1.0",0
+35,1055,"HEP",1712,"60540","Master of Oil and Gas Engineering - Coursework",4,"2.0",0
+35,1055,"HEP",1713,"60490","Higher Degree by Research Preliminary - Engineering, Computing and Mathematics",5,"1.0",0
+35,1055,"HEP",1714,"60550","Master of Oil and Gas Engineering - Coursework",4,"2.0",0
+35,1055,"HEP",1715,"60560","Master of Engineering - Coursework",4,"2.0",0
+35,1055,"HEP",1716,"60570","Master of Medical Engineering",4,"1.0",0
+35,1055,"HEP",1717,"60590","Master of Financial Mathematics",4,"1.5",0
+35,1055,"HEP",1718,"60600","Master of Computer Science",4,"2.0",0
+35,1055,"HEP",1719,"60620","Master of Natural Systems Engineering",4,"2.0",0
+35,1055,"HEP",1720,"60720","Master of Engineering - Research",3,"2.0",0
+35,1055,"HEP",1721,"60910","Doctor of Engineering",1,"0.0",0
+35,1055,"HEP",1722,"7000N","Non-Award (Agriculture)",50,"0.0",0
+35,1055,"HEP",1723,"7000P","Cross Institutional (Agriculture) Postgraduate",42,"NULL",0
+35,1055,"HEP",1724,"61510","Master of Mathematical and Statistical Science",4,"2.0",0
+35,1055,"HEP",1725,"70110","Bachelor of Science in Agriculture",10,"4.0",0
+35,1055,"HEP",1726,"7000U","Cross Institutional (Agriculture) Undergraduate",41,"0.0",0
+35,1055,"HEP",1727,"70100","Bachelor of Science",10,"4.0",0
+35,1055,"HEP",1728,"70120","Bachelor of Science in Animal Science",10,"4.0",0
+35,1055,"HEP",1729,"7011H","Bachelor of Science in Agriculture (Honours)",9,"1.0",0
+35,1055,"HEP",1730,"7012H","Bachelor of Science in Animal Science (Honours)",9,"1.0",0
+35,1055,"HEP",1731,"70170","Bachelor of Science in Landscape Management",10,"4.0",0
+35,1055,"HEP",1732,"70160","Bachelor of Science in Horticulture and Viticulture",10,"4.0",0
+35,1055,"HEP",1733,"7014H","Bachelor of Science in Natural Resource Management (Honours)",9,"1.0",0
+35,1055,"HEP",1734,"70140","Bachelor of Science in Natural Resource Management",10,"4.0",0
+35,1055,"HEP",1735,"70130","Bachelor of Science in Horticulture",10,"4.0",0
+35,1055,"HEP",1736,"71030","Bachelor of Science in Restoration Ecology",10,"4.0",0
+35,1055,"HEP",1737,"70910","Doctor of Science in Agriculture",1,"0.0",0
+35,1055,"HEP",1738,"70740","Master of Science in Viticulture - Research",3,"2.0",0
+35,1055,"HEP",1739,"70750","Master of Landscape Management - Research",3,"2.0",0
+35,1055,"HEP",1740,"70730","Master of Science in Horticulture - Research",3,"2.0",0
+35,1055,"HEP",1741,"70720","Master of Science in Natural Resources - Research",3,"2.0",0
+35,1055,"HEP",1742,"70710","Master of Science in Agriculture - Research",3,"2.0",0
+35,1055,"HEP",1743,"70610","Master of Science in Natural Resource Management - Diss & Cswk",3,"2.0",0
+35,1055,"HEP",1744,"70490","Higher Degree by Research Preliminary - Science",5,"1.0",0
+35,1055,"HEP",1745,"70410","Master of Science in Agriculture - Preliminary",5,"1.0",0
+35,1055,"HEP",1746,"70420","Master of Science in Natural Resource Management-Preliminary",5,"1.0",0
+35,1055,"HEP",1747,"70360","Graduate Diploma in Science in Horticulture",7,"1.0",0
+35,1055,"HEP",1748,"70350","Graduate Diploma in Science in Agriculture",7,"1.0",0
+35,1055,"HEP",1749,"70370","Graduate Diploma in Science in Natural Resource Management",7,"1.0",0
+35,1055,"HEP",1750,"70240","Graduate Certificate in Viticulture",11,"0.5",0
+35,1055,"HEP",1751,"7017H","Bachelor of Science in Landscape Management (Honours)",9,"1.0",0
+35,1055,"HEP",1752,"7016H","Bachelor of Science in Horticulture and Viticulture (Honours)",9,"1.0",0
+35,1055,"HEP",1753,"70190","Bachelor of Conservation Biology & Management",10,"4.0",0
+35,1055,"HEP",1754,"71260","Graduate Certificate in Regional Development",11,"0.5",0
+35,1055,"HEP",1755,"71360","Graduate Diploma in Regional Development",6,"1.0",0
+35,1055,"HEP",1756,"71560","Master of Regional Development - Coursework",4,"2.0",0
+35,1055,"HEP",1757,"71610","Master of Science in Natural Resource Management - Thesis & Cswk",3,"2.0",0
+35,1055,"HEP",1758,"8000N","Non-Award (Dentistry)",50,"0.0",0
+35,1055,"HEP",1759,"8000P","Cross Institutional (Dentistry) Postgraduate",42,"0.0",0
+35,1055,"HEP",1760,"8000U","Cross Institutional (Dentistry) Undergraduate",41,"0.0",0
+35,1055,"HEP",1761,"80120","Bachelor of Science in Dentistry",9,"1.0",0
+35,1055,"HEP",1762,"80300","Graduate Diploma in Dental Education Studies",7,"1.0",0
+35,1055,"HEP",1763,"80320","Graduate Diploma in Dentistry",7,"1.0",0
+35,1055,"HEP",1764,"80330","Graduate Diploma in Dental Public & Primary Health",6,"1.0",0
+35,1055,"HEP",1765,"80350","Graduate Diploma in Dental Studies",7,"1.0",0
+35,1055,"HEP",1766,"80490","Higher Degree by Research Preliminary - Dentistry",5,"1.0",0
+35,1055,"HEP",1767,"90140","Bachelor of Paramedical Health Science",10,"3.0",0
+35,1055,"HEP",1768,"90120","Bachelor of Medical Science",9,"1.0",0
+35,1055,"HEP",1769,"90020","Not for Degree (Medicine), Postgraduate",42,"0.0",0
+35,1055,"HEP",1770,"90110","Bachelor of Medicine and Bachelor of Surgery",10,"6.0",0
+35,1055,"HEP",1771,"80910","Doctor of Dental Science",1,"NULL",0
+35,1055,"HEP",1772,"9000N","Non-Award (Medicine)",50,"NULL",0
+35,1055,"HEP",1773,"9000P","Cross Institutional (Medicine) Postgraduate",42,"NULL",0
+35,1055,"HEP",1774,"9000U","Cross Institutional (Medicine) Undergraduate",41,"NULL",0
+35,1055,"HEP",1775,"80510","Master of Dental Science - Coursework",4,"3.0",0
+35,1055,"HEP",1776,"80530","Master of Dental Public & Primary Health",4,"2.0",0
+35,1055,"HEP",1777,"80720","Master of Science in Dentistry - Research",3,"2.0",0
+35,1055,"HEP",1778,"91330","Graduate Diploma in Neurological Rehabilitation",6,"1.0",0
+35,1055,"HEP",1779,"91560","Master of Manual Therapy (Coursework)",4,"1.0",0
+35,1055,"HEP",1780,"91320","Graduate Diploma in Public Health Practice",7,"1.0",0
+35,1055,"HEP",1781,"91310","Graduate Diploma in Manual Therapy",7,"1.0",0
+35,1055,"HEP",1782,"91290","Graduate Certificate in Manual Therapy",11,"0.5",0
+35,1055,"HEP",1783,"91260","Graduate Certificate in Health Studies",11,"0.5",0
+35,1055,"HEP",1784,"91250","Graduate Certificate in Paediatric Sleep Science",11,"0.5",0
+35,1055,"HEP",1785,"91240","Graduate Certificate in Paediatric Respiratory Science",11,"0.5",0
+35,1055,"HEP",1786,"90730","Master of Emergency Medicine - Research",3,"2.0",0
+35,1055,"HEP",1787,"90930","Doctor of Surgery",1,"0.0",0
+35,1055,"HEP",1788,"90920","Doctor of Medicine",1,"0.0",0
+35,1055,"HEP",1789,"90630","Master of Emergency Medicine - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",1790,"90610","Master of Primary Health Care - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",1791,"90620","Master of Clinical Research - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",1792,"90550","Master of Public Health - Coursework",4,"2.0",0
+35,1055,"HEP",1793,"90540","Master of Clinical Audiology",4,"2.0",0
+35,1055,"HEP",1794,"90530","Master of Laboratory Medicine",4,"2.0",0
+35,1055,"HEP",1795,"90510","Master of Public Health - Coursework",4,"2.0",0
+35,1055,"HEP",1796,"90490","Higher Degree by Research Preliminary - Medicine and Health Science",5,"1.0",0
+35,1055,"HEP",1797,"90380","Graduate Diploma in Paediatric Rheumatology",7,"0.5",0
+35,1055,"HEP",1798,"90390","Graduate Diploma in Primary Health Care",7,"1.0",0
+35,1055,"HEP",1799,"90330","Graduate Certificate in Clinical Epidemiology",11,"0.5",0
+35,1055,"HEP",1800,"90340","Graduate Diploma in Clinical Epidemiology",7,"1.0",0
+35,1055,"HEP",1801,"90370","Graduate Certificate in Alcohol and Drug Abuse Studies",11,"0.5",0
+35,1055,"HEP",1802,"90320","Graduate Diploma in Primary Care Psychiatry",6,"1.0",0
+35,1055,"HEP",1803,"90310","Graduate Diploma in Alcohol and Drug Abuse Studies",6,"1.0",0
+35,1055,"HEP",1804,"90300","Graduate Certificate in Public Health",11,"0.5",0
+35,1055,"HEP",17099,"70020","Not for Degree (Agriculture), Postgraduate",42,"0.0",0
+35,1055,"HEP",17100,"70150","Bachelor of Science in Wool Science",10,"4.0",0
+35,1055,"HEP",17101,"70330","Graduate Diploma in Science in Horticulture",6,"1.0",0
+35,1055,"HEP",17102,"70430","Master of Science in Horticulture - Preliminary",5,"1.0",0
+35,1055,"HEP",17103,"70440","Master of Science in Viticulture - Preliminary",5,"1.0",0
+35,1055,"HEP",17104,"70460","Master of Landscape Management - Preliminary",5,"1.0",0
+35,1055,"HEP",17105,"70520","Master of Science in Natural Resource Management - Cswk",4,"2.0",0
+35,1055,"HEP",17106,"70620","Master of Science in Natural Resource Management - Cswk & Diss",4,"2.0",0
+35,1055,"HEP",17107,"90910","Master of Surgery",1,"0.0",0
+35,1055,"HEP",17108,"91300","Graduate Diploma in Sports Manual Therapy",6,"1.0",0
+35,1055,"HEP",17109,"80110","Bachelor of Dental Science (Four Year)",10,"4.0",0
+35,1055,"HEP",17110,"80410","Master of Dental Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17111,"80710","Master of Dental Science - Research",3,"2.0",0
+35,1055,"HEP",17112,"90350","Graduate Diploma in Primary Health Care",6,"1.0",0
+35,1055,"HEP",17113,"90420","Master of Medical Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17114,"90520","Master of Clinical Biochemistry - Coursework",4,"2.0",0
+35,1055,"HEP",17115,"70320","Graduate Diploma in Science in Natural Resource Management",6,"1.0",0
+35,1055,"HEP",17116,"00860","Doctor of Philosophy (Joint/Double Badged)",2,"4.0",0
+35,1055,"HEP",17117,"40300","Graduate Diploma in Human Resource Management",6,"1.0",0
+35,1055,"HEP",17118,"40320","Graduate Diploma in Management",6,"1.0",0
+35,1055,"HEP",17119,"40340","Graduate Diploma in Employment Relations",6,"1.0",0
+35,1055,"HEP",17120,"40400","Graduate Diploma in Industrial Relations",6,"1.0",0
+35,1055,"HEP",17121,"40420","Master of Economics - Preliminary",5,"1.0",0
+35,1055,"HEP",17122,"40430","Master of Japanese Studies - Preliminary",5,"1.0",0
+35,1055,"HEP",17123,"40440","Master of Industrial Relations - Preliminary",5,"1.0",0
+35,1055,"HEP",17124,"40520","Master of Economics - Coursework",4,"2.0",0
+35,1055,"HEP",17125,"40530","Master of Business Administration - Coursework",4,"2.0",0
+35,1055,"HEP",17126,"40540","Master of Industrial Relations - Coursework",4,"2.0",0
+35,1055,"HEP",17127,"40550","Master of Accounting - Coursework",4,"2.0",0
+35,1055,"HEP",17128,"40560","Master of Japanese Studies - Coursework",4,"2.0",0
+35,1055,"HEP",17129,"40570","Master of Management - Coursework",4,"2.0",0
+35,1055,"HEP",17130,"40580","Master of Marketing - Coursework",4,"1.0",0
+35,1055,"HEP",17131,"40590","Master of Information Management - Coursework",4,"1.0",0
+35,1055,"HEP",17132,"40600","Master of Management (Human Resource Management)",4,"2.0",0
+35,1055,"HEP",17133,"40630","Master of Management (Human Resource Management)",4,"2.0",0
+35,1055,"HEP",17134,"40640","Master of Industrial Relations - Coursework",4,"2.0",0
+35,1055,"HEP",17135,"40660","Master of Industrial Relations - Coursework",4,"1.0",0
+35,1055,"HEP",17136,"30630","Master of Educational Psychology - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",17137,"30660","Master of Education - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",17138,"30680","Master of Education in Applied Linguistics - Cswk & Diss",4,"2.0",0
+35,1055,"HEP",17139,"30690","Master of Educational Management - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",17140,"30720","Master of Physical Education - Research",3,"2.0",0
+35,1055,"HEP",17141,"31370","Graduate Diploma in Inclusive Education",6,"0.5",0
+35,1055,"HEP",17142,"50030","Non-Award (Science-Offshore)",50,"0.0",0
+35,1055,"HEP",17143,"10190","Bachelor of Social Work - Undergraduate",10,"2.0",0
+35,1055,"HEP",17144,"10310","Diploma in Social Work",6,"1.0",0
+35,1055,"HEP",17145,"10350","Graduate Diploma in Arts",6,"1.0",0
+35,1055,"HEP",17146,"10420","Master of Music - Preliminary",5,"1.0",0
+35,1055,"HEP",17147,"10430","Master of Music Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17148,"10440","Master of Psychology - Preliminary",5,"1.0",0
+35,1055,"HEP",17149,"10450","Master of Social Work - Preliminary",5,"1.0",0
+35,1055,"HEP",17150,"10500","Master of Philosophy - Coursework",4,"2.0",0
+35,1055,"HEP",17151,"10510","Master of Arts - Coursework",4,"1.0",0
+35,1055,"HEP",17152,"10520","Master of Music - Coursework",4,"2.0",0
+35,1055,"HEP",17153,"10530","Master of Music Education - Coursework",3,"2.0",0
+35,1055,"HEP",17154,"10540","Master of Psychology - Coursework",4,"2.0",0
+35,1055,"HEP",17155,"10550","Master of Philosophy (Women's Studies) - Coursework",4,"2.0",0
+35,1055,"HEP",17156,"10560","Master of Philosophy (Australian Studies) - Coursework",4,"2.0",0
+35,1055,"HEP",17157,"10570","Master of Social Work - Coursework",4,"2.0",0
+35,1055,"HEP",17158,"10580","Master of Philosophy (Urban Studies) - Coursework",4,"2.0",0
+35,1055,"HEP",17159,"10590","Master of Philosophy (Medieval & Renaissance Studies) - Cswk",4,"2.0",0
+35,1055,"HEP",17160,"20110","Bachelor of Jurisprudence",10,"3.0",0
+35,1055,"HEP",17161,"20120","Bachelor of Laws-(Postgraduate)",8,"1.0",0
+35,1055,"HEP",17162,"20500","Master of Laws - Coursework",4,"1.0",0
+35,1055,"HEP",17163,"25110","Bachelor of Architecture",10,"5.0",0
+35,1055,"HEP",17164,"25410","Master of Architecture - Preliminary",5,"1.0",0
+35,1055,"HEP",17165,"25420","Master of Building Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17166,"25430","Master of Fine Arts - Preliminary",5,"1.0",0
+35,1055,"HEP",17167,"25440","Master of Environmental Design - Preliminary",5,"1.0",0
+35,1055,"HEP",17168,"25470","Master of Curatorial Studies in Fine Arts - Preliminary",5,"1.0",0
+35,1055,"HEP",17169,"30110","Bachelor of Education",8,"2.0",0
+35,1055,"HEP",17170,"30120","Bachelor of Physical Education",10,"3.0",0
+35,1055,"HEP",17171,"30410","Master of Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17172,"30420","Master of Physical Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17173,"30430","Doctor of Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17174,"30440","Master of Education in Applied Lingustics - Preliminary",5,"1.0",0
+35,1055,"HEP",17175,"30500","Master of Education - Coursework",4,"1.0",0
+35,1055,"HEP",17176,"30510","Master of Education - Coursework",4,"1.0",0
+35,1055,"HEP",17177,"30530","Master of Educational Management - Coursework",4,"1.0",0
+35,1055,"HEP",17178,"30540","Master of Education in Applied Linguistics - Coursework",4,"2.0",0
+35,1055,"HEP",17179,"10020","Not for Degree (Arts), Postgraduate",42,"0.0",0
+35,1055,"HEP",17180,"10080","Graduate Diploma in Women's Studies",6,"1.0",0
+35,1055,"HEP",17181,"10100","Bachelor of Music Teaching",10,"3.0",0
+35,1055,"HEP",17182,"50200","Bachelor of Vision Science",10,"3.0",0
+35,1055,"HEP",17183,"50350","Graduate Diploma in Science",6,"1.0",0
+35,1055,"HEP",17184,"50410","Master of Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17185,"50420","Master of Science Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17186,"50430","Master of Physical and Health Education - Preliminary",5,"1.0",0
+35,1055,"HEP",17187,"50440","Master of Cognitive Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17188,"50510","Master of Science - Coursework",4,"2.0",0
+35,1055,"HEP",17189,"50520","Master of Science Education - Coursework",4,"1.0",0
+35,1055,"HEP",17190,"50530","Master of Physical and Health Education - Coursework",4,"2.0",0
+35,1055,"HEP",17191,"50580","Master of Physical and Health Education - Coursework",4,"2.0",0
+35,1055,"HEP",17192,"50600","Master of Forensic Science - Coursework",4,"2.0",0
+35,1055,"HEP",17193,"50610","Master of Science - Dissertation & Coursework",3,"2.0",0
+35,1055,"HEP",17194,"50630","Master of Physical and Health Education - Diss & Cswk",3,"2.0",0
+35,1055,"HEP",17195,"50660","Master of Regional Development - Dissertation & Coursework",3,"1.0",0
+35,1055,"HEP",17196,"50730","Master of Physical and Health Education - Research",3,"2.0",0
+35,1055,"HEP",17197,"50820","Doctor of Psychology",2,"4.0",0
+35,1055,"HEP",17198,"50830","Doctor of Clinical Pharmacy",2,"4.0",0
+35,1055,"HEP",17199,"51110","Bachelor of Geology",10,"1.0",0
+35,1055,"HEP",17200,"51270","Graduate Certificate in Regional Agric.Development Planning",11,"0.5",0
+35,1055,"HEP",17201,"60030","Not for Degree (Medical Engineering)",42,"0.0",0
+35,1055,"HEP",17202,"60120","Bachelor of Engineering - Honours",9,"1.0",0
+35,1055,"HEP",17203,"60350","Graduate Diploma in Engineering",6,"1.0",0
+35,1055,"HEP",17204,"60410","Master of Engineering Science - Preliminary",5,"1.0",0
+35,1055,"HEP",17205,"60420","Master of Engineering - Preliminary",5,"1.0",0
+35,1055,"HEP",17206,"60440","Master of Oil and Gas Engineering - Preliminary",5,"2.0",0
+35,1055,"HEP",17207,"60510","Master of Engineering Science - Coursework",4,"2.0",0
+35,1055,"HEP",17208,"60520","Master of Engineering Studies - Dissertation & Coursework",4,"2.0",0
+35,1055,"HEP",17209,"60530","Master of Engineering - Dissertation & Coursework",4,"1.0",0
+35,1055,"HEP",17338,"1026H","Bachelor of Music / Bachelor of Education Honours",9,"4.0",1
+35,1055,"HEP",17339,"2013H","Bachelor of Laws - Undergraduate Honours",9,"4.0",0
+35,1055,"HEP",17340,"2014H","Bachelor of Laws - Graduate Honours",8,"3.0",0
+35,1055,"HEP",17341,"2017H","Bachelor of Laws/Bachelor of Economics Honours",9,"5.0",1
+35,1055,"HEP",17342,"2018H","Bachelor of Laws/Bachelor of Science Honours",9,"5.0",1
+35,1055,"HEP",17343,"5025H","Bachelor of Molecular Biology Honours",8,"1.0",0
+35,1055,"HEP",17344,"5026H","Bachelor of Health Science Honours",9,"4.0",0
+35,1055,"HEP",17345,"5033H","Bachelor of Health Science (Honours)",9,"1.0",0
+35,1055,"HEP",17346,"5021H","Bachelor of Health Science/Bachelor of Commerce or Econo",9,"5.0",1
+35,1055,"HEP",17347,"6015H","Bachelor of Engineering / Bachelor of Arts (Asian Studie",9,"5.0",1
+35,1055,"HEP",17348,"60230","Bachelor of Computer Science/Bachelor of Engineering Hon",9,"5.0",1
+35,1055,"HEP",17349,"7018H","Bachelor of Science(Agriculture)/Bachelor of Economics o",9,"5.0",1
+35,1055,"HEP",17350,"9012H","Bachelor of Medical Science Honours",9,"1.0",0
+35,1055,"HEP",17352,"1023H","Bachelor of Arts/Bachelor of Economics Hons",9,"4.0",1
+35,1055,"HEP",17353,"5009H","Bachelor of Arts / Bachelor of Science Honours",9,"4.0",1
+35,1055,"HEP",18595,"51350","Graduate Diploma in Science and Technology",7,"1.0",0
+35,1055,"HEP",18596,"51570","Master of Science - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",18597,"61200","Graduate Certificate in Engineering in Power Systems",11,"0.5",0
+35,1055,"HEP",18598,"52100","Bachelor of Science and Bachelor of Computer Science",10,"4.5",1
+35,1055,"HEP",18599,"52530","Master of Infectious Diseases - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",18600,"52540","Master of Science and Technology - Coursework & Dissertation",4,"1.0",0
+35,1055,"HEP",18601,"52550","Master of Science and Technology - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",18602,"60240","Graduate Certificate in Mathematical and Statistical Science",11,"0.5",0
+35,1055,"HEP",18603,"60270","Graduate Certificate in Mathematical and Statistical Science",11,"0.5",0
+35,1055,"HEP",18604,"60280","Graduate Certificate in Maritime Technology",11,"0.5",0
+35,1055,"HEP",18605,"60290","Graduate Certificate in Engineering in Information and Communications Te",11,"0.5",0
+35,1055,"HEP",18606,"60370","Graduate Certificate in Engineering Asset Management",11,"0.5",0
+35,1055,"HEP",18607,"41240","Graduate Certificate in Transport Studies",11,"0.5",0
+35,1055,"HEP",18608,"41340","Graduate Diploma in Transport Studies",6,"1.0",0
+35,1055,"HEP",18609,"41360","Graduate Diploma in Viticulture Management",6,"2.0",0
+35,1055,"HEP",18610,"41510","Master of International Business - Coursework",4,"1.0",0
+35,1055,"HEP",18611,"41570","Master of Business Leadership - Coursework",4,"1.0",0
+35,1055,"HEP",18612,"41580","Master of Business Innovation - Coursework",4,"1.0",0
+35,1055,"HEP",18613,"41590","Master of Business Strategy - Coursework",4,"1.0",0
+35,1055,"HEP",18614,"11240","Graduate Certificate in Music Practitioner Studies",11,"0.5",0
+35,1055,"HEP",18615,"11260","Graduate Certificate in Mental Health Practice",11,"0.5",0
+35,1055,"HEP",18616,"11280","Graduate Certificate in Child Protection Practice",11,"0.5",0
+35,1055,"HEP",18617,"11340","Graduate Diploma in Music Practitioner Studies",7,"1.0",0
+35,1055,"HEP",18618,"11540","Master of Music Practitioner Studies - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",18619,"20570","Master of Public Administration - Coursework",4,"1.5",0
+35,1055,"HEP",18620,"22100","Bachelor of Laws and Bachelor of Engineering",10,"7.3",1
+35,1055,"HEP",18621,"25210","Graduate Certificate in Urban Design",11,"0.5",0
+35,1055,"HEP",18622,"25310","Graduate Diploma in Urban Design",7,"1.0",0
+35,1055,"HEP",18623,"25510","Master of Urban Design - Coursework",4,"2.0",0
+35,1055,"HEP",18624,"25760","Master of Architecture (Design) - Research",3,"2.0",0
+35,1055,"HEP",18625,"25920","Doctor of Architecture (Design)",2,"4.0",0
+35,1055,"HEP",18626,"31330","Graduate Diploma in Education (School Music)",6,"1.0",0
+35,1055,"HEP",18627,"31510","Master of Education Research Methods - Coursework",4,"1.0",0
+35,1055,"HEP",18628,"31560","Master of Education in Teaching English to Speakers of Other Languages - Coursework",4,"1.0",0
+35,1055,"HEP",18629,"31610","Master of Education - Thesis & Coursework",3,"2.0",0
+35,1055,"HEP",18630,"31660","Master of Education in Teaching English to Speakers of Other Languages -",3,"2.0",0
+35,1055,"HEP",18631,"40230","Graduate Certificate in Viticulture Management",11,"0.7",0
+35,1055,"HEP",18632,"40910","Doctor of Commerce",1,"0.0",0
+35,1055,"HEP",18633,"40920","Doctor of Economics",1,"0.0",0
+35,1055,"HEP",18634,"62100","Bachelor of Arts and Bachelor of Computer Science",10,"4.5",1
+35,1055,"HEP",18635,"70200","Graduate Certificate in Science",11,"0.5",0
+35,1055,"HEP",18636,"70220","Graduate Certificate in Natural Resource Management Policy and Planning",11,"0.5",0
+35,1055,"HEP",18637,"70310","Graduate Diploma in Science in Agriculture",6,"1.0",0
+35,1055,"HEP",18638,"61300","Graduate Diploma in Engineering in Power Systems",7,"1.0",0
+35,1055,"HEP",18639,"71110","Bachelor of Science and Bachelor of Economics",10,"5.1",1
+35,1055,"HEP",18640,"71120","Bachelor of Science and Bachelor of Commerce",10,"5.1",1
+35,1055,"HEP",18641,"71130","Bachelor of Engineering and Bachelor of Science",10,"6.0",1
+35,1055,"HEP",18642,"71150","Bachelor of Engineering and Bachelor of Science in Agriculture",10,"6.0",1
+35,1055,"HEP",18643,"71320","Graduate Diploma in Natural Resource Management Policy and Planning",6,"1.0",0
+35,1055,"HEP",18644,"90170","Bachelor of Medical Science and Bachelor of Medicine & Bachelor of Surge",10,"6.8",1
+35,1055,"HEP",18645,"90210","Graduate Certificate in Health Professional Education",11,"0.5",0
+35,1055,"HEP",18646,"90220","Graduate Certificate in Rural and Remote Medicine",11,"0.5",0
+35,1055,"HEP",18647,"90570","Master of Health Professional Education - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",18648,"91030","Bachelor of Podiatric Medicine",10,"4.0",0
+35,1055,"HEP",18649,"91340","Graduate Diploma in Health Professional Education",7,"1.0",0
+35,1055,"HEP",18650,"91350","Graduate Diploma in Forensic Odontology",7,"1.0",0
+35,1055,"HEP",18762,"91140","Bachelor of Health Science and Bachelor of Commerce or Economics",10,"5.6",1
+35,1055,"HEP",18766,"71140","Bachelor of Science(Agriculture) and Bachelor of Economics or Commerce",10,"5.0",1
+35,1055,"HEP",18767,"00060","Bachelor of Engineering Enabling Course",30,"0.1",0
+35,1055,"HEP",18768,"70630","Master of Science - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",18834,"10620","Master of Music - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",18835,"203503","Graduate Diploma in Legal Practice",7,"1.3",0
+35,1055,"HEP",18848,"NON AWARD","Non-Award Course",50,"NULL",0
+35,1055,"HEP",19004,"30200","Postgraduate Certificate in Curriculum Leadership",11,"0.5",0
+35,1055,"HEP",19005,"7010H","Bachelor of Science (Honours)",9,"1.0",0
+35,1055,"HEP",19006,"90430","Graduate Diploma in Musculoskeletal Studies",6,"1.0",0
+35,1055,"HEP",19035,"60223","Graduate Certificate in Information Technology",11,"0.5",0
+35,1055,"HEP",19514,"10940","Doctor of Musical Arts",2,"4.0",0
+35,1055,"HEP",19515,"31320","Graduate Diploma in Educational Assessment, Measurement and Evaluation",6,"0.5",0
+35,1055,"HEP",19516,"413301","Graduate Diploma in Human Resources and Industrial Relations",6,"1.0",0
+35,1055,"HEP",19517,"51543","Master of Psychology and Graduate Diploma in Education",4,"2.5",1
+35,1055,"HEP",19518,"90670","Master of Health Professional Education - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",19527,"31530","Master of Education in Assessment, Measurement and Evaluation - Coursewo",4,"1.0",0
+35,1055,"HEP",19528,"31630","Master of Education in Assessment, Measurement and Evaluation - Thesis &",3,"2.0",0
+35,1055,"HEP",19876,"503001","Graduate Diploma in Science",7,"1.0",0
+35,1055,"HEP",19877,"10151","Bachelor of Social Work - Postgraduate",8,"2.1",0
+35,1055,"HEP",19878,"90360","Graduate Diploma in Public Health",6,"1.0",0
+35,1055,"HEP",20102,"91562","Master of Manual Therapy (Coursework)",4,"2.0",0
+35,1055,"HEP",20103,"51330","Graduate Diploma in Infectious Diseases",6,"1.0",0
+35,1055,"HEP",20104,"60323","Graduate Diploma in Information Technology",7,"1.0",0
+35,1055,"HEP",20195,"10050","Graduate Diploma in Arts",6,"1.0",0
+35,1055,"HEP",20196,"11130","Bachelor of Arts and Bachelor of Education",10,"4.3",1
+35,1055,"HEP",20197,"11170","Bachelor of Music and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",20198,"11530","Master of Medieval and Early Modern Studies - Coursework and Dissertatio",4,"1.5",0
+35,1055,"HEP",20199,"21120","Bachelor of Laws and Bachelor of Arts (Asian Studies)",10,"6.0",1
+35,1055,"HEP",20200,"21140","Bachelor of Laws and Bachelor of Commerce",10,"5.8",1
+35,1055,"HEP",20201,"21130","Bachelor of Musical Arts and Bachelor of Laws",10,"6.0",1
+35,1055,"HEP",20202,"21170","Bachelor of Arts (Communication Studies) and Bachelor of Laws",10,"6.0",1
+35,1055,"HEP",20203,"21160","Bachelor of Laws and Bachelor of Economics",10,"5.9",1
+35,1055,"HEP",20204,"71020","Bachelor of Science(Agriculture) and Bachelor of Commerce",10,"5.1",1
+35,1055,"HEP",20205,"71010","Bachelor of Science(Agriculture) and Bachelor of Economics",10,"5.1",1
+35,1055,"HEP",20206,"70300","Graduate Diploma in Science",7,"1.0",0
+35,1055,"HEP",20207,"70340","Graduate Diploma in Earth Science",7,"1.0",0
+35,1055,"HEP",20208,"70210","Graduate Certificate in Earth Science",11,"0.5",0
+35,1055,"HEP",20209,"70530","Master of Science - Coursework",4,"1.0",0
+35,1055,"HEP",20210,"90150","MBBS and Doctor of Philosophy - Coursework",10,"4.4",1
+35,1055,"HEP",20211,"60580","Master of Engineering in Information and Communications Technology",4,"2.0",0
+35,1055,"HEP",20212,"61140","Bachelor of Engineering and Bachelor of Commerce",10,"5.2",1
+35,1055,"HEP",20213,"61120","Bachelor of Engineering and Bachelor of Arts (Asian Studies)",10,"5.5",1
+35,1055,"HEP",20214,"61040","Bachelor of Engineering and Bachelor of Music",10,"6.8",1
+35,1055,"HEP",20215,"61100","Bachelor of Computer and Mathematical Sciences and Bachelor of Engineering",10,"5.0",1
+35,1055,"HEP",20216,"61110","Bachelor of Engineering and Bachelor of Arts",10,"5.5",1
+35,1055,"HEP",20217,"61010","Bachelor of Computer Science and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20218,"61020","Bachelor of Computer Science and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20219,"61030","Bachelor of Computer and Mathematical Sciences and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20220,"61160","Bachelor of Computer Science and Bachelor of Engineering",10,"5.0",1
+35,1055,"HEP",20221,"61150","Bachelor of Computer and Mathematical Sciences and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20222,"61170","Bachelor of Science(Geophysics)CU and Bachelor of Computer Science (UWA)",10,"1.8",1
+35,1055,"HEP",20223,"61190","Bachelor of Engineering and Bachelor of Economics",10,"5.3",1
+35,1055,"HEP",20224,"61530","Master of Engineering in Microelectronics - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",20225,"41100","Bachelor of Commerce and Bachelor of Fine Arts",10,"4.5",1
+35,1055,"HEP",20226,"41110","Bachelor of Arts and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20227,"41120","Bachelor of Arts (Asian Studies) and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20228,"41140","Bachelor of Arts (Communication Studies) and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20229,"41150","Bachelor of Arts and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20230,"41010","Bachelor of Economics and Bachelor of Education",10,"4.5",1
+35,1055,"HEP",20231,"41180","Bachelor of Economics and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20232,"41170","Bachelor of Arts (Communication Studies) and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20233,"41160","Bachelor of Arts (Asian Studies) and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20234,"51540","Master of Psychology and Graduate Diploma in Education",4,"2.3",1
+35,1055,"HEP",20235,"51190","Bachelor of Arts and Bachelor of Science",10,"4.5",1
+35,1055,"HEP",20236,"51180","Bachelor of Science and Bachelor of Education",10,"4.4",1
+35,1055,"HEP",20237,"51160","Bachelor of Science and Bachelor of Engineering",10,"5.1",1
+35,1055,"HEP",20238,"51020","Bachelor of Science and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20239,"51010","Bachelor of Science and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20240,"91570","Master of Surgery - Coursework",4,"1.5",0
+35,1055,"HEP",20241,"91150","Bachelor of Health Science and Bachelor of Music",10,"6.8",1
+35,1055,"HEP",20242,"91110","Bachelor of Medicine & Bachelor of Surgery and Bachelor of Arts",10,"7.6",1
+35,1055,"HEP",20243,"91020","Bachelor of Health Science and Bachelor of Commerce",10,"5.6",1
+35,1055,"HEP",20244,"91010","Bachelor of Health Science and Bachelor of Economics",10,"5.6",1
+35,1055,"HEP",20245,"52570","Master of Integrated Human Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",20246,"52590","Master of Psychology and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",20247,"61540","Master of Civil Engineering - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",20248,"61560","Master of Engineering (EnergySysMgt) - Coursework",4,"2.0",0
+35,1055,"HEP",20249,"7019H","Bachelor of Conservation Biology & Management (Honours)",9,"1.0",0
+35,1055,"HEP",20250,"71032","Bachelor of Science in Restoration Ecology",10,"3.0",0
+35,1055,"HEP",20251,"90230","Graduate Certificate in Paediatric Rheumatology",11,"0.5",0
+35,1055,"HEP",20252,"91530","Master of Public Health (Nursing)",4,"1.5",0
+35,1055,"HEP",20253,"91540","Master of Clinical Epidemiology - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",20254,"11140","Bachelor of Arts (European Studies) and Bachelor of Commerce",10,"4.5",1
+35,1055,"HEP",20255,"11150","Bachelor of Arts (European Studies) and Bachelor of Economics",10,"4.5",1
+35,1055,"HEP",20256,"12200","Graduate Certificate in Applied Maritime Archaeology",11,"0.5",0
+35,1055,"HEP",20257,"25520","Master of Architecture - Coursework",4,"2.0",0
+35,1055,"HEP",20258,"40270","Graduate Certificate in Business Administration (Creative Industries)",11,"0.7",0
+35,1055,"HEP",20259,"41350","Graduate Diploma in Technology Commercialisation",6,"1.0",0
+35,1055,"HEP",20260,"41370","Graduate Diploma in Business Administration (Creative Industries)",7,"1.0",0
+35,1055,"HEP",20261,"51220","Graduate Certificate in Forensic Science",11,"0.5",0
+35,1055,"HEP",20262,"51280","Graduate Certificate in Educational and Developmental Psychology",11,"0.5",0
+35,1055,"HEP",20263,"51370","Graduate Diploma in Integrated Human Studies",6,"1.0",0
+35,1055,"HEP",20264,"51380","Graduate Diploma in Educational and Developmental Psychology",6,"1.0",0
+35,1055,"HEP",20265,"41192","Bachelor of Economics and Bachelor of Music",10,"5.5",1
+35,1055,"HEP",20266,"42100","Bachelor of Commerce and Bachelor of Music",10,"5.3",1
+35,1055,"HEP",21289,"90720","Master of Medical Science - Research",3,"2.0",0
+35,1055,"HEP",21290,"60710","Master of Engineering Science - Research",3,"2.0",0
+35,1055,"HEP",21291,"00810","Doctor of Philosophy",2,"4.0",0
+35,1055,"HEP",21425,"X-PROV PG","Cross-Institution Postgraduate",42,"NULL",0
+35,1055,"HEP",21499,"11180","Bachelor of Music Education",10,"4.0",0
+35,1055,"HEP",21690,"90650","Master of Nursing Research - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",21830,"1015H","Bachelor of Social Work - Postgraduate (Honours)",8,"2.0",0
+35,1055,"HEP",21831,"9016H","Bachelor of Medicine and Bachelor of Surgery - Graduate (Honours)",8,"5.0",0
+35,1055,"HEP",21832,"2019H","Bachelor of Laws and Bachelor of Arts (Asian Studies) (Honours)",9,"5.0",1
+35,1055,"HEP",21833,"2116H","Bachelor of Laws and Bachelor of Economics (Honours)",9,"5.9",1
+35,1055,"HEP",21834,"2117H","Bachelor of Arts (Communication Studies) and Bachelor of Laws (Honours)",9,"6.0",1
+35,1055,"HEP",21835,"6111H","Bachelor of Engineering and Bachelor of Arts (Honours)",9,"5.5",1
+35,1055,"HEP",21836,"2111H","Bachelor of Laws and Bachelor of Arts (Honours)",9,"6.0",1
+35,1055,"HEP",21837,"9013H","Bachelor of Medicine & Bachelor of Surgery and Bachelor of Arts Honours",9,"7.0",1
+35,1055,"HEP",21838,"70180","Bachelor of Science(Agriculture) and Bachelor of Economics or Commerce",10,"5.0",1
+35,1055,"HEP",21839,"10160","Bachelor of Arts and Bachelor of Jurisprudence",10,"4.0",1
+35,1055,"HEP",21840,"10180","Bachelor of Arts and Bachelor of Laws",10,"5.0",1
+35,1055,"HEP",21841,"50540","Master of Psychology and Graduate Diploma in Education",4,"2.0",1
+35,1055,"HEP",21842,"50160","Bachelor of Science and Bachelor of Jurisprudence",10,"4.0",1
+35,1055,"HEP",21843,"50170","Bachelor of Science and Bachelor of Laws",10,"5.0",1
+35,1055,"HEP",21844,"40170","Bachelor of Commerce and Bachelor of Laws",10,"5.0",1
+35,1055,"HEP",21845,"40180","Bachelor of Economics and Bachelor of Laws",10,"5.0",1
+35,1055,"HEP",21846,"90810","Doctor of Physiotherapy",2,"4.0",0
+35,1055,"HEP",21847,"X-PROV UG","Cross-Institution Undergraduate",41,"NULL",0
+35,1055,"HEP",21848,"00820","Doctor of Philosophy and Master of Psychology",2,"4.0",1
+35,1055,"HEP",21849,"00880","Master of Forensic Science and Doctor of Philosophy",2,"4.0",1
+35,1055,"HEP",21850,"00840","Master of Clinical Audiology and Doctor of Philosophy",2,"4.0",1
+35,1055,"HEP",21851,"00850","MBBS and Doctor of Philosophy - Research",2,"4.0",1
+35,1055,"HEP",21852,"10260","Bachelor of Music and Bachelor of Education",10,"4.0",1
+35,1055,"HEP",21853,"10250","Bachelor of Arts and Bachelor of Education",10,"4.0",1
+35,1055,"HEP",21854,"10220","Bachelor of Arts and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",21855,"10230","Bachelor of Arts and Bachelor of Economics",10,"4.0",1
+35,1055,"HEP",21856,"11160","Bachelor of Music and Bachelor of Education",10,"5.2",1
+35,1055,"HEP",21857,"20150","Bachelor of Laws and Bachelor of Arts",10,"5.0",1
+35,1055,"HEP",21858,"20190","Bachelor of Laws and Bachelor of Arts (Asian Studies)",10,"5.0",1
+35,1055,"HEP",21859,"20180","Bachelor of Laws and Bachelor of Science",10,"5.0",1
+35,1055,"HEP",21860,"20170","Bachelor of Laws and Bachelor of Economics",10,"5.0",1
+35,1055,"HEP",21861,"20160","Bachelor of Laws and Bachelor of Commerce",10,"5.0",1
+35,1055,"HEP",21862,"40130","Bachelor of Economics or Commerce and Bachelor of Education",10,"4.0",1
+35,1055,"HEP",21863,"40160","Bachelor of Arts (Asian Studies) and Bachelor of Economics",10,"4.0",1
+35,1055,"HEP",21864,"40150","Bachelor of Arts (Asian Studies) and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",21865,"71280","Graduate Certificate in Rural Development Planning",11,"0.5",0
+35,1055,"HEP",21866,"90130","Bachelor of Medicine & Bachelor of Surgery and Bachelor of Arts",10,"7.0",1
+35,1055,"HEP",21867,"60920","Doctor of Engineering in Information and Communications Technology",2,"4.0",0
+35,1055,"HEP",21868,"61180","Bachelor of Computer Science and Bachelor of Commerce or Economics",10,"4.5",1
+35,1055,"HEP",21869,"60140","Bachelor of Engineering and Bachelor of Commerce",10,"5.0",1
+35,1055,"HEP",21870,"60100","Bachelor of Computer & Mathematical Sciences and Bachelor of Engineering",10,"5.0",1
+35,1055,"HEP",21871,"60210","Bachelor of Engineering and Bachelor of Arts",10,"5.0",1
+35,1055,"HEP",21872,"60150","Bachelor of Engineering and Bachelor of Arts (Asian Studies)",10,"5.0",1
+35,1055,"HEP",21873,"51100","Bachelor of Music and Bachelor of Science",10,"5.0",1
+35,1055,"HEP",21874,"51170","Bachelor of Science and Bachelor of Economics or Commerce",10,"4.5",1
+35,1055,"HEP",21875,"41190","Bachelor of Music and Bachelor of Economics",10,"5.0",1
+35,1055,"HEP",21876,"41130","Bachelor of Economics or Commerce and Bachelor of Education",10,"4.3",1
+35,1055,"HEP",21877,"50090","Bachelor of Arts and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",21878,"50220","Bachelor of Science and Bachelor of Economics or Commerce",10,"4.0",1
+35,1055,"HEP",21879,"50230","Bachelor of Science and Bachelor of Education",10,"4.0",1
+35,1055,"HEP",21880,"50130","Bachelor of Science and Bachelor of Engineering",10,"5.0",1
+35,1055,"HEP",21881,"50210","Bachelor of Health Science and Bachelor of Commerce or Economics",10,"5.0",1
+35,1055,"HEP",22366,"01810","Doctor of Philosophy and Master of Infectious Diseases - Research",2,"4.0",0
+35,1055,"HEP",22367,"50842","Doctor of Psychology",12,"3.0",0
+35,1055,"HEP",22368,"00120","Enabling Programme (Uni Smart Start, Albany)",30,"1.0",0
+35,1055,"HEP",24162,"61230","Graduate Certificate in Engineering in Microelectronics",11,"0.5",0
+35,1055,"HEP",24163,"60380","Graduate Diploma in Engineering in Information and Communications Techno",7,"1.0",0
+35,1055,"HEP",24164,"61330","Graduate Diploma in Engineering in Microelectronics",7,"1.0",0
+35,1055,"HEP",24165,"41660","Master of Human Resources and Employment Relations - Coursework",4,"1.5",0
+35,1055,"HEP",24166,"41670","Master of Business Information Management - Coursework",4,"1.5",0
+35,1055,"HEP",24167,"41680","Master of Commerce - Coursework",4,"1.5",0
+35,1055,"HEP",24168,"41690","Master of Marketing - Coursework",4,"1.5",0
+35,1055,"HEP",24169,"42520","Master of Business Administration - Coursework",4,"1.5",0
+35,1055,"HEP",24170,"42530","Master of Business Administration (Advanced) - Coursework",4,"2.0",0
+35,1055,"HEP",24171,"90580","Master of Health Professions Education (online)",4,"1.5",0
+35,1055,"HEP",24172,"90590","Master of Podiatric Medicine - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",24173,"91520","Master of Public Health Practice",4,"2.0",0
+35,1055,"HEP",24174,"42310","Graduate Diploma in Business",7,"0.8",0
+35,1055,"HEP",24175,"11190","Bachelor of Laws and Bachelor of Music",10,"7.0",1
+35,1055,"HEP",24176,"12100","Bachelor of Music and Bachelor of Science",10,"5.4",1
+35,1055,"HEP",24177,"12110","Bachelor of Arts and Master of Teaching - Undergraduate",10,"3.0",1
+35,1055,"HEP",24178,"52110","Bachelor of Science and Master of Teaching - Undergraduate",10,"3.0",1
+35,1055,"HEP",24179,"62110","Bachelor of Engineering and Bachelor of Engineering",10,"6.0",1
+35,1055,"HEP",24180,"61260","Graduate Certificate in Energy Systems Engineering",11,"0.5",0
+35,1055,"HEP",24181,"31540","Master of Teaching (Primary) - Coursework",4,"2.0",0
+35,1055,"HEP",24182,"31550","Master of Teaching (Secondary) - Coursework",4,"2.0",0
+35,1055,"HEP",24183,"31570","Bachelor of Arts and Master of Teaching - Postgraduate",4,"2.0",1
+35,1055,"HEP",24184,"31580","Bachelor of Science and Master of Teaching - Postgraduate",4,"2.0",1
+35,1055,"HEP",24185,"40612","Master of Professional Accounting - Coursework",4,"1.5",0
+35,1055,"HEP",24186,"41560","Master of Business Research",4,"1.0",0
+35,1055,"HEP",24187,"1000U","Not for Degree (Arts)",41,"NULL",0
+35,1055,"HEP",24188,"30030","Cross Institutional (Education) Murdoch",42,"0.0",0
+35,1055,"HEP",24269,"53520","Master of Human Biology - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",24270,"40240","Graduate Certificate in Technology Commercialisation",11,"0.5",0
+35,1055,"HEP",24271,"51210","Graduate Certificate in Adult Sleep Science",11,"0.5",0
+35,1055,"HEP",24272,"90830","Doctor of Clinical Podiatry",12,"4.0",0
+35,1055,"HEP",24288,"21172","Bachelor of Arts (Communication Studies) and Bachelor of Laws",10,"6.1",1
+35,1055,"HEP",24289,"61132","Bachelor of Engineering and Bachelor of Arts (Communication Studies)",10,"5.6",1
+35,1055,"HEP",24290,"90172","Bachelor of Medical Science and Bachelor of Medicine & Bachelor of Surge",10,"6.6",1
+35,1055,"HEP",24336,"90160","Bachelor of Medicine and Bachelor of Surgery - Graduate",8,"5.0",0
+35,1055,"HEP",24516,"6014H","Bachelor of Engineering and Bachelor of Commerce (Honours)",9,"5.0",1
+35,1055,"HEP",24517,"8015H","Bachelor of Dental Science (Five Year) (Honours)",9,"5.0",0
+35,1055,"HEP",24518,"6116H","Bachelor of Computer Science and Bachelor of Engineering (Honours)",9,"5.0",1
+35,1055,"HEP",24519,"6110H","Bachelor of Computer and Mathematical Sciences and Bachelor of Engineeri",9,"5.0",1
+35,1055,"HEP",24520,"5022H","Bachelor of Science and Bachelor of Economics or Commerce (Honours)",9,"4.0",1
+35,1055,"HEP",24521,"1118H","Bachelor of Music Education (Honours)",9,"4.0",0
+35,1055,"HEP",24522,"7114H","Bachelor of Science(Agriculture) and Bachelor of Economics or Commerce (",9,"5.0",1
+35,1055,"HEP",24523,"2119H","Bachelor of Laws - Graduate (Honours)",8,"3.8",0
+35,1055,"HEP",24524,"7112H","Bachelor of Science and Bachelor of Commerce (Honours)",9,"5.1",1
+35,1055,"HEP",24525,"6010H","Bachelor of Computer & Mathematical Sciences and Bachelor of Engineering",9,"5.0",1
+35,1055,"HEP",24526,"6021H","Bachelor of Engineering and Bachelor of Arts (Honours)",9,"5.0",1
+35,1055,"HEP",24527,"6114H","Bachelor of Engineering and Bachelor of Commerce (Honours)",9,"5.2",1
+35,1055,"HEP",24528,"1117H","Bachelor of Music and Bachelor of Arts (Honours)",9,"4.0",1
+35,1055,"HEP",24529,"7102H","Bachelor of Science(Agriculture) and Bachelor of Commerce (Honours)",9,"0.5",1
+35,1055,"HEP",24530,"7111H","Bachelor of Science and Bachelor of Economics (Honours)",9,"5.1",1
+35,1055,"HEP",24531,"9017H","Bachelor of Medical Science and Bachelor of Medicine & Bachelor of Surge",9,"6.8",1
+35,1055,"HEP",24532,"9102H","Bachelor of Health Science and Bachelor of Commerce (Honours)",9,"5.6",1
+35,1055,"HEP",24821,"31652","Master of Educational Management - Thesis & Coursework",3,"2.0",0
+35,1055,"HEP",24822,"31702","Master of Education - Thesis & Coursework",3,"2.0",0
+35,1055,"HEP",24823,"613702","Graduate Diploma in Business and Engineering Asset Management",7,"0.8",0
+35,1055,"HEP",24824,"615702","Master of Business and Engineering Asset Management",4,"1.5",0
+35,1055,"HEP",24825,"53530","Master of Science - Coursework & Dissertation",4,"2.0",0
+35,1055,"HEP",24826,"90640","Master of Neurological Rehabilitation - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",24827,"41210","Graduate Certificate in Business",11,"0.5",0
+35,1055,"HEP",24828,"42570","Master of Business Leadership - Coursework",4,"0.8",0
+35,1055,"HEP",24829,"42590","Master of Business Strategy - Coursework",4,"0.8",0
+35,1055,"HEP",24830,"50770","Master of Forensic Science - Research",3,"2.0",0
+35,1055,"HEP",24831,"70540","Master of Science - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",24832,"00150","Mathematics Enabling Course",30,"0.1",0
+35,1055,"HEP",24833,"31622","Master of Special Education by Thesis & Coursework",3,"2.0",0
+35,1055,"HEP",24868,"91510","Master of Nursing Science - Coursework",4,"2.0",0
+35,1055,"HEP",25732,"2500N","Non-Award (Architecture)",50,"NULL",0
+35,1055,"HEP",25733,"6013M","Bachelor of Computer Science (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25734,"7010M","Bachelor of Science (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25735,"7103M","Bachelor of Science in Restoration Ecology (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25736,"71152","Bachelor of Engineering and Bachelor of Science in Agriculture",10,"6.1",1
+35,1055,"HEP",25737,"90660","Master of Surgery - Thesis and Coursework",3,"1.5",0
+35,1055,"HEP",25738,"90680","Master of Rural and Remote Medicine - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",25739,"90690","Master of Aboriginal Health - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",25740,"90780","Master of Rural and Remote Medicine - Research",3,"2.0",0
+35,1055,"HEP",25741,"90840","Doctor of Clinical Dentistry",12,"4.0",0
+35,1055,"HEP",25742,"91640","Master of Neurological Rehabilitation (Paediatrics) - Thesis and Coursew",3,"2.0",0
+35,1055,"HEP",25743,"1011M","Bachelor of Arts (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25744,"1020M","Bachelor of Arts (Asian Studies) (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25745,"1021M","Bachelor of Arts (European Studies) (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25746,"11380","Graduate Diploma in International Relations",6,"1.0",0
+35,1055,"HEP",25747,"11580","Master of International Relations",4,"1.5",0
+35,1055,"HEP",25748,"20370","Graduate Diploma in Energy Law",6,"0.5",0
+35,1055,"HEP",25749,"20380","Graduate Diploma in Correctional Management",6,"0.5",0
+35,1055,"HEP",25750,"20580","Master of Correctional Management",4,"1.0",0
+35,1055,"HEP",25751,"2514M","Bachelor of Landscape Architecture (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25752,"25212","Graduate Certificate in Urban Design",11,"0.5",0
+35,1055,"HEP",25753,"25312","Graduate Diploma in Urban Design",7,"1.0",0
+35,1055,"HEP",25754,"25512","Master of Urban Design - Coursework",4,"2.0",0
+35,1055,"HEP",25755,"30250","Graduate Certificate in Tertiary Teaching",11,"0.5",0
+35,1055,"HEP",25756,"31602","Master of Educational Studies by Thesis & Coursework",3,"2.0",0
+35,1055,"HEP",25757,"31642","Master of Education in Applied Linguistics - Thesis & Cswk",3,"2.0",0
+35,1055,"HEP",25758,"4011M","Bachelor of Commerce (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25759,"4012M","Bachelor of Economics (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25760,"40250","Graduate Certificate in Business Communications",11,"0.5",0
+35,1055,"HEP",25761,"415802","Master of Business Innovation",4,"0.8",0
+35,1055,"HEP",25762,"42330","Graduate Diploma in Economics",7,"1.0",0
+35,1055,"HEP",25763,"42510","Master of International Business - Coursework",4,"0.8",0
+35,1055,"HEP",25764,"42550","Executive Master of Business Administration",4,"1.5",0
+35,1055,"HEP",25765,"42620","Master of Economics - Coursework",4,"2.0",0
+35,1055,"HEP",25766,"5011M","Bachelor of Science (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25767,"5026M","Bachelor of Health Science (Provisional Entry)",10,"0.5",0
+35,1055,"HEP",25768,"50850","Doctor of Psychology and Master of Science - Coursework",12,"2.0",1
+35,1055,"HEP",25769,"51390","Graduate Diploma in Sport and Recreation Management",6,"1.0",0
+35,1055,"HEP",25770,"51650","Master of Science and Doctor of Psychology - Research",3,"2.0",1
+35,1055,"HEP",25771,"52350","Graduate Diploma in Biological Arts",7,"1.0",0
+35,1055,"HEP",25772,"9114H","Bachelor of Health Science/Bachelor of Com or Ec Hon",9,"5.6",1
+35,1055,"HEP",25773,"2114H","Bachelor of Laws/Bachelor of Commerce Hon",9,"5.8",1
+35,1055,"HEP",25774,"5116H","Bachelor of Science/Bachelor of Engineering Honours",9,"5.1",1
+35,1055,"HEP",25775,"6011H","Bachelor of Engineering Honours",9,"4.0",0
+35,1055,"HEP",25776,"9011H","Bachelor of Medicine and Bachelor of Surgery Honours",9,"6.0",0
+35,1055,"HEP",25777,"2513H","Bachelor of Architecture - Graduate Honours",8,"2.0",0
+35,1055,"HEP",25778,"2514H","Bachelor of Landscape Architecture Honours",9,"4.0",0
+35,1055,"HEP",25779,"5013H","Bachelor of Science / Bachelor of Engineering Honours",9,"5.0",1
+35,1055,"HEP",25780,"2015H","Bachelor of Laws/Bachelor of Arts Honours",9,"5.0",1
+35,1055,"HEP",25781,"2016H","Bachelor of Laws/Bachelor of Commerce Honours",9,"5.0",1
+35,1055,"HEP",25782,"00870","Doctor of Philosophy (Joint/Double-Badged)",2,"4.0",0
+35,1055,"HEP",25783,"0009N","Non-Award (Study Abroad) Course",50,"NULL",0
+35,1055,"HEP",26018,"50840","Doctor of Psychology",12,"3.0",0
+35,1055,"HEP",26256,"2113H","Bachelor of Musical Arts and Bachelor of Laws (Honours)",9,"6.0",1
+35,1055,"HEP",26257,"6112H","Bachelor of Engineering and Bachelor of Arts (Asian Studies) (Honours)",9,"5.5",1
+35,1055,"HEP",26258,"6113H","Bachelor of Engineering and Bachelor of Arts (Communication Studies) (Ho",9,"5.6",1
+35,1055,"HEP",26259,"7101H","Bachelor of Science(Agriculture) and Bachelor of Economics (Honours)",9,"0.5",1
+35,1055,"HEP",26260,"2118H","Bachelor of Laws - Undergraduate (Honours)",9,"4.0",0
+35,1055,"HEP",26261,"6119H","Bachelor of Engineering and Bachelor of Economics (Honours)",9,"5.3",1
+35,1055,"HEP",26262,"1012H","Bachelor of Music Honours",9,"4.0",0
+35,1055,"HEP",26642,"9103H","Bachelor of Podiatric Medicine (Honours)",9,"1.0",0
+35,1055,"HEP",26643,"12280","Graduate Certificate in International Relations",11,"0.5",0
+35,1055,"HEP",26644,"52270","Graduate Certificate in Integrated Human Studies",11,"0.5",0
+35,1055,"HEP",26645,"20354","Graduate Diploma in Legal Practice",7,"1.0",0
+35,1055,"HEP",26646,"60592","Master of Financial Mathematics",4,"2.0",0
+35,1055,"HEP",26647,"21110","Bachelor of Laws and Bachelor of Arts",10,"6.0",1
+35,1055,"HEP",26824,"80150","Bachelor of Dental Science (Five Year)",10,"5.0",0
+35,1055,"HEP",26837,"52520","Master of Infectious Diseases and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",26838,"51620","Master of Forensic Science - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",26839,"60320","Graduate Diploma in Information Technology",7,"1.2",0
+35,1055,"HEP",26840,"21100","Bachelor of Laws and Bachelor of Health Science",10,"6.0",1
+35,1055,"HEP",26841,"90710","Master of Public Health - Research",3,"2.0",0
+35,1055,"HEP",27035,"10753","Master of Social Work - Research",3,"1.0",0
+35,1055,"HEP",27036,"61360","Graduate Diploma in Energy Systems Engineering",7,"1.0",0
+35,1055,"HEP",27037,"91362","Graduate Diploma in Public Health",7,"1.0",0
+35,1055,"HEP",27038,"21102","Bachelor of Laws and Bachelor of Health Science",10,"7.4",1
+35,1055,"HEP",27039,"10750","Master of Social Work - Research",3,"2.0",0
+35,1055,"HEP",27040,"91360","Graduate Diploma in Public Health",6,"1.0",0
+35,1055,"HEP",27142,"51590","Master of Psychology and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",29557,"60330","Graduate Diploma in Engineering",6,"1.0",0
+35,1055,"HEP",29558,"61130","Bachelor of Engineering and Bachelor of Arts (Communication Studies)",10,"5.5",1
+35,1055,"HEP",29559,"30520","Master of Educational Leadership - Coursework",4,"1.0",0
+35,1055,"HEP",29560,"31650","Master of Educational Leadership - Thesis & Coursework",3,"1.0",0
+35,1055,"HEP",29561,"90820","Doctor of Podiatry",2,"4.0",0
+35,1055,"HEP",29562,"41650","Master of Commerce (Advanced) - Coursework",4,"2.0",0
+35,1055,"HEP",29563,"11550","Master of Social Work",4,"2.0",0
+35,1055,"HEP",29564,"52580","Master of Science Communication and Education - Coursework",4,"2.0",0
+35,1055,"HEP",29565,"42540","Master of Business Administration (International) - Coursework",4,"2.0",0
+35,1055,"HEP",29566,"53510","Master of Anatomical Sciences",4,"2.0",0
+35,1055,"HEP",29567,"20590","Executive Master of Public Administration - Coursework",4,"1.3",0
+35,1055,"HEP",29568,"10754","Master of Advanced Social Work - Research",3,"1.0",0
+35,1055,"HEP",29569,"25610","Master of Urban Design - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",29570,"11522","Master of Applied Maritime Archaeology",4,"2.0",0
+35,1055,"HEP",29571,"30243","Graduate Diploma in Educational Leadership",6,"0.5",0
+35,1055,"HEP",29572,"31590","Master of Teaching (Early Childhood) - Coursework",4,"2.0",0
+35,1055,"HEP",29573,"40260","Graduate Certificate in Social Impact",11,"0.5",0
+35,1055,"HEP",29574,"51290","Graduate Certificate in Criminal Investigation",11,"0.5",0
+35,1055,"HEP",29575,"52320","Graduate Diploma in Sleep Science",7,"1.0",0
+35,1055,"HEP",29576,"52330","Graduate Diploma in Work Health and Safety",7,"1.0",0
+35,1055,"HEP",29577,"70592","Master of Science (Ore Deposit Geology)",4,"1.0",0
+35,1055,"HEP",29578,"71132","Bachelor of Engineering and Bachelor of Science",10,"6.0",1
+35,1055,"HEP",29579,"71370","Graduate Diploma in Integrated Human Studies",6,"1.0",0
+35,1055,"HEP",29580,"72270","Graduate Certificate in Integrated Human Studies",11,"0.5",0
+35,1055,"HEP",29581,"72570","Master of Integrated Human Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",29582,"61310","Graduate Diploma in Mathematical and Statistical Science",6,"1.0",0
+35,1055,"HEP",29583,"61370","Graduate Diploma in Business and Engineering Asset Management",7,"1.0",0
+35,1055,"HEP",29584,"61520","Master of Information Technology - Coursework",4,"2.0",0
+35,1055,"HEP",29585,"61570","Master of Engineering Asset Management",4,"2.0",0
+35,1055,"HEP",29586,"70590","Master of Science (Ore Deposit Geology)",4,"1.0",0
+35,1055,"HEP",30532,"41380","Graduate Diploma in Commerce",7,"1.0",0
+35,1055,"HEP",30552,"2110H","Bachelor of Laws and Bachelor of Health Science (Honours)",9,"6.0",1
+35,1055,"HEP",30553,"4210H","Bachelor of Commerce and Bachelor of Music (Honours)",9,"5.3",1
+35,1055,"HEP",30554,"6104H","Bachelor of Engineering and Bachelor of Music (Honours)",9,"6.8",1
+35,1055,"HEP",31221,"92530","Master of Laboratory Medicine - Coursework and Dissertation",4,"1.3",0
+35,1055,"HEP",31573,"11590","Master of International Journalism",4,"1.5",0
+35,1055,"HEP",31574,"25530","Master of Urban Design - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",31575,"31310","Graduate Diploma in Professional Education",6,"1.0",0
+35,1055,"HEP",31576,"31500","Master of Education - Coursework",4,"2.0",0
+35,1055,"HEP",31577,"31670","Master of Education - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",31578,"52210","Graduate Certificate in Forensic Investigation",11,"0.5",0
+35,1055,"HEP",31579,"52250","Graduate Certificate in Pharmacy Practice",11,"0.5",0
+35,1055,"HEP",31580,"52390","Graduate Diploma in Criminal Investigation",6,"1.0",0
+35,1055,"HEP",31581,"60450","Master of Professional Engineering Preliminary",5,"1.5",0
+35,1055,"HEP",31582,"91230","Graduate Certificate in Population Health Studies",11,"0.5",0
+35,1055,"HEP",31583,"BH001","Bachelor of Arts (Honours)",9,"1.0",0
+35,1055,"HEP",31584,"BH002","Bachelor of Commerce (Honours)",9,"1.0",0
+35,1055,"HEP",31585,"BH003","Bachelor of Design (Honours)",9,"1.0",0
+35,1055,"HEP",31586,"BH004","Bachelor of Science (Honours)",9,"1.0",0
+35,1055,"HEP",31587,"BH005","Bachelor of Philosophy (Honours)",9,"4.0",0
+35,1055,"HEP",31588,"BP001","Bachelor of Arts",10,"3.0",0
+35,1055,"HEP",31589,"BP002","Bachelor of Commerce",10,"3.0",0
+35,1055,"HEP",31590,"BP003","Bachelor of Design",10,"3.0",0
+35,1055,"HEP",31591,"BP004","Bachelor of Science",10,"3.0",0
+35,1055,"HEP",33245,"2210H","Bachelor of Laws and Bachelor of Engineering (Honours)",9,"7.3",1
+35,1055,"HEP",33259,"11262","Graduate Certificate in Mental Health Practice",11,"0.5",0
+35,1055,"HEP",33260,"11552","Master of Social Work",4,"2.0",0
+35,1055,"HEP",33261,"52340","Graduate Diploma in Dental Sleep Medicine",6,"1.0",0
+35,1055,"HEP",33262,"91563","Master of Manual Therapy (Coursework)",4,"1.5",0
+35,1055,"HEP",33263,"92550","Master of Public Health - Coursework",4,"2.0",0
+35,1055,"HEP",33718,"72210","Graduate Certificate in Agricultural Science",11,"0.5",0
+35,1055,"HEP",33719,"72220","Graduate Certificate in Biological Science",11,"0.5",0
+35,1055,"HEP",33720,"72230","Graduate Certificate in Environmental Science",11,"0.5",0
+35,1055,"HEP",33721,"72240","Graduate Certificate in Hydrogeology",11,"0.5",0
+35,1055,"HEP",33722,"72250","Graduate Certificate in Geoscience",11,"0.5",0
+35,1055,"HEP",33723,"72260","Graduate Certificate in Urban and Regional Planning",11,"0.5",0
+35,1055,"HEP",33724,"72310","Graduate Diploma in Agricultural Science",6,"1.0",0
+35,1055,"HEP",33725,"72320","Graduate Diploma in Biological Science",6,"1.0",0
+35,1055,"HEP",33726,"72330","Graduate Diploma in Environmental Science",6,"1.0",0
+35,1055,"HEP",33727,"72340","Graduate Diploma in Hydrogeology",6,"1.0",0
+35,1055,"HEP",33728,"72350","Graduate Diploma in Geoscience",6,"1.0",0
+35,1055,"HEP",33729,"72360","Graduate Diploma in Urban and Regional Planning",6,"1.0",0
+35,1055,"HEP",33979,"00710","Master of Philosophy - Research",3,"2.0",0
+35,1055,"HEP",33980,"11532","Master of Medieval and Early Modern Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",33981,"11542","Master of Music Practitioner Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",33982,"12510","Master of Professional Archaeology - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",33983,"31520","Master of Teaching - Coursework",4,"2.0",0
+35,1055,"HEP",33984,"32310","Graduate Diploma in Curriculum Studies",6,"0.5",0
+35,1055,"HEP",33985,"32320","Graduate Diploma in School Leadership",6,"0.5",0
+35,1055,"HEP",33986,"32510","Master of Curriculum Studies - Coursework",4,"1.0",0
+35,1055,"HEP",33987,"32520","Master of School Leadership - Coursework",4,"1.0",0
+35,1055,"HEP",33988,"51312","Graduate Diploma in Pharmaceutical Science",7,"1.3",0
+35,1055,"HEP",33989,"51612","Master of Science - Thesis and Coursework",3,"1.0",0
+35,1055,"HEP",33990,"53560","Master of Physical Science - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",33991,"53580","Master of Industrial and Organisational Psychology - Coursework",4,"2.0",0
+35,1055,"HEP",33992,"61550","Master of Professional Engineering",4,"2.0",0
+35,1055,"HEP",33993,"72290","Graduate Certificate in Integrated Water Management",11,"0.5",0
+35,1055,"HEP",33994,"72390","Graduate Diploma in Integrated Water Management",6,"1.0",0
+35,1055,"HEP",33995,"72590","Master of Integrated Water Management - Coursework",4,"1.5",0
+35,1055,"HEP",33996,"90240","Graduate Certificate in Emergency Medicine Research",11,"0.5",0
+35,1055,"HEP",33997,"92532","Master of Laboratory Medicine - Coursework and Dissertation",4,"1.3",0
+35,1055,"HEP",33998,"92560","Master of Public Health - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",33999,"DA001","Advanced Diploma in Medical and Aboriginal Health Sciences",20,"1.5",0
+35,1055,"HEP",34000,"41330","Graduate Diploma in Human Resources and Employment Relations",7,"1.0",0
+35,1055,"HEP",35261,"21153","Bachelor of Laws and Bachelor of Science",10,"6.3",1
+35,1055,"HEP",35262,"2115H","Bachelor of Laws and Bachelor of Science (Honours)",9,"6.0",1
+35,1055,"HEP",35263,"21150","Bachelor of Laws and Bachelor of Science",10,"6.0",1
+35,1055,"HEP",35274,"31312","Graduate Diploma in Professional Education",6,"0.5",0
+35,1055,"HEP",35275,"54570","Master of Clinical Psychology and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",35276,"54580","Master of Industrial and Organisational Psychology and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",35277,"54590","Master of Clinical Neuropsychology and Doctor of Philosophy - Coursework",4,"1.5",1
+35,1055,"HEP",35280,"DU002","Diploma in Commerce - Undergraduate",21,"1.0",0
+35,1055,"HEP",35281,"DU003","Diploma in Design - Undergraduate",21,"1.0",0
+35,1055,"HEP",35282,"DU001","Diploma in Arts - Undergraduate",21,"1.0",0
+35,1055,"HEP",35283,"DU004","Diploma in Science - Undergraduate",21,"1.0",0
+35,1055,"HEP",35284,"11220","Diploma in Music",21,"1.0",0
+35,1055,"HEP",35285,"10270","Diploma in Arts - Undergraduate",21,"1.0",0
+35,1055,"HEP",35286,"1027H","Diploma in Arts - Undergraduate (Honours)",21,"1.0",0
+35,1055,"HEP",35287,"1030H","Diploma in Modern Languages (Honours)",21,"1.0",0
+35,1055,"HEP",35288,"10300","Diploma in Modern Languages",21,"1.0",0
+35,1055,"HEP",35289,"6020H","Diploma in Information Technology (Honours)",21,"1.0",0
+35,1055,"HEP",35290,"60200","Diploma in Information Technology",21,"1.1",0
+35,1055,"HEP",35474,"90860","Doctor of Dental Medicine",14,"4.0",0
+35,1055,"HEP",35475,"90870","Doctor of Podiatric Medicine",14,"3.0",0
+35,1055,"HEP",35476,"55570","Master of Clinical Psychology (Extended) - Coursework and Dissertation",14,"2.5",0
+35,1055,"HEP",35477,"20820","Juris Doctor",14,"3.0",0
+35,1055,"HEP",35513,"50843","Doctor of Psychology",14,"3.0",0
+35,1055,"HEP",35514,"51503","Master of Pharmacy - Coursework",4,"2.5",0
+35,1055,"HEP",35515,"2112H","Bachelor of Laws and Bachelor of Arts (Asian Studies) (Honours)",9,"6.0",1
+35,1055,"HEP",35516,"4118H","Bachelor of Economics and Bachelor of Commerce (Honours)",9,"4.5",1
+35,1055,"HEP",35517,"6211H","Bachelor of Engineering and Bachelor of Engineering (Honours)",9,"6.0",1
+35,1055,"HEP",35518,"53540","Master of Food Science - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",35519,"53550","Master of Biological Arts - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",35520,"92330","Graduate Diploma in Paediatric Neurological Rehabilitation",7,"1.0",0
+35,1055,"HEP",35603,"01870","Doctor of Philosophy and Master of Clinical Psychology - Research",2,"4.0",0
+35,1055,"HEP",35604,"01890","Doctor of Philosophy and Master of Clinical Neuropsychology - Research",2,"4.0",0
+35,1055,"HEP",35605,"40833","Doctor of Business Administration",2,"3.0",0
+35,1055,"HEP",35606,"90832","Doctor of Clinical Podiatry",14,"4.0",0
+35,1055,"HEP",35607,"90842","Doctor of Clinical Dentistry",14,"4.0",0
+35,1055,"HEP",35608,"91512","Master of Nursing Science - Coursework",14,"2.0",0
+35,1055,"HEP",35609,"DA002","Advanced Diploma in Indigenous Legal Studies",20,"1.5",0
+35,1055,"HEP",35610,"50380","Graduate Diploma in Exercise Rehabilitation",7,"1.0",0
+35,1055,"HEP",35820,"52513","Master of Exercise Science - Coursework",4,"2.0",0
+35,1055,"HEP",35821,"70594","Master of Ore Deposit Geology",4,"1.0",0
+35,1055,"HEP",35822,"51614","Master of Exercise Science - Thesis and Coursework",3,"1.0",0
+35,1055,"HEP",35823,"51633","Master of Medical Physics - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",35824,"51630","Master of Science - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",35825,"51550","Master of Science - Coursework",4,"1.0",0
+35,1055,"HEP",35875,"51502","Master of Pharmacy - Coursework",4,"3.0",0
+35,1055,"HEP",36351,"01820","Doctor of Philosophy (Joint/Double Badged)",2,"4.0",0
+35,1055,"HEP",36352,"01830","Doctor of Philosophy (Joint/Double Badged)",2,"4.0",0
+35,1055,"HEP",36353,"01880","Doctor of Philosophy and Master of Industrial and Organisational Psychology - Research",2,"4.0",0
+35,1055,"HEP",36354,"12520","Master of Translation Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",36355,"20550","Master of Mining and Energy Laws - Coursework",4,"1.0",0
+35,1055,"HEP",36356,"25400","Master of Landscape Architecture - Preliminary",5,"1.0",0
+35,1055,"HEP",36357,"51504","Master of Pharmacy - Coursework",14,"2.5",0
+35,1055,"HEP",36358,"51553","Master of Science in Analytical Chemistry - Coursework",4,"1.0",0
+35,1055,"HEP",36359,"61290","Graduate Certificate in Executive Engineering",11,"0.5",0
+35,1055,"HEP",36360,"61590","Master of Executive Engineering - Coursework",4,"1.5",0
+35,1055,"HEP",36361,"000000000","Non Award Course",50,"NULL",0
+35,1055,"HEP",36362,"90850","Doctor of Medicine",14,"4.0",0
+35,1055,"HEP",36363,"91292","Graduate Certificate in Manual Therapy",11,"0.5",0
+35,1055,"HEP",36364,"91380","Graduate Diploma in Neonatology",6,"0.5",0
+35,1055,"HEP",36365,"91580","Master of Neonatology - Coursework and Dissertation",4,"1.0",0
+35,1055,"HEP",36366,"91642","Master of Paediatric Neurological Rehabilitation - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",37403,"20355","Graduate Diploma in Legal Practice",7,"0.5",0
+35,1055,"HEP",37440,"62550","Master of Professional Engineering",4,"3.0",0
+35,1055,"HEP",37686,"1210H","Bachelor of Music and Bachelor of Science (Honours)",9,"5.4",1
+35,1055,"HEP",37687,"9015H","MBBS and Doctor of Philosophy - Coursework (Honours)",9,"4.4",1
+35,1055,"HEP",37688,"9017H2","Bachelor of Medical Science and Bachelor of Medicine & Bachelor of Surge",9,"6.6",1
+35,1055,"HEP",37689,"9111H","Bachelor of Medicine & Bachelor of Surgery and Bachelor of Arts (Honours",9,"7.6",1
+35,1055,"HEP",41151,"12210","Graduate Certificate in Professional Archaeology",11,"0.5",0
+35,1055,"HEP",41152,"12230","Graduate Certificate in Heritage Studies",11,"0.5",0
+35,1055,"HEP",41153,"12240","Graduate Certificate in Strategic Communication",11,"0.5",0
+35,1055,"HEP",41154,"12260","Graduate Certificate in Social Research Methods",11,"0.5",0
+35,1055,"HEP",41155,"12310","Graduate Diploma in Professional Archaeology",6,"1.0",0
+35,1055,"HEP",41156,"12330","Graduate Diploma in Heritage Studies",6,"1.0",0
+35,1055,"HEP",41157,"12340","Graduate Diploma in Strategic Communication",6,"1.0",0
+35,1055,"HEP",41158,"12360","Graduate Diploma in Social Research Methods",6,"1.0",0
+35,1055,"HEP",41159,"12530","Master of Heritage Studies - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",41160,"12540","Master of Strategic Communication",4,"1.5",0
+35,1055,"HEP",41161,"12560","Master of Social Research Methods - Coursework",4,"2.0",0
+35,1055,"HEP",41162,"20390","Graduate Diploma in Chinese Business Law",6,"0.5",0
+35,1055,"HEP",41163,"21310","Graduate Diploma in International Commercial Law",6,"0.5",0
+35,1055,"HEP",41164,"21320","Graduate Diploma in International Law",6,"0.5",0
+35,1055,"HEP",41165,"21340","Graduate Diploma in Law, Policy and Government",6,"0.5",0
+35,1055,"HEP",41166,"21510","Master of International Commercial Law - Coursework",4,"1.0",0
+35,1055,"HEP",41167,"21520","Master of International Law - Coursework",4,"1.0",0
+35,1055,"HEP",41168,"21530","Master of Law, Policy and Government - Coursework",4,"1.0",0
+35,1055,"HEP",41169,"25240","Graduate Certificate in Architectural Conservation",11,"0.5",0
+35,1055,"HEP",41170,"25522","Master of Architecture - Coursework",4,"3.5",0
+35,1055,"HEP",41171,"25550","Master of Landscape Architecture - Coursework",4,"3.0",0
+35,1055,"HEP",41172,"40613","Master of Professional Accounting - Coursework",4,"2.0",0
+35,1055,"HEP",41173,"41230","Graduate Certificate in Entrepreneurship and Innovation",11,"0.5",0
+35,1055,"HEP",41174,"41662","Master of Human Resources and Employment Relations - Coursework",4,"2.0",0
+35,1055,"HEP",41175,"41672","Master of Business Information Management - Coursework",4,"2.0",0
+35,1055,"HEP",41176,"41682","Master of Commerce - Coursework",4,"2.0",0
+35,1055,"HEP",41177,"41692","Master of Marketing - Coursework",4,"2.0",0
+35,1055,"HEP",41178,"42560","Master of Applied Finance - Coursework",4,"2.0",0
+35,1055,"HEP",41179,"43520","Master of Business Administration - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",41180,"53390","Graduate Diploma in Clinical Neuropsychology",6,"1.0",0
+35,1055,"HEP",41181,"62510","Master of Information Technology - Coursework",4,"2.0",0
+35,1055,"HEP",41182,"62520","Master of Low Emission Energy Technologies",4,"2.0",0
+35,1055,"HEP",41183,"70230","Graduate Certificate in Autism Diagnosis",11,"0.5",0
+35,1055,"HEP",41184,"70260","Graduate Certificate in Scientific and High Performance Computing",11,"0.5",0
+35,1055,"HEP",41185,"71520","Master of Biomedical Science",4,"2.0",0
+35,1055,"HEP",41186,"71530","Master of Biological Arts - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",41187,"71540","Master of Health Science - Coursework",4,"2.0",0
+35,1055,"HEP",41188,"71550","Master of International Development",4,"2.0",0
+35,1055,"HEP",41189,"71570","Master of Geographic Information Science",4,"2.0",0
+35,1055,"HEP",41190,"71580","Master of Biotechnology",4,"2.0",0
+35,1055,"HEP",41191,"90652","Master of Nursing Research - Thesis and Coursework",3,"1.5",0
+35,1055,"HEP",41192,"91610","Master of Child Health Research - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",41193,"92510","Master of Clinical Pathology",4,"2.0",0
+35,1055,"HEP",41756,"30360","Graduate Diploma in School Psychology",6,"1.0",0
+35,1055,"HEP",41757,"70250","Graduate Certificate in Digital Forensics",11,"0.5",0
+35,1055,"HEP",41758,"70270","Graduate Certificate in Forensic Intelligence",11,"0.5",0
+35,1055,"HEP",41759,"73510","Master of Ecotourism - Coursework",4,"2.0",0
+35,1055,"HEP",42105,"10724","Master of Music - Research",3,"1.0",0
+35,1055,"HEP",42206,"12522","Master of Translation Studies - Coursework",4,"2.0",0
+35,1055,"HEP",42207,"20323","Graduate Diploma in Law",7,"0.5",0
+35,1055,"HEP",42208,"52323","Graduate Diploma in Sleep Science",7,"1.1",0
+35,1055,"HEP",42209,"53562","Master of Physics - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",42210,"90212","Graduate Certificate in Health Professions Education",11,"0.5",0
+35,1055,"HEP",42211,"90572","Master of Health Professions Education - Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",42212,"91342","Graduate Diploma in Health Professions Education",7,"1.0",0
+35,1055,"HEP",42213,"91582","Master of Neonatology - Coursework",4,"1.0",0
+35,1055,"HEP",42630,"53340","Graduate Diploma in Food Science",6,"1.0",0
+35,1055,"HEP",42935,"30813","Doctor of Education",2,"3.0",0
+35,1055,"HEP",42936,"90672","Master of Health Professions Education - Thesis and Coursework",3,"2.0",0
+35,1055,"HEP",43956,"00200","Graduate Certificate in Studies",11,"0.5",0
+35,1055,"HEP",43957,"00500","Master of Studies",4,"2.0",0
+35,1055,"HEP",43958,"12220","Graduate Certificate in Translation Studies",11,"0.5",0
+35,1055,"HEP",43959,"12320","Graduate Diploma in Translation Studies",6,"1.0",0
+35,1055,"HEP",43960,"12550","Master of Music International Pedagogy - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",43961,"12570","Master of Music International Pedagogy - Coursework",4,"1.5",0
+35,1055,"HEP",43962,"21350","Graduate Diploma in Taxation Law",6,"0.5",0
+35,1055,"HEP",43963,"21540","Master of International Law and Master of International Relations",4,"2.0",1
+35,1055,"HEP",43964,"41220","Graduate Certificate in Leadership",11,"0.5",0
+35,1055,"HEP",43965,"41250","Graduate Certificate in Finance",11,"0.5",0
+35,1055,"HEP",43966,"41260","Graduate Certificate in Human Resources and Employment Relations",11,"0.5",0
+35,1055,"HEP",43967,"41270","Graduate Certificate in Business Information and Logistics Management",11,"0.5",0
+35,1055,"HEP",43968,"41280","Graduate Certificate in Commerce",11,"0.5",0
+35,1055,"HEP",43969,"41290","Graduate Certificate in Marketing",11,"0.5",0
+35,1055,"HEP",43970,"61240","Graduate Certificate in Engineering Operations",11,"0.5",0
+35,1055,"HEP",43971,"73520","Master of Clinical Exercise Physiology",4,"2.0",0
+35,1055,"HEP",43972,"73530","Master of Agricultural Economics - Coursework",4,"2.0",0
+35,1055,"HEP",43973,"92610","Master of Pathology - Thesis and Coursework",3,"1.0",0
+35,1055,"HEP",44568,"11273","Graduate Certificate in Social Policy Practice",11,"0.5",0
+35,1055,"HEP",44569,"12562","Master of Social Research Methods",4,"2.0",0
+35,1055,"HEP",44570,"41673","Master of Business Information and Logistics Management - Coursework",4,"2.0",0
+35,1055,"HEP",44571,"43550","Master of Commerce and Master of International Commercial Law",4,"2.0",1
+35,1055,"HEP",44669,"01850","Doctor of Philosophy (Joint/Double Badged)",2,"4.0",0
+35,1055,"HEP",44856,"12523","Master of Translation Studies",4,"2.0",0
+35,1055,"HEP",44857,"20372","Graduate Diploma in Mining and Energy Law",6,"0.5",0
+35,1055,"HEP",44858,"20552","Master of Mining and Energy Law - Coursework",4,"1.0",0
+35,1055,"HEP",44859,"51583","Master of Science Communication",4,"2.0",0
+35,1055,"HEP",44860,"52514","Master of Exercise Science",4,"2.0",0
+35,1055,"HEP",44861,"73512","Master of Ecotourism - Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",45100,"92310","Graduate Diploma in Clinical Pathology",6,"1.0",0
+35,1055,"HEP",45468,"00890","Doctor of Philosophy and Master of Psychology - Research",2,"4.0",0
+35,1055,"HEP",45477,"90682","Master of Rural and Remote Medicine - Thesis and Coursework",3,"1.5",0
+35,1055,"HEP",45597,"52510","Master of Science",4,"2.0",0
+35,1055,"HEP",45607,"21550","Master of Taxation Law",4,"1.0",0
+35,1055,"HEP",45608,"51580","Master of Science Communication",4,"2.0",0
+35,1055,"HEP",46758,"11582","Master of International Relations",4,"2.0",0
+35,1055,"HEP",46759,"12542","Master of Strategic Communication",4,"2.0",0
+35,1055,"HEP",46760,"91550","Master of Public Health - Coursework",4,"1.5",0
+35,1055,"HEP",46761,"72560","Master of Urban and Regional Planning",4,"2.0",0
+35,1055,"HEP",46762,"72510","Master of Agricultural Science",4,"2.0",0
+35,1055,"HEP",46763,"72520","Master of Biological Science",4,"2.0",0
+35,1055,"HEP",46764,"72530","Master of Environmental Science",4,"2.0",0
+35,1055,"HEP",46765,"72540","Master of Hydrogeology",4,"2.0",0
+35,1055,"HEP",46766,"72550","Master of Geoscience",4,"2.0",0
+35,1055,"HEP",46840,"43530","Master of Business Administration and Master of Laws",4,"2.5",1
+35,1055,"HEP",46841,"43540","Master of Business Administration and Master of International Commercial",4,"2.5",1
+35,1055,"HEP",46842,"53370","Graduate Diploma in Clinical Psychology",6,"1.0",0
+35,1055,"HEP",46843,"12580","Master of Asian Studies",4,"2.0",0
+35,1055,"HEP",46844,"13280","Graduate Certificate in Asian Studies",11,"0.5",0
+35,1055,"HEP",46845,"13380","Graduate Diploma in Asian Studies",6,"1.0",0
+35,1055,"HEP",46846,"42580","Master of Public Policy",4,"2.0",0
+35,1055,"HEP",46847,"62530","Master of Data Science",4,"2.0",0
+35,1055,"HEP",46848,"73540","Master of Energy Geoscience",4,"2.0",0
+35,1055,"HEP",46849,"74530","Master of Work Health and Safety",4,"2.0",0
+35,1055,"HEP",47581,"72280","Graduate Certificate in Forensic Anthropology",11,"0.5",0
+35,1055,"HEP",47582,"72380","Graduate Diploma in Forensic Anthropology",6,"1.0",0
+35,1055,"HEP",47583,"21360","Graduate Diploma in Natural Resources Law",7,"0.5",0
+35,1055,"HEP",47584,"25540","Master of Building Information Modelling",4,"1.0",0
+35,1055,"HEP",47585,"72580","Master of Forensic Anthropology",4,"2.0",0
+35,1055,"HEP",47684,"21542","Master of International Law and Master of International Relations",4,"2.5",1
+35,1055,"HEP",48537,"43552","Master of Commerce and Master of International Commercial Law",4,"2.5",1
+35,1055,"HEP",49339,"00720","Master of Research",3,"2.0",0
+35,1055,"HEP",49340,"12270","Graduate Certificate in Fieldwork Practice",11,"0.5",0
+35,1055,"HEP",49341,"20813","Doctor of Juridical Science",2,"3.0",0
+35,1055,"HEP",49342,"42230","Graduate Certificate in Economics",11,"0.5",0
+35,1055,"HEP",49343,"42280","Graduate Certificate in Public Policy",11,"0.5",0
+35,1055,"HEP",49344,"42622","Master of Economics",4,"2.0",0
+35,1055,"HEP",49345,"52324","Graduate Diploma in Sleep Science",7,"1.0",0
+35,1055,"HEP",49346,"62540","Master of Ocean Leadership",4,"2.0",0
+35,1055,"HEP",49347,"73550","Master of Business Psychology - Coursework",4,"2.0",0
+35,1055,"HEP",49348,"90833","Doctor of Podiatric Surgery",14,"4.0",0
+35,1055,"HEP",49349,"90923","Doctor of Medical Science",1,"NULL",0
+35,1055,"HEP",49350,"BH006","Bachelor of Biomedical Science (Honours)",9,"1.0",0
+35,1055,"HEP",49351,"BP006","Bachelor of Biomedical Science",10,"3.0",0
+35,1055,"HEP",49352,"DU006","Diploma in Biomedical Science - Undergraduate",21,"1.0",0
+35,1055,"HEP",49773,"73340","Graduate Diploma in Health Science",6,"1.0",0
+35,1055,"HEP",49774,"73350","Graduate Diploma in International Development",6,"1.0",0
+35,1055,"HEP",49775,"73380","Graduate Diploma in Biotechnology",6,"1.0",0
+35,1055,"HEP",49776,"73220","Graduate Certificate in Biomedical Science",11,"0.5",0
+35,1055,"HEP",49777,"74330","Graduate Diploma in Biological Arts",6,"1.0",0
+35,1055,"HEP",51019,"32550","Master of Teaching - Secondary",4,"2.0",0
+35,1055,"HEP",51088,"DU021","Diploma in Arts - Undergraduate",21,"1.0",0
+35,1055,"HEP",51089,"12532","Master of Heritage Studies",4,"2.0",0
+35,1055,"HEP",51210,"00844","Master of Clinical Audiology and Doctor of Philosophy",2,"4.0",1
+35,1055,"HEP",51211,"21560","Master of Legal Practice",4,"2.0",0
+35,1055,"HEP",52692,"53570","Master of Clinical Psychology - Coursework",4,"2.0",0
+35,1055,"HEP",52693,"73250","Graduate Certificate in International Development",11,"0.5",0
+35,1055,"HEP",52694,"62230","Graduate Certificate in Data Science",11,"0.5",0
+35,1055,"HEP",52695,"73240","Graduate Certificate in Health Science",11,"0.5",0
+35,1055,"HEP",52696,"53590","Master of Clinical Neuropsychology - Coursework",4,"2.0",0
+35,1055,"HEP",52697,"73310","Graduate Diploma in Ecotourism",6,"1.0",0
+35,1055,"HEP",52698,"40390","Graduate Diploma in Information and Logistics Management",7,"1.0",0
+35,1055,"HEP",53033,"73260","Graduate Certificate in the Diagnosis and Assessment of Fetal Alcohol Spectrum Disorder (FASD)",11,"0.5",0
+35,1055,"HEP",53034,"01840","Doctor of Philosophy (Joint/Double Badged)",2,"4.0",0
+35,1055,"HEP",53398,"42270","Graduate Certificate in Business Analytics",11,"1.0",0
+35,1055,"HEP",55101,"52360","Graduate Diploma in Physics",7,"1.0",0
+35,1055,"HEP",55102,"73320","Graduate Diploma in Biomedical Science",6,"1.0",0
+35,1055,"HEP",55103,"92340","Graduate Diploma in Clinical Dentistry",6,"1.0",0
+35,1055,"HEP",55569,"10470","Higher Degree by Research Preliminary (Arts, Business, Law and Education)",5,"1.0",0
+35,1055,"HEP",55570,"12250","Graduate Certificate in Environmental Planning",11,"0.5",0
+35,1055,"HEP",55571,"12290","Graduate Certificate in Urban and Regional Planning",11,"0.5",0
+35,1055,"HEP",55572,"12590","Master of Commerce and Master of Translation Studies",4,"2.5",1
+35,1055,"HEP",55573,"21380","Graduate Diploma in Insurance Law",7,"0.5",0
+35,1055,"HEP",55574,"25340","Graduate Diploma in Building Information Modelling",6,"0.5",0
+35,1055,"HEP",55575,"25360","Graduate Diploma in Building Information Modelling (Online)",6,"0.5",0
+35,1055,"HEP",55576,"25560","Master of Building Information Modelling (Online)",4,"1.0",0
+35,1055,"HEP",55577,"32330","Graduate Certificate in Early Childhood Education and Care",11,"0.5",0
+35,1055,"HEP",55578,"42200","Graduate Certificate in Health Leadership and Management",11,"0.5",0
+35,1055,"HEP",55579,"42260","Graduate Certificate in Commerce (Online)",11,"0.5",0
+35,1055,"HEP",55580,"42630","Master of Business Analytics",4,"2.0",0
+35,1055,"HEP",55581,"50772","Master of Forensic Science - Research",3,"2.0",0
+35,1055,"HEP",55582,"51213","Graduate Certificate in Adult Sleep Science",11,"0.5",0
+35,1055,"HEP",55583,"52230","Graduate Certificate in Dental Sleep Medicine",11,"0.5",0
+35,1055,"HEP",55584,"62560","Master of Renewable and Future Energy - Coursework",4,"2.0",0
+35,1055,"HEP",55585,"73560","Master of Hearing Sciences",4,"2.0",0
+35,1055,"HEP",55586,"91590","Doctor of Optometry - Coursework (Extended)",4,"3.0",0
+35,1055,"HEP",55587,"91850","Doctor of Medicine",14,"4.0",0
+35,1055,"HEP",55588,"92210","Graduate Certificate in Environment and Health",11,"0.5",0
+35,1055,"HEP",55589,"92220","Graduate Certificate in Communicable Diseases Epidemiology",11,"0.5",0
+35,1055,"HEP",55590,"BP021","Bachelor of Arts",10,"3.0",0
+35,1055,"HEP",55591,"BP024","Bachelor of Science",10,"3.0",0
+35,1055,"HEP",55592,"CU001","Undergraduate Certificate in Environmental Studies",22,"0.5",0
+35,1055,"HEP",55593,"CU002","Undergraduate Certificate in Biological Sciences",22,"0.5",0
+35,1055,"HEP",55594,"CU003","Undergraduate Certificate in Health and Fitness",22,"0.5",0
+35,1055,"HEP",55595,"CU004","Undergraduate Certificate in Earth Science",22,"0.5",0
+35,1055,"HEP",55596,"CU005","Undergraduate Certificate in Business",22,"0.5",0
+35,1055,"HEP",55597,"CU006","Undergraduate Certificate in Data Science",22,"0.5",0
+35,1055,"HEP",56239,"43200","Graduate Certificate in Minerals and Energy Management",11,"0.5",0
+35,1055,"HEP",56451,"74230","Graduate Certificate in Bioinformatics",11,"0.5",0
+35,1055,"HEP",56452,"74250","Graduate Certificate in Science",11,"0.5",0
+35,1055,"HEP",56453,"74260","Graduate Certificate in Science",11,"0.5",0
+35,1055,"HEP",56454,"73290","Graduate Certificate in Business Psychology",11,"0.5",0
+35,1055,"HEP",56541,"BP0062","Bachelor of Biomedical Science",10,"3.0",0
+35,1055,"HEP",56542,"BP0014","Bachelor of Arts",10,"3.0",0
+35,1055,"HEP",56543,"25523","Master of Architecture- Coursework and Dissertation",4,"3.5",0
+35,1055,"HEP",56545,"73280","Graduate Certificate in Biotechnology",11,"0.5",0
+35,1055,"HEP",59458,"31522","Master of Teaching - Primary (Coursework)",4,"1.5",0
+35,1055,"HEP",59459,"32552","Master of Teaching - Secondary",4,"1.5",0
+35,1055,"HEP",59460,"BP028","Bachelor of Molecular Sciences",10,"3.0",0
+35,1055,"HEP",59461,"BP029","Bachelor of Earth Sciences",10,"3.0",0
+35,1055,"HEP",59462,"53392","Graduate Diploma in Clinical Neuropsychology",6,"1.0",0
+35,1055,"HEP",59463,"CB011","Bachelor of Psychology and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",59464,"BP013","Bachelor of Economics",10,"3.0",0
+35,1055,"HEP",59465,"CB001","Bachelor of Agribusiness and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",59466,"CB002","Bachelor of Environmental Science and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",59467,"CB003","Bachelor of Agricultural Science and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",59468,"42632","Master of Business Analytics",4,"2.0",0
+35,1055,"HEP",59469,"BH011","Bachelor of Engineering (Honours)",9,"4.0",0
+35,1055,"HEP",59470,"BP031","Bachelor of Human Sciences",10,"3.0",0
+35,1055,"HEP",59471,"CB004","Bachelor of Engineering (Honours) and Bachelor of Science",9,"5.0",1
+35,1055,"HEP",59472,"BP019","Bachelor of Agricultural Science",10,"3.0",0
+35,1055,"HEP",59473,"BP020","Bachelor of Agribusiness",10,"3.0",0
+35,1055,"HEP",59474,"CB006","Bachelor of Engineering (Honours) and Bachelor of Commerce",9,"5.0",1
+35,1055,"HEP",59475,"BP022","Bachelor of Environmental Science",10,"3.0",0
+35,1055,"HEP",59476,"CB007","Bachelor of Environmental Science and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",59477,"BP023","Bachelor of Marine Science",10,"3.0",0
+35,1055,"HEP",59478,"BP025","Bachelor of Biological Science",10,"3.0",0
+35,1055,"HEP",59479,"BP026","Bachelor of Sport and Exercise Sciences",10,"3.0",0
+35,1055,"HEP",59480,"BP027","Bachelor of Chemistry",10,"3.0",0
+35,1055,"HEP",59481,"CB008","Bachelor of Environmental Science and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",59482,"CB009","Bachelor of Agricultural Science and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",59483,"CB010","Bachelor of Agricultural Science and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",59484,"BP030","Bachelor of Psychology",10,"3.0",0
+35,1055,"HEP",59485,"CB013","Bachelor of Psychology and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",59486,"42340","Graduate Diploma in Commerce (Chartered Accounting)",7,"1.0",0
+35,1055,"HEP",59487,"90440","Higher Degree by Research Preliminary (Health and Medical Sciences)",5,"1.0",0
+35,1055,"HEP",59488,"CU0012","Undergraduate Certificate in Environmental Studies",23,"0.5",0
+35,1055,"HEP",59489,"CU0022","Undergraduate Certificate in Biological Sciences",23,"0.5",0
+35,1055,"HEP",59490,"CU0042","Undergraduate Certificate in Earth Science",23,"0.5",0
+35,1055,"HEP",59491,"CU0062","Undergraduate Certificate in Data Science",23,"0.5",0
+35,1055,"HEP",59866,"CM005","Bachelor of Biological Science and Master of Biological Science",10,"4.0",1
+35,1055,"HEP",59867,"CM007","Bachelor of Science and Master of Biotechnology",10,"4.0",1
+35,1055,"HEP",59868,"CM008","Bachelor of Science and Master of Environmental Science",10,"4.0",1
+35,1055,"HEP",59869,"CM009","Bachelor of Science and Master of Geoscience",10,"4.0",1
+35,1055,"HEP",59870,"205603","Master of Resources and International Commercial Law",4,"1.0",0
+35,1055,"HEP",59871,"BH009","Bachelor of Music (Honours)",9,"1.0",0
+35,1055,"HEP",59872,"CM017","Bachelor of Science and Master of Public Health",10,"4.0",1
+35,1055,"HEP",59873,"25503","Master of Landscape Architecture",4,"3.0",0
+35,1055,"HEP",59874,"CM018","Bachelor of Science and Master of Clinical Exercise Physiology",10,"4.0",1
+35,1055,"HEP",59875,"CM010","Bachelor of Science and Master of Biological Science",10,"4.0",0
+35,1055,"HEP",59876,"12282","Graduate Certificate in International Relations",11,"0.5",0
+35,1055,"HEP",59877,"CM011","Bachelor of Science and Master of Environmental Science",10,"4.0",1
+35,1055,"HEP",59878,"11583","Master of International Relations",4,"2.0",0
+35,1055,"HEP",59879,"CM013","Bachelor of Science and Master of Agricultural Science",10,"4.0",1
+35,1055,"HEP",59880,"11382","Graduate Diploma in International Relations",6,"1.0",0
+35,1055,"HEP",59881,"CM014","Bachelor of Science and Master of Agricultural Economics",10,"4.0",1
+35,1055,"HEP",59882,"CM015","Combined Bachelor of Science (Frontier Physics) and Master Physics",10,"4.0",1
+35,1055,"HEP",59883,"CM004","Bachelor of Science and Master of Biomedical Science",10,"4.0",1
+35,1055,"HEP",59904,"25532","Master of Urban Design- Coursework or Coursework and dissertation",4,"2.0",0
+35,1055,"HEP",59905,"40611","Master of Professional Accounting (Chartered Accounting) - Coursework",4,"2.0",0
+35,1055,"HEP",59906,"30380","Graduate Diploma in Mental Health and Wellbeing in Education",6,"0.5",0
+35,1055,"HEP",59907,"13550","Master of Environmental Planning - Coursework or Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",59908,"BP0022","Bachelor of Commerce",10,"3.0",0
+35,1055,"HEP",59909,"BP007","Bachelor of Automation and Robotics",10,"3.0",0
+35,1055,"HEP",59910,"BP008","Bachelor of Music",10,"3.0",0
+35,1055,"HEP",59911,"BP009","Bachelor of Business",10,"3.0",0
+35,1055,"HEP",59912,"BP011","Bachelor of Environmental Design",10,"3.0",0
+35,1055,"HEP",59913,"BH0054","Bachelor of Philosophy (Honours)",9,"4.0",0
+35,1055,"HEP",59914,"BH008","Bachelor of Advanced Computer Science (Honours)",9,"4.0",0
+35,1055,"HEP",59915,"72554","Master of Geoscience",4,"2.0",0
+35,1055,"HEP",59916,"BP012","Bachelor of Philosophy, Politics and Economics",10,"3.0",0
+35,1055,"HEP",59917,"CM002","Bachelor of Economics and Master of Economics",10,"4.0",1
+35,1055,"HEP",59918,"70550","Master of Bioinformatics - Coursework or Coursework and Dissertation",4,"1.5",0
+35,1055,"HEP",60143,"BP014","Bachelor of Economics (Advanced)",10,"3.0",0
+35,1055,"HEP",60144,"CM023","Bachelor of Science and Master of Teaching - Secondary",10,"4.0",1
+35,1055,"HEP",60145,"CM003","Bachelor of Science and Master of Agricultural Science",10,"4.0",1
+35,1055,"HEP",60170,"32540","Master of Teaching (F-12) - Coursework",4,"2.0",0
+35,1055,"HEP",60265,"CM0142","Bachelor of Agribusiness and Master of Agricultural Economics",10,"4.0",1
+35,1055,"HEP",60266,"62330","Graduate Diploma in Data Science",6,"1.0",0
+35,1055,"HEP",60392,"74340","Graduate Diploma in Petroleum Geoscience",6,"1.0",0
+35,1055,"HEP",60455,"CB012","Bachelor of Philosophy, Politics and Economics and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",60534,"42660","Master of Professional Accounting (Chartered Accounting) - Coursework",4,"2.3",0
+35,1055,"HEP",60535,"CM024","Bachelor of Molecular Sciences and Master of Bioinformatics",10,"4.0",1
+35,1055,"HEP",60643,"91860","Doctor of Dental Medicine",14,"4.0",0
+35,1055,"HEP",60653,"CM029","Bachelor of Biological Science and Master of Biotechnology",10,"4.0",1
+35,1055,"HEP",60654,"CM0182","Bachelor of Sport and Exercise Sciences and Master of Clinical Exercise Physiology",10,"4.0",1
+35,1055,"HEP",60655,"CM0172","Bachelor of Sport and Exercise Sciences and Master of Public Health",10,"4.0",1
+35,1055,"HEP",60656,"CM0152","Bachelor of Science Frontier Physics and Master of Physics",10,"4.0",1
+35,1055,"HEP",60657,"CM0132","Bachelor of Agricultural Science and Master of Agricultural Science",10,"4.0",1
+35,1055,"HEP",60658,"CM0112","Bachelor of Marine Science and Master of Environmental Science",10,"4.0",1
+35,1055,"HEP",60659,"CM0102","Bachelor of Marine Science and Master of Marine Biology",10,"4.0",1
+35,1055,"HEP",60660,"CM0082","Bachelor of Environmental Science and Master of Environmental Science",10,"4.0",1
+35,1055,"HEP",60661,"CM0072","Bachelor of Molecular Sciences and Master of Biotechnology",10,"4.0",1
+35,1055,"HEP",60662,"CM0042","Bachelor of Molecular Sciences and Master of Biomedical Science",10,"4.0",1
+35,1055,"HEP",60663,"CB014","Bachelor of Engineering (Honours) and Bachelor of Philosophy (Honours)",9,"5.5",1
+35,1055,"HEP",60664,"CM0092","Bachelor of Earth Sciences and Master of Geoscience",10,"4.0",1
+35,1055,"HEP",60665,"73570","Master of Applied Human Performance Science - Coursework",4,"2.0",0
+35,1055,"HEP",60692,"40394","Graduate Diploma in Information and Logistics Management",7,"1.0",0
+35,1055,"HEP",60750,"CM019","Bachelor of Sport and Exercise Sciences and Master of Applied Human Performance Science",10,"4.0",1
+35,1055,"HEP",60751,"BP049","Bachelor of Sport and Exercise Sciences (Advanced)",10,"3.0",0
+35,1055,"HEP",60752,"BP046","Bachelor of Marine Science (Advanced)",10,"3.0",0
+35,1055,"HEP",60753,"BP044","Bachelor of Earth Sciences (Advanced)",10,"3.0",0
+35,1055,"HEP",60754,"BP042","Bachelor of Environmental Science (Advanced)",10,"3.0",0
+35,1055,"HEP",60755,"BP039","Bachelor of Human Sciences (Advanced)",10,"3.0",0
+35,1055,"HEP",60756,"BP037","Bachelor of Biological Science (Advanced)",10,"3.0",0
+35,1055,"HEP",60757,"BP036","Bachelor of Agribusiness (Advanced)",10,"3.0",0
+35,1055,"HEP",60758,"BP035","Bachelor of Agricultural Science (Advanced)",10,"3.0",0
+35,1055,"HEP",60759,"BP033","Bachelor of Frontier Physics (Advanced)",10,"3.0",0
+35,1055,"HEP",60760,"54540","Master of Infectious Diseases - Coursework or Coursework and Dissertation",4,"1.0",0
+35,1055,"HEP",60761,"BP041","Bachelor of Molecular Sciences (Advanced)",10,"3.0",0
+35,1055,"HEP",60897,"CM012","Bachelor of Earth Sciences and Master of Oceanography",10,"4.0",1
+35,1055,"HEP",60898,"62260","Graduate Certificate in Renewable and Future Energy",11,"0.5",0
+35,1055,"HEP",60899,"61250","Graduate Certificate in Tailings Management",11,"0.5",0
+35,1055,"HEP",60900,"AU001","Associate Degree in Applied Technologies (Process Sensors)",13,"1.5",0
+35,1055,"HEP",60901,"62240","Graduate Certificate in Ocean Leadership",11,"0.5",0
+35,1055,"HEP",60902,"91830","Doctor of Podiatric Surgery",14,"3.0",0
+35,1055,"HEP",60903,"91870","Doctor of Podiatric Medicine",14,"3.0",0
+35,1055,"HEP",60904,"74540","Master of Marine Biology",4,"2.0",0
+35,1055,"HEP",60905,"UWC02","Diploma in Commerce - 8 months",21,"1.0",0
+35,1055,"HEP",60906,"UWC04","Diploma in Science - 8 months",21,"1.0",0
+35,1055,"HEP",60907,"71590","Master of Oceanography - Coursework or Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",60908,"UWC12","Diploma in Commerce - 12 months",21,"1.1",0
+35,1055,"HEP",60909,"62360","Graduate Diploma in Renewable and Future Energy",6,"1.0",0
+35,1055,"HEP",60910,"UWC14","Diploma in Science - 12 months",21,"1.1",0
+35,1055,"HEP",60971,"CM021","Bachelor of Human Sciences and Master of Bioinformatics",10,"4.0",1
+35,1055,"HEP",61221,"62340","Graduate Diploma in Ocean Leadership",6,"1.0",0
+35,1055,"HEP",61279,"UWC00","UWA Foundation Program - 8 months",30,"1.0",0
+35,1055,"HEP",61280,"UWC10","UWA Foundation Program Extended - 12 months",30,"1.1",0
+35,1055,"HEP",61438,"BP501","Bachelor of Letters",10,"2.0",0
+35,1055,"HEP",61445,"52362","Graduate Diploma in Physics",6,"1.0",0
+35,1055,"HEP",61446,"BP034","Bachelor of Human Rights",10,"3.0",0
+35,1055,"HEP",61447,"BP050","Bachelor of Criminology and Criminal Justice",10,"3.0",0
+35,1055,"HEP",61448,"BP054","Bachelor of Modern Languages",10,"3.0",0
+35,1055,"HEP",61449,"CB022","Bachelor of Human Rights and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",61450,"CB023","Bachelor of Human Rights and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",61451,"CB026","Bachelor of Modern Languages and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",61452,"CB028","Bachelor of Modern Languages and Bachelor of Business",10,"4.0",1
+35,1055,"HEP",61453,"CB029","Bachelor of Modern Languages and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",61797,"BH014","Bachelor of Psychology (Honours)",9,"1.0",0
+35,1055,"HEP",61882,"CB030","Bachelor of Engineering (Honours) and Bachelor of Modern Languages",9,"5.5",1
+35,1055,"HEP",62106,"42670","Master of Economics - Coursework or Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",62204,"62570","Master of Offshore and Coastal Engineering",4,"2.0",0
+35,1055,"HEP",62271,"CB017","Bachelor of Philosophy, Politics and Economics and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",62272,"BH013","Bachelor of Economics (Honours)",9,"1.0",0
+35,1055,"HEP",62326,"73660","Master of Medical Physics - coursework and dissertation",4,"2.0",0
+35,1055,"HEP",62327,"74550","Master of Geotechnics for Offshore Wind Energy- Coursework and dissertation",4,"1.0",0
+35,1055,"HEP",62328,"BP055","Bachelor of Geographical and Spatial Science",10,"3.0",0
+35,1055,"HEP",62329,"CM032","Bachelor of Geographical and Spatial Science and Master of Environmental Science",10,"4.0",1
+35,1055,"HEP",62368,"70570","Master of Environmental Economics (Online)",4,"2.0",0
+35,1055,"HEP",62494,"90740","Master of Clinical Science",4,"1.0",0
+35,1055,"HEP",62495,"90250","Graduate Certificate in Clinical Science",11,"0.5",0
+35,1055,"HEP",62496,"UWC06","Diploma in Computer and Data Science - 8 months",21,"1.0",0
+35,1055,"HEP",62497,"UWC16","Diploma in Computer and Data Science - 12 months",21,"1.1",0
+35,1055,"HEP",62796,"CB031","Bachelor of Philosophy (Honours) and Bachelor of Modern Languages",9,"5.0",1
+35,1055,"HEP",62797,"CB034","Bachelor of Engineering (Honours) and Bachelor of Arts",9,"5.0",1
+35,1055,"HEP",62912,"UWC18","Diploma in Engineering - 14 months",21,"1.2",0
+35,1055,"HEP",62936,"BH016","Bachelor of Modern Languages Honours",9,"1.0",0
+35,1055,"HEP",62937,"BH018","Bachelor of Criminology and Criminal Justice (Honours)",9,"1.0",0
+35,1055,"HEP",62938,"UWC08","Diploma in Engineering - 10 months",21,"0.8",0
+35,1055,"HEP",62939,"BH015","Bachelor of Philosophy, Politics and Economics (Honours)",9,"1.0",0
+35,1055,"HEP",62940,"91513","Master of Nursing Science - Coursework",4,"2.0",0
+35,1055,"HEP",62944,"BP056","Bachelor of Biomedicine (Specialised)",10,"3.0",0
+35,1055,"HEP",63256,"BH017","Bachelor of Social Work (Honours)",9,"4.0",0
+35,1055,"HEP",63257,"BH020","Bachelor of Education (Primary) (Honours)",9,"4.0",0
+35,1055,"HEP",63258,"BP058","Bachelor of International Relations",10,"3.0",0
+35,1055,"HEP",63259,"BP059","Bachelor of Mathematics",10,"3.0",0
+35,1055,"HEP",63260,"BP062","Bachelor of Social and Environmental Sustainability",10,"3.0",0
+35,1055,"HEP",63261,"CB020","Bachelor of Economics and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",63262,"CB032","Bachelor of Modern Languages and Bachelor of Biomedical Science",10,"4.0",1
+35,1055,"HEP",63614,"AU004","Associate Degree in Applied Technologies (Computer Science)",13,"1.5",0
+35,1055,"HEP",63615,"91270","Graduate Certificate in Health Professions Education (online)",11,"0.5",0
+35,1055,"HEP",63616,"91390","Graduate Diploma in Health Professions Education (online)",6,"1.0",0
+35,1055,"HEP",63617,"BH019","Bachelor of Human Rights Honours",9,"1.0",0
+35,1055,"HEP",64433,"BH021","Bachelor of Business (Honours)",9,"1.0",0
+35,1055,"HEP",64478,"42290","Graduate Certificate in Health Economics and Analysis (Exit Award)",11,"0.5",0
+35,1055,"HEP",64479,"93330","Graduate Diploma in Dental Public and Primary Health (Exit Award)",4,"1.0",0
+35,1055,"HEP",64534,"30260","Graduate Certificate in Educational Research",11,"0.5",0
+35,1055,"HEP",64590,"CB038","Bachelor of Music and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",64673,"CB039","Bachelor of Music and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",64674,"CB041","Bachelor of Music and Bachelor of Business",10,"4.0",1
+35,1055,"HEP",64797,"93530","Master of Dental Public and Primary Health",4,"2.0",0
+35,1055,"HEP",64853,"CM038","Bachelor of Marine Science and Master of Oceanography",10,"4.0",1
+35,1055,"HEP",64932,"MC001","Using R: Environmental and Agriculture Applications",52,"0.2",0
+35,1055,"HEP",64933,"MC002","Integrated Einsteinian Science for School Teachers",52,"0.2",0
+35,1055,"HEP",64946,"BP502","Bachelor of Science and Technology",10,"2.0",0
+35,1055,"HEP",64947,"000202","Aboriginal Orientation Course",30,"1.0",0
+35,1055,"HEP",64948,"BP503","Bachelor of Psychological Studies",10,"2.0",0
+35,1055,"HEP",64949,"000203","Aboriginal Orientation Course",30,"0.5",0
+35,1055,"HEP",64950,"001202","UWA Smart Start Course",30,"0.5",0
+35,1055,"HEP",64951,"109102","Doctor of Letters",1,"NULL",0
+35,1055,"HEP",64952,"308102","Doctor of Education",2,"4.0",0
+35,1055,"HEP",64953,"308103","Doctor of Education",2,"3.0",0
+35,1055,"HEP",64954,"308104","Doctor of Education",2,"4.0",0
+35,1055,"HEP",64955,"426602","Master of Professional Accounting (Chartered Accounting) - Coursework",4,"2.5",0
+35,1055,"HEP",64956,"715502","Master of International Development",4,"2.0",0
+35,1055,"HEP",64957,"715503","Master of International Development",4,"1.5",0
+35,1055,"HEP",64983,"CM030","Bachelor of Human Sciences and Master of Biomedical Science",10,"4.0",1
+35,1055,"HEP",65024,"42650","Master of Business Administration - Global",4,"1.5",0
+35,1055,"HEP",65123,"203502","Graduate Diploma in Legal Practice",7,"1.0",0
+35,1055,"HEP",65124,"303302","Graduate Diploma in Educational Studies",7,"1.0",0
+35,1055,"HEP",65125,"512402","Graduate Certificate in Science Communication",11,"0.5",0
+35,1055,"HEP",65126,"513102","Graduate Diploma in Pharmaceutical Science",7,"1.3",0
+35,1055,"HEP",65127,"513402","Graduate Diploma in Science Communication",6,"1.0",0
+35,1055,"HEP",65128,"602202","Graduate Certificate in Information Technology",11,"0.6",0
+35,1055,"HEP",65129,"602203","Graduate Certificate in Information Technology",11,"0.5",0
+35,1055,"HEP",65130,"603302","Graduate Diploma in Engineering",7,"1.0",0
+35,1055,"HEP",65131,"722302","Graduate Certificate in Environmental Science",11,"0.5",0
+35,1055,"HEP",65132,"722602","Graduate Certificate in Urban and Regional Planning",11,"0.5",0
+35,1055,"HEP",65133,"723302","Graduate Diploma in Environmental Science",6,"1.0",0
+35,1055,"HEP",65152,"125402","Master of Strategic Communication",4,"2.0",0
+35,1055,"HEP",65235,"735303","Master of Agricultural Economics - Coursework or Coursework and Dissertation",4,"2.0",0
+35,1055,"HEP",65268,"CM040","Bachelor of Science Frontier Physics and Master of Physics - Medical Physics",10,"4.5",1
+35,1055,"HEP",65274,"BP069","Bachelor of Media and Communication",10,"3.0",0
+35,1055,"HEP",65277,"BH024","Bachelor of Biological Science (Honours)",9,"1.0",0
+35,1055,"HEP",65278,"BH025","Bachelor of Marine Science (Honours)",9,"1.0",0
+35,1055,"HEP",65279,"BH026","Bachelor of Earth Sciences (Honours)",9,"1.0",0
+35,1055,"HEP",65308,"BP070","Bachelor of Art History and Curatorial Studies",10,"3.0",0
+35,1055,"HEP",65313,"CB044","Bachelor of Mathematics and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",65360,"CB043","Bachelor of Psychology and Bachelor of Science",10,"4.0",1
+35,1055,"HEP",65361,"CB046","Bachelor of International Relations and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",65362,"CB052","Bachelor of Art History and Curatorial Studies and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",65371,"CB027","Bachelor of Modern Languages and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",65372,"CB045","Bachelor of Social and Environmental Sustainability and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",65373,"CB048","Bachelor of Media and Communication and Bachelor of Commerce",10,"4.0",1
+35,1055,"HEP",65374,"CB049","Bachelor of Art History and Curatorial Studies and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",65375,"CM034","Bachelor of Arts and Master of Teaching - Secondary",10,"4.5",1
+35,1055,"HEP",65417,"74270","Graduate Certificate in Oceanography (Exit Award)",11,"0.5",0
+35,1055,"HEP",65418,"74360","Graduate Diploma in Marine Sciences (Exit Award)",6,"1.0",0
+35,1055,"HEP",65427,"41390","Graduate Certificate in Digital Marketing",11,"0.5",0
+35,1055,"HEP",65428,"CB042","Bachelor of Music and Bachelor of Biomedical Science",10,"4.0",1
+35,1055,"HEP",65515,"41780","Master of Management (coursework)",4,"2.0",0
+35,1055,"HEP",65571,"42680","Master of Business Administration (Online)",4,"1.5",0
+35,1055,"HEP",65605,"CB047","Bachelor of Criminology and Criminal Justice and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",65616,"43680","Master of Commerce - Articulation (coursework)",4,"1.5",0
+35,1055,"HEP",65655,"93610","Master of Advanced Clinical Practice (coursework or coursework and dissertation)",4,"1.5",0
+35,1055,"HEP",65664,"73390","Graduate Diploma in Business Psychology",6,"1.0",0
+35,1055,"HEP",65676,"93220","Graduate Certificate in Advanced Medicines Management",11,"0.5",0
+35,1055,"HEP",65929,"UWC102","UWA Foundation Program Extended - 12 months",30,"1.1",0
+35,1055,"HEP",65941,"BH028","Bachelor of Nursing (Honours)",9,"4.0",0
+35,1055,"HEP",65966,"MC003","Understanding and Responding to Domestic and Family Violence and Coercive Control",52,"0.2",0
+35,1055,"HEP",65967,"MC004","Diabetes Education",52,"0.2",0
+35,1055,"HEP",65968,"MC005","Medication Management Reviews and Aged Care Pharmacy",52,"0.2",0
+35,1055,"HEP",66023,"CB021","Bachelor of Media and Communication and Bachelor of Arts",10,"4.0",1
+35,1055,"HEP",66024,"CM039","Bachelor of Human Sciences (Pharmaceutical Health) and Doctor of Pharmacy",10,"4.5",1
+35,1055,"HEP",66044,"74280","Graduate Certificate in Marine Biology (Exit award)",11,"0.5",0
+35,1055,"HEP",66045,"74350","Graduate Diploma in Oceanography (Exit Award)",6,"1.0",0
+35,1055,"HEP",66046,"74370","Graduate Diploma in Marine Biology (Exit Award)",6,"1.0",0
+35,1055,"HEP",66085,"51505","Doctor of Pharmacy- Coursework extended",14,"2.5",0
+35,1055,"HEP",66103,"92620","Doctor of Pharmacy Practice (coursework) (extended)",14,"1.0",0
+35,1055,"HEP",66134,"92630","Doctor of Pharmacy (Refresher) (coursework) (extended)",14,"1.0",0
+35,1055,"HEP",66155,"7329Z","Graduate Certificate in Business Psychology (Online)",11,"0.5",0
+35,1055,"HEP",66170,"413302","Graduate Diploma in Human Resources and Industrial Relations",7,"1.0",0
+35,1055,"HEP",66171,"413303","Graduate Diploma in Human Resources and Employment Relations",7,"1.0",0
+35,1055,"HEP",66177,"93230","Graduate Certificate in Diabetes Management and Education",11,"0.5",0
+35,1055,"HEP",66206,"73590","Master of Professional Psychology (coursework)",4,"2.0",0
+35,1055,"HEP",66207,"MC006","Agricultural Technology",52,"0.2",0

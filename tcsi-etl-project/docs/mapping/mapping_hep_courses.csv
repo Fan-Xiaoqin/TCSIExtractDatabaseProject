@@ -1,0 +1,9 @@
+﻿db_table,column,data_type,csv_file_name,mapping_column,sample_data,transformation_required,comments
+hep_courses,uid5_courses_res_key,VARCHAR(10) PRIMARY KEY,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,UID5_CoursesResKey,8849,None,Primary key from source data
+hep_courses,uid3_courses_of_study_res_key,VARCHAR(10) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,UID3_CoursesOfStudyResKey,1462,FOREIGN_KEY_LOOKUP,Foreign key to courses_of_study table via UID3_CoursesOfStudyResKey where is_current is true
+hep_courses,e307_course_code,VARCHAR(10) NOT NULL UNIQUE,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,E307_CourseCode,201,None,Course code appears clean
+hep_courses,e308_course_name,VARCHAR(210) NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,E308_CourseName,Aboriginal Orientation Course,None,Course name appears clean
+hep_courses,e596_standard_course_duration,"DECIMAL(4,3)'",deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,E596_StandardCourseDuration,NULL / 0.300,Convert 'NULL' string to NULL and values to decimal,String 'NULL' should be converted to actual NULL value
+hep_courses,e609_effective_from_date,DATE NOT NULL,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,E609_EffectiveFromDate,1/1/2005,Parse DD/MM/YYYY to DATE,Date format conversion required
+hep_courses,e610_effective_to_date,DATE,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,E610_EffectiveToDate,NULL,Convert 'NULL' string and parse dates- Parse  DD/MM/YYYY to DATE,String 'NULL' to NULL; parse date format when not NULL
+hep_courses,updated_at,TIMESTAMP DEFAULT CURRENT_TIMESTAMP,deidentified_1055_tcsi_DataExtract_20250708_11_HEPCourses.csv,N/A - System Generated,N/A,Set to CURRENT_TIMESTAMP,System field for audit trail
