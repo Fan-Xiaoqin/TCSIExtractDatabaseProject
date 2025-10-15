@@ -28,10 +28,15 @@ DB_CONFIG <- list(
   password = ""
 )
 
+<<<<<<< Updated upstream
 # Detect if running inside Shiny (fixed)
 RUNNING_IN_SHINY <- nzchar(Sys.getenv("SHINY_PORT"))
+=======
+# Detect if running inside a Shiny session
+RUNNING_IN_SHINY <- if (requireNamespace("shiny", quietly = TRUE)) shiny::isRunning() else FALSE
+>>>>>>> Stashed changes
 
-# Prompt only if not running in Shiny
+# Prompt only if NOT running in Shiny
 if (!RUNNING_IN_SHINY) {
   if (is.null(DB_CONFIG$user) || DB_CONFIG$user == "") {
     DB_CONFIG$user <- getPass::getPass("Enter DB username: ")
