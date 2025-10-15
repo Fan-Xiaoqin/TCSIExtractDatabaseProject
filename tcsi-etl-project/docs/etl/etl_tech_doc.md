@@ -183,11 +183,11 @@ The configuration is now saved to `config/database_config_runtime.R` and will pe
 
 ```graphql
 tcsi-etl-project/
-├── app.R                          # Main Shiny application
 ├── config/
 │   ├── database_config.R          # Base configuration
 │   ├── database_config_runtime.R  # Runtime config (updated by app)
 │   └── field_mappings.R           # Field definitions for all tables
+├── schema/                        # PostgreSQL file
 ├── src/
 │   ├── utils/
 │   │   ├── logging_utils.R        # Logging functions

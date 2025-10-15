@@ -30,10 +30,10 @@ This project was developed as part of CITS5206 – Information Technologhy Capst
 
 To run this project, install a R language environment in your local computer:
 
-** Database **
+**Database**
 - Install PostgreSQL: [PostgresSQL](https://www.postgresql.org/download/)  
 - Optional: Chrome, Edge or Firefox
-** R **
+**R**
 - Install R: [CRAN R Project](https://cran.r-project.org/)  
 - Optional: Install RStudio: [RStudio Desktop](https://posit.co/download/rstudio-desktop/)  
 
@@ -54,11 +54,11 @@ install.packages(c("shiny", "shinydashboard", "DBI", "RPostgres", "shinyFiles" "
 ```graphql
 TCSIExtractDatabaseProject
 ├── tcsi-etl-project/
-│    ├── app.R                          # Main Shiny application
 │    ├── config/
 │    │   ├── database_config.R          # Base configuration
 │    │   ├── database_config_runtime.R  # Runtime config (updated by app)
 │    │   └── field_mappings.R           # Field definitions for all tables
+│    ├── schema/                        # PostgreSQL files
 │    ├── src/
 │    │   ├── utils/
 │    │   │   ├── logging_utils.R        # Logging functions
@@ -149,10 +149,10 @@ This will create all tables, indexes, views, and triggers.
 
 ---
 ### Optional: Role-Based Access Control (RBAC) Setup
-The project includes optional role-based access scripts (`roles_permissions.sql`, `create_users.sql`) to enhance database security and manage permissions for different user roles (e.g., read-only, dataentry, admin).
+The project includes optional role-based access scripts ([`roles_permissions.sql](tcsi-etl-project/schema/roles_permissions.sql), [`create_users.sql`](tcsi-etl-project/schema/create_users.sql)) to enhance database security and manage permissions for different user roles (e.g., read-only, dataentry, admin).
 
-Refer to `docs/db/roles_and_permissions_setup_doc.md` for detailed setup instructions.
-SQL scripts for role creation and grant management are located in the `tcsi-etl-project/schema/` directory.
+Refer to [`roles_and_permissions_setup_doc.md`](tcsi-etl-project/docs/db/roles_and_permissions_setup_doc.md) for detailed setup instructions.
+SQL scripts for role creation and grant management are located in the [`tcsi-etl-project/schema/`](tcsi-etl-project/schema/) directory.
 
 These scripts can be executed after database initialization to configure appropriate access levels.
 
@@ -242,12 +242,7 @@ Additional and detailed documentation for the TCSI Extract Database project is a
 | [`tcsi_db_schema_doc.md`](tcsi-etl-project/docs/db/tcsi_db_schema_doc.md)              | Overview of the database schema, tables, relationships, and entity definitions.                |
 | [`triggers_doc.md`](tcsi-etl-project/docs/db/triggers_doc.md)                    | Documentation of triggers implemented for maintaining data integrity and `is_current` flags.   |
 
-**Note**: Open the .md files directly from the docs/ folder in your editor or viewer for detailed instructions and supporting information.
+**Note**: Open the .md files directly from the [docs/](tcsi-etl-project/docs/) folder in your editor or viewer for detailed instructions and supporting information.
 6. Develop a single, analysis-ready view (with all important fields);
 
 ---
-
-
-
-
-
