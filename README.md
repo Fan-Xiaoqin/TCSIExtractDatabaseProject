@@ -1,4 +1,4 @@
-# TCSI Extract Database Project
+<img width="585" height="277" alt="Screenshot 2025-10-15 at 11 40 27 am" src="https://github.com/user-attachments/assets/439b3cf9-e606-4d67-99a6-fc70b74770e6" /># TCSI Extract Database Project
 
 ## Project Overview
 
@@ -30,10 +30,9 @@ This project was developed as part of CITS5206 – Information Technologhy Capst
 
 To run this project, install a R language environment in your local computer:
 
-** Database **
+
 - Install PostgreSQL: [PostgresSQL](https://www.postgresql.org/download/)  
 - Optional: Chrome, Edge or Firefox
-** R **
 - Install R: [CRAN R Project](https://cran.r-project.org/)  
 - Optional: Install RStudio: [RStudio Desktop](https://posit.co/download/rstudio-desktop/)  
 
@@ -59,6 +58,7 @@ TCSIExtractDatabaseProject
 │    │   ├── database_config.R          # Base configuration
 │    │   ├── database_config_runtime.R  # Runtime config (updated by app)
 │    │   └── field_mappings.R           # Field definitions for all tables
+│    ├── schema/
 │    ├── src/
 │    │   ├── utils/
 │    │   │   ├── logging_utils.R        # Logging functions
